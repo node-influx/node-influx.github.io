@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Tutorial</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="tutorial">
+    <h1 class="manual-toc-title"><a href="manual/tutorial.html" data-ice="title">Tutorial</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#express-response-times-example" data-ice="link">Express Response Times Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <h1 class="manual-toc-title"><a href="identifiers.html" data-ice="title">Reference</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#interface" data-ice="link">Interface</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#function" data-ice="link">Function</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="changelog">
+    <h1 class="manual-toc-title"><a href="manual/changelog.html" data-ice="title">Changelog</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#node-influx-changelog" data-ice="link">node-influx Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#version-5-0-0-ongoing-" data-ice="link">Version 5.0.0 (Ongoing)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-06-version-4-2-3" data-ice="link">2016-10-06, Version 4.2.3</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-09-15-version-4-2-2" data-ice="link">2016-09-15, Version 4.2.2</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-05-05-version-4-2-0" data-ice="link">2016-05-05, Version 4.2.0</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Tutorial</span>
+  </div>
+  <div data-ice="content"><h1 id="express-response-times-example">Express Response Times Example</h1>
+<p>In this example we&apos;ll create a server which has an index page that prints out &quot;hello world&quot;, and a page <code>http://localhost:3000/times</code> which prints out the last ten response times that InfluxDB gave us.</p>
+<p>You can see annotated the source code <a href="https://github.com/node-influx/node-influx/tree/master/examples/express_response_times">on Github here</a>.</p>
+<p>The end result should look something like this:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">&#x279C;  ~ curl -s localhost:3000
+Hello world!
+&#x279C;  ~ curl -s localhost:3000/times | jq
+[
+  {
+    &quot;time&quot;: &quot;2016-10-09T19:13:26.815Z&quot;,
+    &quot;duration&quot;: 205,
+    &quot;host&quot;: &quot;ares.peet.io&quot;,
+    &quot;path&quot;: &quot;/&quot;
+  }
+]</code>
+</code></pre>
+<p>Get started by installing and importing everything we need! This tutorial assumes you&apos;re running Node 6.</p>
+<pre><code><code class="source-code prettyprint">npm install influx express</code>
+</code></pre><p>Now create a new file <code>app.js</code> and start writing:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const Influx = require(&apos;../../&apos;)
+const express = require(&apos;express&apos;)
+const http = require(&apos;http&apos;)
+const os = require(&apos;os&apos;)
+
+const app = express()</code>
+</code></pre>
+<p>Create a new Influx client. We tell it to use the <code>express_response_db</code> database by default, and give it some information about the schema we&apos;re writing. It can use this to be smarter about what data formats it writes and do some basic validation for us.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const influx = new Influx.InfluxDB({
+  host: &apos;localhost&apos;,
+  database: &apos;express_response_db&apos;,
+  schema: [
+    {
+      measurement: &apos;response_times&apos;,
+      fields: {
+        path: Influx.FieldType.STRING,
+        duration: Influx.FieldType.INTEGER
+      },
+      tags: [
+        &apos;host&apos;
+      ]
+    }
+  ]
+})</code>
+</code></pre>
+<blockquote>
+<p>Things we used:</p>
+<ul>
+<li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-constructor-constructor">new InfluxDB()</a></li>
+<li><a href="https://node-influx.github.io/typedef/index.html#static-typedef-FieldType">Influx.FieldType</a></li>
+</ul>
+</blockquote>
+<p>Now, we have a working Influx client! We&apos;ll make sure the database exists and boot the app.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">influx.getDatabaseNames()
+  .then(names =&gt; {
+    if (!names.includes(&apos;express_response_db&apos;)) {
+      return influx.createDatabase(&apos;express_response_db&apos;);
+    }
+  })
+  .then(() =&gt; {
+    http.createServer(app).listen(3000, function () {
+      console.log(&apos;Listening on port 3000&apos;)
+    })
+  })
+  .catch(err =&gt; {
+    console.error(`Error creating Influx database!`);
+  })</code>
+</code></pre>
+<blockquote>
+<p>Things we used:</p>
+<ul>
+<li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-getDatabaseNames">InfluxDB#getDatabaseNames</a></li>
+<li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-createDatabase">InfluxDB#createDatabase</a></li>
+</ul>
+</blockquote>
+<p>Finally, we&apos;ll define the middleware and routes we&apos;ll use. We have a generic middleware that records the time between when requests comes in, and the time we respond to them. We also have another route called <code>/times</code> which prints out the last ten timings we recorded.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">app.use((req, res, next) =&gt; {
+  const start = Date.now()
+
+  res.on(&apos;finish&apos;, () =&gt; {
+    const duration = Date.now() - start
+    console.log(`Request to ${req.path} took ${duration}ms`);
+
+    influx.writePoints([
+      {
+        measurement: &apos;response_times&apos;,
+        tags: { host: os.hostname() },
+        fields: { duration, path: req.path },
+      }
+    ]).catch(err =&gt; {
+      console.error(`Error saving data to InfluxDB! ${err.stack}`)
+    })
+  })
+  return next()
+})
+
+app.get(&apos;/&apos;, function (req, res) {
+  setTimeout(() =&gt; res.end(&apos;Hello world!&apos;), Math.random() * 500)
+})
+
+app.get(&apos;/times&apos;, function (req, res) {
+  influx.query(`
+    select * from response_times
+    where host = ${Influx.escape.stringLit(os.hostname())}
+    order by time desc
+    limit 10
+  `).then(result =&gt; {
+    res.json(result)
+  }).catch(err =&gt; {
+    res.status(500).send(err.stack)
+  })
+})</code>
+</code></pre>
+<blockquote>
+<p>Things we used:</p>
+<ul>
+<li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-writePoints">InfluxDB#writePoints</a></li>
+<li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-query">InfluxDB#query</a></li>
+<li><a href="https://node-influx.github.io/variable/index.html#static-variable-escape">InfluxDB.escape.stringLit</a></li>
+</ul>
+</blockquote>
+<p>That&apos;s it! Go ahead and boot your app using <code>node app.js</code> and try it out! You can see the complete annotated the source code <a href="https://github.com/node-influx/node-influx/tree/master/examples/express_response_times">on Github here</a>.</p>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

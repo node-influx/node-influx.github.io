@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">unit/schema.test.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">unit/schema.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Schema, coerceBadly } from &quot;../../src/schema&quot;;
+import { FieldType } from &quot;../../src/grammar&quot;;
+import { expect } from &quot;./helpers&quot;;
+describe(&quot;schema&quot;, () =&gt; {
+    let schema;
+    beforeEach(() =&gt; {
+        schema = new Schema({
+            database: &quot;my_db&quot;,
+            measurement: &quot;my_measure&quot;,
+            tags: [&quot;my_tag&quot;],
+            fields: {
+                int: FieldType.INTEGER,
+                float: FieldType.FLOAT,
+                string: FieldType.STRING,
+                bool: FieldType.BOOLEAN,
+            },
+        });
+    });
+    describe(&quot;coerceBadly&quot;, () =&gt; {
+        it(&quot;apparently works&quot;, () =&gt; {
+            expect(coerceBadly({
+                b: 42,
+                a: true,
+                c: &quot;hello\&quot;world&quot;,
+            })).to.deep.equal([
+                [&quot;a&quot;, &quot;true&quot;],
+                [&quot;b&quot;, &quot;42&quot;],
+                [&quot;c&quot;, &quot;\&quot;hello\\\&quot;world\&quot;&quot;],
+            ]);
+        });
+    });
+    describe(&quot;basic schema&quot;, () =&gt; {
+        it(&quot;coerces data correctly&quot;, () =&gt; {
+            expect(schema.coerceFields({
+                int: 42,
+                float: 43,
+                string: &quot;hello\&quot;world&quot;,
+                bool: true,
+            })).to.deep.equal([
+                [&quot;bool&quot;, &quot;T&quot;],
+                [&quot;float&quot;, &quot;43&quot;],
+                [&quot;int&quot;, &quot;42i&quot;],
+                [&quot;string&quot;, &quot;\&quot;hello\\\&quot;world\&quot;&quot;],
+            ]);
+        });
+        it(&quot;accepts partial data&quot;, () =&gt; {
+            expect(schema.coerceFields({
+                int: 42
+            })).to.deep.equal([
+                [&quot;int&quot;, &quot;42i&quot;],
+            ]);
+        });
+        it(&quot;coerces numeric string data&quot;, () =&gt; {
+            expect(schema.coerceFields({
+                int: &quot;42&quot;
+            })).to.deep.equal([
+                [&quot;int&quot;, &quot;42i&quot;],
+            ]);
+        });
+        it(&quot;strips null and undefined values&quot;, () =&gt; {
+            expect(schema.coerceFields({
+                int: 42,
+                float: undefined,
+                bool: null,
+            })).to.deep.equal([
+                [&quot;int&quot;, &quot;42i&quot;],
+            ]);
+        });
+        it(&quot;throws if wrong data type provided (bool)&quot;, () =&gt; {
+            expect(() =&gt; schema.coerceFields({ bool: 42 })).to.throw(/expected bool/i);
+            expect(() =&gt; schema.coerceFields({ bool: &quot;asdf&quot; })).to.throw(/expected bool/i);
+        });
+        it(&quot;throws if wrong data type provided (float)&quot;, () =&gt; {
+            expect(() =&gt; schema.coerceFields({ float: true })).to.throw(/expected numeric/i);
+            expect(() =&gt; schema.coerceFields({ float: &quot;asdf&quot; })).to.throw(/expected numeric/i);
+        });
+        it(&quot;throws if wrong data type provided (int)&quot;, () =&gt; {
+            expect(() =&gt; schema.coerceFields({ int: true })).to.throw(/expected numeric/i);
+            expect(() =&gt; schema.coerceFields({ int: &quot;asdf&quot; })).to.throw(/expected numeric/i);
+        });
+        it(&quot;allows valid tags&quot;, () =&gt; {
+            expect(schema.checkTags({ &quot;my_tag&quot;: &quot;value&quot; })).to.deep.equal([&quot;my_tag&quot;]);
+            expect(schema.checkTags({})).to.deep.equal([]);
+        });
+        it(&quot;throws if invalid tags are provided&quot;, () =&gt; {
+            expect(() =&gt; schema.checkTags({ &quot;whatever&quot;: &quot;value&quot; })).to.throw(/extraneous tags/i);
+        });
+        it(&quot;throws if invalid fields are provided&quot;, () =&gt; {
+            expect(() =&gt; expect(schema.coerceFields({ x: 42 }))).to.throw(/extraneous fields/i);
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

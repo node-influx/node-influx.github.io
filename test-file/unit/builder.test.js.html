@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">unit/builder.test.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">unit/builder.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Expression, Measurement, toNanoDate } from &apos;../../src/index&apos;;
+import { expect } from &apos;./helpers&apos;;
+describe(&apos;query builder&apos;, () =&gt; {
+    describe(&apos;measurement builder&apos;, () =&gt; {
+        it(&apos;builds with only name&apos;, () =&gt; {
+            expect(new Measurement()
+                .name(&apos;my_&quot;meas&apos;)
+                .toString()).to.equal(&apos;&quot;my_\\&quot;meas&quot;&apos;);
+        });
+        it(&apos;builds with name and rp&apos;, () =&gt; {
+            expect(new Measurement()
+                .name(&apos;my_&quot;meas&apos;)
+                .policy(&apos;po&quot;licy&apos;)
+                .toString()).to.equal(&apos;&quot;po\\&quot;licy&quot;.&quot;my_\\&quot;meas&quot;&apos;);
+        });
+        it(&apos;builds with name, rp, and db&apos;, () =&gt; {
+            expect(new Measurement()
+                .name(&apos;my_&quot;meas&apos;)
+                .policy(&apos;po&quot;licy&apos;)
+                .db(&apos;my_&quot;db&apos;)
+                .toString()).to.equal(&apos;&quot;my_\\&quot;db&quot;.&quot;po\\&quot;licy&quot;.&quot;my_\\&quot;meas&quot;&apos;);
+        });
+        it(&apos;builds with name and db&apos;, () =&gt; {
+            expect(new Measurement()
+                .name(&apos;my_&quot;meas&apos;)
+                .db(&apos;my_&quot;db&apos;)
+                .toString()).to.equal(&apos;&quot;my_\\&quot;db&quot;.&quot;my_\\&quot;meas&quot;&apos;);
+        });
+        it(&apos;throws when a name is omitted&apos;, () =&gt; {
+            expect(() =&gt; new Measurement()
+                .db(&apos;my_&quot;db&apos;)
+                .toString()).to.throw(/must specify a measurement/);
+        });
+    });
+    describe(&apos;expression builder&apos;, () =&gt; {
+        it(&apos;creates basic queries&apos;, () =&gt; {
+            expect(new Expression()
+                .tag(&apos;my_&quot;tag&apos;)
+                .equals
+                .value(&apos;42&apos;)
+                .toString()).to.equal(&apos;&quot;my_\\&quot;tag&quot; = \&apos;42\&apos;&apos;);
+        });
+        it(&apos;inserts data types correctly&apos;, () =&gt; {
+            expect(new Expression()
+                .field(&apos;f&apos;)
+                .equals
+                .value(&apos;str\&apos;&apos;)
+                .or
+                .field(&apos;f&apos;)
+                .matches
+                .value(/[0-9]+/)
+                .or
+                .field(&apos;f&apos;)
+                .equals
+                .value(42)
+                .or
+                .field(&apos;f&apos;)
+                .equals
+                .tag(&apos;my_&quot;tag&apos;)
+                .or
+                .field(&apos;f&apos;)
+                .equals
+                .value(new Date(1475985480231))
+                .or
+                .field(&apos;f&apos;)
+                .equals
+                .value(toNanoDate(&apos;1475985480231035600&apos;))
+                .or
+                .field(&apos;f&apos;)
+                .equals
+                .value(true)
+                .or
+                .exp(e =&gt; e.field(&apos;a&apos;).equals.value(1).or.field(&apos;b&apos;).equals.value(2))
+                .or
+                .field(&apos;f&apos;)
+                .doesntMatch
+                .value({ toString: () =&gt; &apos;/my-custom-re/&apos; })
+                .toString()).to.equal(&apos;&quot;f&quot; = \&apos;str\\\&apos;\&apos; OR &quot;f&quot; =~ /[0-9]+/ OR &quot;f&quot; = 42 &apos; +
+                &apos;OR &quot;f&quot; = &quot;my_\\&quot;tag&quot; OR &quot;f&quot; = &quot;2016-10-09 03:58:00.231&quot; &apos; +
+                &apos;OR &quot;f&quot; = &quot;2016-10-09 03:58:00.231035600&quot; OR &quot;f&quot; = TRUE &apos; +
+                &apos;OR (&quot;a&quot; = 1 OR &quot;b&quot; = 2) OR &quot;f&quot; !~ /my-custom-re/&apos;);
+        });
+        it(&apos;throws when using a flagged regex&apos;, () =&gt; {
+            expect(() =&gt; new Expression().field(&apos;f&apos;).matches.value(/a/i))
+                .to.throw(/doesn&apos;t support flags/);
+        });
+        it(&apos;throws when using un-stringifyable object&apos;, () =&gt; {
+            expect(() =&gt; new Expression().field(&apos;f&apos;).equals.value(Object.create(null)))
+                .to.throw(/doesn&apos;t know how to encode/);
+        });
+        const operationsTable = [
+            { method: &apos;equals&apos;, yields: &apos;=&apos; },
+            { method: &apos;notEqual&apos;, yields: &apos;!=&apos; },
+            { method: &apos;gt&apos;, yields: &apos;&gt;&apos; },
+            { method: &apos;gte&apos;, yields: &apos;&gt;=&apos; },
+            { method: &apos;lt&apos;, yields: &apos;&lt;&apos; },
+            { method: &apos;lte&apos;, yields: &apos;&lt;=&apos; },
+            { method: &apos;plus&apos;, yields: &apos;+&apos; },
+            { method: &apos;minus&apos;, yields: &apos;-&apos; },
+            { method: &apos;times&apos;, yields: &apos;*&apos; },
+            { method: &apos;div&apos;, yields: &apos;/&apos; },
+            { method: &apos;and&apos;, yields: &apos;AND&apos; },
+            { method: &apos;or&apos;, yields: &apos;OR&apos; },
+            { method: &apos;matches&apos;, yields: &apos;=~&apos; },
+            { method: &apos;doesntMatch&apos;, yields: &apos;!~&apos; },
+        ];
+        operationsTable.forEach(({ method, yields }) =&gt; {
+            it(`yields ${yields} from .${method}`, () =&gt; {
+                expect(new Expression().field(&apos;f&apos;)[method].value(true).toString())
+                    .to.equal(`&quot;f&quot; ${yields} TRUE`);
+            });
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

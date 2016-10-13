@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">unit/influx.test.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">unit/influx.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+import { InfluxDB, FieldType, toNanoDate } from &apos;../../src&apos;;
+import { expect, dbFixture } from &quot;./helpers&quot;;
+const sinon = require(&apos;sinon&apos;);
+describe(&apos;influxdb&apos;, () =&gt; {
+    describe(&apos;constructor&apos;, () =&gt; {
+        it(&apos;uses default options&apos;, () =&gt; {
+            expect((new InfluxDB()).options).to.deep.equal({
+                username: &apos;root&apos;,
+                password: &apos;root&apos;,
+                database: null,
+                pool: undefined,
+                schema: [],
+                hosts: [{
+                        host: &apos;127.0.0.1&apos;,
+                        port: 8086,
+                        protocol: &apos;http&apos;
+                    }]
+            });
+        });
+        it(&apos;parses dsns&apos;, () =&gt; {
+            expect((new InfluxDB(&apos;https://connor:password@192.168.0.1:1337/foo&apos;)).options).to.deep.equal({
+                username: &apos;connor&apos;,
+                password: &apos;password&apos;,
+                database: &apos;foo&apos;,
+                pool: undefined,
+                schema: [],
+                hosts: [{
+                        host: &apos;192.168.0.1&apos;,
+                        port: 1337,
+                        protocol: &apos;https&apos;
+                    }]
+            });
+        });
+        it(&apos;parses single configs&apos;, () =&gt; {
+            expect((new InfluxDB({ database: &apos;foo&apos;, host: &apos;192.168.0.1&apos; })).options).to.deep.equal({
+                username: &apos;root&apos;,
+                password: &apos;root&apos;,
+                database: &apos;foo&apos;,
+                pool: undefined,
+                schema: [],
+                hosts: [{
+                        host: &apos;192.168.0.1&apos;,
+                        port: 8086,
+                        protocol: &apos;http&apos;
+                    }]
+            });
+        });
+        it(&apos;parses cluster configs&apos;, () =&gt; {
+            expect((new InfluxDB({ database: &apos;foo&apos;, hosts: [{ host: &apos;192.168.0.1&apos; }] })).options).to.deep.equal({
+                username: &apos;root&apos;,
+                password: &apos;root&apos;,
+                database: &apos;foo&apos;,
+                schema: [],
+                hosts: [{
+                        host: &apos;192.168.0.1&apos;,
+                        port: 8086,
+                        protocol: &apos;http&apos;
+                    }]
+            });
+        });
+        it(&apos;parses parses schema&apos;, () =&gt; {
+            let client = (new InfluxDB({
+                schema: [{
+                        database: &quot;my_db&quot;,
+                        measurement: &quot;my_measurement&quot;,
+                        fields: {},
+                        tags: [&quot;my_tag&quot;],
+                    }],
+                hosts: [{ host: &apos;192.168.0.1&apos; }],
+            }));
+            expect(client.schema.my_db.my_measurement).to.be.defined;
+            client = (new InfluxDB({
+                schema: [{
+                        measurement: &quot;my_measurement&quot;,
+                        fields: {},
+                        tags: [&quot;my_tag&quot;],
+                    }],
+                database: &quot;my_db&quot;,
+                hosts: [{ host: &apos;192.168.0.1&apos; }],
+            }));
+            expect(client.schema.my_db.my_measurement).to.be.defined;
+            expect(() =&gt; {
+                new InfluxDB({
+                    schema: [{
+                            measurement: &quot;my_measurement&quot;,
+                            fields: {},
+                            tags: [&quot;my_tag&quot;],
+                        }],
+                    hosts: [{ host: &apos;192.168.0.1&apos; }],
+                });
+            }).to.throw(/no default database is provided/);
+        });
+    });
+    describe(&apos;methods&apos;, () =&gt; {
+        let influx;
+        let pool;
+        let expectations = [];
+        beforeEach(() =&gt; {
+            influx = new InfluxDB({
+                hosts: [],
+                schema: [
+                    {
+                        database: &quot;my_db&quot;,
+                        measurement: &quot;my_schemed_measure&quot;,
+                        tags: [&quot;my_tag&quot;],
+                        fields: {
+                            int: FieldType.INTEGER,
+                            float: FieldType.FLOAT,
+                            string: FieldType.STRING,
+                            bool: FieldType.BOOLEAN,
+                        },
+                    },
+                ],
+            });
+            pool = influx.pool;
+            sinon.stub(pool, &apos;discard&apos;);
+            sinon.stub(pool, &apos;json&apos;);
+            sinon.stub(pool, &apos;text&apos;);
+        });
+        afterEach(() =&gt; {
+            while (expectations.length) {
+                expectations.pop()();
+            }
+        });
+        const setDefaultDB = (db) =&gt; {
+            influx.options.database = db;
+        };
+        const expectQuery = (method, options, httpMethod = &apos;POST&apos;, yields = { results: [{}] }) =&gt; {
+            if (typeof options === &apos;string&apos;) {
+                options = { q: options };
+            }
+            pool[method].returns(Promise.resolve(yields));
+            expectations.push(() =&gt; {
+                expect(pool[method]).to.have.been.calledWith({
+                    method: httpMethod,
+                    path: &apos;/query&apos;,
+                    query: Object.assign({
+                        u: &apos;root&apos;,
+                        p: &apos;root&apos;
+                    }, options)
+                });
+            });
+        };
+        const expectWrite = (body, options) =&gt; {
+            if (typeof options === &apos;string&apos;) {
+                options = { q: options };
+            }
+            pool.discard.returns(Promise.resolve());
+            expectations.push(() =&gt; {
+                expect(pool.discard).to.have.been.calledWith({
+                    method: &apos;POST&apos;,
+                    path: &apos;/write&apos;,
+                    body,
+                    query: Object.assign({
+                        u: &apos;root&apos;,
+                        p: &apos;root&apos;
+                    }, options)
+                });
+            });
+        };
+        it(&apos;.createDatabase()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;create database &quot;foo&quot;&apos;);
+            influx.createDatabase(&apos;foo&apos;);
+            expectQuery(&apos;json&apos;, &apos;create database &quot;f\\&quot;oo&quot;&apos;);
+            influx.createDatabase(&apos;f&quot;oo&apos;);
+        });
+        it(&apos;.dropDatabase()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;drop database &quot;foo&quot;&apos;);
+            influx.dropDatabase(&apos;foo&apos;);
+            expectQuery(&apos;json&apos;, &apos;drop database &quot;f\\&quot;oo&quot;&apos;);
+            influx.dropDatabase(&apos;f&quot;oo&apos;);
+        });
+        it(&apos;.getDatabaseNames()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;show databases&apos;, &apos;GET&apos;, dbFixture(&apos;showDatabases&apos;));
+            return influx.getDatabaseNames().then(names =&gt; {
+                expect(names).to.deep.equal([&apos;_internal&apos;, &apos;influx_test_gen&apos;]);
+            });
+        });
+        it(&apos;.getMeasurements()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;show measurements&apos;, &apos;GET&apos;, dbFixture(&apos;showMeasurements&apos;));
+            return influx.getMeasurements().then(names =&gt; {
+                expect(names).to.deep.equal([&apos;series_0&apos;, &apos;series_1&apos;, &apos;series_2&apos;]);
+            });
+        });
+        it(&apos;.getSeries() from all&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;show series&apos;, &apos;GET&apos;, dbFixture(&apos;showSeries&apos;));
+            return influx.getSeries().then(names =&gt; {
+                expect(names).to.deep.equal([
+                    &apos;series_0,my_tag=0&apos;,
+                    &apos;series_0,my_tag=1&apos;,
+                    &apos;series_0,my_tag=5&apos;,
+                    &apos;series_0,my_tag=6&apos;,
+                    &apos;series_0,my_tag=7&apos;,
+                    &apos;series_0,my_tag=8&apos;,
+                    &apos;series_0,my_tag=9&apos;,
+                    &apos;series_1,my_tag=0&apos;,
+                    &apos;series_1,my_tag=2&apos;,
+                    &apos;series_1,my_tag=4&apos;,
+                    &apos;series_1,my_tag=5&apos;,
+                    &apos;series_1,my_tag=6&apos;,
+                    &apos;series_1,my_tag=7&apos;,
+                    &apos;series_1,my_tag=8&apos;,
+                    &apos;series_1,my_tag=9&apos;,
+                    &apos;series_2,my_tag=1&apos;,
+                    &apos;series_2,my_tag=2&apos;,
+                    &apos;series_2,my_tag=3&apos;,
+                    &apos;series_2,my_tag=4&apos;,
+                    &apos;series_2,my_tag=5&apos;,
+                    &apos;series_2,my_tag=6&apos;,
+                    &apos;series_2,my_tag=7&apos;,
+                    &apos;series_2,my_tag=8&apos;,
+                    &apos;series_2,my_tag=9&apos;
+                ]);
+            });
+        });
+        it(&apos;.getSeries() from single&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;show series from &quot;series_1&quot;&apos;, &apos;GET&apos;, dbFixture(&apos;showSeriesFromOne&apos;));
+            return influx.getSeries(&apos;series_1&apos;).then(names =&gt; {
+                expect(names).to.deep.equal([
+                    &apos;series_1,my_tag=0&apos;,
+                    &apos;series_1,my_tag=2&apos;,
+                    &apos;series_1,my_tag=4&apos;,
+                    &apos;series_1,my_tag=5&apos;,
+                    &apos;series_1,my_tag=6&apos;,
+                    &apos;series_1,my_tag=7&apos;,
+                    &apos;series_1,my_tag=8&apos;,
+                    &apos;series_1,my_tag=9&apos;
+                ]);
+            });
+        });
+        it(&apos;.dropMeasurement()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;drop measurement &quot;series_1&quot;&apos;);
+            return influx.dropMeasurement(&apos;series_1&apos;);
+        });
+        describe(&apos;.dropSeries()&apos;, () =&gt; {
+            it(&apos;drops with only from clause by string&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot;&apos;);
+                influx.dropSeries({ measurement: &apos;&quot;series_0&quot;&apos; });
+            });
+            it(&apos;drops with only from clause by builder&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot;&apos;);
+                influx.dropSeries({ measurement: m =&gt; m.name(&apos;series_0&apos;) });
+            });
+            it(&apos;drops with only where clause by string&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop series where &quot;my_tag&quot; = 1&apos;);
+                influx.dropSeries({ where: &apos;&quot;my_tag&quot; = 1&apos; });
+            });
+            it(&apos;drops with only where clause by builder&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop series where &quot;my_tag&quot; = 1&apos;);
+                influx.dropSeries({ where: e =&gt; e.tag(&apos;my_tag&apos;).equals.value(1) });
+            });
+            it(&apos;drops with both&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot; where &quot;my_tag&quot; = 1&apos;);
+                influx.dropSeries({
+                    measurement: m =&gt; m.name(&apos;series_0&apos;),
+                    where: e =&gt; e.tag(&apos;my_tag&apos;).equals.value(1)
+                });
+            });
+        });
+        it(&apos;.getUsers()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;show users&apos;, &apos;GET&apos;, dbFixture(&apos;showUsers&apos;));
+            return influx.getUsers().then(names =&gt; {
+                expect(names.slice()).to.deep.equal([
+                    { user: &apos;john&apos;, admin: true },
+                    { user: &apos;steve&apos;, admin: false },
+                ]);
+            });
+        });
+        describe(&apos;.createUser()&apos;, () =&gt; {
+            it(&apos;works with admin specified == true&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create user &quot;con\\&quot;nor&quot; with password \&apos;pa55\\\&apos;word\&apos; with all privileges&apos;);
+                return influx.createUser(&apos;con&quot;nor&apos;, &apos;pa55\&apos;word&apos;, true);
+            });
+            it(&apos;works with admin specified == false&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create user &quot;con\\&quot;nor&quot; with password \&apos;pa55\\\&apos;word\&apos;&apos;);
+                return influx.createUser(&apos;con&quot;nor&apos;, &apos;pa55\&apos;word&apos;, false);
+            });
+            it(&apos;works with admin unspecified&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create user &quot;con\\&quot;nor&quot; with password \&apos;pa55\\\&apos;word\&apos;&apos;);
+                return influx.createUser(&apos;con&quot;nor&apos;, &apos;pa55\&apos;word&apos;);
+            });
+        });
+        describe(&apos;.grantPrivilege()&apos;, () =&gt; {
+            it(&apos;queries correctly&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;grant READ to &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.grantPrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
+            });
+            it(&apos;throws if DB unspecified&apos;, () =&gt; {
+                expect(() =&gt; influx.grantPrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;)).to.throw(/default database/);
+            });
+            it(&apos;fills in default DB&apos;, () =&gt; {
+                setDefaultDB(&apos;my_\\&quot;_db&apos;);
+                expectQuery(&apos;json&apos;, &apos;grant READ to &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.grantPrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
+            });
+        });
+        describe(&apos;.revokePrivilege()&apos;, () =&gt; {
+            it(&apos;queries correctly&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;revoke READ from &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.revokePrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
+            });
+            it(&apos;throws if DB unspecified&apos;, () =&gt; {
+                expect(() =&gt; influx.revokePrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;)).to.throw(/default database/);
+            });
+            it(&apos;fills in default DB&apos;, () =&gt; {
+                setDefaultDB(&apos;my_\\&quot;_db&apos;);
+                expectQuery(&apos;json&apos;, &apos;revoke READ from &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.revokePrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
+            });
+        });
+        it(&apos;.grantAdminPrivilege()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;grant all to &quot;con\\&quot;nor&quot;&apos;);
+            return influx.grantAdminPrivilege(&apos;con&quot;nor&apos;);
+        });
+        it(&apos;.revokeAdminPrivilege()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;revoke all from &quot;con\\&quot;nor&quot;&apos;);
+            return influx.revokeAdminPrivilege(&apos;con&quot;nor&apos;);
+        });
+        it(&apos;.dropUser()&apos;, () =&gt; {
+            expectQuery(&apos;json&apos;, &apos;drop user &quot;con\\&quot;nor&quot;&apos;);
+            return influx.dropUser(&apos;con&quot;nor&apos;);
+        });
+        describe(&apos;.createContinuousQuery()&apos;, () =&gt; {
+            it(&apos;queries correctly&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create continuous query &quot;my_\\&quot;q&quot; on &quot;my_\\&quot;_db&quot; begin foo end&apos;);
+                return influx.createContinuousQuery(&apos;my_&quot;q&apos;, &apos;foo&apos;, &apos;my_&quot;_db&apos;);
+            });
+            it(&apos;throws if DB unspecified&apos;, () =&gt; {
+                expect(() =&gt; influx.createContinuousQuery(&apos;my_&quot;q&apos;, &apos;foo&apos;)).to.throw(/default database/);
+            });
+            it(&apos;fills in default DB&apos;, () =&gt; {
+                setDefaultDB(&apos;my_&quot;_db&apos;);
+                expectQuery(&apos;json&apos;, &apos;create continuous query &quot;my_\\&quot;q&quot; on &quot;my_\\&quot;_db&quot; begin foo end&apos;);
+                return influx.createContinuousQuery(&apos;my_&quot;q&apos;, &apos;foo&apos;);
+            });
+        });
+        describe(&apos;.dropContinuousQuery()&apos;, () =&gt; {
+            it(&apos;queries correctly&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;drop continuous query &quot;my_\\&quot;q&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.dropContinuousQuery(&apos;my_&quot;q&apos;, &apos;my_&quot;_db&apos;);
+            });
+            it(&apos;throws if DB unspecified&apos;, () =&gt; {
+                expect(() =&gt; influx.dropContinuousQuery(&apos;my_&quot;q&apos;)).to.throw(/default database/);
+            });
+            it(&apos;fills in default DB&apos;, () =&gt; {
+                setDefaultDB(&apos;my_&quot;_db&apos;);
+                expectQuery(&apos;json&apos;, &apos;drop continuous query &quot;my_\\&quot;q&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                return influx.dropContinuousQuery(&apos;my_&quot;q&apos;);
+            });
+        });
+        describe(&apos;.writePoints()&apos;, () =&gt; {
+            it(&apos;writes with all options specified without a schema&apos;, () =&gt; {
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075&apos;, {
+                    precision: &apos;s&apos;,
+                    rp: &apos;1day&apos;,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;mymeas&apos;,
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: new Date(1463683075000),
+                    },
+                ], {
+                    database: &apos;my_db&apos;,
+                    precision: &apos;s&apos;,
+                    retentionPolicy: &apos;1day&apos;,
+                });
+            });
+            it(&apos;writes using default options without a schema&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;mymeas&apos;,
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: new Date(1463683075000),
+                    },
+                ]);
+            });
+            it(&apos;uses a schema to coerce&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;my_schemed_measure,my_tag=1 bool=T,float=43,int=42i&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;my_schemed_measure&apos;,
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: {
+                            int: 42,
+                            float: 43,
+                            bool: true,
+                        }
+                    },
+                ]);
+            });
+            it(&apos;throws on schema violations&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expect(() =&gt; {
+                    influx.writePoints([
+                        {
+                            measurement: &apos;my_schemed_measure&apos;,
+                            tags: { not_a_tag: &apos;1&apos; },
+                        },
+                    ]);
+                }).to.throw(/extraneous tags/i);
+                expect(() =&gt; {
+                    influx.writePoints([
+                        {
+                            measurement: &apos;my_schemed_measure&apos;,
+                            fields: { not_a_field: &apos;1&apos; },
+                        },
+                    ]);
+                }).to.throw(/extraneous fields/i);
+                expect(() =&gt; {
+                    influx.writePoints([
+                        {
+                            measurement: &apos;my_schemed_measure&apos;,
+                            fields: { bool: &apos;lol, not a bool&apos; },
+                        },
+                    ]);
+                }).to.throw(/expected bool/i);
+            });
+            it(&apos;handles lack of tags&apos;, () =&gt; {
+                expectWrite(&apos;mymeas myfield=90&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;mymeas&apos;,
+                        fields: { myfield: 90 },
+                    },
+                ], { database: &apos;my_db&apos; });
+            });
+            it(&apos;handles lack of fields&apos;, () =&gt; {
+                expectWrite(&apos;mymeas,my_tag=90&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;mymeas&apos;,
+                        tags: { my_tag: 90 },
+                    },
+                ], { database: &apos;my_db&apos; });
+            });
+            it(&apos;handles multiple tags&apos;, () =&gt; {
+                expectWrite(&apos;mymeas,my_tag1=90,my_tag2=45&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writePoints([
+                    {
+                        measurement: &apos;mymeas&apos;,
+                        tags: { my_tag1: 90, my_tag2: 45 },
+                    },
+                ], { database: &apos;my_db&apos; });
+            });
+            it(&apos;writes with the .writeMeasurement method&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writeMeasurement(&apos;mymeas&apos;, [
+                    {
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: new Date(1463683075000),
+                    },
+                ]);
+            });
+            it(&apos;accepts nanoseconds (as ms)&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writeMeasurement(&apos;mymeas&apos;, [
+                    {
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: toNanoDate(&apos;1463683075000000000&apos;),
+                    },
+                ]);
+            });
+            it(&apos;accepts nanoseconds (as ns)&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000000000&apos;, {
+                    precision: &apos;n&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writeMeasurement(&apos;mymeas&apos;, [
+                    {
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: toNanoDate(&apos;1463683075000000000&apos;),
+                    },
+                ], { precision: &apos;n&apos; });
+            });
+        });
+        describe(&apos;.write methods&apos;, () =&gt; {
+            beforeEach(() =&gt; setDefaultDB(&apos;my_db&apos;));
+            it(&apos;runs raw queries&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, {
+                    q: &apos;select * from series_0&apos;,
+                    epoch: undefined,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
+                return influx.queryRaw(&apos;select * from series_0&apos;).then(res =&gt; {
+                    expect(res).to.deep.equal(dbFixture(&apos;selectFromOne&apos;));
+                });
+            });
+            it(&apos;parses query output&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, {
+                    q: &apos;select * from series_0&apos;,
+                    epoch: undefined,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
+                return influx.query(&apos;select * from series_0&apos;).then(res =&gt; {
+                    expect(res.slice()).to.deep.equal([
+                        { time: new Date(&apos;2016-09-29T02:19:09.38Z&apos;), my_tag: &apos;1&apos;, my_value: 67 },
+                        { time: new Date(&apos;2016-09-29T02:19:09.379Z&apos;), my_tag: &apos;1&apos;, my_value: 32 },
+                    ]);
+                });
+            });
+            it(&apos;selects from multiple&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, {
+                    q: &apos;select * from series_0;select * from series_1&apos;,
+                    epoch: undefined,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
+                return influx.query([&apos;select * from series_0&apos;, &apos;select * from series_1&apos;]);
+            });
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

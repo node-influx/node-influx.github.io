@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/grammar/times.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/grammar/times.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isNumeric } from &quot;./ds&quot;;
+/**
+ * Just a quick overview of what&apos;s going on in this file. It&apos;s a bit of a mess.
+ * Influx uses three time formats:
+ *  - ISO times with nanoseconds when querying where an epoch is not provided
+ *  - Unix timestamps when querying with an epoch (specifying the precision
+ *    in the given time unit)
+ *  - Its own time format for time literals.
+ *
+ * To complicate matters, Influx operates on nanosecond precisions
+ * by default, but we can&apos;t represent nanosecond timestamps in
+ * JavaScript numbers as they&apos;re 64 bit uints.
+ *
+ * As a result we have several utilities to convert between these different
+ * formats. When precision is required, we represent nanosecond timestamps
+ * as strings and wrap default dates in the NanoDate interface which
+ * lets the consumer read and write these more precise timestamps.
+ *
+ * Representing the timestamps as strings is definitely not a pure way to go
+ * about it, but importing an arbitrary-precision integer library adds
+ * bloat and is a massive hit to throughput. The operations we do do
+ * are pretty trivial, so we stick with manipulating strings
+ * and make sure to wash our hands when we&apos;re done.
+ *
+ * Vocabulary:
+ *  Unix timestamp   = &quot;timestamp&quot;, abbreviated as &quot;time&quot;
+ *  ISO timestamp    = &quot;ISO time&quot;, abbreviated as &quot;ISO&quot;
+ *  Influx timestamp = &quot;Influx time&quot;, abbreviated as &quot;Influx&quot;
+ */
+function leftPad(str, length, pad = &quot;0&quot;) {
+    if (typeof str === &quot;number&quot;) {
+        str = String(str);
+    }
+    while (str.length &lt; length) {
+        str = pad + str;
+    }
+    return str;
+}
+function rightPad(str, length, pad = &quot;0&quot;) {
+    if (typeof str === &quot;number&quot;) {
+        str = String(str);
+    }
+    while (str.length &lt; length) {
+        str += pad;
+    }
+    return str;
+}
+/**
+ * Covers a nanoseconds unix timestamp to a NanoDate for node-influx. The
+ * timestamp is provided as a string to prevent precision loss.
+ *
+ * @param {String} timestamp
+ * @returns {NanoDate}
+ * @example
+ * const date = toNanoDate(&apos;1475985480231035600&apos;)
+ *
+ * // You can use the returned Date as a normal date:
+ * expect(date.getTime()).to.equal(1475985480231);
+ *
+ * // We decorate it with two additional methods to read
+ * // nanosecond-precision results:
+ * expect(date.getNanoTime()).to.equal(&apos;1475985480231035600&apos;);
+ * expect(date.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035600Z&apos;);
+ */
+export function toNanoDate(timestamp) {
+    const date = new Date(Math.floor(Number(timestamp) / nsPer.ms));
+    date._nanoTime = timestamp;
+    date.getNanoTime = nanoDateMethods.getNanoTimeFromStamp;
+    date.toNanoISOString = nanoDateMethods.toNanoISOStringFromStamp;
+    return date;
+}
+function asNanoDate(date) {
+    const d = date;
+    if (d.getNanoTime) {
+        return d;
+    }
+    return undefined;
+}
+/**
+ * Precision is a map of available Influx time precisions.
+ * @type {Object.&lt;String, String&gt;}
+ * @example
+ * console.log(Precision.Hours); // =&gt; &quot;h&quot;
+ * console.log(Precision.Minutes); // =&gt; &quot;m&quot;
+ * console.log(Precision.Seconds); // =&gt; &quot;s&quot;
+ * console.log(Precision.Milliseconds); // =&gt; &quot;ms&quot;
+ * console.log(Precision.Microseconds); // =&gt; &quot;u&quot;
+ * console.log(Precision.Nanoseconds); // =&gt; &quot;ns&quot;
+ */
+export const Precision = Object.freeze({
+    Hours: &quot;h&quot;,
+    Microseconds: &quot;u&quot;,
+    Milliseconds: &quot;ms&quot;,
+    Minutes: &quot;m&quot;,
+    Nanoseconds: &quot;n&quot;,
+    Seconds: &quot;s&quot;,
+});
+class MillisecondDateManipulator {
+    format(date) {
+        return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
+            + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
+            + &quot;-&quot; + leftPad(date.getUTCDate(), 2)
+            + &quot; &quot; + leftPad(date.getUTCHours(), 2)
+            + &quot;:&quot; + leftPad(date.getUTCMinutes(), 2)
+            + &quot;:&quot; + leftPad(date.getUTCSeconds(), 2)
+            + &quot;.&quot; + leftPad(date.getUTCMilliseconds(), 3) + &quot;\&quot;&quot;;
+    }
+    toTime(date, precision) {
+        let ms = date.getTime();
+        switch (precision) {
+            case &quot;n&quot;:
+                ms *= 1000;
+            case &quot;u&quot;:
+                ms *= 1000;
+            case &quot;ms&quot;:
+                return String(ms);
+            case &quot;h&quot;:
+                ms /= 60;
+            case &quot;m&quot;:
+                ms /= 60;
+            case &quot;s&quot;:
+                ms /= 1000;
+                return String(Math.floor(ms));
+            default:
+                throw new Error(`Unknown precision &quot;${precision}&quot;!`);
+        }
+    }
+    isoToDate(timestamp) {
+        return new Date(timestamp);
+    }
+    timetoDate(timestamp, precision) {
+        switch (precision) {
+            case &quot;n&quot;:
+                timestamp /= 1000;
+            case &quot;u&quot;:
+                timestamp /= 1000;
+            case &quot;ms&quot;:
+                return new Date(timestamp);
+            case &quot;h&quot;:
+                timestamp *= 60;
+            case &quot;m&quot;:
+                timestamp *= 60;
+            case &quot;s&quot;:
+                timestamp *= 1000;
+                return new Date(timestamp);
+            default:
+                throw new Error(`Unknown precision &quot;${precision}&quot;!`);
+        }
+    }
+}
+const nsPer = {
+    ms: Math.pow(10, 6),
+    s: Math.pow(10, 9),
+};
+function nanoIsoToTime(iso) {
+    const [secondsStr, decimalStr] = iso.split(&quot;.&quot;);
+    const seconds = Math.floor(new Date(secondsStr + &quot;Z&quot;).getTime() / 1000);
+    const decimal = rightPad(decimalStr.slice(0, -1), 9);
+    return `${seconds}${decimal}`;
+}
+const nanoDateMethods = {
+    getNanoTimeFromISO() {
+        if (!this._cachedNanoISO) {
+            this._cachedNanoTime = nanoIsoToTime(this._nanoISO);
+        }
+        return this._cachedNanoTime;
+    },
+    toNanoISOStringFromISO() {
+        if (!this._cachedNanoISO) {
+            this._cachedNanoTime = nanoIsoToTime(this._nanoISO);
+        }
+        const base = this.toISOString().slice(0, -4); // slice of `123Z` milliseconds
+        return `${base}${this._cachedNanoTime.slice(-9)}Z`;
+    },
+    getNanoTimeFromStamp() {
+        return this._nanoTime;
+    },
+    toNanoISOStringFromStamp() {
+        const base = this.toISOString().slice(0, -4); // slice of `123Z` milliseconds
+        return `${base}${this._nanoTime.slice(-9)}Z`;
+    },
+};
+class NanosecondsDateManipulator {
+    format(date) {
+        return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
+            + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
+            + &quot;-&quot; + leftPad(date.getUTCDate(), 2)
+            + &quot; &quot; + leftPad(date.getUTCHours(), 2)
+            + &quot;:&quot; + leftPad(date.getUTCMinutes(), 2)
+            + &quot;:&quot; + leftPad(date.getUTCSeconds(), 2)
+            + &quot;.&quot; + date.getNanoTime().slice(-9) + &quot;\&quot;&quot;;
+    }
+    toTime(date, precision) {
+        let ms = date.getTime();
+        switch (precision) {
+            case &quot;u&quot;:
+                return date.getNanoTime().slice(0, -3);
+            case &quot;n&quot;:
+                return date.getNanoTime();
+            case &quot;h&quot;:
+                ms /= 60;
+            case &quot;m&quot;:
+                ms /= 60;
+            case &quot;s&quot;:
+                ms /= 1000;
+            case &quot;ms&quot;:
+                return String(Math.floor(ms));
+            default:
+                throw new Error(`Unknown precision &quot;${precision}&quot;!`);
+        }
+    }
+    isoToDate(timestamp) {
+        let date = new Date(timestamp);
+        date._nanoISO = timestamp;
+        date.getNanoTime = nanoDateMethods.getNanoTimeFromISO;
+        date.toNanoISOString = nanoDateMethods.toNanoISOStringFromISO;
+        return date;
+    }
+    timetoDate(timestamp, precision) {
+        switch (precision) {
+            case &quot;h&quot;:
+                timestamp *= 60;
+            case &quot;m&quot;:
+                timestamp *= 60;
+            case &quot;s&quot;:
+                timestamp *= 1000;
+            case &quot;ms&quot;:
+                timestamp *= 1000;
+            case &quot;u&quot;:
+                timestamp *= 1000;
+            case &quot;n&quot;:
+                return toNanoDate(String(timestamp));
+            default:
+                throw new Error(`Unknown precision &quot;${precision}&quot;!`);
+        }
+    }
+}
+const milliManipulator = new MillisecondDateManipulator();
+const nanoManipulator = new NanosecondsDateManipulator();
+/**
+ * formatDate converts the Date instance to Influx&apos;s date query format.
+ * @private
+ */
+export function formatDate(date) {
+    const nano = asNanoDate(date);
+    if (nano) {
+        return nanoManipulator.format(nano);
+    }
+    else {
+        return milliManipulator.format(date);
+    }
+}
+/**
+ * Converts a Date instance to a timestamp with the specified time precision.
+ * @private
+ */
+export function dateToTime(date, precision) {
+    const nano = asNanoDate(date);
+    if (nano) {
+        return nanoManipulator.toTime(nano, precision);
+    }
+    else {
+        return milliManipulator.toTime(date, precision);
+    }
+}
+;
+/**
+ * Converts an ISO-formatted data or unix timestamp to a Date instance. If
+ * the precision is finer than &quot;ms&quot; the returned value will be a NanoDate.
+ * @private
+ */
+export function isoOrTimeToDate(stamp, precision = &quot;n&quot;) {
+    const manipulator = !precision || precision === &quot;u&quot; || precision === &quot;n&quot;
+        ? nanoManipulator
+        : milliManipulator;
+    if (typeof stamp === &quot;string&quot;) {
+        return manipulator.isoToDate(stamp);
+    }
+    else {
+        return manipulator.timetoDate(stamp, precision);
+    }
+}
+;
+/**
+ * Converts a timestamp to a string with the correct precision. Assumes
+ * that raw number and string instances are already in the correct precision.
+ * @private
+ */
+export function castTimestamp(timestamp, precision) {
+    if (typeof timestamp === &quot;string&quot;) {
+        if (!isNumeric(timestamp)) {
+            throw new Error(`Expected numeric value for, timestamp, but got &quot;${timestamp}&quot;!`);
+        }
+        return timestamp;
+    }
+    if (typeof timestamp === &quot;number&quot;) {
+        return String(timestamp);
+    }
+    return dateToTime(timestamp, precision);
+}
+;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

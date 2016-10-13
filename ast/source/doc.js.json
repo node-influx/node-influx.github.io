@@ -1,0 +1,1025 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "BackoffStrategy",
+          "range": [
+            7904,
+            7919
+          ],
+          "loc": {
+            "start": {
+              "line": 189,
+              "column": 13
+            },
+            "end": {
+              "line": 189,
+              "column": 28
+            }
+          }
+        },
+        "superClass": null,
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "getDelay",
+                "range": [
+                  8034,
+                  8042
+                ],
+                "loc": {
+                  "start": {
+                    "line": 194,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 194,
+                    "column": 12
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": 0,
+                        "raw": "0",
+                        "range": [
+                          8054,
+                          8055
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 194,
+                            "column": 24
+                          },
+                          "end": {
+                            "line": 194,
+                            "column": 25
+                          }
+                        }
+                      },
+                      "range": [
+                        8047,
+                        8056
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 194,
+                          "column": 17
+                        },
+                        "end": {
+                          "line": 194,
+                          "column": 26
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    8045,
+                    8058
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 194,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 194,
+                      "column": 28
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  8042,
+                  8058
+                ],
+                "loc": {
+                  "start": {
+                    "line": 194,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 194,
+                    "column": 28
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                8034,
+                8058
+              ],
+              "loc": {
+                "start": {
+                  "line": 194,
+                  "column": 4
+                },
+                "end": {
+                  "line": 194,
+                  "column": 28
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * getDelay returns the amount of delay of the current backoff.\n     * @return {Number}\n     ",
+                  "range": [
+                    7926,
+                    8029
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 190,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 193,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
+                  "range": [
+                    8063,
+                    8203
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 195,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 199,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "next",
+                "range": [
+                  8208,
+                  8212
+                ],
+                "loc": {
+                  "start": {
+                    "line": 200,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 200,
+                    "column": 8
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          8224,
+                          8228
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 200,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 200,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "range": [
+                        8217,
+                        8229
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 200,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 200,
+                          "column": 25
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    8215,
+                    8231
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 200,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 200,
+                      "column": 27
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  8212,
+                  8231
+                ],
+                "loc": {
+                  "start": {
+                    "line": 200,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 200,
+                    "column": 27
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                8208,
+                8231
+              ],
+              "loc": {
+                "start": {
+                  "line": 200,
+                  "column": 4
+                },
+                "end": {
+                  "line": 200,
+                  "column": 27
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
+                  "range": [
+                    8063,
+                    8203
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 195,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 199,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
+                  "range": [
+                    8236,
+                    8336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 201,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 204,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "reset",
+                "range": [
+                  8341,
+                  8346
+                ],
+                "loc": {
+                  "start": {
+                    "line": 205,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 205,
+                    "column": 9
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          8358,
+                          8362
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 205,
+                            "column": 21
+                          },
+                          "end": {
+                            "line": 205,
+                            "column": 25
+                          }
+                        }
+                      },
+                      "range": [
+                        8351,
+                        8363
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 205,
+                          "column": 14
+                        },
+                        "end": {
+                          "line": 205,
+                          "column": 26
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    8349,
+                    8365
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 205,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 205,
+                      "column": 28
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  8346,
+                  8365
+                ],
+                "loc": {
+                  "start": {
+                    "line": 205,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 205,
+                    "column": 28
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                8341,
+                8365
+              ],
+              "loc": {
+                "start": {
+                  "line": 205,
+                  "column": 4
+                },
+                "end": {
+                  "line": 205,
+                  "column": 28
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
+                  "range": [
+                    8236,
+                    8336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 201,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 204,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            }
+          ],
+          "range": [
+            7920,
+            8367
+          ],
+          "loc": {
+            "start": {
+              "line": 189,
+              "column": 29
+            },
+            "end": {
+              "line": 206,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          7898,
+          8367
+        ],
+        "loc": {
+          "start": {
+            "line": 189,
+            "column": 7
+          },
+          "end": {
+            "line": 206,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Pool options can be passed into the database to configure the behaviour\n * of the connection pool.\n * @typedef {Object} PoolOptions\n * @property {Number} [maxRetries=2] Number of times we should retry running\n *     a query before calling back with an error.\n * @property {Number} [requestTimeout=30000] The length of time after which\n *     HTTP requests will error if they do not receive a response.\n * @property {BackoffStrategy} [backoff] The backoff strategy to use for\n *     unhealthy connections. Defaults to an exponential backoff with an\n *     initial delay of 300ms and a maximum delay of 10 seconds.\n ",
+            "range": [
+              0,
+              623
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * A SingleHostConfig can be provided into `new InfluxDB(config)` when you\n * have a single Influx address to connect to.\n *\n * @public\n * @typedef {Object} SingleHostConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {String} [host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [port=8060] Influx port to connect to.\n * @property {String} [protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   host: 'localhost',\n *   port: 8086,\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+            "range": [
+              624,
+              2137
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 0
+              },
+              "end": {
+                "line": 52,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * A ClusterConfig can be provided into `new InfluxDB(config)` when you\n * have a multiple Influx nodes to connect to.\n *\n * @typedef {Object} ClusterConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {Array} hosts A list of Influx hosts to connect to.\n * @property {String} [hosts.host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [hosts.port=8060] Influx port to connect to.\n * @property {String} [hosts.protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   hosts: [\n *     { host: 'db1.example.com' },\n *     { host: 'db2.example.com' },\n *   ]\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+            "range": [
+              2138,
+              3769
+            ],
+            "loc": {
+              "start": {
+                "line": 53,
+                "column": 0
+              },
+              "end": {
+                "line": 94,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * Schema options can be passed into the `new InfluxDB()` constructor to\n * help define the shape of your data. Each schema config corresponds to\n * a measurement in Influx\n *\n * It's recommended, but not required, that you make use of schema; internally\n * we use them to be smarter about coercing your data, and providing immediate\n * error feedback if you try to write data which doesn't fit in your schema:\n * either if you include tags of fields which are not present in your schema,\n * or you enter the wrong datatype for one of your schema fields.\n *\n * @typedef {Object} SchemaOptions\n * @param {String} [database] The database where the measurement lives. This is\n *     required if you don't provide a default database in Influx.\n * @param {String} measurement The measurement name in Influx this refers to\n * @param {Object.<String, FieldType>} fields A mapping of fields names to\n *     their data types. It's assumed that this is a comprehensive mapping of\n *     every field you might write.\n * @param {String[]} tags A list of tag names in this measurement. It's assumed\n *     that this is a comprehensive list of every tag you might write.\n *\n * @example\n * {\n *   measurement: 'perf',\n *   tags: ['hostname'],\n *   fields: {\n *     memory_usage: FieldType.INTEGER,\n *     cpu_usage: FieldType.FLOAT,\n *     is_online: FieldType.BOOLEAN,\n *   }\n * }\n ",
+            "range": [
+              3770,
+              5144
+            ],
+            "loc": {
+              "start": {
+                "line": 95,
+                "column": 0
+              },
+              "end": {
+                "line": 126,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
+            "range": [
+              5145,
+              5802
+            ],
+            "loc": {
+              "start": {
+                "line": 127,
+                "column": 0
+              },
+              "end": {
+                "line": 140,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
+            "range": [
+              5803,
+              6406
+            ],
+            "loc": {
+              "start": {
+                "line": 141,
+                "column": 0
+              },
+              "end": {
+                "line": 152,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+            "range": [
+              6407,
+              7297
+            ],
+            "loc": {
+              "start": {
+                "line": 153,
+                "column": 0
+              },
+              "end": {
+                "line": 171,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
+            "range": [
+              7298,
+              7890
+            ],
+            "loc": {
+              "start": {
+                "line": 172,
+                "column": 0
+              },
+              "end": {
+                "line": 188,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        7891,
+        8367
+      ],
+      "loc": {
+        "start": {
+          "line": 189,
+          "column": 0
+        },
+        "end": {
+          "line": 206,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Pool options can be passed into the database to configure the behaviour\n * of the connection pool.\n * @typedef {Object} PoolOptions\n * @property {Number} [maxRetries=2] Number of times we should retry running\n *     a query before calling back with an error.\n * @property {Number} [requestTimeout=30000] The length of time after which\n *     HTTP requests will error if they do not receive a response.\n * @property {BackoffStrategy} [backoff] The backoff strategy to use for\n *     unhealthy connections. Defaults to an exponential backoff with an\n *     initial delay of 300ms and a maximum delay of 10 seconds.\n ",
+          "range": [
+            0,
+            623
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * A SingleHostConfig can be provided into `new InfluxDB(config)` when you\n * have a single Influx address to connect to.\n *\n * @public\n * @typedef {Object} SingleHostConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {String} [host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [port=8060] Influx port to connect to.\n * @property {String} [protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   host: 'localhost',\n *   port: 8086,\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+          "range": [
+            624,
+            2137
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 0
+            },
+            "end": {
+              "line": 52,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * A ClusterConfig can be provided into `new InfluxDB(config)` when you\n * have a multiple Influx nodes to connect to.\n *\n * @typedef {Object} ClusterConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {Array} hosts A list of Influx hosts to connect to.\n * @property {String} [hosts.host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [hosts.port=8060] Influx port to connect to.\n * @property {String} [hosts.protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   hosts: [\n *     { host: 'db1.example.com' },\n *     { host: 'db2.example.com' },\n *   ]\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+          "range": [
+            2138,
+            3769
+          ],
+          "loc": {
+            "start": {
+              "line": 53,
+              "column": 0
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Schema options can be passed into the `new InfluxDB()` constructor to\n * help define the shape of your data. Each schema config corresponds to\n * a measurement in Influx\n *\n * It's recommended, but not required, that you make use of schema; internally\n * we use them to be smarter about coercing your data, and providing immediate\n * error feedback if you try to write data which doesn't fit in your schema:\n * either if you include tags of fields which are not present in your schema,\n * or you enter the wrong datatype for one of your schema fields.\n *\n * @typedef {Object} SchemaOptions\n * @param {String} [database] The database where the measurement lives. This is\n *     required if you don't provide a default database in Influx.\n * @param {String} measurement The measurement name in Influx this refers to\n * @param {Object.<String, FieldType>} fields A mapping of fields names to\n *     their data types. It's assumed that this is a comprehensive mapping of\n *     every field you might write.\n * @param {String[]} tags A list of tag names in this measurement. It's assumed\n *     that this is a comprehensive list of every tag you might write.\n *\n * @example\n * {\n *   measurement: 'perf',\n *   tags: ['hostname'],\n *   fields: {\n *     memory_usage: FieldType.INTEGER,\n *     cpu_usage: FieldType.FLOAT,\n *     is_online: FieldType.BOOLEAN,\n *   }\n * }\n ",
+          "range": [
+            3770,
+            5144
+          ],
+          "loc": {
+            "start": {
+              "line": 95,
+              "column": 0
+            },
+            "end": {
+              "line": 126,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
+          "range": [
+            5145,
+            5802
+          ],
+          "loc": {
+            "start": {
+              "line": 127,
+              "column": 0
+            },
+            "end": {
+              "line": 140,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
+          "range": [
+            5803,
+            6406
+          ],
+          "loc": {
+            "start": {
+              "line": 141,
+              "column": 0
+            },
+            "end": {
+              "line": 152,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+          "range": [
+            6407,
+            7297
+          ],
+          "loc": {
+            "start": {
+              "line": 153,
+              "column": 0
+            },
+            "end": {
+              "line": 171,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
+          "range": [
+            7298,
+            7890
+          ],
+          "loc": {
+            "start": {
+              "line": 172,
+              "column": 0
+            },
+            "end": {
+              "line": 188,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    7891,
+    8367
+  ],
+  "loc": {
+    "start": {
+      "line": 189,
+      "column": 0
+    },
+    "end": {
+      "line": 206,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * Pool options can be passed into the database to configure the behaviour\n * of the connection pool.\n * @typedef {Object} PoolOptions\n * @property {Number} [maxRetries=2] Number of times we should retry running\n *     a query before calling back with an error.\n * @property {Number} [requestTimeout=30000] The length of time after which\n *     HTTP requests will error if they do not receive a response.\n * @property {BackoffStrategy} [backoff] The backoff strategy to use for\n *     unhealthy connections. Defaults to an exponential backoff with an\n *     initial delay of 300ms and a maximum delay of 10 seconds.\n ",
+      "range": [
+        0,
+        623
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * A SingleHostConfig can be provided into `new InfluxDB(config)` when you\n * have a single Influx address to connect to.\n *\n * @public\n * @typedef {Object} SingleHostConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {String} [host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [port=8060] Influx port to connect to.\n * @property {String} [protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   host: 'localhost',\n *   port: 8086,\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+      "range": [
+        624,
+        2137
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 52,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * A ClusterConfig can be provided into `new InfluxDB(config)` when you\n * have a multiple Influx nodes to connect to.\n *\n * @typedef {Object} ClusterConfig\n * @property {String} [username='root'] Username for connecting to the database.\n * @property {String} [password='root'] Password for connecting to the database.\n * @property {String} [database] Default database to operate on. Providing this\n *     will let you omit database names in most operations, and is convenient\n *     if your app is primarily dealing with a single database.\n * @property {Array} hosts A list of Influx hosts to connect to.\n * @property {String} [hosts.host='127.0.0.1'] Influx host to connect to.\n * @property {Number} [hosts.port=8060] Influx port to connect to.\n * @property {String} [hosts.protocol=\"http\"] Protocol to connect over, either\n *     \"http\" or \"https\".\n * @property {PoolOptions} [pool] Options for the connection pool.\n * @property {SchemaOptions[]} [schema] An optional list of data schema to use.\n *\n * @example\n * import { InfluxDB } from 'influx'; // or const InfluxDB = require('influx').InfluxDB\n *\n * // Connect to a single host with a full set of config details and\n * a custom schema\n * const client = new InfluxDB({\n *   database: 'my_db',\n *   username: 'connor',\n *   password: 'pa$$w0rd',\n *   hosts: [\n *     { host: 'db1.example.com' },\n *     { host: 'db2.example.com' },\n *   ]\n *   schema: [{\n *     measurement: 'perf',\n *     tags: ['hostname'],\n *     fields: {\n *       memory_usage: FieldType.INTEGER,\n *       cpu_usage: FieldType.FLOAT,\n *       is_online: FieldType.BOOLEAN,\n *     }\n *   }]\n * })\n ",
+      "range": [
+        2138,
+        3769
+      ],
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 94,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Schema options can be passed into the `new InfluxDB()` constructor to\n * help define the shape of your data. Each schema config corresponds to\n * a measurement in Influx\n *\n * It's recommended, but not required, that you make use of schema; internally\n * we use them to be smarter about coercing your data, and providing immediate\n * error feedback if you try to write data which doesn't fit in your schema:\n * either if you include tags of fields which are not present in your schema,\n * or you enter the wrong datatype for one of your schema fields.\n *\n * @typedef {Object} SchemaOptions\n * @param {String} [database] The database where the measurement lives. This is\n *     required if you don't provide a default database in Influx.\n * @param {String} measurement The measurement name in Influx this refers to\n * @param {Object.<String, FieldType>} fields A mapping of fields names to\n *     their data types. It's assumed that this is a comprehensive mapping of\n *     every field you might write.\n * @param {String[]} tags A list of tag names in this measurement. It's assumed\n *     that this is a comprehensive list of every tag you might write.\n *\n * @example\n * {\n *   measurement: 'perf',\n *   tags: ['hostname'],\n *   fields: {\n *     memory_usage: FieldType.INTEGER,\n *     cpu_usage: FieldType.FLOAT,\n *     is_online: FieldType.BOOLEAN,\n *   }\n * }\n ",
+      "range": [
+        3770,
+        5144
+      ],
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 0
+        },
+        "end": {
+          "line": 126,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
+      "range": [
+        5145,
+        5802
+      ],
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 0
+        },
+        "end": {
+          "line": 140,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
+      "range": [
+        5803,
+        6406
+      ],
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 0
+        },
+        "end": {
+          "line": 152,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+      "range": [
+        6407,
+        7297
+      ],
+      "loc": {
+        "start": {
+          "line": 153,
+          "column": 0
+        },
+        "end": {
+          "line": 171,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
+      "range": [
+        7298,
+        7890
+      ],
+      "loc": {
+        "start": {
+          "line": 172,
+          "column": 0
+        },
+        "end": {
+          "line": 188,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * getDelay returns the amount of delay of the current backoff.\n     * @return {Number}\n     ",
+      "range": [
+        7926,
+        8029
+      ],
+      "loc": {
+        "start": {
+          "line": 190,
+          "column": 4
+        },
+        "end": {
+          "line": 193,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
+      "range": [
+        8063,
+        8203
+      ],
+      "loc": {
+        "start": {
+          "line": 195,
+          "column": 4
+        },
+        "end": {
+          "line": 199,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
+      "range": [
+        8236,
+        8336
+      ],
+      "loc": {
+        "start": {
+          "line": 201,
+          "column": 4
+        },
+        "end": {
+          "line": 204,
+          "column": 7
+        }
+      }
+    }
+  ]
+}

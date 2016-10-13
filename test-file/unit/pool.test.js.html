@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">unit/pool.test.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">unit/pool.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ExponentialBackoff } from &quot;../../src/backoff/exponential&quot;;
+import { Pool, ServiceNotAvailableError, RequestError } from &quot;../../src/pool&quot;;
+import { expect } from &quot;./helpers&quot;;
+import * as http from &quot;http&quot;;
+import * as async from &quot;async&quot;;
+import * as sinon from &quot;sinon&quot;;
+describe(&apos;pool&apos;, () =&gt; {
+    let pool;
+    let clock;
+    let servers;
+    beforeEach(done =&gt; {
+        clock = sinon.useFakeTimers();
+        pool = new Pool({
+            backoff: new ExponentialBackoff({
+                initial: 300,
+                random: 0,
+                max: 10 * 1000
+            })
+        });
+        servers = [];
+        async.times(2, (i, done) =&gt; {
+            const server = http.createServer((req, res) =&gt; server.onRequest(req, res));
+            server.listen(0, () =&gt; {
+                servers.push(server);
+                pool.addHost(`http://127.0.0.1:${server.address().port}`);
+                done(null, null);
+            });
+        }, done);
+    });
+    afterEach(done =&gt; {
+        clock.restore();
+        async.each(servers, (server, done) =&gt; server.close(() =&gt; done()), done);
+    });
+    describe(&apos;request generators&apos;, () =&gt; {
+        it(&apos;makes a text request&apos;, () =&gt; {
+            servers[0].onRequest = (req, res) =&gt; {
+                expect(req.method).to.equal(&apos;GET&apos;);
+                expect(req.url).to.equal(&apos;/foo&apos;);
+                res.writeHead(200);
+                res.end(&apos;ok&apos;);
+            };
+            return pool.text({ method: &apos;GET&apos;, path: &apos;/foo&apos; })
+                .then(data =&gt; expect(data).to.equal(&apos;ok&apos;));
+        });
+        it(&apos;includes request query strings and bodies&apos;, () =&gt; {
+            servers[0].onRequest = (req, res) =&gt; {
+                let data = &apos;&apos;;
+                req.on(&apos;data&apos;, chunk =&gt; {
+                    data += chunk.toString();
+                });
+                req.on(&apos;end&apos;, () =&gt; {
+                    expect(data).to.equal(&apos;asdf&apos;);
+                    expect(req.method).to.equal(&apos;POST&apos;);
+                    expect(req.url).to.equal(&apos;/bar?a=42&apos;);
+                    res.writeHead(200);
+                    res.end(&apos;ok&apos;);
+                });
+            };
+            return pool.text({
+                method: &apos;POST&apos;,
+                path: &apos;/bar&apos;,
+                query: { a: 42 },
+                body: &apos;asdf&apos;
+            }).then(data =&gt; expect(data).to.equal(&apos;ok&apos;));
+        });
+        it(&apos;discards responses&apos;, () =&gt; {
+            servers[0].onRequest = (req, res) =&gt; {
+                res.writeHead(204);
+                res.end();
+            };
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
+        });
+        it(&apos;parses JSON responses&apos;, () =&gt; {
+            servers[0].onRequest = (req, res) =&gt; {
+                res.writeHead(200);
+                res.end(&apos;{&quot;foo&quot;:42}&apos;);
+            };
+            return pool.json({ method: &apos;GET&apos;, path: &apos;/&apos; })
+                .then(data =&gt; expect(data).to.deep.equal({ foo: 42 }));
+        });
+        it(&apos;errors if JSON parsing fails&apos;, () =&gt; {
+            servers[0].onRequest = (req, res) =&gt; {
+                res.writeHead(200);
+                res.end(&apos;{&apos;);
+            };
+            return pool.json({ method: &apos;GET&apos;, path: &apos;/&apos; })
+                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+                .catch(err =&gt; expect(err).to.be.an.instanceof(SyntaxError));
+        });
+    });
+    it(&apos;round robins requests&apos;, done =&gt; {
+        servers[0].onRequest = (req, res) =&gt; {
+            res.writeHead(204);
+            res.end();
+            let served;
+            servers[1].onRequest = (req, res) =&gt; {
+                served = true;
+                res.writeHead(204);
+                res.end();
+            };
+            pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+                .then(() =&gt; expect(served).to.be.true)
+                .then(() =&gt; done())
+                .catch(done);
+        };
+        pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
+    });
+    it(&apos;times out requests&apos;, () =&gt; {
+        clock.restore();
+        servers.forEach(server =&gt; {
+            server.onRequest = (req, res) =&gt; {
+                setTimeout(() =&gt; {
+                    res.writeHead(204);
+                    res.end();
+                }, 100);
+            };
+        });
+        pool.timeout = 1;
+        return pool.text({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+            .catch(err =&gt; expect(err).be.an.instanceof(ServiceNotAvailableError));
+    });
+    it(&apos;retries on a request error&apos;, () =&gt; {
+        servers[0].onRequest = (req, res) =&gt; {
+            res.writeHead(502);
+            res.end();
+        };
+        servers[1].onRequest = (req, res) =&gt; {
+            res.writeHead(200);
+            res.end(&apos;ok now&apos;);
+        };
+        return pool.text({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            .then(body =&gt; expect(body).to.equal(&apos;ok now&apos;));
+    });
+    it(&apos;fails if too many errors happen&apos;, () =&gt; {
+        servers.forEach(server =&gt; {
+            server.onRequest = (req, res) =&gt; {
+                res.writeHead(502);
+                res.end();
+            };
+        });
+        expect(pool.hostIsAvailable()).to.be.true;
+        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+            .catch(err =&gt; {
+            expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+            expect(pool.hostIsAvailable()).to.be.false;
+        });
+    });
+    it(&apos;calls back immediately on un-retryable error&apos;, () =&gt; {
+        servers[0].onRequest = (req, res) =&gt; {
+            res.writeHead(400);
+            res.end();
+        };
+        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+            .catch(err =&gt; {
+            expect(err).to.be.an.instanceof(RequestError);
+            expect(err.res.statusCode).to.equal(400);
+            expect(pool.hostIsAvailable()).to.be.true;
+        });
+    });
+    it(&apos;gets enabled/disabled hosts&apos;, () =&gt; {
+        const serverPorts = servers.map(s =&gt; s.address().port);
+        expect(pool.getHostsAvailable()
+            .map((h) =&gt; Number(h.url.port)))
+            .to.deep.equal(serverPorts);
+        expect(pool.getHostsDisabled().length).to.equal(0);
+        servers[0].onRequest = (req, res) =&gt; {
+            res.writeHead(502);
+            res.end();
+        };
+        servers[1].onRequest = (req, res) =&gt; {
+            res.writeHead(200);
+            res.end(&apos;ok now&apos;);
+        };
+        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).then(() =&gt; {
+            expect(pool.getHostsAvailable().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[1]]);
+            expect(pool.getHostsDisabled().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[0]]);
+        });
+    });
+    describe(&apos;backoff&apos;, () =&gt; {
+        beforeEach(() =&gt; {
+            servers.forEach(server =&gt; {
+                server.onRequest = (req, res) =&gt; {
+                    res.writeHead(502);
+                    res.end();
+                };
+            });
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).catch(() =&gt; { });
+        });
+        it(&apos;should error if there are no available hosts&apos;, () =&gt; {
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+                .catch(err =&gt; {
+                expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                expect(err.message).to.equal(&apos;No host available&apos;);
+            });
+        });
+        it(&apos;should reenable hosts after the backoff expires&apos;, () =&gt; {
+            expect(pool.hostIsAvailable()).to.be.false;
+            clock.tick(300);
+            expect(pool.hostIsAvailable()).to.be.true;
+        });
+        it(&apos;should back off if failures continue&apos;, () =&gt; {
+            clock.tick(300);
+            expect(pool.hostIsAvailable()).to.be.true;
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+                .catch(err =&gt; {
+                expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                expect(pool.hostIsAvailable()).to.be.false;
+                clock.tick(300);
+                expect(pool.hostIsAvailable()).to.be.false;
+                clock.tick(300);
+                expect(pool.hostIsAvailable()).to.be.true;
+            });
+        });
+        it(&apos;should reset backoff after success&apos;, () =&gt; {
+            clock.tick(300);
+            expect(pool.hostIsAvailable()).to.be.true;
+            servers.forEach(server =&gt; {
+                server.onRequest = (req, res) =&gt; {
+                    res.writeHead(200);
+                    res.end();
+                };
+            });
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).then(() =&gt; {
+                servers.forEach(server =&gt; {
+                    server.onRequest = (req, res) =&gt; {
+                        res.writeHead(502);
+                        res.end();
+                    };
+                });
+                return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
+            })
+                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
+                .catch(err =&gt; {
+                expect(err).not.to.be.undefined;
+                expect(pool.hostIsAvailable()).to.be.false;
+                clock.tick(300);
+                expect(pool.hostIsAvailable()).to.be.true;
+            });
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

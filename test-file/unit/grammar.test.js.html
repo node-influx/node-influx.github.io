@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">unit/grammar.test.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">unit/grammar.test.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as grammar from &quot;../../src/grammar&quot;;
+import { expect } from &quot;./helpers&quot;;
+const escapeTables = require(&quot;../fixture/escapeTables.json&quot;);
+describe(&quot;grammar&quot;, () =&gt; {
+    Object.keys(escapeTables).forEach(escaper =&gt; {
+        describe(escaper, () =&gt; {
+            escapeTables[escaper].forEach(test =&gt; {
+                it(`escapes \`${test[0]}\` as \`${test[1]}\``, () =&gt; {
+                    expect(grammar.escape[escaper](test[0])).to.equal(test[1]);
+                });
+            });
+        });
+    });
+    it(&apos;does not escape raw values&apos;, () =&gt; {
+        expect(grammar.escape.quoted(new grammar.Raw(&apos;don&quot;t escape&apos;))).to.equal(&apos;don&quot;t escape&apos;);
+    });
+    let nanoDate;
+    let milliDate;
+    beforeEach(() =&gt; {
+        nanoDate = grammar.isoOrTimeToDate(&apos;2016-10-09T03:58:00.231035677Z&apos;, &apos;n&apos;);
+        milliDate = new Date(1475985480231);
+    });
+    it(&apos;converts a nanoseconds timestamp to a nano date&apos;, () =&gt; {
+        const date = grammar.toNanoDate(&apos;1475985480231035600&apos;);
+        expect(date.getTime()).to.equal(1475985480231);
+        expect(date.getNanoTime()).to.equal(&apos;1475985480231035600&apos;); // precision is lost
+        expect(date.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035600Z&apos;);
+    });
+    describe(&apos;formatting&apos;, () =&gt; {
+        it(&quot;formats nanosecond dates&quot;, () =&gt; {
+            expect(grammar.formatDate(nanoDate)).to.equal(&quot;\&quot;2016-10-09 03:58:00.231035677\&quot;&quot;);
+        });
+        it(&quot;formats millisecond dates&quot;, () =&gt; {
+            expect(grammar.formatDate(milliDate)).to.equal(&quot;\&quot;2016-10-09 03:58:00.231\&quot;&quot;);
+        });
+    });
+    describe(&apos;parsing&apos;, () =&gt; {
+        it(&apos;parses ISO dates correctly&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(&apos;2016-10-09T03:58:00.231035677Z&apos;, &apos;n&apos;);
+            expect(parsed.getTime()).to.equal(1475985480231);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480231035677&apos;);
+            expect(parsed.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;);
+        });
+        it(&apos;parses numeric `ns` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(1475985480231035677, &apos;n&apos;);
+            expect(parsed.getTime()).to.equal(1475985480231);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480231035600&apos;); // precision is lost
+            expect(parsed.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035600Z&apos;);
+        });
+        it(&apos;parses numeric `u` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(1475985480231035, &apos;u&apos;);
+            expect(parsed.getTime()).to.equal(1475985480231);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480231035000&apos;);
+            expect(parsed.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035000Z&apos;);
+        });
+        it(&apos;parses numeric `ms` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(1475985480231, &apos;ms&apos;);
+            expect(parsed.getTime()).to.equal(1475985480231);
+            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+        });
+        it(&apos;parses numeric `s` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(1475985480, &apos;s&apos;);
+            expect(parsed.getTime()).to.equal(1475985480000);
+            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+        });
+        it(&apos;parses numeric `m` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(24599758, &apos;m&apos;);
+            expect(parsed.getTime()).to.equal(1475985480000);
+            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+        });
+        it(&apos;parses numeric `h` timestamps&apos;, () =&gt; {
+            const parsed = grammar.isoOrTimeToDate(409995, &apos;h&apos;);
+            expect(parsed.getTime()).to.equal(1475982000000);
+            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+        });
+    });
+    describe(&quot;timestamp casting&quot;, () =&gt; {
+        it(&quot;casts dates into timestamps&quot;, () =&gt; {
+            const d = new Date(1475121809084);
+            expect(grammar.castTimestamp(d, &quot;n&quot;)).to.equal(&apos;1475121809084000000&apos;);
+            expect(grammar.castTimestamp(d, &quot;u&quot;)).to.equal(&apos;1475121809084000&apos;);
+            expect(grammar.castTimestamp(d, &quot;ms&quot;)).to.equal(&apos;1475121809084&apos;);
+            expect(grammar.castTimestamp(d, &quot;s&quot;)).to.equal(&apos;1475121809&apos;);
+            expect(grammar.castTimestamp(d, &quot;m&quot;)).to.equal(&apos;24585363&apos;);
+            expect(grammar.castTimestamp(d, &quot;h&quot;)).to.equal(&apos;409756&apos;);
+        });
+        it(&quot;casts nanodates into timestamps&quot;, () =&gt; {
+            const d = grammar.toNanoDate(&apos;1475985480231035600&apos;);
+            expect(grammar.castTimestamp(d, &quot;n&quot;)).to.equal(&apos;1475985480231035600&apos;);
+            expect(grammar.castTimestamp(d, &quot;u&quot;)).to.equal(&apos;1475985480231035&apos;);
+            expect(grammar.castTimestamp(d, &quot;ms&quot;)).to.equal(&apos;1475985480231&apos;);
+            expect(grammar.castTimestamp(d, &quot;s&quot;)).to.equal(&apos;1475985480&apos;);
+            expect(grammar.castTimestamp(d, &quot;m&quot;)).to.equal(&apos;24599758&apos;);
+            expect(grammar.castTimestamp(d, &quot;h&quot;)).to.equal(&apos;409995&apos;);
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

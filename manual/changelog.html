@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Changelog</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="tutorial">
+    <h1 class="manual-toc-title"><a href="manual/tutorial.html" data-ice="title">Tutorial</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#express-response-times-example" data-ice="link">Express Response Times Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <h1 class="manual-toc-title"><a href="identifiers.html" data-ice="title">Reference</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#interface" data-ice="link">Interface</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#function" data-ice="link">Function</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="changelog">
+    <h1 class="manual-toc-title"><a href="manual/changelog.html" data-ice="title">Changelog</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#node-influx-changelog" data-ice="link">node-influx Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#version-5-0-0-ongoing-" data-ice="link">Version 5.0.0 (Ongoing)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-06-version-4-2-3" data-ice="link">2016-10-06, Version 4.2.3</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-09-15-version-4-2-2" data-ice="link">2016-09-15, Version 4.2.2</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-05-05-version-4-2-0" data-ice="link">2016-05-05, Version 4.2.0</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Changelog</span>
+  </div>
+  <div data-ice="content"><h1 id="node-influx-changelog">node-influx Changelog</h1>
+<h2 id="version-5-0-0-ongoing-">Version 5.0.0 (Ongoing)</h2>
+<p>5.0.0 is a port/rewrite of node-influx to TypeScript, aiming to provide a stronger foundation while fixing many of the pain points and bugs which currently exist. These include issues with escaping data passed to node-influx, date handling difficulties, quirks in the connection, and the lack of complete unit tests. We also take the opportunity to build a more modern, promise-based API.</p>
+<p>Please see the documentation linked in the readme for more information. The following is a list of breaking changes:</p>
+<ul>
+<li><strong>breaking:</strong> all methods have been modified to return promises</li>
+<li><strong>breaking:</strong> result output for grouped results has changed</li>
+<li><strong>breaking:</strong> data passed into Influx, except where otherwise noted, will be escaped automatically</li>
+<li><strong>breaking:</strong> the point structure for <code>.write*</code> methods has changed</li>
+<li><strong>breaking:</strong> the <code>.writePoint</code> method has been removed</li>
+<li><strong>breaking:</strong> <code>.writeSeries</code> as been more appropriately renamed <code>writeMeasurement</code></li>
+<li><strong>breaking:</strong> <code>.getSeriesNames</code> has been renamed <code>.getSeries</code></li>
+<li><strong>breaking:</strong> the old <code>.getSeries</code> method has been removed in favor of the behaviour exhibited by <code>getSeriesNames</code></li>
+<li><strong>breaking:</strong> the InfluxDB client must now be invoked as <code>new InfluxDB</code></li>
+<li><strong>breaking:</strong> the connection pool configuration has changed</li>
+</ul>
+<h2 id="2016-10-06-version-4-2-3">2016-10-06, Version 4.2.3</h2>
+<ul>
+<li>bug: globalAgent ignored during HTTPS communication (#207)</li>
+<li>bug: fix methods using deprecated GET which should be using POST (#191 and #188)</li>
+<li>improvement: Support writing RFC3339 timestamps (#203)</li>
+<li>improvement: Added a non-failing error message when the body is empty (#160)</li>
+<li>docs: fix confusing terminology with series versus measurement (#205)</li>
+<li>docs: update links in CONTRIBUTING.md (#199)</li>
+<li>docs: fix &quot;deprecated&quot; typo in docs (#184)</li>
+</ul>
+<h2 id="2016-09-15-version-4-2-2">2016-09-15, Version 4.2.2</h2>
+<p>Shoutout to @dandv for lots of awesome PRs this release!</p>
+<ul>
+<li>improvement: sort tags before writing for greater performance (#179)</li>
+<li>improvement: make code compliant with the latest <code>standard</code> rules (#161)</li>
+<li>bug: fix escaping of quotes in strings (#183)</li>
+<li>bug: fix empty result from <code>getDatabaseNames</code> throwing errors (#168)</li>
+<li>docs: fix messy terminology and typos (#183 and #170)</li>
+<li>docs: include the full license file and copyright (#180)</li>
+<li>docs: fix instructions to run <code>standard</code> instead of just <code>lint</code> (#181)</li>
+</ul>
+<h2 id="2016-05-05-version-4-2-0">2016-05-05, Version 4.2.0</h2>
+<ul>
+<li>typings: Added TypeScript definitions, thanks to @SPARTAN563 (#129)</li>
+<li>init-url: Added support for configuring the client using a url (#128)</li>
+<li>deps: Updated lodash dependency (#133)</li>
+<li>_createKeyTagString: Fix &apos;=&apos; char escaping in KeyTagString (#127)</li>
+<li>_createKeyValueString/_createKeyTagString: Fix encoding failues on objects containing a &apos;length&apos; key (#126)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

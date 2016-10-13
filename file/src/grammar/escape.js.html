@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/grammar/escape.js | node-influx API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SchemaOptions">SchemaOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/grammar/escape.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Raw } from &quot;./ds&quot;;
+const reEscape = /[-|\\{()[\]^$+*?.]/g;
+/**
+ * The Escaper escapes the special characters in the provided list
+ * with backslashes. Much of the code here is inspired by that in the
+ * sqlstring packet found here: https://github.com/mysqljs/sqlstring
+ *
+ * Instances of the Escaper are derived from the documentation of escape
+ * sequences found here: https://aka.ms/co1m4k
+ *
+ * sqlstring is made available under the following license:
+ *
+ *   Copyright (c) 2012 Felix Geisend&#xF6;rfer (felix@debuggable.com) and contributors
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the &quot;Software&quot;), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in
+ *   all copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *   THE SOFTWARE.
+ *
+ */
+class Escaper {
+    constructor(chars, wrap = &quot;&quot;, escaper = &quot;\\&quot;) {
+        this.wrap = wrap;
+        this.escaper = escaper;
+        const patterns = chars.join(&quot;&quot;).replace(reEscape, &quot;\\$&amp;&quot;);
+        this.re = new RegExp(&quot;[&quot; + patterns + &quot;]&quot;, &quot;g&quot;);
+    }
+    /**
+     * Escape replaces occurrences of special characters within the target
+     * string with the necessary escape codes.
+     */
+    escape(val) {
+        if (val instanceof Raw) {
+            return val.getValue();
+        }
+        let chunkIndex = this.re.lastIndex = 0;
+        let escapedVal = &quot;&quot;;
+        let match = this.re.exec(val);
+        while (match) {
+            escapedVal += val.slice(chunkIndex, match.index) + this.escaper + match[0];
+            chunkIndex = this.re.lastIndex;
+            match = this.re.exec(val);
+        }
+        if (chunkIndex === 0) {
+            return this.wrap + val + this.wrap;
+        }
+        if (chunkIndex &lt; val.length) {
+            return this.wrap + escapedVal + val.slice(chunkIndex) + this.wrap;
+        }
+        return this.wrap + escapedVal + this.wrap;
+    }
+}
+const bindEsc = (e) =&gt; e.escape.bind(e);
+/**
+ * tagEscaper escapes tag keys, tag values, and field keys.
+ * @type {Object}
+ * @property {function(s: string): string } quoted Escapes and wraps quoted
+ *     values, such as database names.
+ * @property {function(s: string): string } stringLit Escapes and
+ *     wraps string literals.
+ * @property {function(s: string): string } measurement Escapes measurement
+ *     names on the line protocol.
+ * @property {function(s: string): string } tag Escapes tag keys, take values,
+ *     and field keys on the line protocol.
+ *
+ * @example
+ * console.log(escape.quoted(&apos;my_&quot;db&apos;)); // =&gt; &quot;my_\&quot;db&quot;
+ * console.log(escape.stringLit(&apos;hello\&apos;world&apos;)); // =&gt; &apos;hello\&apos;world&apos;
+ *
+ * console.log(escape.measurement(&apos;my measurement&apos;)); // =&gt; my\ measurement
+ * console.log(escape.tag(&apos;my tag=&apos;)); // =&gt; my\ tag\=
+ */
+export const escape = {
+    /**
+     * measurement escapes measurement names.
+     */
+    measurement: bindEsc(new Escaper([&quot;,&quot;, &quot; &quot;])),
+    /**
+     * quoted escapes quoted values, such as database names.
+     */
+    quoted: bindEsc(new Escaper([&quot;\&quot;&quot;], &quot;\&quot;&quot;)),
+    /**
+     * stringLitEscaper escapes single quotes in string literals.
+     */
+    stringLit: bindEsc(new Escaper([&quot;&apos;&quot;], &quot;&apos;&quot;)),
+    /**
+     * tagEscaper escapes tag keys, tag values, and field keys.
+     */
+    tag: bindEsc(new Escaper([&quot;,&quot;, &quot;=&quot;, &quot; &quot;])),
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

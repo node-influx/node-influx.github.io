@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -431,8 +433,8 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;writes using default options without a schema&apos;, () =&gt; {
                 setDefaultDB(&apos;my_db&apos;);
-                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
-                    precision: &apos;ms&apos;,
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000000000&apos;, {
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -448,7 +450,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             it(&apos;uses a schema to coerce&apos;, () =&gt; {
                 setDefaultDB(&apos;my_db&apos;);
                 expectWrite(&apos;my_schemed_measure,my_tag=1 bool=T,float=43,int=42i&apos;, {
-                    precision: &apos;ms&apos;,
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -493,7 +495,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;handles lack of tags&apos;, () =&gt; {
                 expectWrite(&apos;mymeas myfield=90&apos;, {
-                    precision: &apos;ms&apos;,
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -506,7 +508,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;handles lack of fields&apos;, () =&gt; {
                 expectWrite(&apos;mymeas,my_tag=90&apos;, {
-                    precision: &apos;ms&apos;,
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -519,7 +521,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;handles multiple tags&apos;, () =&gt; {
                 expectWrite(&apos;mymeas,my_tag1=90,my_tag2=45&apos;, {
-                    precision: &apos;ms&apos;,
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -532,8 +534,8 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;writes with the .writeMeasurement method&apos;, () =&gt; {
                 setDefaultDB(&apos;my_db&apos;);
-                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
-                    precision: &apos;ms&apos;,
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000000000&apos;, {
+                    precision: &apos;n&apos;,
                     rp: undefined,
                     db: &apos;my_db&apos;,
                 });
@@ -547,21 +549,6 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;accepts nanoseconds (as ms)&apos;, () =&gt; {
                 setDefaultDB(&apos;my_db&apos;);
-                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
-                    precision: &apos;ms&apos;,
-                    rp: undefined,
-                    db: &apos;my_db&apos;,
-                });
-                return influx.writeMeasurement(&apos;mymeas&apos;, [
-                    {
-                        tags: { my_tag: &apos;1&apos; },
-                        fields: { myfield: 90 },
-                        timestamp: toNanoDate(&apos;1463683075000000000&apos;),
-                    },
-                ]);
-            });
-            it(&apos;accepts nanoseconds (as ns)&apos;, () =&gt; {
-                setDefaultDB(&apos;my_db&apos;);
                 expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000000000&apos;, {
                     precision: &apos;n&apos;,
                     rp: undefined,
@@ -573,7 +560,22 @@ describe(&apos;influxdb&apos;, () =&gt; {
                         fields: { myfield: 90 },
                         timestamp: toNanoDate(&apos;1463683075000000000&apos;),
                     },
-                ], { precision: &apos;n&apos; });
+                ]);
+            });
+            it(&apos;accepts timestamp overriding&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectWrite(&apos;mymeas,my_tag=1 myfield=90 1463683075000&apos;, {
+                    precision: &apos;ms&apos;,
+                    rp: undefined,
+                    db: &apos;my_db&apos;,
+                });
+                return influx.writeMeasurement(&apos;mymeas&apos;, [
+                    {
+                        tags: { my_tag: &apos;1&apos; },
+                        fields: { myfield: 90 },
+                        timestamp: toNanoDate(&apos;1463683075000000000&apos;),
+                    },
+                ], { precision: &apos;ms&apos; });
             });
         });
         describe(&apos;.write methods&apos;, () =&gt; {

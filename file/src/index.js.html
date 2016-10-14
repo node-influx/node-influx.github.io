@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -170,7 +172,7 @@ export class InfluxDB {
      * import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
      *
      * // Connect to a single host with a full set of config details and
-     * a custom schema
+     * // a custom schema
      * const client = new InfluxDB({
      *   database: &apos;my_db&apos;,
      *   host: &apos;localhost&apos;,
@@ -265,7 +267,7 @@ export class InfluxDB {
      * @param {string} databaseName
      * @return {Promise.&lt;void&gt;}
      * @example
-     * return influx.createDatabase(&apos;mydb&apos;)
+     * influx.createDatabase(&apos;mydb&apos;)
      */
     createDatabase(databaseName) {
         return this.pool.json(this.getQueryOpts({
@@ -277,7 +279,7 @@ export class InfluxDB {
      * @param {string} databaseName
      * @return {Promise.&lt;void&gt;}
      * @example
-     * return influx.createDatabase(&apos;mydb&apos;)
+     * influx.createDatabase(&apos;mydb&apos;)
      */
     dropDatabase(databaseName) {
         return this.pool.json(this.getQueryOpts({
@@ -288,7 +290,7 @@ export class InfluxDB {
      * Returns array of database names. Requires cluster admin privileges.
      * @returns {Promise&lt;String[]&gt;} a list of database names
      * @example
-     * return influx.getMeasurements().then(names =&gt;
+     * influx.getMeasurements().then(names =&gt;
      *   console.log(&apos;My database names are: &apos; + names.join(&apos;, &apos;)));
      */
     getDatabaseNames() {
@@ -299,7 +301,7 @@ export class InfluxDB {
      * Returns array of measurements.
      * @returns {Promise&lt;String[]&gt;} a list of measurement names
      * @example
-     * return influx.getMeasurements().then(names =&gt;
+     * influx.getMeasurements().then(names =&gt;
      *   console.log(&apos;My measurement names are: &apos; + names.join(&apos;, &apos;)));
      */
     getMeasurements() {
@@ -459,7 +461,7 @@ export class InfluxDB {
      * @param {String} username
      * @returns {Promise&lt;void&gt;}
      * @example
-     * influx.grantAdminPrivilege(&apos;connor&apos;, &apos;READ&apos;, &apos;my_db&apos;)
+     * influx.grantAdminPrivilege(&apos;connor&apos;)
      */
     grantAdminPrivilege(username) {
         return this.pool.json(this.getQueryOpts({
@@ -583,7 +585,7 @@ export class InfluxDB {
      * })
      */
     writePoints(points, options = {}) {
-        const { database = this.defaultDB(), precision = &quot;ms&quot;, retentionPolicy, } = options;
+        const { database = this.defaultDB(), precision = &quot;n&quot;, retentionPolicy, } = options;
         let payload = &quot;&quot;;
         points.forEach(point =&gt; {
             const { fields = {}, tags = {}, measurement, timestamp, } = point;
@@ -683,6 +685,24 @@ export class InfluxDB {
         }));
     }
     /**
+     * Pings all available hosts, collecting online status and version info.
+     * @param  {Number}               timeout Given in milliseconds
+     * @return {Promise&lt;PingStats[]&gt;}
+     * @example
+     * influx.ping(5000).then(hosts =&gt; {
+     *   hosts.forEach(host =&gt; {
+     *     if (host.online) {
+     *       console.log(`${host.url.host} responded in ${host.rtt}ms running ${host.version})`)
+     *     } else {
+     *       console.log(`${host.url.host} is offline :(`)
+     *     }
+     *   })
+     * })
+     */
+    ping(timeout) {
+        return this.pool.ping(timeout);
+    }
+    /**
      * Returns the default database that queries operates on. It throws if called
      * when a default database isn&apos;t set.
      * @private
@@ -690,7 +710,7 @@ export class InfluxDB {
     defaultDB() {
         if (!this.options.database) {
             throw new Error(&quot;Attempted to run an influx query without a default&quot;
-                + &quot; database specified or an explicit interface provided.&quot;);
+                + &quot; database specified or an explicit database provided.&quot;);
         }
         return this.options.database;
     }

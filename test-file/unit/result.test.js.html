@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -96,7 +98,7 @@ describe(&apos;results&apos;, () =&gt; {
             { time: new Date(1474821271999), mean: 44 }
         ]);
         expect(r.groups()).to.deep.equal([
-            { tags: {}, rows: r.slice() }
+            { name: &apos;test_series&apos;, tags: {}, rows: r.slice() }
         ]);
         expect(r.group({ tag: &apos;a&apos; })).to.deep.equal([]);
     });
@@ -173,8 +175,8 @@ describe(&apos;results&apos;, () =&gt; {
             { tag: &apos;b&apos;, mean: 4 }
         ]);
         expect(r.groups()).to.deep.equal([
-            { tags: { tag: &apos;a&apos; }, rows: [{ tag: &apos;a&apos;, mean: 1 }, { tag: &apos;a&apos;, mean: 2 }] },
-            { tags: { tag: &apos;b&apos; }, rows: [{ tag: &apos;b&apos;, mean: 3 }, { tag: &apos;b&apos;, mean: 4 }] }
+            { name: &apos;test_series&apos;, tags: { tag: &apos;a&apos; }, rows: [{ tag: &apos;a&apos;, mean: 1 }, { tag: &apos;a&apos;, mean: 2 }] },
+            { name: &apos;test_series&apos;, tags: { tag: &apos;b&apos; }, rows: [{ tag: &apos;b&apos;, mean: 3 }, { tag: &apos;b&apos;, mean: 4 }] }
         ]);
         expect(r.group({ tag: &apos;a&apos; })).to.deep.equal([
             { tag: &apos;a&apos;, mean: 1 },

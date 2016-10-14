@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -88,7 +90,9 @@ describe(&apos;pool&apos;, () =&gt; {
         }, done);
     });
     afterEach(done =&gt; {
-        clock.restore();
+        if (clock) {
+            clock.restore();
+        }
         async.each(servers, (server, done) =&gt; server.close(() =&gt; done()), done);
     });
     describe(&apos;request generators&apos;, () =&gt; {
@@ -237,6 +241,38 @@ describe(&apos;pool&apos;, () =&gt; {
         return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).then(() =&gt; {
             expect(pool.getHostsAvailable().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[1]]);
             expect(pool.getHostsDisabled().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[0]]);
+        });
+    });
+    it(&apos;pings servers&apos;, () =&gt; {
+        servers[0].onRequest = (req, res) =&gt; {
+            res.setHeader(&apos;X-Influxdb-Version&apos;, &apos;v1.0.0&apos;);
+            res.writeHead(200);
+            res.end();
+        };
+        servers[1].onRequest = (req, res) =&gt; {
+            res.writeHead(500);
+            res.end();
+        };
+        return pool.ping(50).then(results =&gt; {
+            expect(results[0].online).to.be.true;
+            expect(results[0].version).to.equal(&apos;v1.0.0&apos;);
+            expect(results[1].online).to.be.false;
+        });
+    });
+    it(&apos;times out in pings&apos;, () =&gt; {
+        clock.restore();
+        clock = null;
+        servers.forEach(server =&gt; {
+            server.onRequest = (req, res) =&gt; {
+                setTimeout(() =&gt; {
+                    res.writeHead(200);
+                    res.end();
+                }, 2);
+            };
+        });
+        return pool.ping(1).then(results =&gt; {
+            expect(results[0].online).to.be.false;
+            expect(results[1].online).to.be.false;
         });
     });
     describe(&apos;backoff&apos;, () =&gt; {

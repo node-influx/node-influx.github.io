@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../">
-  <title data-ice="title">Changelog</title>
+  <title data-ice="title">Usage</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -74,53 +74,46 @@
   <div class="manual-breadcrumb-list">
     <a href="./manual/./index.html">Manual</a>
     <span>&#xBB;</span>
-    <span data-ice="title">Changelog</span>
+    <span data-ice="title">Usage</span>
   </div>
-  <div data-ice="content"><h1 id="node-influx-changelog">node-influx Changelog</h1>
-<h2 id="version-5-0-0-ongoing-">Version 5.0.0 (Ongoing)</h2>
-<p>5.0.0 is a port/rewrite of node-influx to TypeScript, aiming to provide a stronger foundation while fixing many of the pain points and bugs which currently exist. These include issues with escaping data passed to node-influx, date handling difficulties, quirks in the connection, and the lack of complete unit tests. We also take the opportunity to build a more modern, promise-based API.</p>
-<p>Please see the documentation linked in the readme for more information. The following is a list of breaking changes:</p>
+  <div data-ice="content"><h1 id="a-moment-for-times">A Moment for Times</h1>
+<p>InfluxDB is a time series database, so it would make sense that the concept of time is moderately important when dealing with it.</p>
+<p>By default, Influx will store all data you give to it as a nanosecond precision timestamp, whereas in JavaScript, most of the time we&apos;re dealing with millisecond precision timestamps, which we get from <code>Date.now()</code> or <code>myDate.getTime()</code>. This presents a bit of a problem for us JavaScripters, since nanosecond-precision timestamps are stored as 64 bit unsigned integers that JavaScript simply cannot represent accurately.</p>
+<pre><code><code class="source-code prettyprint">&#x279C;  node-influx git:(master) node
+&gt; 1475985480231035677
+1475985480231035600</code>
+</code></pre><p>In this <code>influx</code> module we try to make this as easy as possible for you to deal with, and out of the box everything should &quot;just work&quot;.</p>
+<p>There are three places that dates can get passed around:</p>
 <ul>
-<li><strong>breaking:</strong> all methods have been modified to return promises</li>
-<li><strong>breaking:</strong> result output for grouped results has changed</li>
-<li><strong>breaking:</strong> data passed into Influx, except where otherwise noted, will be escaped automatically</li>
-<li><strong>breaking:</strong> the point structure for <code>.write*</code> methods has changed</li>
-<li><strong>breaking:</strong> the <code>.writePoint</code> method has been removed</li>
-<li><strong>breaking:</strong> <code>.writeSeries</code> as been more appropriately renamed <code>writeMeasurement</code></li>
-<li><strong>breaking:</strong> <code>.getSeriesNames</code> has been renamed <code>.getSeries</code></li>
-<li><strong>breaking:</strong> the old <code>.getSeries</code> method has been removed in favor of the behaviour exhibited by <code>getSeriesNames</code></li>
-<li><strong>breaking:</strong> the InfluxDB client must now be invoked as <code>new InfluxDB</code></li>
-<li><strong>breaking:</strong> the connection pool configuration has changed</li>
+<li>Dates coming from Influx queries, like <code>select * from my_series</code></li>
+<li>Dates being interpolated <em>into</em> Influx queries</li>
+<li>Dates being used when writing points on the line protocol, via <code>.writePoints()</code> or <code>.writeMeasurement()</code></li>
 </ul>
-<h2 id="2016-10-06-version-4-2-3">2016-10-06, Version 4.2.3</h2>
-<ul>
-<li>bug: globalAgent ignored during HTTPS communication (#207)</li>
-<li>bug: fix methods using deprecated GET which should be using POST (#191 and #188)</li>
-<li>improvement: Support writing RFC3339 timestamps (#203)</li>
-<li>improvement: Added a non-failing error message when the body is empty (#160)</li>
-<li>docs: fix confusing terminology with series versus measurement (#205)</li>
-<li>docs: update links in CONTRIBUTING.md (#199)</li>
-<li>docs: fix &quot;deprecated&quot; typo in docs (#184)</li>
-</ul>
-<h2 id="2016-09-15-version-4-2-2">2016-09-15, Version 4.2.2</h2>
-<p>Shoutout to @dandv for lots of awesome PRs this release!</p>
-<ul>
-<li>improvement: sort tags before writing for greater performance (#179)</li>
-<li>improvement: make code compliant with the latest <code>standard</code> rules (#161)</li>
-<li>bug: fix escaping of quotes in strings (#183)</li>
-<li>bug: fix empty result from <code>getDatabaseNames</code> throwing errors (#168)</li>
-<li>docs: fix messy terminology and typos (#183 and #170)</li>
-<li>docs: include the full license file and copyright (#180)</li>
-<li>docs: fix instructions to run <code>standard</code> instead of just <code>lint</code> (#181)</li>
-</ul>
-<h2 id="2016-05-05-version-4-2-0">2016-05-05, Version 4.2.0</h2>
-<ul>
-<li>typings: Added TypeScript definitions, thanks to @SPARTAN563 (#129)</li>
-<li>init-url: Added support for configuring the client using a url (#128)</li>
-<li>deps: Updated lodash dependency (#133)</li>
-<li>_createKeyTagString: Fix &apos;=&apos; char escaping in KeyTagString (#127)</li>
-<li>_createKeyValueString/_createKeyTagString: Fix encoding failues on objects containing a &apos;length&apos; key (#126)</li>
-</ul>
+<p>To deal with this, we introduce a new type called <strong>NanoDate</strong>. These behave just like the normal <code>Date</code> type, but have two additional methods: <code>.getNanoTime()</code> and <code>.getNanoISOString()</code>. The behave just like the normal <code>.getTime()</code> and <code>getISOString</code> methods, but they both return nanosecond-precision strings instead of millisecond-precision numbers and timestamps.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">expect(myNanoDate.getTime()).to.equal(1475985480231);
+expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035677&apos;);
+expect(myNanoDate.toISOString()).to.equal(&apos;2016-10-09T03:58:00.231Z&apos;);
+expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;);</code>
+</code></pre>
+<p>By default, <strong>all times returned from Influx queries are parsed to NanoDates</strong>. For example, you can do something like the following:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">influx.query(&apos;select * from perf&apos;).then(results =&gt; {
+  results.forEach(row =&gt; console.log(`Used ${row.cpu} at ${row.time.toNanoISOString()}`))
+})</code>
+</code></pre>
+<p>The exception is if you manually ask for a precision of <code>ms</code> or coarser in the <code>options</code> parameter of <a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-query"><code>Influx#query</code> method</a>. Then, we parse your times into normal Dates.</p>
+<p>When writing data to Influx, <strong>all write methods accept NanoDates in all situations</strong>. This means if you select data from Influx and want to update a data point, you can pass that time right back into the <code>write</code> method. (Remember, data within series are unique by their time!) If you have a nanosecond timestamp from some external source, you can convert it to a NanoDate using <a href="https://node-influx.github.io/function/index.html#static-function-toNanoDate"><code>toNanoDate</code></a>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { toNanoDate } from &apos;influx&apos;;
+
+const myNanoDate = toNanoDate(&apos;1475985480231035600&apos;)
+expect(myNanoDate.getTime()).to.equal(1475985480231);
+expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035600&apos;)
+expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035600Z&apos;)</code>
+</code></pre>
+<p>Finally, <strong>if you want to embed a NanoDate into an Influx query, you should should use <code>toNanoISOString</code></strong> to so do:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">influx.query(`select * from perf where time &gt; &quot;${myNanoDate.toNanoISOString()}&quot;`)</code>
+</code></pre>
+<hr>
+<p>Anything unclear? Have some remaining questions or find a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
 </div>
 </div>
 </div>

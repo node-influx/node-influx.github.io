@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -58,7 +60,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {InfluxDB} from &apos;<span><a href="file/src/index.js.html#lineNumber97">influx/</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {InfluxDB} from &apos;<span><a href="file/src/index.js.html#lineNumber97">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
@@ -556,6 +558,32 @@ entire database if a measurement isn&apos;t provided.</p>
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-ping">ping</a></span></span><span data-ice="signature">(timeout: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Pings all available hosts, collecting online status and version info.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-query">query</a></span></span><span data-ice="signature">(query: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span> | <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span>): <span>Promise&lt;Results</span> | <span>Results[]&gt;</span></span>
         </p>
       </div>
@@ -807,7 +835,7 @@ const client = new InfluxDB(&apos;http://user:password@host:8086/database&apos;)
       <pre class="prettyprint source-code"><code data-ice="exampleCode">import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
 
 // Connect to a single host with a full set of config details and
-a custom schema
+// a custom schema
 const client = new InfluxDB({
   database: &apos;my_db&apos;,
   host: &apos;localhost&apos;,
@@ -1017,7 +1045,7 @@ const client = new InfluxDB({
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">return influx.createDatabase(&apos;mydb&apos;)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.createDatabase(&apos;mydb&apos;)</code></pre>
     </div>
 </div>
 
@@ -1265,7 +1293,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">return influx.createDatabase(&apos;mydb&apos;)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.createDatabase(&apos;mydb&apos;)</code></pre>
     </div>
 </div>
 
@@ -1563,7 +1591,7 @@ influx.dropSeries({
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">return influx.getMeasurements().then(names =&gt;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.getMeasurements().then(names =&gt;
   console.log(&apos;My database names are: &apos; + names.join(&apos;, &apos;)));</code></pre>
     </div>
 </div>
@@ -1623,7 +1651,7 @@ influx.dropSeries({
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">return influx.getMeasurements().then(names =&gt;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.getMeasurements().then(names =&gt;
   console.log(&apos;My measurement names are: &apos; + names.join(&apos;, &apos;)));</code></pre>
     </div>
 </div>
@@ -1846,7 +1874,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.grantAdminPrivilege(&apos;connor&apos;, &apos;READ&apos;, &apos;my_db&apos;)</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.grantAdminPrivilege(&apos;connor&apos;)</code></pre>
     </div>
 </div>
 
@@ -1935,6 +1963,89 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
   <div class="example-doc" data-ice="exampleDoc">
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.grantPrivilege(&apos;connor&apos;, &apos;READ&apos;, &apos;my_db&apos;) // grants read access on my_db to connor</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-ping">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">ping</span><span data-ice="signature">(timeout: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span><span>[]</span></span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber640">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Pings all available hosts, collecting online status and version info.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">timeout</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Given in milliseconds</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span><span>[]</span></span>&gt;</td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.ping(5000).then(hosts =&gt; {
+  hosts.forEach(host =&gt; {
+    if (host.online) {
+      console.log(`${host.url.host} responded in ${host.rtt}ms running ${host.version})`)
+    } else {
+      console.log(`${host.url.host} is offline :(`)
+    }
+  })
+})</code></pre>
     </div>
 </div>
 

@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -92,7 +94,7 @@
  * import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
  *
  * // Connect to a single host with a full set of config details and
- * a custom schema
+ * // a custom schema
  * const client = new InfluxDB({
  *   database: &apos;my_db&apos;,
  *   host: &apos;localhost&apos;,
@@ -132,7 +134,7 @@
  * import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
  *
  * // Connect to a single host with a full set of config details and
- * a custom schema
+ * // a custom schema
  * const client = new InfluxDB({
  *   database: &apos;my_db&apos;,
  *   username: &apos;connor&apos;,
@@ -164,14 +166,14 @@
  * or you enter the wrong datatype for one of your schema fields.
  *
  * @typedef {Object} SchemaOptions
- * @param {String} [database] The database where the measurement lives. This is
- *     required if you don&apos;t provide a default database in Influx.
- * @param {String} measurement The measurement name in Influx this refers to
- * @param {Object.&lt;String, FieldType&gt;} fields A mapping of fields names to
+ * @property {String} [database] The database where the measurement lives. This
+ *     is required if you don&apos;t provide a default database in Influx.
+ * @property {String} measurement The measurement name in Influx this refers to
+ * @property {Object.&lt;String, FieldType&gt;} fields A mapping of fields names to
  *     their data types. It&apos;s assumed that this is a comprehensive mapping of
  *     every field you might write.
- * @param {String[]} tags A list of tag names in this measurement. It&apos;s assumed
- *     that this is a comprehensive list of every tag you might write.
+ * @property {String[]} tags A list of tag names in this measurement. It&apos;s
+ *     assumed that this is a comprehensive list of every tag you might write.
  *
  * @example
  * {
@@ -184,6 +186,79 @@
  *   }
  * }
  */
+/**
+ * Results are returned from the .query method. It marshals the raw Influx
+ * results into a more palatable, JavaScript-y structure. All query results
+ * are marshalled into a single, flat arrays, and methods are provided to
+ * example grouped results as necessary.
+ *
+ * @class Result&lt;T&gt;
+ * @example
+ * influx.query(&apos;select host, cpu, mem from perf&apos;).then(results =&gt; {
+ *   expect(results).to.deep.equal([
+ *     { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+ *     { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+ *     // ...
+ *   ])
+ * })
+ */
+export class Results extends Array {
+    /**
+     * Group looks for and returns the first group in the results
+     * that matches the provided tags.
+     *
+     * If you&apos;ve used lodash or underscore, we do something quite similar to
+     * their object matching: for every row in the results, if it contains tag
+     * values matching the requested object, we return it.
+     *
+     * @param  {Object.&lt;String, String&gt;} matcher
+     * @return {T[]}
+     * @example
+     * // Matching tags sets in queries:
+     * influx.query(&apos;select * from perf group by host&apos;).then(results =&gt; {
+     *   expect(results.group({ host: &apos;ares.peet.io&apos;})).to.deep.equal([
+     *     { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+     *     { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+     *     // ...
+     *   ])
+     *
+     *   expect(results.group({ host: &apos;box1.example.com&apos;})).to.deep.equal([
+     *     { host: &apos;box1.example.com&apos;, cpu: 0.54, mem: 8420 },
+     *     // ...
+     *   ])
+     * })
+     */
+    group(matcher) { return null; }
+    /**
+     * Returns the data grouped into nested arrays, similarly to how it was
+     * returned from Influx originally.
+     *
+     * @returns {Array&lt;{ name: String, tags: Object.&lt;String, String&gt;, rows: T[] }&gt;}
+     * @example
+     * influx.query(&apos;select * from perf group by host&apos;).then(results =&gt; {
+     *   expect(results.groups()).to.deep.equal([
+     *     {
+     *       name: &apos;perf&apos;,
+     *       tags: { host: &apos;ares.peet.io&apos; },
+     *       rows: [
+     *         { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+     *         { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+     *         // ...
+     *       ]
+     *     }
+     *     {
+     *       name: &apos;perf&apos;,
+     *       tags: { host: &apos;box1.example.com&apos; },
+     *       rows: [
+     *         { host: &apos;box1.example.com&apos;, cpu: 0.54, mem: 8420 },
+     *         // ...
+     *       ]
+     *     }
+     *   ])
+     * })
+     */
+    groups() { return null; }
+}
 /**
  * Point is passed to the client&apos;s write methods to store a point in InfluxDB.
  *
@@ -221,6 +296,10 @@
  * will cause Influx to return ISO formatted dates which we can parse. See the
  * {@link Results} type for more information about how to access them.
  *
+ * Please see [A Moment for Times](https://node-influx.github.io/manual/
+ * usage.html#a-moment-for-times) for a more complete and eloquent explanation
+ * of time handling in this module.
+ *
  * @typedef {Object} QueryOptions
  * @property {TimePrecision} [epoch] Epoch defining the precision at which
  *     to query points.
@@ -228,6 +307,17 @@
  *     defaults to the DEFAULT retention policy.
  * @property {String} [database]  Database under which to query the points.
  *     This is required if a database is not provided in Influx client.
+ */
+/**
+ * PingStats is returned from {@link InfluxDB#ping}.
+ *
+ * @typedef {Object} PingStats
+ * @property {Url} url URL is the host&apos;s URL
+ * @property {Boolean} online Whether the request was completed successfully.
+ * @property {http.ServerResponse} res The raw response from the server, may be
+ *     null on a timeout or HTTP error.
+ * @property {Number} rtt Total time the server took to respond, in milliseconds
+ * @property {String} version Version number the server reports to run
  */
 /**
  * The BackoffStrategy dictates behaviour to use when hosts in the connection

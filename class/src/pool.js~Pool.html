@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Expression.html">Expression</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/builder.js~Measurement.html">Measurement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/doc.js~Results.html">Results</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html">InfluxDB</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
@@ -41,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PoolOptions">PoolOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryOptions">QueryOptions</a></span></span></li>
@@ -58,7 +60,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Pool} from &apos;<span><a href="file/src/pool.js.html#lineNumber46">influx/</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Pool} from &apos;<span><a href="file/src/pool.js.html#lineNumber46">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
@@ -384,6 +386,33 @@ errors.</p>
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/pool.js~Pool.html#instance-method-ping">ping</a></span></span><span data-ice="signature">(timeout: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Ping sends out a request to all available Influx servers, reporting on
+their response time and version number.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/pool.js~Pool.html#instance-method-stream">stream</a></span></span><span data-ice="signature">(options: <span>*</span>, callback: <span>*</span>): <span>*</span></span>
         </p>
       </div>
@@ -576,7 +605,7 @@ if possible.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber221">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber262">source</a></span></span>
     </span>
   </h3>
 
@@ -702,7 +731,7 @@ An error is returned on a non-2xx status code.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber213">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber254">source</a></span></span>
     </span>
   </h3>
 
@@ -759,7 +788,7 @@ An error is returned on a non-2xx status code.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber203">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber244">source</a></span></span>
     </span>
   </h3>
 
@@ -1022,6 +1051,74 @@ An error is returned on a non-2xx status code or on a parsing exception.</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-ping">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">ping</span><span data-ice="signature">(timeout: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber139">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Ping sends out a request to all available Influx servers, reporting on
+their response time and version number.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">timeout</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-stream">
     <span class="access" data-ice="access">public</span>
     
@@ -1032,7 +1129,7 @@ An error is returned on a non-2xx status code or on a parsing exception.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber139">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pool.js.html#lineNumber180">source</a></span></span>
     </span>
   </h3>
 

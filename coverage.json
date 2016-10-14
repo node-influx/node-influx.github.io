@@ -1,11 +1,11 @@
 {
   "coverage": "100%",
-  "expectCount": 79,
-  "actualCount": 79,
+  "expectCount": 84,
+  "actualCount": 84,
   "files": {
     "src/doc.js": {
-      "expectCount": 4,
-      "actualCount": 4,
+      "expectCount": 7,
+      "actualCount": 7,
       "undocumentLines": []
     },
     "src/backoff/exponential.js": {
@@ -19,13 +19,13 @@
       "undocumentLines": []
     },
     "src/index.js": {
-      "expectCount": 23,
-      "actualCount": 23,
+      "expectCount": 24,
+      "actualCount": 24,
       "undocumentLines": []
     },
     "src/pool.js": {
-      "expectCount": 15,
-      "actualCount": 15,
+      "expectCount": 16,
+      "actualCount": 16,
       "undocumentLines": []
     },
     "src/grammar/times.js": {

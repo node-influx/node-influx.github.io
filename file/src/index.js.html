@@ -293,53 +293,70 @@ export class InfluxDB {
      * influx.getMeasurements().then(names =&gt;
      *   console.log(&apos;My database names are: &apos; + names.join(&apos;, &apos;)));
      */
-    getDatabaseNames() {
+    getDatabaseNames(data) {
         return this.pool.json(this.getQueryOpts({ q: &quot;show databases&quot; }))
             .then(res =&gt; parseSingle(res).map(r =&gt; r.name));
     }
     /**
      * Returns array of measurements.
      * @returns {Promise&lt;String[]&gt;} a list of measurement names
+     * @param {String} [database] the database the measurement lives in, optional
+     *     if a default database is provided.
      * @example
      * influx.getMeasurements().then(names =&gt;
      *   console.log(&apos;My measurement names are: &apos; + names.join(&apos;, &apos;)));
      */
-    getMeasurements() {
-        return this.pool.json(this.getQueryOpts({ q: &quot;show measurements&quot; }))
-            .then(res =&gt; parseSingle(res).map(r =&gt; r.name));
+    getMeasurements(database = this.defaultDB()) {
+        return this.pool.json(this.getQueryOpts({
+            db: database,
+            q: &quot;show measurements&quot;,
+        })).then(res =&gt; parseSingle(res).map(r =&gt; r.name));
     }
     /**
      * Returns a list of all series within the target measurement, or from the
      * entire database if a measurement isn&apos;t provided.
-     * @param {String} [measurement] if provided, we&apos;ll only get series from
-     *     within that measurement.
+     * @param {Object} [options]
+     * @param {String} [options.measurement] if provided, we&apos;ll only get series
+     *     from within that measurement.
+     * @param {String} [options.database] the database the series lives in,
+     *     optional if a default database is provided.
      * @returns {Promise&lt;String[]&gt;} a list of series names
      * @example
-     * influx.getSeries().then(names =&gt;
-     *   console.log(&apos;My series names are: &apos; + names.join(&apos;, &apos;)));
+     * influx.getSeries().then(names =&gt; {
+     *   console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;))
+     * })
      *
-     * influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
-     *   console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;)));
+     * influx.getSeries({
+     *   measurement: &quot;my_measurement&quot;,
+     *   database: &quot;my_db&quot;
+     * }).then(names =&gt; {
+     *   console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;))
+     * })
      */
-    getSeries(measurement) {
+    getSeries(options = {}) {
+        const { database = this.defaultDB(), measurement, } = options;
         let query = &quot;show series&quot;;
         if (measurement) {
             query += ` from ${grammar.escape.quoted(measurement)}`;
         }
-        return this.pool.json(this.getQueryOpts({ q: query }))
-            .then(res =&gt; parseSingle(res).map(r =&gt; r.key));
+        return this.pool.json(this.getQueryOpts({
+            db: database,
+            q: query,
+        })).then(res =&gt; parseSingle(res).map(r =&gt; r.key));
     }
     /**
      * Removes a measurement from the database.
-     * @param {string} measurementName
+     * @param {String} measurement
+     * @param {String} [database] the database the measurement lives in, optional
+     *     if a default database is provided.
      * @return {Promise.&lt;void&gt;}
      * @example
-     * dropMeasurement(&apos;my_measurement&apos;, err =&gt; done(err))
-     * // =&gt; DROP MEASUREMENT &quot;my_measurement&quot;
+     * influx.dropMeasurement(&apos;my_measurement&apos;)
      */
-    dropMeasurement(measurementName) {
+    dropMeasurement(measurement, database = this.defaultDB()) {
         return this.pool.json(this.getQueryOpts({
-            q: `drop measurement ${grammar.escape.quoted(measurementName)}`,
+            db: database,
+            q: `drop measurement ${grammar.escape.quoted(measurement)}`,
         }, &quot;POST&quot;)).then(assertNoErrors);
     }
     /**
@@ -523,6 +540,102 @@ export class InfluxDB {
             q: `drop continuous query ${grammar.escape.quoted(name)}`
                 + ` on ${grammar.escape.quoted(database)}`,
         }, &quot;POST&quot;)).then(assertNoErrors);
+    }
+    /**
+     * Creates a new retention policy on a database. You can read more about
+     * [Downsampling and Retention](https://docs.influxdata.com/influxdb/v1.0/
+     * guides/downsampling_and_retention/) on the InfluxDB website.
+     *
+     * @param {String} name The retention policy name
+     * @param {Object} options
+     * @param {String} [options.database] Database to create the policy on,
+     *     uses the default database if not provided.
+     * @param {String} options.duration How long data in the retention policy
+     *     should be stored for, should be in a format like `7d`. See details
+     *     [here](https://docs.influxdata.com/influxdb/v1.0/query_language/spec/#durations)
+     * @param {Number} options.replication How many servers data in the series
+     *     should be replicated to.
+     * @param {Boolean} [options.default] Whether the retention policy should
+     *     be the default policy on the database.
+     * @returns {Promise&lt;void&gt;}
+     * @example
+     * influx.createRetentionPolicy(&apos;7d&apos;, {
+     *  duration: &apos;7d&apos;,
+     *  replication: 1
+     * })
+     */
+    createRetentionPolicy(name, options) {
+        const q = `create retention policy ${grammar.escape.quoted(name)} on `
+            + grammar.escape.quoted(options.database || this.defaultDB())
+            + ` duration ${options.duration} replication ${options.replication}`
+            + (options.default ? &quot; default&quot; : &quot;&quot;);
+        return this.pool.json(this.getQueryOpts({ q }, &quot;POST&quot;)).then(assertNoErrors);
+    }
+    /**
+     * Alters an existing retention policy on a database.
+     *
+     * @param {String} name The retention policy name
+     * @param {Object} options
+     * @param {String} [options.database] Database to create the policy on,
+     *     uses the default database if not provided.
+     * @param {String} options.duration How long data in the retention policy
+     *     should be stored for, should be in a format like `7d`. See details
+     *     [here](https://docs.influxdata.com/influxdb/v1.0/query_language/spec/#durations)
+     * @param {Number} options.replication How many servers data in the series
+     *     should be replicated to.
+     * @param {Boolean} [options.default] Whether the retention policy should
+     *     be the default policy on the database.
+     * @returns {Promise&lt;void&gt;}
+     * @example
+     * influx.alterRetentionPolicy(&apos;7d&apos;, {
+     *  duration: &apos;7d&apos;,
+     *  replication: 1,
+     *  default: true
+     * })
+     */
+    alterRetentionPolicy(name, options) {
+        const q = `alter retention policy ${grammar.escape.quoted(name)} on `
+            + grammar.escape.quoted(options.database || this.defaultDB())
+            + ` duration ${options.duration} replication ${options.replication}`
+            + (options.default ? &quot; default&quot; : &quot;&quot;);
+        return this.pool.json(this.getQueryOpts({ q }, &quot;POST&quot;)).then(assertNoErrors);
+    }
+    /**
+     * Shows retention policies on the database
+     *
+     * @param {String} [database] The database to list policies on, uses the
+     *     default database if not provided.
+     * @returns {Promise&lt;Array&lt;{
+     *     name: String,
+     *     duration: String,
+     *     shardGroupDuration: String,
+     *     replicaN: Number,
+     *     default: Boolean
+     * }&gt;&gt;}
+     * @example
+     * influx.showRetentionPolicies().then(policies =&gt; {
+     *   expect(policies.slice()).to.deep.equal([
+     *     {
+     *       name: &apos;autogen&apos;,
+     *       duration: &apos;0s&apos;,
+     *       shardGroupDuration: &apos;168h0m0s&apos;,
+     *       replicaN: 1,
+     *       default: true,
+     *     },
+     *     {
+     *       name: &apos;7d&apos;,
+     *       duration: &apos;168h0m0s&apos;,
+     *       shardGroupDuration: &apos;24h0m0s&apos;,
+     *       replicaN: 1,
+     *       default: false,
+     *     },
+     *   ])
+     * })
+     */
+    showRetentionPolicies(database = this.defaultDB()) {
+        return this.pool.json(this.getQueryOpts({
+            q: `show retention policies on ${grammar.escape.quoted(database)}`,
+        }, &quot;GET&quot;)).then(parseSingle);
     }
     /**
      * writePoints sends a list of points together in a batch to InfluxDB. In

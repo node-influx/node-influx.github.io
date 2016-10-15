@@ -240,13 +240,21 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;.getMeasurements()&apos;, () =&gt; {
-            expectQuery(&apos;json&apos;, &apos;show measurements&apos;, &apos;GET&apos;, dbFixture(&apos;showMeasurements&apos;));
+            setDefaultDB(&apos;mydb&apos;);
+            expectQuery(&apos;json&apos;, {
+                db: &apos;mydb&apos;,
+                q: &apos;show measurements&apos;,
+            }, &apos;GET&apos;, dbFixture(&apos;showMeasurements&apos;));
             return influx.getMeasurements().then(names =&gt; {
                 expect(names).to.deep.equal([&apos;series_0&apos;, &apos;series_1&apos;, &apos;series_2&apos;]);
             });
         });
         it(&apos;.getSeries() from all&apos;, () =&gt; {
-            expectQuery(&apos;json&apos;, &apos;show series&apos;, &apos;GET&apos;, dbFixture(&apos;showSeries&apos;));
+            setDefaultDB(&apos;mydb&apos;);
+            expectQuery(&apos;json&apos;, {
+                db: &apos;mydb&apos;,
+                q: &apos;show series&apos;,
+            }, &apos;GET&apos;, dbFixture(&apos;showSeries&apos;));
             return influx.getSeries().then(names =&gt; {
                 expect(names).to.deep.equal([
                     &apos;series_0,my_tag=0&apos;,
@@ -277,8 +285,14 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;.getSeries() from single&apos;, () =&gt; {
-            expectQuery(&apos;json&apos;, &apos;show series from &quot;series_1&quot;&apos;, &apos;GET&apos;, dbFixture(&apos;showSeriesFromOne&apos;));
-            return influx.getSeries(&apos;series_1&apos;).then(names =&gt; {
+            expectQuery(&apos;json&apos;, {
+                db: &apos;mydb&apos;,
+                q: &apos;show series from &quot;measure_1&quot;&apos;,
+            }, &apos;GET&apos;, dbFixture(&apos;showSeriesFromOne&apos;));
+            return influx.getSeries({
+                database: &apos;mydb&apos;,
+                measurement: &apos;measure_1&apos;,
+            }).then(names =&gt; {
                 expect(names).to.deep.equal([
                     &apos;series_1,my_tag=0&apos;,
                     &apos;series_1,my_tag=2&apos;,
@@ -292,8 +306,11 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;.dropMeasurement()&apos;, () =&gt; {
-            expectQuery(&apos;json&apos;, &apos;drop measurement &quot;series_1&quot;&apos;);
-            return influx.dropMeasurement(&apos;series_1&apos;);
+            expectQuery(&apos;json&apos;, {
+                db: &apos;my_db&apos;,
+                q: &apos;drop measurement &quot;series_1&quot;&apos;
+            });
+            return influx.dropMeasurement(&apos;series_1&apos;, &apos;my_db&apos;);
         });
         describe(&apos;.dropSeries()&apos;, () =&gt; {
             it(&apos;drops with only from clause by string&apos;, () =&gt; {
@@ -613,6 +630,73 @@ describe(&apos;influxdb&apos;, () =&gt; {
                     db: &apos;my_db&apos;,
                 }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
                 return influx.query([&apos;select * from series_0&apos;, &apos;select * from series_1&apos;]);
+            });
+        });
+        describe(&apos;.createRetentionPolicy&apos;, () =&gt; {
+            beforeEach(() =&gt; setDefaultDB(&apos;my_db&apos;));
+            it(&apos;creates non-default policies&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create retention policy &quot;7d\\&quot;&quot; on &quot;test&quot; &apos; +
+                    &apos;duration 7d replication 1&apos;);
+                return influx.createRetentionPolicy(&apos;7d&quot;&apos;, {
+                    database: &apos;test&apos;,
+                    duration: &apos;7d&apos;,
+                    replication: 1
+                });
+            });
+            it(&apos;creates default policies&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;create retention policy &quot;7d\\&quot;&quot; on &quot;my_db&quot; &apos; +
+                    &apos;duration 7d replication 1 default&apos;);
+                return influx.createRetentionPolicy(&apos;7d&quot;&apos;, {
+                    duration: &apos;7d&apos;,
+                    replication: 1,
+                    default: true,
+                });
+            });
+        });
+        describe(&apos;.alterRetentionPolicy&apos;, () =&gt; {
+            beforeEach(() =&gt; setDefaultDB(&apos;my_db&apos;));
+            it(&apos;creates non-default policies&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;alter retention policy &quot;7d\\&quot;&quot; on &quot;test&quot; &apos; +
+                    &apos;duration 7d replication 1&apos;);
+                return influx.alterRetentionPolicy(&apos;7d&quot;&apos;, {
+                    database: &apos;test&apos;,
+                    duration: &apos;7d&apos;,
+                    replication: 1
+                });
+            });
+            it(&apos;creates default policies&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, &apos;alter retention policy &quot;7d\\&quot;&quot; on &quot;my_db&quot; &apos; +
+                    &apos;duration 7d replication 1 default&apos;);
+                return influx.alterRetentionPolicy(&apos;7d&quot;&apos;, {
+                    duration: &apos;7d&apos;,
+                    replication: 1,
+                    default: true,
+                });
+            });
+        });
+        it(&apos;shows retention policies&apos;, () =&gt; {
+            const data = dbFixture(&apos;showRetentionPolicies&apos;);
+            expectQuery(&apos;json&apos;, &apos;show retention policies on &quot;my\\&quot;db&quot;&apos;, &apos;GET&apos;, data);
+            influx.showRetentionPolicies(&apos;my&quot;db&apos;);
+            setDefaultDB(&apos;my_db&apos;);
+            expectQuery(&apos;json&apos;, &apos;show retention policies on &quot;my_db&quot;&apos;, &apos;GET&apos;, data);
+            return influx.showRetentionPolicies().then(res =&gt; {
+                expect(res.slice()).to.deep.equal([
+                    {
+                        name: &apos;autogen&apos;,
+                        duration: &apos;0s&apos;,
+                        shardGroupDuration: &apos;168h0m0s&apos;,
+                        replicaN: 1,
+                        default: true,
+                    },
+                    {
+                        name: &apos;7d&apos;,
+                        duration: &apos;168h0m0s&apos;,
+                        shardGroupDuration: &apos;24h0m0s&apos;,
+                        replicaN: 1,
+                        default: false,
+                    },
+                ]);
             });
         });
     });

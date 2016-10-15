@@ -43,6 +43,11 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#a-moment-for-times" data-ice="link">A Moment for Times</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#contributing" data-ice="link">Contributing</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#how-to-prepare" data-ice="link">How to prepare</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#make-changes" data-ice="link">Make Changes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#submit-changes" data-ice="link">Submit Changes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#additional-resources" data-ice="link">Additional Resources</a></li>
 </ul>
   </div>
 <div data-ice="manual" data-toc-name="reference">
@@ -78,7 +83,17 @@
   </div>
   <div data-ice="content"><h1 id="node-influx-changelog">node-influx Changelog</h1>
 <h2 id="version-5-0-0-ongoing-">Version 5.0.0 (Ongoing)</h2>
-<p>5.0.0 is a port/rewrite of node-influx to TypeScript, aiming to provide a stronger foundation while fixing many of the pain points and bugs which currently exist. These include issues with escaping data passed to node-influx, date handling difficulties, quirks in the connection, and the lack of complete unit tests. We also take the opportunity to build a more modern, promise-based API.</p>
+<p>5.0.0 is a port/rewrite of node-influx to TypeScript, aiming to provide a stronger foundation while fixing many of the pain points and bugs which currently exist. These include issues with escaping data passed to node-influx, date handling difficulties, quirks in the connection, and the lack of complete unit tests. We also take the opportunity to build a more modern, promise-based API. Concretely, here&apos;s what we&apos;ve got for you:</p>
+<ul>
+<li>A modern promise based API;</li>
+<li>Order-of-magnitude performance increases (varying per situation);</li>
+<li>A more consistent API with predictable and consistent escaping;</li>
+<li>The ability to correctly and accurately <a href="https://node-influx.github.io/manual/usage.html#a-moment-for-times">deal with times</a>;</li>
+<li>Fix some methods plain not working;</li>
+<li>Isomorphism, allowing the adapter to work in both Node and the browser;</li>
+<li>Less weird connection pool failures;</li>
+<li>Much better and more complete <a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html">documentation</a>;</li>
+</ul>
 <p>Please see the documentation linked in the readme for more information. The following is a list of breaking changes:</p>
 <ul>
 <li><strong>breaking:</strong> all methods have been modified to return promises</li>

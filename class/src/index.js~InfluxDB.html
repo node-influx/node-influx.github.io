@@ -193,6 +193,32 @@ a set of connection options.</p>
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-alterRetentionPolicy">alterRetentionPolicy</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Alters an existing retention policy on a database.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-createContinuousQuery">createContinuousQuery</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, query: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
         </p>
       </div>
@@ -226,6 +252,32 @@ a set of connection options.</p>
         
         
         <div data-ice="description"><p>Creates a new database with the provided name.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-createRetentionPolicy">createRetentionPolicy</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Creates a new retention policy on a database.</p>
 </div>
       </div>
     </td>
@@ -323,7 +375,7 @@ a set of connection options.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-dropMeasurement">dropMeasurement</a></span></span><span data-ice="signature">(measurementName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-dropMeasurement">dropMeasurement</a></span></span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -401,7 +453,7 @@ a set of connection options.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getDatabaseNames">getDatabaseNames</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getDatabaseNames">getDatabaseNames</a></span></span><span data-ice="signature">(data: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -427,7 +479,7 @@ a set of connection options.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getMeasurements">getMeasurements</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getMeasurements">getMeasurements</a></span></span><span data-ice="signature">(database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -453,7 +505,7 @@ a set of connection options.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getSeries">getSeries</a></span></span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-getSeries">getSeries</a></span></span><span data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -717,6 +769,38 @@ those results verbatim.</p>
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-showRetentionPolicies">showRetentionPolicies</a></span></span><span data-ice="signature">(database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>Promise&lt;Array&lt;{
+    name: String,
+    duration: String,
+    shardGroupDuration: String,
+    replicaN: Number,
+    default: Boolean
+}&gt;&gt;</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Shows retention policies on the database</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-writeMeasurement">writeMeasurement</a></span></span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, points: <span><span><a href="typedef/index.html#static-typedef-Point">Point</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-WriteOptions">WriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
         </p>
       </div>
@@ -889,6 +973,124 @@ const client = new InfluxDB({
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-alterRetentionPolicy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">alterRetentionPolicy</span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber534">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Alters an existing retention policy on a database.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">name</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The retention policy name</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">options</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Database to create the policy on,
+    uses the default database if not provided.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.duration</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>How long data in the retention policy
+    should be stored for, should be in a format like <code>7d</code>. See details
+    <a href="https://docs.influxdata.com/influxdb/v1.0/query_language/spec/#durations">here</a></p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.replication</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>How many servers data in the series
+    should be replicated to.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.default</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Whether the retention policy should
+    be the default policy on the database.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.alterRetentionPolicy(&apos;7d&apos;, {
+ duration: &apos;7d&apos;,
+ replication: 1,
+ default: true
+})</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-createContinuousQuery">
     <span class="access" data-ice="access">public</span>
     
@@ -899,7 +1101,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber445">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber462">source</a></span></span>
     </span>
   </h3>
 
@@ -1055,6 +1257,125 @@ const client = new InfluxDB({
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-createRetentionPolicy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">createRetentionPolicy</span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber505">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Creates a new retention policy on a database. You can read more about
+<a href="https://docs.influxdata.com/influxdb/v1.0/
+guides/downsampling_and_retention/">Downsampling and Retention</a> on the InfluxDB website.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">name</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The retention policy name</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">options</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Database to create the policy on,
+    uses the default database if not provided.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.duration</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>How long data in the retention policy
+    should be stored for, should be in a format like <code>7d</code>. See details
+    <a href="https://docs.influxdata.com/influxdb/v1.0/query_language/spec/#durations">here</a></p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.replication</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>How many servers data in the series
+    should be replicated to.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.default</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Whether the retention policy should
+    be the default policy on the database.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.createRetentionPolicy(&apos;7d&apos;, {
+ duration: &apos;7d&apos;,
+ replication: 1
+})</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-createUser">
     <span class="access" data-ice="access">public</span>
     
@@ -1065,7 +1386,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber346">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber363">source</a></span></span>
     </span>
   </h3>
 
@@ -1157,7 +1478,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber459">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber476">source</a></span></span>
     </span>
   </h3>
 
@@ -1309,11 +1630,11 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     
     
     
-    <span data-ice="name">dropMeasurement</span><span data-ice="signature">(measurementName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+    <span data-ice="name">dropMeasurement</span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber278">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber294">source</a></span></span>
     </span>
   </h3>
 
@@ -1334,10 +1655,18 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">measurementName</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="name" data-depth="0">measurement</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>the database the measurement lives in, optional
+    if a default database is provided.</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1367,8 +1696,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">dropMeasurement(&apos;my_measurement&apos;, err =&gt; done(err))
-// =&gt; DROP MEASUREMENT &quot;my_measurement&quot;</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.dropMeasurement(&apos;my_measurement&apos;)</code></pre>
     </div>
 </div>
 
@@ -1388,7 +1716,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber306">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber323">source</a></span></span>
     </span>
   </h3>
 
@@ -1478,7 +1806,7 @@ influx.dropSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber428">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber445">source</a></span></span>
     </span>
   </h3>
 
@@ -1548,7 +1876,7 @@ influx.dropSeries({
     
     
     
-    <span data-ice="name">getDatabaseNames</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+    <span data-ice="name">getDatabaseNames</span><span data-ice="signature">(data: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1564,7 +1892,23 @@ influx.dropSeries({
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">data</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   <div class="return-params" data-ice="returnParams">
@@ -1608,11 +1952,11 @@ influx.dropSeries({
     
     
     
-    <span data-ice="name">getMeasurements</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+    <span data-ice="name">getMeasurements</span><span data-ice="signature">(database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber245">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber247">source</a></span></span>
     </span>
   </h3>
 
@@ -1624,7 +1968,25 @@ influx.dropSeries({
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>the database the measurement lives in, optional
+    if a default database is provided.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   <div class="return-params" data-ice="returnParams">
@@ -1668,11 +2030,11 @@ influx.dropSeries({
     
     
     
-    <span data-ice="name">getSeries</span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
+    <span data-ice="name">getSeries</span><span data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span><span>[]</span></span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber262">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber274">source</a></span></span>
     </span>
   </h3>
 
@@ -1694,11 +2056,25 @@ entire database if a measurement isn&apos;t provided.</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">measurement</td>
+      <td data-ice="name" data-depth="0">options</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.measurement</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
-      <td data-ice="description"><p>if provided, we&apos;ll only get series from
-    within that measurement.</p>
+      <td data-ice="description"><p>if provided, we&apos;ll only get series
+    from within that measurement.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>the database the series lives in,
+    optional if a default database is provided.</p>
 </td>
     </tr>
 </tbody>
@@ -1730,11 +2106,16 @@ entire database if a measurement isn&apos;t provided.</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.getSeries().then(names =&gt;
-  console.log(&apos;My series names are: &apos; + names.join(&apos;, &apos;)));
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.getSeries().then(names =&gt; {
+  console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;))
+})
 
-influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
-  console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;)));</code></pre>
+influx.getSeries({
+  measurement: &quot;my_measurement&quot;,
+  database: &quot;my_db&quot;
+}).then(names =&gt; {
+  console.log(&apos;My series names in my_measurement are: &apos; + names.join(&apos;, &apos;))
+})</code></pre>
     </div>
 </div>
 
@@ -1754,7 +2135,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber330">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber347">source</a></span></span>
     </span>
   </h3>
 
@@ -1820,7 +2201,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber404">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber421">source</a></span></span>
     </span>
   </h3>
 
@@ -1894,7 +2275,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber376">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber393">source</a></span></span>
     </span>
   </h3>
 
@@ -1982,7 +2363,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber640">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber753">source</a></span></span>
     </span>
   </h3>
 
@@ -2065,7 +2446,7 @@ influx.getSeries(&quot;my_measurement&quot;).then(names =&gt;
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber597">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber710">source</a></span></span>
     </span>
   </h3>
 
@@ -2151,7 +2532,7 @@ be returned.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber616">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber729">source</a></span></span>
     </span>
   </h3>
 
@@ -2235,7 +2616,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber416">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber433">source</a></span></span>
     </span>
   </h3>
 
@@ -2309,7 +2690,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber391">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber408">source</a></span></span>
     </span>
   </h3>
 
@@ -2397,7 +2778,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber361">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber378">source</a></span></span>
     </span>
   </h3>
 
@@ -2467,6 +2848,111 @@ those results verbatim.</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-showRetentionPolicies">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">showRetentionPolicies</span><span data-ice="signature">(database: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>Promise&lt;Array&lt;{
+    name: String,
+    duration: String,
+    shardGroupDuration: String,
+    replicaN: Number,
+    default: Boolean
+}&gt;&gt;</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber573">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Shows retention policies on the database</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">database</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>The database to list policies on, uses the
+    default database if not provided.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>Promise&lt;Array&lt;{
+    name: String,
+    duration: String,
+    shardGroupDuration: String,
+    replicaN: Number,
+    default: Boolean
+}&gt;&gt;</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.showRetentionPolicies().then(policies =&gt; {
+  expect(policies.slice()).to.deep.equal([
+    {
+      name: &apos;autogen&apos;,
+      duration: &apos;0s&apos;,
+      shardGroupDuration: &apos;168h0m0s&apos;,
+      replicaN: 1,
+      default: true,
+    },
+    {
+      name: &apos;7d&apos;,
+      duration: &apos;168h0m0s&apos;,
+      shardGroupDuration: &apos;24h0m0s&apos;,
+      replicaN: 1,
+      default: false,
+    },
+  ])
+})</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-writeMeasurement">
     <span class="access" data-ice="access">public</span>
     
@@ -2477,7 +2963,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber579">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber692">source</a></span></span>
     </span>
   </h3>
 
@@ -2569,7 +3055,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber525">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber638">source</a></span></span>
     </span>
   </h3>
 

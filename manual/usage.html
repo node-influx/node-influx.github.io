@@ -43,6 +43,11 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#a-moment-for-times" data-ice="link">A Moment for Times</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#contributing" data-ice="link">Contributing</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#how-to-prepare" data-ice="link">How to prepare</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#make-changes" data-ice="link">Make Changes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#submit-changes" data-ice="link">Submit Changes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#additional-resources" data-ice="link">Additional Resources</a></li>
 </ul>
   </div>
 <div data-ice="manual" data-toc-name="reference">
@@ -90,10 +95,10 @@
 <li>Dates being used when writing points on the line protocol, via <code>.writePoints()</code> or <code>.writeMeasurement()</code></li>
 </ul>
 <p>To deal with this, we introduce a new type called <strong>NanoDate</strong>. These behave just like the normal <code>Date</code> type, but have two additional methods: <code>.getNanoTime()</code> and <code>.getNanoISOString()</code>. The behave just like the normal <code>.getTime()</code> and <code>getISOString</code> methods, but they both return nanosecond-precision strings instead of millisecond-precision numbers and timestamps.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">expect(myNanoDate.getTime()).to.equal(1475985480231);
-expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035677&apos;);
-expect(myNanoDate.toISOString()).to.equal(&apos;2016-10-09T03:58:00.231Z&apos;);
-expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;);</code>
+<pre><code class="lang-js"><code class="source-code prettyprint">expect(myNanoDate.getTime()).to.equal(1475985480231)
+expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035677&apos;)
+expect(myNanoDate.toISOString()).to.equal(&apos;2016-10-09T03:58:00.231Z&apos;)
+expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;)</code>
 </code></pre>
 <p>By default, <strong>all times returned from Influx queries are parsed to NanoDates</strong>. For example, you can do something like the following:</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">influx.query(&apos;select * from perf&apos;).then(results =&gt; {
@@ -102,10 +107,10 @@ expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.23103567
 </code></pre>
 <p>The exception is if you manually ask for a precision of <code>ms</code> or coarser in the <code>options</code> parameter of <a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-query"><code>Influx#query</code> method</a>. Then, we parse your times into normal Dates.</p>
 <p>When writing data to Influx, <strong>all write methods accept NanoDates in all situations</strong>. This means if you select data from Influx and want to update a data point, you can pass that time right back into the <code>write</code> method. (Remember, data within series are unique by their time!) If you have a nanosecond timestamp from some external source, you can convert it to a NanoDate using <a href="https://node-influx.github.io/function/index.html#static-function-toNanoDate"><code>toNanoDate</code></a>.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import { toNanoDate } from &apos;influx&apos;;
+<pre><code class="lang-js"><code class="source-code prettyprint">import { toNanoDate } from &apos;influx&apos;
 
 const myNanoDate = toNanoDate(&apos;1475985480231035600&apos;)
-expect(myNanoDate.getTime()).to.equal(1475985480231);
+expect(myNanoDate.getTime()).to.equal(1475985480231)
 expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035600&apos;)
 expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035600Z&apos;)</code>
 </code></pre>
@@ -114,6 +119,47 @@ expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.23103560
 </code></pre>
 <hr>
 <p>Anything unclear? Have some remaining questions or find a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
+<h1 id="contributing">Contributing</h1>
+<p>We&apos;d like to encourage you to contribute to the repository. You can do this by making an <a href="https://github.com/node-influx/node-influx/issues">issue ticket</a> or, even better, submitting a patch via a pull request.</p>
+<p>We try to make it as easy as possible for you but there are a few things to consider when contributing. The following guidelines for contribution should be followed if you want to submit a pull request:</p>
+<h2 id="how-to-prepare">How to prepare</h2>
+<ul>
+<li>You need a <a href="https://github.com/signup/free">GitHub account</a></li>
+<li>Submit an <a href="https://github.com/node-influx/node-influx/issues">issue ticket</a> for your issue if there is no one yet.<ul>
+<li>Describe the issue and include steps to reproduce if it&apos;s a bug.</li>
+<li>Ensure to mention the earliest version that you know is affected.</li>
+</ul>
+</li>
+<li>If you are able and want to fix this, fork the repository on GitHub</li>
+</ul>
+<h2 id="make-changes">Make Changes</h2>
+<ul>
+<li>In your forked repository, create a topic branch for your upcoming patch. (e.g. <code>feature--autoplay</code> or <code>bugfix--ios-crash</code>)<ul>
+<li>Usually this is based on the master branch.</li>
+<li>Create a branch based on master; <code>git branch
+fix/master/my_contribution master</code> then checkout the new branch with <code>git
+checkout fix/master/my_contribution</code>.  Please avoid working directly on the <code>master</code> branch.</li>
+</ul>
+</li>
+<li>Make sure you follow the established coding style. You can run <code>npm run test:lint</code> to verify you&apos;re all set.</li>
+<li>Make use of the <code>.editorconfig</code>-file if provided with the repository.</li>
+<li>Make commits of logical units and describe them properly, documenting anything new that you add.</li>
+<li>If possible, submit tests to your patch / new feature so it can be tested easily.</li>
+<li>Assure nothing is broken by running all the tests via <code>npm test</code>.</li>
+</ul>
+<h2 id="submit-changes">Submit Changes</h2>
+<ul>
+<li>Push your changes to a topic branch in your fork of the repository.</li>
+<li>Open a pull request to the this repository and choose the right original branch you want to patch.</li>
+<li>If not done in commit messages (which you really should do) please reference and update your issue with the code changes. But <em>please do not close the issue yourself</em>.</li>
+<li>We&apos;ll review your changes and respond soon, usually within a day!</li>
+</ul>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="http://help.github.com/">General GitHub documentation</a></li>
+<li><a href="http://help.github.com/send-pull-requests/">GitHub pull request documentation</a></li>
+<li><a href="https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md">Read the Issue Guidelines by @necolas</a> for more details</li>
+</ul>
 </div>
 </div>
 </div>

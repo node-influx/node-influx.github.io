@@ -66,7 +66,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#node-influx-changelog" data-ice="link">node-influx Changelog</a></li>
-<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#version-5-0-0-ongoing-" data-ice="link">Version 5.0.0 (Ongoing)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-15-5-0-0-alpha-1" data-ice="link">2016-10-15, 5.0.0-alpha.1</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-06-version-4-2-3" data-ice="link">2016-10-06, Version 4.2.3</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-09-15-version-4-2-2" data-ice="link">2016-09-15, Version 4.2.2</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-05-05-version-4-2-0" data-ice="link">2016-05-05, Version 4.2.0</a></li>
@@ -82,13 +82,14 @@
     <span data-ice="title">Changelog</span>
   </div>
   <div data-ice="content"><h1 id="node-influx-changelog">node-influx Changelog</h1>
-<h2 id="version-5-0-0-ongoing-">Version 5.0.0 (Ongoing)</h2>
+<h2 id="2016-10-15-5-0-0-alpha-1">2016-10-15, 5.0.0-alpha.1</h2>
 <p>5.0.0 is a port/rewrite of node-influx to TypeScript, aiming to provide a stronger foundation while fixing many of the pain points and bugs which currently exist. These include issues with escaping data passed to node-influx, date handling difficulties, quirks in the connection, and the lack of complete unit tests. We also take the opportunity to build a more modern, promise-based API. Concretely, here&apos;s what we&apos;ve got for you:</p>
 <ul>
 <li>A modern promise based API;</li>
 <li>Order-of-magnitude performance increases (varying per situation);</li>
 <li>A more consistent API with predictable and consistent escaping;</li>
 <li>The ability to correctly and accurately <a href="https://node-influx.github.io/manual/usage.html#a-moment-for-times">deal with times</a>;</li>
+<li>The ability to correctly and accurately <a href="https://node-influx.github.io/typedef/index.html#static-typedef-SchemaOptions">deal with all data types</a>;</li>
 <li>Fix some methods plain not working;</li>
 <li>Isomorphism, allowing the adapter to work in both Node and the browser;</li>
 <li>Less weird connection pool failures;</li>
@@ -102,6 +103,7 @@
 <li><strong>breaking:</strong> the point structure for <code>.write*</code> methods has changed</li>
 <li><strong>breaking:</strong> the <code>.writePoint</code> method has been removed</li>
 <li><strong>breaking:</strong> <code>.writeSeries</code> as been more appropriately renamed <code>writeMeasurement</code></li>
+<li><strong>breaking:</strong> write methods now write in nanosecond precision by default</li>
 <li><strong>breaking:</strong> <code>.getSeriesNames</code> has been renamed <code>.getSeries</code></li>
 <li><strong>breaking:</strong> the old <code>.getSeries</code> method has been removed in favor of the behaviour exhibited by <code>getSeriesNames</code></li>
 <li><strong>breaking:</strong> the InfluxDB client must now be invoked as <code>new InfluxDB</code></li>

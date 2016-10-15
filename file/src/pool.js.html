@@ -200,7 +200,7 @@ export class Pool {
      */
     ping(timeout) {
         let todo = [];
-        this.hostsAvailable.forEach(host =&gt; {
+        [...this.hostsAvailable, ...this.hostsDisabled].forEach(host =&gt; {
             const start = Date.now();
             const url = host.url;
             return todo.push(new Promise(resolve =&gt; {

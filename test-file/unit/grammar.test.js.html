@@ -155,6 +155,13 @@ describe(&quot;grammar&quot;, () =&gt; {
             expect(grammar.castTimestamp(d, &quot;m&quot;)).to.equal(&apos;24599758&apos;);
             expect(grammar.castTimestamp(d, &quot;h&quot;)).to.equal(&apos;409995&apos;);
         });
+        it(&quot;accepts strings, numbers liternally&quot;, () =&gt; {
+            expect(grammar.castTimestamp(&apos;1475985480231035600&apos;, &apos;s&apos;)).to.equal(&apos;1475985480231035600&apos;);
+            expect(grammar.castTimestamp(1475985480231, &apos;s&apos;)).to.equal(&apos;1475985480231&apos;);
+        });
+        it(&quot;throws on non-numeric strings&quot;, () =&gt; {
+            expect(() =&gt; grammar.castTimestamp(&apos;wut&apos;, &apos;s&apos;)).to.throw(/numeric value/);
+        });
     });
 });
 </code></pre>

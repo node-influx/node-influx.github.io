@@ -1,0 +1,57 @@
+{
+  "name": "influx",
+  "version": "5.0.0-alpha.1",
+  "description": "InfluxDB Client",
+  "main": "./lib/src/index.js",
+  "typings": "./lib/src/index",
+  "scripts": {
+    "clean": "rimraf coverage doc lib",
+    "test": "npm-run-all --parallel test:lint test:unit",
+    "test:lint": "tslint 'src/**/*.ts'",
+    "test:unit": "mocha --compilers ts:ts-node/register test/unit/*.test.ts",
+    "test:cover": "npm run build:dist && istanbul cover _mocha -- lib/test/unit/*.test.js && opn coverage/lcov-report/index.html",
+    "test:travis": "npm-run-all --parallel test:lint build:dist && istanbul cover _mocha --report lcovonly -- lib/test/unit/*.test.js",
+    "build:dist": "npm run clean && tsc && cp -R test/fixture lib/test",
+    "build:doc": "npm run clean && tsc -m es2015 --moduleResolution node && esdoc -c esdoc.json",
+    "prepublish": "npm run clean && tsc -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/node-influx/node-influx.git"
+  },
+  "keywords": [
+    "influx",
+    "influxdb",
+    "time",
+    "series",
+    "client",
+    "db"
+  ],
+  "contributors": [
+    "Ben Evans <ben@bensbit.co.uk> (http://bensbit.co.uk)",
+    "Connor Peet <connor@peet.io>",
+    "Steffen Konerow <steffen@nrg-media.de> (http://www.nrg-media.de)"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/async": "^2.0.32",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.38",
+    "@types/sinon": "^1.16.31",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.1",
+    "esdoc": "^0.4.8",
+    "istanbul": "^0.4.3",
+    "lodash": "^4.16.2",
+    "mocha": "^3.1.0",
+    "node-fetch": "^1.6.3",
+    "npm-run-all": "^3.1.0",
+    "opn-cli": "^3.1.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
+    "ts-node": "^1.3.0",
+    "tslint": "^3.11.0",
+    "typescript": "^2.0.0"
+  }
+}

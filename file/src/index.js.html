@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -79,7 +80,7 @@ const defaultOptions = Object.freeze({
     username: &quot;root&quot;,
 });
 export * from &quot;./builder&quot;;
-export { FieldType, Precision, Raw, toNanoDate } from &quot;./grammar&quot;;
+export { FieldType, Precision, Raw, escape, toNanoDate } from &quot;./grammar&quot;;
 export { ResultError } from &quot;./results&quot;;
 /**
  * Parses the URL out into into a ClusterConfig object
@@ -118,7 +119,7 @@ function defaults(target, ...srcs) {
  * This is a &quot;driver-level&quot; module, not a a full-fleged ORM or ODM; you run
  * queries directly by calling methods on this class.
  *
- * Please check out some out [the tutorials](https://node-influx.github.io/manual/tutorial.html)
+ * Please check out some of [the tutorials](https://node-influx.github.io/manual/tutorial.html)
  * if you want help getting started!
  *
  * @example
@@ -251,7 +252,7 @@ export class InfluxDB {
             this.pool.addHost(`${host.protocol}://${host.host}:${host.port}`);
         });
         this.options.schema.forEach(schema =&gt; {
-            const db = schema.database || this.options.database;
+            const db = schema.database = schema.database || this.options.database;
             if (!db) {
                 throw new Error(`Schema ${schema.measurement} doesn&apos;t have a database specified,` +
                     &quot;and no default database is provided!&quot;);
@@ -293,7 +294,7 @@ export class InfluxDB {
      * influx.getMeasurements().then(names =&gt;
      *   console.log(&apos;My database names are: &apos; + names.join(&apos;, &apos;)));
      */
-    getDatabaseNames(data) {
+    getDatabaseNames() {
         return this.pool.json(this.getQueryOpts({ q: &quot;show databases&quot; }))
             .then(res =&gt; parseSingle(res).map(r =&gt; r.name));
     }
@@ -378,11 +379,13 @@ export class InfluxDB {
      *
      * influx.dropSeries({
      *   measurement: m =&gt; m.name(&apos;cpu&apos;).policy(&apos;autogen&apos;),
-     *   where: e =&gt; e.tag(&apos;cpu&apos;).equals.value(&apos;cpu8&apos;)
+     *   where: e =&gt; e.tag(&apos;cpu&apos;).equals.value(&apos;cpu8&apos;),
+     *   database: &apos;my_db&apos;
      * })
      * // DROP SERIES FROM &quot;autogen&quot;.&quot;cpu&quot; WHERE &quot;cpu&quot; = &apos;cpu8&apos;
      */
     dropSeries(options) {
+        const db = &quot;database&quot; in options ? options.database : this.defaultDB();
         let q = &quot;drop series&quot;;
         if (&quot;measurement&quot; in options) {
             q += &quot; from &quot; + b.parseMeasurement(options);
@@ -390,7 +393,7 @@ export class InfluxDB {
         if (&quot;where&quot; in options) {
             q += &quot; where &quot; + b.parseWhere(options);
         }
-        return this.pool.json(this.getQueryOpts({ q }, &quot;POST&quot;)).then(assertNoErrors);
+        return this.pool.json(this.getQueryOpts({ db, q }, &quot;POST&quot;)).then(assertNoErrors);
     }
     /**
      * Returns a list of users on the Influx database.
@@ -528,6 +531,19 @@ export class InfluxDB {
         }, &quot;POST&quot;)).then(assertNoErrors);
     }
     /**
+     * Returns a list of continous queries in the database.
+     * @param {String} [database] If not provided, uses the default database.
+     * @returns {Promise&lt;void&gt;}
+     * @example
+     * influx.showContinousQueries()
+     */
+    showContinousQueries(database = this.defaultDB()) {
+        return this.pool.json(this.getQueryOpts({
+            db: database,
+            q: &quot;show continuous queries&quot;,
+        })).then(parseSingle);
+    }
+    /**
      * Creates a continuous query in a database
      * @param {String} name The query name
      * @param {String} [database] If not provided, uses the default database.
@@ -599,6 +615,24 @@ export class InfluxDB {
             + ` duration ${options.duration} replication ${options.replication}`
             + (options.default ? &quot; default&quot; : &quot;&quot;);
         return this.pool.json(this.getQueryOpts({ q }, &quot;POST&quot;)).then(assertNoErrors);
+    }
+    /**
+     * Deletes a retention policy and associated data. Note that the data will
+     * not be immediately destroyed, and will hang around until Influx&apos;s
+     * bi-hourly cron.
+     *
+     * @param {String} name The retention policy name
+     * @param {String} [database] Database name that the policy lives in,
+     *     uses the default database if not provided.
+     * @returns {Promise&lt;void&gt;}
+     * @example
+     * influx.dropRetentionPolicy(&apos;7d&apos;)
+     */
+    dropRetentionPolicy(name, database = this.defaultDB()) {
+        return this.pool.json(this.getQueryOpts({
+            q: `drop retention policy ${grammar.escape.quoted(name)} `
+                + `on ${grammar.escape.quoted(database)}`,
+        }, &quot;POST&quot;)).then(assertNoErrors);
     }
     /**
      * Shows retention policies on the database
@@ -773,7 +807,14 @@ export class InfluxDB {
         if (Array.isArray(query)) {
             query = query.join(&quot;;&quot;);
         }
-        return this.queryRaw(query, options).then(res =&gt; parse(res, options.epoch));
+        // If the consumer asked explicitly for nanosecond precision parsing,
+        // remove that to cause Influx to give us ISO dates that
+        // we can parse correctly.
+        if (options.precision === &quot;n&quot;) {
+            options = Object.assign({}, options); // avoid mutating
+            delete options.precision;
+        }
+        return this.queryRaw(query, options).then(res =&gt; parse(res, options.precision));
     }
     /**
      * queryRaw functions similarly to .query() but it does no fancy
@@ -789,10 +830,10 @@ export class InfluxDB {
      * })
      */
     queryRaw(query, options = {}) {
-        const { database = this.defaultDB(), epoch, retentionPolicy, } = options;
+        const { database = this.defaultDB(), retentionPolicy, } = options;
         return this.pool.json(this.getQueryOpts({
             db: database,
-            epoch,
+            epoch: options.precision,
             q: query,
             rp: retentionPolicy,
         }));

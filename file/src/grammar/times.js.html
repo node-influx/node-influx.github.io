@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -161,7 +162,7 @@ export const Precision = Object.freeze({
     Nanoseconds: &quot;n&quot;,
     Seconds: &quot;s&quot;,
 });
-class MillisecondDateManipulator {
+export class MillisecondDateManipulator {
     format(date) {
         return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
             + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
@@ -246,7 +247,7 @@ const nanoDateMethods = {
         return `${base}${this._nanoTime.slice(-9)}Z`;
     },
 };
-class NanosecondsDateManipulator {
+export class NanosecondsDateManipulator {
     format(date) {
         return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
             + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
@@ -295,14 +296,18 @@ class NanosecondsDateManipulator {
             case &quot;u&quot;:
                 timestamp *= 1000;
             case &quot;n&quot;:
-                return toNanoDate(String(timestamp));
+                const date = new Date(timestamp / nsPer.ms);
+                date._nanoTime = String(timestamp);
+                date.getNanoTime = nanoDateMethods.getNanoTimeFromStamp;
+                date.toNanoISOString = nanoDateMethods.toNanoISOStringFromStamp;
+                return date;
             default:
                 throw new Error(`Unknown precision &quot;${precision}&quot;!`);
         }
     }
 }
-const milliManipulator = new MillisecondDateManipulator();
-const nanoManipulator = new NanosecondsDateManipulator();
+export const milliManipulator = new MillisecondDateManipulator();
+export const nanoManipulator = new NanosecondsDateManipulator();
 /**
  * formatDate converts the Date instance to Influx&apos;s date query format.
  * @private
@@ -336,14 +341,11 @@ export function dateToTime(date, precision) {
  * @private
  */
 export function isoOrTimeToDate(stamp, precision = &quot;n&quot;) {
-    const manipulator = !precision || precision === &quot;u&quot; || precision === &quot;n&quot;
-        ? nanoManipulator
-        : milliManipulator;
     if (typeof stamp === &quot;string&quot;) {
-        return manipulator.isoToDate(stamp);
+        return nanoManipulator.isoToDate(stamp);
     }
     else {
-        return manipulator.timetoDate(stamp, precision);
+        return nanoManipulator.timetoDate(stamp, precision);
     }
 }
 ;

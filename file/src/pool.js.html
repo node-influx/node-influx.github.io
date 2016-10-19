@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -94,8 +95,7 @@ export class RequestError extends Error {
     }
     static from(req, res, callback) {
         let body = &quot;&quot;;
-        res.setEncoding(&quot;utf8&quot;);
-        res.on(&quot;data&quot;, str =&gt; body = body + str);
+        res.on(&quot;data&quot;, str =&gt; body = body + str.toString());
         res.on(&quot;end&quot;, () =&gt; callback(new RequestError(req, res, body)));
     }
 }
@@ -173,8 +173,7 @@ export class Pool {
                     return reject(err);
                 }
                 let output = &quot;&quot;;
-                res.setEncoding(&quot;utf8&quot;);
-                res.on(&quot;data&quot;, str =&gt; { output = output + str; });
+                res.on(&quot;data&quot;, str =&gt; output = output + str.toString());
                 res.on(&quot;end&quot;, () =&gt; resolve(output));
             });
         });
@@ -288,11 +287,15 @@ export class Pool {
             }
         });
         // Handle timeouts:
-        req.setTimeout(this.timeout, () =&gt; {
-            if (shouldHandle()) {
-                this.handleRequestError(new ServiceNotAvailableError(&quot;Request timed out&quot;), host, options, callback);
-            }
-        });
+        // We wrap this in a conditional pending better browser support. See:
+        // https://github.com/node-influx/node-influx/issues/221
+        if (typeof req.setTimeout === &quot;function&quot;) {
+            req.setTimeout(this.timeout, () =&gt; {
+                if (shouldHandle()) {
+                    this.handleRequestError(new ServiceNotAvailableError(&quot;Request timed out&quot;), host, options, callback);
+                }
+            });
+        }
         // Write out the body:
         if (options.body) {
             req.write(options.body);

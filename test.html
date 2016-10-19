@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -320,47 +321,47 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="0">
-  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber5"><p>influxdb</p>
+  <td data-ice="testDescription" style="padding-left: 10px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber6"><p>influxdb</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
-  <td data-ice="testCount">54</td>
+  <td data-ice="testCount">60</td>
 </tr>
 
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber6"><p>constructor</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber7"><p>constructor</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">5</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber7"><p>uses default options</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber8"><p>uses default options</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber21"><p>parses dsns</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber22"><p>parses dsns</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber35"><p>parses single configs</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber36"><p>parses single configs</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber49"><p>parses cluster configs</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber50"><p>parses cluster configs</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber62"><p>parses parses schema</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber63"><p>parses parses schema</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -368,80 +369,86 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="1">
-  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber95"><p>methods</p>
+  <td data-ice="testDescription" style="padding-left: 20px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber96"><p>methods</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
-  <td data-ice="testCount">49</td>
+  <td data-ice="testCount">55</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber162"><p>.createDatabase()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber163"><p>.createDatabase()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber168"><p>.dropDatabase()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber169"><p>.dropDatabase()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber174"><p>.getDatabaseNames()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber175"><p>.getDatabaseNames()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber180"><p>.getMeasurements()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber181"><p>.getMeasurements()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber190"><p>.getSeries() from all</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber191"><p>.getSeries() from all</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber225"><p>.getSeries() from single</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber226"><p>.getSeries() from single</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber246"><p>.dropMeasurement()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber247"><p>.dropMeasurement()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber278"><p>.getUsers()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber280"><p>.getUsers()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber329"><p>.grantAdminPrivilege()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber331"><p>.grantAdminPrivilege()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber333"><p>.revokeAdminPrivilege()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber335"><p>.revokeAdminPrivilege()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber337"><p>.dropUser()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber339"><p>.dropUser()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber615"><p>shows retention policies</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber655"><p>drops retention policies</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/unit/influx.test.js.html#lineNumber660"><p>shows retention policies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -449,38 +456,38 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber253"><p>.dropSeries()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber254"><p>.dropSeries()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">5</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber254"><p>drops with only from clause by string</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber256"><p>drops with only from clause by string</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber258"><p>drops with only from clause by builder</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber260"><p>drops with only from clause by builder</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber262"><p>drops with only where clause by string</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber264"><p>drops with only where clause by string</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber266"><p>drops with only where clause by builder</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber268"><p>drops with only where clause by builder</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber270"><p>drops with both</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber272"><p>drops with both</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -488,26 +495,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber287"><p>.createUser()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber289"><p>.createUser()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber288"><p>works with admin specified == true</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber290"><p>works with admin specified == true</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber292"><p>works with admin specified == false</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber294"><p>works with admin specified == false</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber296"><p>works with admin unspecified</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber298"><p>works with admin unspecified</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -515,26 +522,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber301"><p>.grantPrivilege()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber303"><p>.grantPrivilege()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber302"><p>queries correctly</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber304"><p>queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber306"><p>throws if DB unspecified</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber308"><p>throws if DB unspecified</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber309"><p>fills in default DB</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber311"><p>fills in default DB</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -542,26 +549,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber315"><p>.revokePrivilege()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber317"><p>.revokePrivilege()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber316"><p>queries correctly</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber318"><p>queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber320"><p>throws if DB unspecified</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber322"><p>throws if DB unspecified</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber323"><p>fills in default DB</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber325"><p>fills in default DB</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -569,26 +576,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber341"><p>.createContinuousQuery()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber343"><p>.createContinuousQuery()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber342"><p>queries correctly</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber344"><p>queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber346"><p>throws if DB unspecified</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber348"><p>throws if DB unspecified</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber349"><p>fills in default DB</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber351"><p>fills in default DB</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -596,26 +603,26 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber355"><p>.dropContinuousQuery()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber357"><p>.dropContinuousQuery()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">3</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber356"><p>queries correctly</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber358"><p>queries correctly</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber360"><p>throws if DB unspecified</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber362"><p>throws if DB unspecified</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber363"><p>fills in default DB</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber365"><p>fills in default DB</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -623,68 +630,95 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber369"><p>.writePoints()</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber371"><p>.showContinousQueries()</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td data-ice="testCount">3</td>
+</tr>
+
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber372"><p>queries correctly</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber376"><p>throws if DB unspecified</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber379"><p>fills in default DB</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+
+
+<tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber385"><p>.writePoints()</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">10</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber370"><p>writes with all options specified without a schema</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber386"><p>writes with all options specified without a schema</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber389"><p>writes using default options without a schema</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber405"><p>writes using default options without a schema</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber405"><p>uses a schema to coerce</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber421"><p>uses a schema to coerce</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber424"><p>throws on schema violations</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber440"><p>throws on schema violations</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber451"><p>handles lack of tags</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber467"><p>handles lack of tags</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber464"><p>handles lack of fields</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber480"><p>handles lack of fields</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber477"><p>handles multiple tags</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber493"><p>handles multiple tags</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber490"><p>writes with the .writeMeasurement method</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber506"><p>writes with the .writeMeasurement method</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber505"><p>accepts nanoseconds (as ms)</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber521"><p>accepts nanoseconds (as ms)</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber520"><p>accepts timestamp overriding</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber536"><p>accepts timestamp overriding</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -692,26 +726,38 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber536"><p>.write methods</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber552"><p>.query</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
-  <td data-ice="testCount">3</td>
+  <td data-ice="testCount">5</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber538"><p>runs raw queries</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber554"><p>runs raw queries</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber549"><p>parses query output</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber565"><p>parses query output</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber563"><p>selects from multiple</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber579"><p>selects from multiple</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber588"><p>passes in options</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+  <td></td>
+</tr>
+<tr data-ice="testIt" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber600"><p>rewrites nanosecond precisions</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -719,20 +765,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber573"><p>.createRetentionPolicy</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber613"><p>.createRetentionPolicy</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber575"><p>creates non-default policies</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber615"><p>creates non-default policies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber584"><p>creates default policies</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber624"><p>creates default policies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
@@ -740,20 +786,20 @@
 
 
 <tr class="test-describe" data-ice="testDescribe" style="display: none;" data-test-depth="2">
-  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber594"><p>.alterRetentionPolicy</p>
+  <td data-ice="testDescription" style="padding-left: 30px"><span class="toggle closed"></span><span><a href="test-file/unit/influx.test.js.html#lineNumber634"><p>.alterRetentionPolicy</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td data-ice="testCount">2</td>
 </tr>
 
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber596"><p>creates non-default policies</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber636"><p>creates non-default policies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>
 </tr>
 <tr data-ice="testIt" style="display: none;" data-test-depth="3">
-  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber605"><p>creates default policies</p>
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/unit/influx.test.js.html#lineNumber645"><p>creates default policies</p>
 </a></span></td>
   <td data-ice="testTarget" class="test-target">-</td>
   <td></td>

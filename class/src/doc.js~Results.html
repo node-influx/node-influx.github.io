@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -60,13 +61,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Results} from &apos;<span><a href="file/src/doc.js.html#lineNumber143">influx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Results} from &apos;<span><a href="file/src/doc.js.html#lineNumber144">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/doc.js.html#lineNumber143">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/doc.js.html#lineNumber144">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -89,7 +90,8 @@
   <div class="description" data-ice="description"><p>Results are returned from the .query method. It marshals the raw Influx
 results into a more palatable, JavaScript-y structure. All query results
 are marshalled into a single, flat arrays, and methods are provided to
-example grouped results as necessary.</p>
+example grouped results as necessary. The <code>time</code> column, if included, is
+converted into a <span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></p>
 </div>
 
   
@@ -199,7 +201,7 @@ returned from Influx originally.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber169">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber170">source</a></span></span>
     </span>
   </h3>
 
@@ -289,7 +291,7 @@ influx.query(&apos;select * from perf group by host&apos;).then(results =&gt; {
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber198">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber199">source</a></span></span>
     </span>
   </h3>
 

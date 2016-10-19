@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -62,7 +63,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">unit/influx.test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 import { InfluxDB, FieldType, toNanoDate } from &apos;../../src&apos;;
-import { expect, dbFixture } from &quot;./helpers&quot;;
+import { dbFixture } from &quot;./helpers&quot;;
+import { expect } from &quot;chai&quot;;
 const sinon = require(&apos;sinon&apos;);
 describe(&apos;influxdb&apos;, () =&gt; {
     describe(&apos;constructor&apos;, () =&gt; {
@@ -131,7 +133,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
                     }],
                 hosts: [{ host: &apos;192.168.0.1&apos; }],
             }));
-            expect(client.schema.my_db.my_measurement).to.be.defined;
+            expect(client.schema.my_db.my_measurement).to.not.be.undefined;
             client = (new InfluxDB({
                 schema: [{
                         measurement: &quot;my_measurement&quot;,
@@ -141,7 +143,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
                 database: &quot;my_db&quot;,
                 hosts: [{ host: &apos;192.168.0.1&apos; }],
             }));
-            expect(client.schema.my_db.my_measurement).to.be.defined;
+            expect(client.schema.my_db.my_measurement).to.not.be.undefined;
             expect(() =&gt; {
                 new InfluxDB({
                     schema: [{
@@ -313,24 +315,25 @@ describe(&apos;influxdb&apos;, () =&gt; {
             return influx.dropMeasurement(&apos;series_1&apos;, &apos;my_db&apos;);
         });
         describe(&apos;.dropSeries()&apos;, () =&gt; {
+            beforeEach(() =&gt; setDefaultDB(&apos;my_db&apos;));
             it(&apos;drops with only from clause by string&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot;&apos;);
+                expectQuery(&apos;json&apos;, { db: &apos;my_db&apos;, q: &apos;drop series from &quot;series_0&quot;&apos; });
                 influx.dropSeries({ measurement: &apos;&quot;series_0&quot;&apos; });
             });
             it(&apos;drops with only from clause by builder&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot;&apos;);
+                expectQuery(&apos;json&apos;, { db: &apos;my_db&apos;, q: &apos;drop series from &quot;series_0&quot;&apos; });
                 influx.dropSeries({ measurement: m =&gt; m.name(&apos;series_0&apos;) });
             });
             it(&apos;drops with only where clause by string&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;drop series where &quot;my_tag&quot; = 1&apos;);
+                expectQuery(&apos;json&apos;, { db: &apos;my_db&apos;, q: &apos;drop series where &quot;my_tag&quot; = 1&apos; });
                 influx.dropSeries({ where: &apos;&quot;my_tag&quot; = 1&apos; });
             });
             it(&apos;drops with only where clause by builder&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;drop series where &quot;my_tag&quot; = 1&apos;);
+                expectQuery(&apos;json&apos;, { db: &apos;my_db&apos;, q: &apos;drop series where &quot;my_tag&quot; = 1&apos; });
                 influx.dropSeries({ where: e =&gt; e.tag(&apos;my_tag&apos;).equals.value(1) });
             });
             it(&apos;drops with both&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;drop series from &quot;series_0&quot; where &quot;my_tag&quot; = 1&apos;);
+                expectQuery(&apos;json&apos;, { db: &apos;my_db&apos;, q: &apos;drop series from &quot;series_0&quot; where &quot;my_tag&quot; = 1&apos; });
                 influx.dropSeries({
                     measurement: m =&gt; m.name(&apos;series_0&apos;),
                     where: e =&gt; e.tag(&apos;my_tag&apos;).equals.value(1)
@@ -426,6 +429,20 @@ describe(&apos;influxdb&apos;, () =&gt; {
                 setDefaultDB(&apos;my_&quot;_db&apos;);
                 expectQuery(&apos;json&apos;, &apos;drop continuous query &quot;my_\\&quot;q&quot; on &quot;my_\\&quot;_db&quot;&apos;);
                 return influx.dropContinuousQuery(&apos;my_&quot;q&apos;);
+            });
+        });
+        describe(&apos;.showContinousQueries()&apos;, () =&gt; {
+            it(&apos;queries correctly&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, { q: &apos;show continuous queries&apos;, db: &apos;my_db&apos; }, &apos;GET&apos;);
+                return influx.showContinousQueries(&apos;my_db&apos;);
+            });
+            it(&apos;throws if DB unspecified&apos;, () =&gt; {
+                expect(() =&gt; influx.showContinousQueries()).to.throw(/default database/);
+            });
+            it(&apos;fills in default DB&apos;, () =&gt; {
+                setDefaultDB(&apos;my_db&apos;);
+                expectQuery(&apos;json&apos;, { q: &apos;show continuous queries&apos;, db: &apos;my_db&apos; }, &apos;GET&apos;);
+                return influx.showContinousQueries();
             });
         });
         describe(&apos;.writePoints()&apos;, () =&gt; {
@@ -595,7 +612,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
                 ], { precision: &apos;ms&apos; });
             });
         });
-        describe(&apos;.write methods&apos;, () =&gt; {
+        describe(&apos;.query&apos;, () =&gt; {
             beforeEach(() =&gt; setDefaultDB(&apos;my_db&apos;));
             it(&apos;runs raw queries&apos;, () =&gt; {
                 expectQuery(&apos;json&apos;, {
@@ -630,6 +647,30 @@ describe(&apos;influxdb&apos;, () =&gt; {
                     db: &apos;my_db&apos;,
                 }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
                 return influx.query([&apos;select * from series_0&apos;, &apos;select * from series_1&apos;]);
+            });
+            it(&apos;passes in options&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, {
+                    q: &apos;select * from series_0&apos;,
+                    epoch: &apos;ms&apos;,
+                    rp: &apos;asdf&apos;,
+                    db: &apos;my_db&apos;,
+                }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
+                return influx.query([&apos;select * from series_0&apos;], {
+                    precision: &apos;ms&apos;,
+                    retentionPolicy: &apos;asdf&apos;,
+                });
+            });
+            it(&apos;rewrites nanosecond precisions&apos;, () =&gt; {
+                expectQuery(&apos;json&apos;, {
+                    q: &apos;select * from series_0&apos;,
+                    epoch: undefined,
+                    rp: &apos;asdf&apos;,
+                    db: &apos;my_db&apos;,
+                }, &apos;GET&apos;, dbFixture(&apos;selectFromOne&apos;));
+                return influx.query([&apos;select * from series_0&apos;], {
+                    precision: &apos;n&apos;,
+                    retentionPolicy: &apos;asdf&apos;,
+                });
             });
         });
         describe(&apos;.createRetentionPolicy&apos;, () =&gt; {
@@ -673,6 +714,11 @@ describe(&apos;influxdb&apos;, () =&gt; {
                     default: true,
                 });
             });
+        });
+        it(&apos;drops retention policies&apos;, () =&gt; {
+            setDefaultDB(&apos;my_db&apos;);
+            expectQuery(&apos;json&apos;, &apos;drop retention policy &quot;7d\\&quot;&quot; on &quot;my_db&quot;&apos;);
+            return influx.dropRetentionPolicy(&apos;7d&quot;&apos;);
         });
         it(&apos;shows retention policies&apos;, () =&gt; {
             const data = dbFixture(&apos;showRetentionPolicies&apos;);

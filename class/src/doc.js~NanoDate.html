@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">ResultError | node-influx API Document</title>
+  <title data-ice="title">NanoDate | node-influx API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -61,23 +61,23 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ResultError} from &apos;<span><a href="file/src/results.js.html#lineNumber5">influx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {NanoDate} from &apos;<span><a href="file/src/doc.js.html#lineNumber290">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
-  <span data-ice="kind">class</span>
+  <span data-ice="kind">interface</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/results.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/doc.js.html#lineNumber290">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">ResultError</h1>
+  <h1 data-ice="name">NanoDate</h1>
 
   
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> &#x2192; ResultError</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span> &#x2192; NanoDate</div></div>
   
   
   
@@ -87,7 +87,9 @@
 
   
   
-  <div class="description" data-ice="description"><p>A ResultError is thrown when a query generates errorful results from Influx.</p>
+  <div class="description" data-ice="description"><p>A NanoDate is a type of Date that holds a nanosecond-precision unix
+timestamp. It&apos;s the default date type parsed in <span><a href="class/src/doc.js~Results.html">Results</a></span> and
+can be created manually using <span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span>.</p>
 </div>
 
   
@@ -103,6 +105,65 @@
 
 
 
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html#instance-method-getNanoTime">getNanoTime</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns the unix nanoseconds timestamp as a string.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html#instance-method-toNanoISOString">toNanoISOString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Formats the date as an ISO RFC3339 timestamp with nanosecond precision.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 
 
 
@@ -110,8 +171,127 @@
 
 
 
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getNanoTime">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getNanoTime</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber297">source</a></span></span>
+    </span>
+  </h3>
 
+  
+  
+  
+  <div data-ice="description"><p>Returns the unix nanoseconds timestamp as a string.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const date = toNanoDate(&apos;1475985480231035677&apos;)
+expect(date.getNanoTime()).to.equal(&apos;1475985480231035677&apos;)</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-toNanoISOString">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">toNanoISOString</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber305">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Formats the date as an ISO RFC3339 timestamp with nanosecond precision.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const date = toNanoDate(&apos;1475985480231035677&apos;)
+expect(date.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;)</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+</div>
 </div>
 
 <footer class="footer">

@@ -41,6 +41,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~BackoffStrategy.html">BackoffStrategy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~NanoDate.html">NanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PingStats">PingStats</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
@@ -61,7 +62,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">unit/grammar.test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as grammar from &quot;../../src/grammar&quot;;
-import { expect } from &quot;./helpers&quot;;
+import { expect } from &quot;chai&quot;;
 const escapeTables = require(&quot;../fixture/escapeTables.json&quot;);
 describe(&quot;grammar&quot;, () =&gt; {
     Object.keys(escapeTables).forEach(escaper =&gt; {
@@ -118,22 +119,22 @@ describe(&quot;grammar&quot;, () =&gt; {
         it(&apos;parses numeric `ms` timestamps&apos;, () =&gt; {
             const parsed = grammar.isoOrTimeToDate(1475985480231, &apos;ms&apos;);
             expect(parsed.getTime()).to.equal(1475985480231);
-            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480231000000&apos;);
         });
         it(&apos;parses numeric `s` timestamps&apos;, () =&gt; {
             const parsed = grammar.isoOrTimeToDate(1475985480, &apos;s&apos;);
             expect(parsed.getTime()).to.equal(1475985480000);
-            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480000000000&apos;);
         });
         it(&apos;parses numeric `m` timestamps&apos;, () =&gt; {
             const parsed = grammar.isoOrTimeToDate(24599758, &apos;m&apos;);
             expect(parsed.getTime()).to.equal(1475985480000);
-            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475985480000000000&apos;);
         });
         it(&apos;parses numeric `h` timestamps&apos;, () =&gt; {
             const parsed = grammar.isoOrTimeToDate(409995, &apos;h&apos;);
             expect(parsed.getTime()).to.equal(1475982000000);
-            expect(parsed).to.not.have.property(&apos;getNanoTime&apos;);
+            expect(parsed.getNanoTime()).to.equal(&apos;1475982000000000000&apos;);
         });
     });
     describe(&quot;timestamp casting&quot;, () =&gt; {

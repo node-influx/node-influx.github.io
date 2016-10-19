@@ -9,16 +9,16 @@
           "type": "Identifier",
           "name": "Results",
           "range": [
-            5729,
-            5736
+            5801,
+            5808
           ],
           "loc": {
             "start": {
-              "line": 143,
+              "line": 144,
               "column": 13
             },
             "end": {
-              "line": 143,
+              "line": 144,
               "column": 20
             }
           }
@@ -27,16 +27,16 @@
           "type": "Identifier",
           "name": "Array",
           "range": [
-            5745,
-            5750
+            5817,
+            5822
           ],
           "loc": {
             "start": {
-              "line": 143,
+              "line": 144,
               "column": 29
             },
             "end": {
-              "line": 143,
+              "line": 144,
               "column": 34
             }
           }
@@ -50,16 +50,16 @@
                 "type": "Identifier",
                 "name": "group",
                 "range": [
-                  6714,
-                  6719
+                  6786,
+                  6791
                 ],
                 "loc": {
                   "start": {
-                    "line": 169,
+                    "line": 170,
                     "column": 4
                   },
                   "end": {
-                    "line": 169,
+                    "line": 170,
                     "column": 9
                   }
                 }
@@ -72,16 +72,16 @@
                     "type": "Identifier",
                     "name": "matcher",
                     "range": [
-                      6720,
-                      6727
+                      6792,
+                      6799
                     ],
                     "loc": {
                       "start": {
-                        "line": 169,
+                        "line": 170,
                         "column": 10
                       },
                       "end": {
-                        "line": 169,
+                        "line": 170,
                         "column": 17
                       }
                     }
@@ -97,47 +97,47 @@
                         "value": null,
                         "raw": "null",
                         "range": [
-                          6738,
-                          6742
+                          6810,
+                          6814
                         ],
                         "loc": {
                           "start": {
-                            "line": 169,
+                            "line": 170,
                             "column": 28
                           },
                           "end": {
-                            "line": 169,
+                            "line": 170,
                             "column": 32
                           }
                         }
                       },
                       "range": [
-                        6731,
-                        6743
+                        6803,
+                        6815
                       ],
                       "loc": {
                         "start": {
-                          "line": 169,
+                          "line": 170,
                           "column": 21
                         },
                         "end": {
-                          "line": 169,
+                          "line": 170,
                           "column": 33
                         }
                       }
                     }
                   ],
                   "range": [
-                    6729,
-                    6745
+                    6801,
+                    6817
                   ],
                   "loc": {
                     "start": {
-                      "line": 169,
+                      "line": 170,
                       "column": 19
                     },
                     "end": {
-                      "line": 169,
+                      "line": 170,
                       "column": 35
                     }
                   }
@@ -145,16 +145,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  6719,
-                  6745
+                  6791,
+                  6817
                 ],
                 "loc": {
                   "start": {
-                    "line": 169,
+                    "line": 170,
                     "column": 9
                   },
                   "end": {
-                    "line": 169,
+                    "line": 170,
                     "column": 35
                   }
                 }
@@ -162,16 +162,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                6714,
-                6745
+                6786,
+                6817
               ],
               "loc": {
                 "start": {
-                  "line": 169,
+                  "line": 170,
                   "column": 4
                 },
                 "end": {
-                  "line": 169,
+                  "line": 170,
                   "column": 35
                 }
               },
@@ -180,16 +180,16 @@
                   "type": "Block",
                   "value": "*\n     * Group looks for and returns the first group in the results\n     * that matches the provided tags.\n     *\n     * If you've used lodash or underscore, we do something quite similar to\n     * their object matching: for every row in the results, if it contains tag\n     * values matching the requested object, we return it.\n     *\n     * @param  {Object.<String, String>} matcher\n     * @return {T[]}\n     * @example\n     * // Matching tags sets in queries:\n     * influx.query('select * from perf group by host').then(results => {\n     *   expect(results.group({ host: 'ares.peet.io'})).to.deep.equal([\n     *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n     *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n     *     // ...\n     *   ])\n     *\n     *   expect(results.group({ host: 'box1.example.com'})).to.deep.equal([\n     *     { host: 'box1.example.com', cpu: 0.54, mem: 8420 },\n     *     // ...\n     *   ])\n     * })\n     ",
                   "range": [
-                    5757,
-                    6709
+                    5829,
+                    6781
                   ],
                   "loc": {
                     "start": {
-                      "line": 144,
+                      "line": 145,
                       "column": 4
                     },
                     "end": {
-                      "line": 168,
+                      "line": 169,
                       "column": 7
                     }
                   }
@@ -200,16 +200,16 @@
                   "type": "Block",
                   "value": "*\n     * Returns the data grouped into nested arrays, similarly to how it was\n     * returned from Influx originally.\n     *\n     * @returns {Array<{ name: String, tags: Object.<String, String>, rows: T[] }>}\n     * @example\n     * influx.query('select * from perf group by host').then(results => {\n     *   expect(results.groups()).to.deep.equal([\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'ares.peet.io' },\n     *       rows: [\n     *         { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n     *         { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n     *         // ...\n     *       ]\n     *     }\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'box1.example.com' },\n     *       rows: [\n     *         { host: 'box1.example.com', cpu: 0.54, mem: 8420 },\n     *         // ...\n     *       ]\n     *     }\n     *   ])\n     * })\n     ",
                   "range": [
-                    6750,
-                    7639
+                    6822,
+                    7711
                   ],
                   "loc": {
                     "start": {
-                      "line": 170,
+                      "line": 171,
                       "column": 4
                     },
                     "end": {
-                      "line": 197,
+                      "line": 198,
                       "column": 7
                     }
                   }
@@ -223,16 +223,16 @@
                 "type": "Identifier",
                 "name": "groups",
                 "range": [
-                  7644,
-                  7650
+                  7716,
+                  7722
                 ],
                 "loc": {
                   "start": {
-                    "line": 198,
+                    "line": 199,
                     "column": 4
                   },
                   "end": {
-                    "line": 198,
+                    "line": 199,
                     "column": 10
                   }
                 }
@@ -251,47 +251,47 @@
                         "value": null,
                         "raw": "null",
                         "range": [
-                          7662,
-                          7666
+                          7734,
+                          7738
                         ],
                         "loc": {
                           "start": {
-                            "line": 198,
+                            "line": 199,
                             "column": 22
                           },
                           "end": {
-                            "line": 198,
+                            "line": 199,
                             "column": 26
                           }
                         }
                       },
                       "range": [
-                        7655,
-                        7667
+                        7727,
+                        7739
                       ],
                       "loc": {
                         "start": {
-                          "line": 198,
+                          "line": 199,
                           "column": 15
                         },
                         "end": {
-                          "line": 198,
+                          "line": 199,
                           "column": 27
                         }
                       }
                     }
                   ],
                   "range": [
-                    7653,
-                    7669
+                    7725,
+                    7741
                   ],
                   "loc": {
                     "start": {
-                      "line": 198,
+                      "line": 199,
                       "column": 13
                     },
                     "end": {
-                      "line": 198,
+                      "line": 199,
                       "column": 29
                     }
                   }
@@ -299,16 +299,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  7650,
-                  7669
+                  7722,
+                  7741
                 ],
                 "loc": {
                   "start": {
-                    "line": 198,
+                    "line": 199,
                     "column": 10
                   },
                   "end": {
-                    "line": 198,
+                    "line": 199,
                     "column": 29
                   }
                 }
@@ -316,16 +316,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                7644,
-                7669
+                7716,
+                7741
               ],
               "loc": {
                 "start": {
-                  "line": 198,
+                  "line": 199,
                   "column": 4
                 },
                 "end": {
-                  "line": 198,
+                  "line": 199,
                   "column": 29
                 }
               },
@@ -334,16 +334,16 @@
                   "type": "Block",
                   "value": "*\n     * Returns the data grouped into nested arrays, similarly to how it was\n     * returned from Influx originally.\n     *\n     * @returns {Array<{ name: String, tags: Object.<String, String>, rows: T[] }>}\n     * @example\n     * influx.query('select * from perf group by host').then(results => {\n     *   expect(results.groups()).to.deep.equal([\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'ares.peet.io' },\n     *       rows: [\n     *         { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n     *         { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n     *         // ...\n     *       ]\n     *     }\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'box1.example.com' },\n     *       rows: [\n     *         { host: 'box1.example.com', cpu: 0.54, mem: 8420 },\n     *         // ...\n     *       ]\n     *     }\n     *   ])\n     * })\n     ",
                   "range": [
-                    6750,
-                    7639
+                    6822,
+                    7711
                   ],
                   "loc": {
                     "start": {
-                      "line": 170,
+                      "line": 171,
                       "column": 4
                     },
                     "end": {
-                      "line": 197,
+                      "line": 198,
                       "column": 7
                     }
                   }
@@ -353,31 +353,31 @@
             }
           ],
           "range": [
-            5751,
-            7671
+            5823,
+            7743
           ],
           "loc": {
             "start": {
-              "line": 143,
+              "line": 144,
               "column": 35
             },
             "end": {
-              "line": 199,
+              "line": 200,
               "column": 1
             }
           }
         },
         "range": [
-          5723,
-          7671
+          5795,
+          7743
         ],
         "loc": {
           "start": {
-            "line": 143,
+            "line": 144,
             "column": 7
           },
           "end": {
-            "line": 199,
+            "line": 200,
             "column": 1
           }
         },
@@ -456,10 +456,10 @@
           },
           {
             "type": "Block",
-            "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary.\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
+            "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary. The `time` column, if included, is\n * converted into a {@link NanoDate}\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
             "range": [
               5163,
-              5715
+              5787
             ],
             "loc": {
               "start": {
@@ -467,7 +467,7 @@
                 "column": 0
               },
               "end": {
-                "line": 142,
+                "line": 143,
                 "column": 3
               }
             }
@@ -478,16 +478,16 @@
             "type": "Block",
             "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
             "range": [
-              7672,
-              8329
+              7744,
+              8401
             ],
             "loc": {
               "start": {
-                "line": 200,
+                "line": 201,
                 "column": 0
               },
               "end": {
-                "line": 213,
+                "line": 214,
                 "column": 3
               }
             }
@@ -496,30 +496,48 @@
             "type": "Block",
             "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
             "range": [
-              8330,
-              8933
+              8402,
+              9005
             ],
             "loc": {
               "start": {
-                "line": 214,
+                "line": 215,
                 "column": 0
               },
               "end": {
-                "line": 225,
+                "line": 226,
                 "column": 3
               }
             }
           },
           {
             "type": "Block",
-            "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * Please see [A Moment for Times](https://node-influx.github.io/manual/\n * usage.html#a-moment-for-times) for a more complete and eloquent explanation\n * of time handling in this module.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+            "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [precision] Defines the precision at which\n *     to query points. Defaults to querying in nanosecond precision.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
             "range": [
-              8934,
-              10015
+              9006,
+              9540
             ],
             "loc": {
               "start": {
-                "line": 226,
+                "line": 227,
+                "column": 0
+              },
+              "end": {
+                "line": 237,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+            "range": [
+              9541,
+              10030
+            ],
+            "loc": {
+              "start": {
+                "line": 238,
                 "column": 0
               },
               "end": {
@@ -530,10 +548,10 @@
           },
           {
             "type": "Block",
-            "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+            "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
             "range": [
-              10016,
-              10505
+              10031,
+              10623
             ],
             "loc": {
               "start": {
@@ -541,25 +559,7 @@
                 "column": 0
               },
               "end": {
-                "line": 259,
-                "column": 3
-              }
-            }
-          },
-          {
-            "type": "Block",
-            "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
-            "range": [
-              10506,
-              11098
-            ],
-            "loc": {
-              "start": {
-                "line": 260,
-                "column": 0
-              },
-              "end": {
-                "line": 276,
+                "line": 265,
                 "column": 3
               }
             }
@@ -569,16 +569,16 @@
       "specifiers": [],
       "source": null,
       "range": [
-        5716,
-        7671
+        5788,
+        7743
       ],
       "loc": {
         "start": {
-          "line": 143,
+          "line": 144,
           "column": 0
         },
         "end": {
-          "line": 199,
+          "line": 200,
           "column": 1
         }
       },
@@ -657,10 +657,10 @@
         },
         {
           "type": "Block",
-          "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary.\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
+          "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary. The `time` column, if included, is\n * converted into a {@link NanoDate}\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
           "range": [
             5163,
-            5715
+            5787
           ],
           "loc": {
             "start": {
@@ -668,7 +668,7 @@
               "column": 0
             },
             "end": {
-              "line": 142,
+              "line": 143,
               "column": 3
             }
           }
@@ -679,16 +679,16 @@
           "type": "Block",
           "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
           "range": [
-            7672,
-            8329
+            7744,
+            8401
           ],
           "loc": {
             "start": {
-              "line": 200,
+              "line": 201,
               "column": 0
             },
             "end": {
-              "line": 213,
+              "line": 214,
               "column": 3
             }
           }
@@ -697,30 +697,48 @@
           "type": "Block",
           "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
           "range": [
-            8330,
-            8933
+            8402,
+            9005
           ],
           "loc": {
             "start": {
-              "line": 214,
+              "line": 215,
               "column": 0
             },
             "end": {
-              "line": 225,
+              "line": 226,
               "column": 3
             }
           }
         },
         {
           "type": "Block",
-          "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * Please see [A Moment for Times](https://node-influx.github.io/manual/\n * usage.html#a-moment-for-times) for a more complete and eloquent explanation\n * of time handling in this module.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+          "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [precision] Defines the precision at which\n *     to query points. Defaults to querying in nanosecond precision.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
           "range": [
-            8934,
-            10015
+            9006,
+            9540
           ],
           "loc": {
             "start": {
-              "line": 226,
+              "line": 227,
+              "column": 0
+            },
+            "end": {
+              "line": 237,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+          "range": [
+            9541,
+            10030
+          ],
+          "loc": {
+            "start": {
+              "line": 238,
               "column": 0
             },
             "end": {
@@ -731,10 +749,10 @@
         },
         {
           "type": "Block",
-          "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+          "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
           "range": [
-            10016,
-            10505
+            10031,
+            10623
           ],
           "loc": {
             "start": {
@@ -742,25 +760,7 @@
               "column": 0
             },
             "end": {
-              "line": 259,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
-          "range": [
-            10506,
-            11098
-          ],
-          "loc": {
-            "start": {
-              "line": 260,
-              "column": 0
-            },
-            "end": {
-              "line": 276,
+              "line": 265,
               "column": 3
             }
           }
@@ -775,16 +775,16 @@
           "type": "Identifier",
           "name": "BackoffStrategy",
           "range": [
-            11112,
-            11127
+            10637,
+            10652
           ],
           "loc": {
             "start": {
-              "line": 277,
+              "line": 266,
               "column": 13
             },
             "end": {
-              "line": 277,
+              "line": 266,
               "column": 28
             }
           }
@@ -799,16 +799,16 @@
                 "type": "Identifier",
                 "name": "getDelay",
                 "range": [
-                  11242,
-                  11250
+                  10767,
+                  10775
                 ],
                 "loc": {
                   "start": {
-                    "line": 282,
+                    "line": 271,
                     "column": 4
                   },
                   "end": {
-                    "line": 282,
+                    "line": 271,
                     "column": 12
                   }
                 }
@@ -827,47 +827,47 @@
                         "value": 0,
                         "raw": "0",
                         "range": [
-                          11262,
-                          11263
+                          10787,
+                          10788
                         ],
                         "loc": {
                           "start": {
-                            "line": 282,
+                            "line": 271,
                             "column": 24
                           },
                           "end": {
-                            "line": 282,
+                            "line": 271,
                             "column": 25
                           }
                         }
                       },
                       "range": [
-                        11255,
-                        11264
+                        10780,
+                        10789
                       ],
                       "loc": {
                         "start": {
-                          "line": 282,
+                          "line": 271,
                           "column": 17
                         },
                         "end": {
-                          "line": 282,
+                          "line": 271,
                           "column": 26
                         }
                       }
                     }
                   ],
                   "range": [
-                    11253,
-                    11266
+                    10778,
+                    10791
                   ],
                   "loc": {
                     "start": {
-                      "line": 282,
+                      "line": 271,
                       "column": 15
                     },
                     "end": {
-                      "line": 282,
+                      "line": 271,
                       "column": 28
                     }
                   }
@@ -875,16 +875,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  11250,
-                  11266
+                  10775,
+                  10791
                 ],
                 "loc": {
                   "start": {
-                    "line": 282,
+                    "line": 271,
                     "column": 12
                   },
                   "end": {
-                    "line": 282,
+                    "line": 271,
                     "column": 28
                   }
                 }
@@ -892,16 +892,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                11242,
-                11266
+                10767,
+                10791
               ],
               "loc": {
                 "start": {
-                  "line": 282,
+                  "line": 271,
                   "column": 4
                 },
                 "end": {
-                  "line": 282,
+                  "line": 271,
                   "column": 28
                 }
               },
@@ -910,16 +910,16 @@
                   "type": "Block",
                   "value": "*\n     * getDelay returns the amount of delay of the current backoff.\n     * @return {Number}\n     ",
                   "range": [
-                    11134,
-                    11237
+                    10659,
+                    10762
                   ],
                   "loc": {
                     "start": {
-                      "line": 278,
+                      "line": 267,
                       "column": 4
                     },
                     "end": {
-                      "line": 281,
+                      "line": 270,
                       "column": 7
                     }
                   }
@@ -930,16 +930,16 @@
                   "type": "Block",
                   "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
                   "range": [
-                    11271,
-                    11411
+                    10796,
+                    10936
                   ],
                   "loc": {
                     "start": {
-                      "line": 283,
+                      "line": 272,
                       "column": 4
                     },
                     "end": {
-                      "line": 287,
+                      "line": 276,
                       "column": 7
                     }
                   }
@@ -953,16 +953,16 @@
                 "type": "Identifier",
                 "name": "next",
                 "range": [
-                  11416,
-                  11420
+                  10941,
+                  10945
                 ],
                 "loc": {
                   "start": {
-                    "line": 288,
+                    "line": 277,
                     "column": 4
                   },
                   "end": {
-                    "line": 288,
+                    "line": 277,
                     "column": 8
                   }
                 }
@@ -979,47 +979,47 @@
                       "argument": {
                         "type": "ThisExpression",
                         "range": [
-                          11432,
-                          11436
+                          10957,
+                          10961
                         ],
                         "loc": {
                           "start": {
-                            "line": 288,
+                            "line": 277,
                             "column": 20
                           },
                           "end": {
-                            "line": 288,
+                            "line": 277,
                             "column": 24
                           }
                         }
                       },
                       "range": [
-                        11425,
-                        11437
+                        10950,
+                        10962
                       ],
                       "loc": {
                         "start": {
-                          "line": 288,
+                          "line": 277,
                           "column": 13
                         },
                         "end": {
-                          "line": 288,
+                          "line": 277,
                           "column": 25
                         }
                       }
                     }
                   ],
                   "range": [
-                    11423,
-                    11439
+                    10948,
+                    10964
                   ],
                   "loc": {
                     "start": {
-                      "line": 288,
+                      "line": 277,
                       "column": 11
                     },
                     "end": {
-                      "line": 288,
+                      "line": 277,
                       "column": 27
                     }
                   }
@@ -1027,16 +1027,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  11420,
-                  11439
+                  10945,
+                  10964
                 ],
                 "loc": {
                   "start": {
-                    "line": 288,
+                    "line": 277,
                     "column": 8
                   },
                   "end": {
-                    "line": 288,
+                    "line": 277,
                     "column": 27
                   }
                 }
@@ -1044,16 +1044,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                11416,
-                11439
+                10941,
+                10964
               ],
               "loc": {
                 "start": {
-                  "line": 288,
+                  "line": 277,
                   "column": 4
                 },
                 "end": {
-                  "line": 288,
+                  "line": 277,
                   "column": 27
                 }
               },
@@ -1062,16 +1062,16 @@
                   "type": "Block",
                   "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
                   "range": [
-                    11271,
-                    11411
+                    10796,
+                    10936
                   ],
                   "loc": {
                     "start": {
-                      "line": 283,
+                      "line": 272,
                       "column": 4
                     },
                     "end": {
-                      "line": 287,
+                      "line": 276,
                       "column": 7
                     }
                   }
@@ -1082,16 +1082,16 @@
                   "type": "Block",
                   "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
                   "range": [
-                    11444,
-                    11544
+                    10969,
+                    11069
                   ],
                   "loc": {
                     "start": {
-                      "line": 289,
+                      "line": 278,
                       "column": 4
                     },
                     "end": {
-                      "line": 292,
+                      "line": 281,
                       "column": 7
                     }
                   }
@@ -1105,16 +1105,16 @@
                 "type": "Identifier",
                 "name": "reset",
                 "range": [
-                  11549,
-                  11554
+                  11074,
+                  11079
                 ],
                 "loc": {
                   "start": {
-                    "line": 293,
+                    "line": 282,
                     "column": 4
                   },
                   "end": {
-                    "line": 293,
+                    "line": 282,
                     "column": 9
                   }
                 }
@@ -1131,47 +1131,47 @@
                       "argument": {
                         "type": "ThisExpression",
                         "range": [
-                          11566,
-                          11570
+                          11091,
+                          11095
                         ],
                         "loc": {
                           "start": {
-                            "line": 293,
+                            "line": 282,
                             "column": 21
                           },
                           "end": {
-                            "line": 293,
+                            "line": 282,
                             "column": 25
                           }
                         }
                       },
                       "range": [
-                        11559,
-                        11571
+                        11084,
+                        11096
                       ],
                       "loc": {
                         "start": {
-                          "line": 293,
+                          "line": 282,
                           "column": 14
                         },
                         "end": {
-                          "line": 293,
+                          "line": 282,
                           "column": 26
                         }
                       }
                     }
                   ],
                   "range": [
-                    11557,
-                    11573
+                    11082,
+                    11098
                   ],
                   "loc": {
                     "start": {
-                      "line": 293,
+                      "line": 282,
                       "column": 12
                     },
                     "end": {
-                      "line": 293,
+                      "line": 282,
                       "column": 28
                     }
                   }
@@ -1179,16 +1179,16 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  11554,
-                  11573
+                  11079,
+                  11098
                 ],
                 "loc": {
                   "start": {
-                    "line": 293,
+                    "line": 282,
                     "column": 9
                   },
                   "end": {
-                    "line": 293,
+                    "line": 282,
                     "column": 28
                   }
                 }
@@ -1196,16 +1196,16 @@
               "kind": "method",
               "computed": false,
               "range": [
-                11549,
-                11573
+                11074,
+                11098
               ],
               "loc": {
                 "start": {
-                  "line": 293,
+                  "line": 282,
                   "column": 4
                 },
                 "end": {
-                  "line": 293,
+                  "line": 282,
                   "column": 28
                 }
               },
@@ -1214,16 +1214,16 @@
                   "type": "Block",
                   "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
                   "range": [
-                    11444,
-                    11544
+                    10969,
+                    11069
                   ],
                   "loc": {
                     "start": {
-                      "line": 289,
+                      "line": 278,
                       "column": 4
                     },
                     "end": {
-                      "line": 292,
+                      "line": 281,
                       "column": 7
                     }
                   }
@@ -1233,31 +1233,31 @@
             }
           ],
           "range": [
-            11128,
-            11575
+            10653,
+            11100
           ],
           "loc": {
             "start": {
-              "line": 277,
+              "line": 266,
               "column": 29
             },
             "end": {
-              "line": 294,
+              "line": 283,
               "column": 1
             }
           }
         },
         "range": [
-          11106,
-          11575
+          10631,
+          11100
         ],
         "loc": {
           "start": {
-            "line": 277,
+            "line": 266,
             "column": 7
           },
           "end": {
-            "line": 294,
+            "line": 283,
             "column": 1
           }
         },
@@ -1266,16 +1266,16 @@
             "type": "Block",
             "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
             "range": [
-              7672,
-              8329
+              7744,
+              8401
             ],
             "loc": {
               "start": {
-                "line": 200,
+                "line": 201,
                 "column": 0
               },
               "end": {
-                "line": 213,
+                "line": 214,
                 "column": 3
               }
             }
@@ -1284,30 +1284,48 @@
             "type": "Block",
             "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
             "range": [
-              8330,
-              8933
+              8402,
+              9005
             ],
             "loc": {
               "start": {
-                "line": 214,
+                "line": 215,
                 "column": 0
               },
               "end": {
-                "line": 225,
+                "line": 226,
                 "column": 3
               }
             }
           },
           {
             "type": "Block",
-            "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * Please see [A Moment for Times](https://node-influx.github.io/manual/\n * usage.html#a-moment-for-times) for a more complete and eloquent explanation\n * of time handling in this module.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+            "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [precision] Defines the precision at which\n *     to query points. Defaults to querying in nanosecond precision.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
             "range": [
-              8934,
-              10015
+              9006,
+              9540
             ],
             "loc": {
               "start": {
-                "line": 226,
+                "line": 227,
+                "column": 0
+              },
+              "end": {
+                "line": 237,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+            "range": [
+              9541,
+              10030
+            ],
+            "loc": {
+              "start": {
+                "line": 238,
                 "column": 0
               },
               "end": {
@@ -1318,10 +1336,10 @@
           },
           {
             "type": "Block",
-            "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+            "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
             "range": [
-              10016,
-              10505
+              10031,
+              10623
             ],
             "loc": {
               "start": {
@@ -1329,45 +1347,46 @@
                 "column": 0
               },
               "end": {
-                "line": 259,
-                "column": 3
-              }
-            }
-          },
-          {
-            "type": "Block",
-            "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
-            "range": [
-              10506,
-              11098
-            ],
-            "loc": {
-              "start": {
-                "line": 260,
-                "column": 0
-              },
-              "end": {
-                "line": 276,
+                "line": 265,
                 "column": 3
               }
             }
           }
         ],
-        "trailingComments": []
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A NanoDate is a type of Date that holds a nanosecond-precision unix\n * timestamp. It's the default date type parsed in {@link Results} and\n * can be created manually using {@link toNanoDate}.\n * @interface\n ",
+            "range": [
+              11101,
+              11317
+            ],
+            "loc": {
+              "start": {
+                "line": 284,
+                "column": 0
+              },
+              "end": {
+                "line": 289,
+                "column": 3
+              }
+            }
+          }
+        ]
       },
       "specifiers": [],
       "source": null,
       "range": [
-        11099,
-        11575
+        10624,
+        11100
       ],
       "loc": {
         "start": {
-          "line": 277,
+          "line": 266,
           "column": 0
         },
         "end": {
-          "line": 294,
+          "line": 283,
           "column": 1
         }
       },
@@ -1376,16 +1395,16 @@
           "type": "Block",
           "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
           "range": [
-            7672,
-            8329
+            7744,
+            8401
           ],
           "loc": {
             "start": {
-              "line": 200,
+              "line": 201,
               "column": 0
             },
             "end": {
-              "line": 213,
+              "line": 214,
               "column": 3
             }
           }
@@ -1394,30 +1413,48 @@
           "type": "Block",
           "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
           "range": [
-            8330,
-            8933
+            8402,
+            9005
           ],
           "loc": {
             "start": {
-              "line": 214,
+              "line": 215,
               "column": 0
             },
             "end": {
-              "line": 225,
+              "line": 226,
               "column": 3
             }
           }
         },
         {
           "type": "Block",
-          "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * Please see [A Moment for Times](https://node-influx.github.io/manual/\n * usage.html#a-moment-for-times) for a more complete and eloquent explanation\n * of time handling in this module.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+          "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [precision] Defines the precision at which\n *     to query points. Defaults to querying in nanosecond precision.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
           "range": [
-            8934,
-            10015
+            9006,
+            9540
           ],
           "loc": {
             "start": {
-              "line": 226,
+              "line": 227,
+              "column": 0
+            },
+            "end": {
+              "line": 237,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+          "range": [
+            9541,
+            10030
+          ],
+          "loc": {
+            "start": {
+              "line": 238,
               "column": 0
             },
             "end": {
@@ -1428,10 +1465,10 @@
         },
         {
           "type": "Block",
-          "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+          "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
           "range": [
-            10016,
-            10505
+            10031,
+            10623
           ],
           "loc": {
             "start": {
@@ -1439,25 +1476,427 @@
               "column": 0
             },
             "end": {
-              "line": 259,
+              "line": 265,
               "column": 3
             }
           }
-        },
+        }
+      ],
+      "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
+          "value": "*\n * A NanoDate is a type of Date that holds a nanosecond-precision unix\n * timestamp. It's the default date type parsed in {@link Results} and\n * can be created manually using {@link toNanoDate}.\n * @interface\n ",
           "range": [
-            10506,
-            11098
+            11101,
+            11317
           ],
           "loc": {
             "start": {
-              "line": 260,
+              "line": 284,
               "column": 0
             },
             "end": {
-              "line": 276,
+              "line": 289,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "NanoDate",
+          "range": [
+            11331,
+            11339
+          ],
+          "loc": {
+            "start": {
+              "line": 290,
+              "column": 13
+            },
+            "end": {
+              "line": 290,
+              "column": 21
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "Date",
+          "range": [
+            11348,
+            11352
+          ],
+          "loc": {
+            "start": {
+              "line": 290,
+              "column": 30
+            },
+            "end": {
+              "line": 290,
+              "column": 34
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "getNanoTime",
+                "range": [
+                  11570,
+                  11581
+                ],
+                "loc": {
+                  "start": {
+                    "line": 297,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 297,
+                    "column": 15
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": "",
+                        "raw": "\"\"",
+                        "range": [
+                          11593,
+                          11595
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 297,
+                            "column": 27
+                          },
+                          "end": {
+                            "line": 297,
+                            "column": 29
+                          }
+                        }
+                      },
+                      "range": [
+                        11586,
+                        11596
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 297,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 297,
+                          "column": 30
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    11584,
+                    11598
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 297,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 297,
+                      "column": 32
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  11581,
+                  11598
+                ],
+                "loc": {
+                  "start": {
+                    "line": 297,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 297,
+                    "column": 32
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                11570,
+                11598
+              ],
+              "loc": {
+                "start": {
+                  "line": 297,
+                  "column": 4
+                },
+                "end": {
+                  "line": 297,
+                  "column": 32
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Returns the unix nanoseconds timestamp as a string.\n     * @example\n     * const date = toNanoDate('1475985480231035677')\n     * expect(date.getNanoTime()).to.equal('1475985480231035677')\n     ",
+                  "range": [
+                    11359,
+                    11565
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 291,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 296,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "toNanoISOString",
+                "range": [
+                  11855,
+                  11870
+                ],
+                "loc": {
+                  "start": {
+                    "line": 305,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 305,
+                    "column": 19
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": "",
+                        "raw": "\"\"",
+                        "range": [
+                          11882,
+                          11884
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 305,
+                            "column": 31
+                          },
+                          "end": {
+                            "line": 305,
+                            "column": 33
+                          }
+                        }
+                      },
+                      "range": [
+                        11875,
+                        11885
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 305,
+                          "column": 24
+                        },
+                        "end": {
+                          "line": 305,
+                          "column": 34
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    11873,
+                    11887
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 305,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 305,
+                      "column": 36
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  11870,
+                  11887
+                ],
+                "loc": {
+                  "start": {
+                    "line": 305,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 305,
+                    "column": 36
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                11855,
+                11887
+              ],
+              "loc": {
+                "start": {
+                  "line": 305,
+                  "column": 4
+                },
+                "end": {
+                  "line": 305,
+                  "column": 36
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Formats the date as an ISO RFC3339 timestamp with nanosecond precision.\n     * @example\n     * const date = toNanoDate('1475985480231035677')\n     * expect(date.toNanoISOString()).to.equal('2016-10-09T03:58:00.231035677Z')\n     ",
+                  "range": [
+                    11609,
+                    11850
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 299,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 304,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            }
+          ],
+          "range": [
+            11353,
+            11895
+          ],
+          "loc": {
+            "start": {
+              "line": 290,
+              "column": 35
+            },
+            "end": {
+              "line": 307,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          11325,
+          11895
+        ],
+        "loc": {
+          "start": {
+            "line": 290,
+            "column": 7
+          },
+          "end": {
+            "line": 307,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * A NanoDate is a type of Date that holds a nanosecond-precision unix\n * timestamp. It's the default date type parsed in {@link Results} and\n * can be created manually using {@link toNanoDate}.\n * @interface\n ",
+            "range": [
+              11101,
+              11317
+            ],
+            "loc": {
+              "start": {
+                "line": 284,
+                "column": 0
+              },
+              "end": {
+                "line": 289,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        11318,
+        11895
+      ],
+      "loc": {
+        "start": {
+          "line": 290,
+          "column": 0
+        },
+        "end": {
+          "line": 307,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * A NanoDate is a type of Date that holds a nanosecond-precision unix\n * timestamp. It's the default date type parsed in {@link Results} and\n * can be created manually using {@link toNanoDate}.\n * @interface\n ",
+          "range": [
+            11101,
+            11317
+          ],
+          "loc": {
+            "start": {
+              "line": 284,
+              "column": 0
+            },
+            "end": {
+              "line": 289,
               "column": 3
             }
           }
@@ -1467,16 +1906,16 @@
   ],
   "sourceType": "module",
   "range": [
-    5716,
-    11575
+    5788,
+    11895
   ],
   "loc": {
     "start": {
-      "line": 143,
+      "line": 144,
       "column": 0
     },
     "end": {
-      "line": 294,
+      "line": 307,
       "column": 1
     }
   },
@@ -1555,10 +1994,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary.\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
+      "value": "*\n * Results are returned from the .query method. It marshals the raw Influx\n * results into a more palatable, JavaScript-y structure. All query results\n * are marshalled into a single, flat arrays, and methods are provided to\n * example grouped results as necessary. The `time` column, if included, is\n * converted into a {@link NanoDate}\n *\n * @class Result<T>\n * @example\n * influx.query('select host, cpu, mem from perf').then(results => {\n *   expect(results).to.deep.equal([\n *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n *     // ...\n *   ])\n * })\n ",
       "range": [
         5163,
-        5715
+        5787
       ],
       "loc": {
         "start": {
@@ -1566,7 +2005,7 @@
           "column": 0
         },
         "end": {
-          "line": 142,
+          "line": 143,
           "column": 3
         }
       }
@@ -1575,16 +2014,16 @@
       "type": "Block",
       "value": "*\n     * Group looks for and returns the first group in the results\n     * that matches the provided tags.\n     *\n     * If you've used lodash or underscore, we do something quite similar to\n     * their object matching: for every row in the results, if it contains tag\n     * values matching the requested object, we return it.\n     *\n     * @param  {Object.<String, String>} matcher\n     * @return {T[]}\n     * @example\n     * // Matching tags sets in queries:\n     * influx.query('select * from perf group by host').then(results => {\n     *   expect(results.group({ host: 'ares.peet.io'})).to.deep.equal([\n     *     { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n     *     { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n     *     // ...\n     *   ])\n     *\n     *   expect(results.group({ host: 'box1.example.com'})).to.deep.equal([\n     *     { host: 'box1.example.com', cpu: 0.54, mem: 8420 },\n     *     // ...\n     *   ])\n     * })\n     ",
       "range": [
-        5757,
-        6709
+        5829,
+        6781
       ],
       "loc": {
         "start": {
-          "line": 144,
+          "line": 145,
           "column": 4
         },
         "end": {
-          "line": 168,
+          "line": 169,
           "column": 7
         }
       }
@@ -1593,16 +2032,16 @@
       "type": "Block",
       "value": "*\n     * Returns the data grouped into nested arrays, similarly to how it was\n     * returned from Influx originally.\n     *\n     * @returns {Array<{ name: String, tags: Object.<String, String>, rows: T[] }>}\n     * @example\n     * influx.query('select * from perf group by host').then(results => {\n     *   expect(results.groups()).to.deep.equal([\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'ares.peet.io' },\n     *       rows: [\n     *         { host: 'ares.peet.io', cpu: 0.12, mem: 2435 },\n     *         { host: 'ares.peet.io', cpu: 0.10, mem: 2451 },\n     *         // ...\n     *       ]\n     *     }\n     *     {\n     *       name: 'perf',\n     *       tags: { host: 'box1.example.com' },\n     *       rows: [\n     *         { host: 'box1.example.com', cpu: 0.54, mem: 8420 },\n     *         // ...\n     *       ]\n     *     }\n     *   ])\n     * })\n     ",
       "range": [
-        6750,
-        7639
+        6822,
+        7711
       ],
       "loc": {
         "start": {
-          "line": 170,
+          "line": 171,
           "column": 4
         },
         "end": {
-          "line": 197,
+          "line": 198,
           "column": 7
         }
       }
@@ -1611,16 +2050,16 @@
       "type": "Block",
       "value": "*\n * Point is passed to the client's write methods to store a point in InfluxDB.\n *\n * @typedef {Object} Point\n * @property {String} measurement Measurement is the Influx measurement name.\n * @property {Object.<String, String>} [tags] Tags is the list of tag\n *     values to insert.\n * @property {Object.<String, *>} [fields] Fields is the list of\n *     field values to insert.\n * @property {Date|string|number} [fields] Timestamp tags this measurement with\n *     a date. This can be a Date object, in which case we'll adjust it to the\n *     desired precision, or a numeric string or number, in which case\n *     it gets passed directly to Influx.\n ",
       "range": [
-        7672,
-        8329
+        7744,
+        8401
       ],
       "loc": {
         "start": {
-          "line": 200,
+          "line": 201,
           "column": 0
         },
         "end": {
-          "line": 213,
+          "line": 214,
           "column": 3
         }
       }
@@ -1629,30 +2068,48 @@
       "type": "Block",
       "value": "*\n * WriteOptions configure how points are written in the database.\n *\n * @typedef {Object} WriteOptions\n * @property {TimePrecision} [precision] Precision at which the points are\n *     written, defaults to milliseconds \"ms\". Influx recommends that you use\n *     the coarsest precision possible in order to maximize efficiency.\n * @property {String} [retentionPolicy] The retention policy to insert\n *     the points under, uses the DEFAULT policy if not provided.\n * @property {String} [database] The database to insert the points in, uses the\n *     adapter's default database if not provided.\n ",
       "range": [
-        8330,
-        8933
+        8402,
+        9005
       ],
       "loc": {
         "start": {
-          "line": 214,
+          "line": 215,
           "column": 0
         },
         "end": {
-          "line": 225,
+          "line": 226,
           "column": 3
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * --\n *\n * Warning: if the epoch is set to nanoseconds `ns`, timestamps will be unable\n * to correctly be represented in JavaScript due to precision limitations. If\n * you wish to read nanosecond-precision timstamps, simply leave it unset; this\n * will cause Influx to return ISO formatted dates which we can parse. See the\n * {@link Results} type for more information about how to access them.\n *\n * Please see [A Moment for Times](https://node-influx.github.io/manual/\n * usage.html#a-moment-for-times) for a more complete and eloquent explanation\n * of time handling in this module.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [epoch] Epoch defining the precision at which\n *     to query points.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
+      "value": "*\n * The QueryOptions allow you to configure how queries are run against Influx.\n *\n * @typedef {Object} QueryOptions\n * @property {TimePrecision} [precision] Defines the precision at which\n *     to query points. Defaults to querying in nanosecond precision.\n * @property {String} [retentionPolicy] Retention policy to query from,\n *     defaults to the DEFAULT retention policy.\n * @property {String} [database]  Database under which to query the points.\n *     This is required if a database is not provided in Influx client.\n ",
       "range": [
-        8934,
-        10015
+        9006,
+        9540
       ],
       "loc": {
         "start": {
-          "line": 226,
+          "line": 227,
+          "column": 0
+        },
+        "end": {
+          "line": 237,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+      "range": [
+        9541,
+        10030
+      ],
+      "loc": {
+        "start": {
+          "line": 238,
           "column": 0
         },
         "end": {
@@ -1663,10 +2120,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * PingStats is returned from {@link InfluxDB#ping}.\n *\n * @typedef {Object} PingStats\n * @property {Url} url URL is the host's URL\n * @property {Boolean} online Whether the request was completed successfully.\n * @property {http.ServerResponse} res The raw response from the server, may be\n *     null on a timeout or HTTP error.\n * @property {Number} rtt Total time the server took to respond, in milliseconds\n * @property {String} version Version number the server reports to run\n ",
+      "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
       "range": [
-        10016,
-        10505
+        10031,
+        10623
       ],
       "loc": {
         "start": {
@@ -1674,25 +2131,7 @@
           "column": 0
         },
         "end": {
-          "line": 259,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * The BackoffStrategy dictates behaviour to use when hosts in the connection\n * pool start failing. We remove them from the pool for a duration of time\n * specified by the backoff strategy.\n *\n * The strategy itself is immutable, and each method call should return a new\n * strategy without modifying the original one.\n *\n * @interface\n * @example\n * let backoff = new MyBackoffStrategy();\n * console.log(backoff.getDelay()); // => 10\n * backoff = backoff.next();\n * console.log(backoff.getDelay()); // => 20\n * backoff = backoff.reset();\n * console.log(backoff.getDelay()); // => 10\n ",
-      "range": [
-        10506,
-        11098
-      ],
-      "loc": {
-        "start": {
-          "line": 260,
-          "column": 0
-        },
-        "end": {
-          "line": 276,
+          "line": 265,
           "column": 3
         }
       }
@@ -1701,8 +2140,44 @@
       "type": "Block",
       "value": "*\n     * getDelay returns the amount of delay of the current backoff.\n     * @return {Number}\n     ",
       "range": [
-        11134,
-        11237
+        10659,
+        10762
+      ],
+      "loc": {
+        "start": {
+          "line": 267,
+          "column": 4
+        },
+        "end": {
+          "line": 270,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
+      "range": [
+        10796,
+        10936
+      ],
+      "loc": {
+        "start": {
+          "line": 272,
+          "column": 4
+        },
+        "end": {
+          "line": 276,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
+      "range": [
+        10969,
+        11069
       ],
       "loc": {
         "start": {
@@ -1717,36 +2192,54 @@
     },
     {
       "type": "Block",
-      "value": "*\n     * Next is called when a failure occurs on a host to\n     * return the next backoff amount.\n     * @return {BackoffStrategy}\n     ",
+      "value": "*\n * A NanoDate is a type of Date that holds a nanosecond-precision unix\n * timestamp. It's the default date type parsed in {@link Results} and\n * can be created manually using {@link toNanoDate}.\n * @interface\n ",
       "range": [
-        11271,
-        11411
+        11101,
+        11317
       ],
       "loc": {
         "start": {
-          "line": 283,
+          "line": 284,
+          "column": 0
+        },
+        "end": {
+          "line": 289,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Returns the unix nanoseconds timestamp as a string.\n     * @example\n     * const date = toNanoDate('1475985480231035677')\n     * expect(date.getNanoTime()).to.equal('1475985480231035677')\n     ",
+      "range": [
+        11359,
+        11565
+      ],
+      "loc": {
+        "start": {
+          "line": 291,
           "column": 4
         },
         "end": {
-          "line": 287,
+          "line": 296,
           "column": 7
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\n     * Returns a strategy with a reset backoff counter.\n     * @return {BackoffStrategy}\n     ",
+      "value": "*\n     * Formats the date as an ISO RFC3339 timestamp with nanosecond precision.\n     * @example\n     * const date = toNanoDate('1475985480231035677')\n     * expect(date.toNanoISOString()).to.equal('2016-10-09T03:58:00.231035677Z')\n     ",
       "range": [
-        11444,
-        11544
+        11609,
+        11850
       ],
       "loc": {
         "start": {
-          "line": 289,
+          "line": 299,
           "column": 4
         },
         "end": {
-          "line": 292,
+          "line": 304,
           "column": 7
         }
       }

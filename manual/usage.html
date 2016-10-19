@@ -43,6 +43,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#a-moment-for-times" data-ice="link">A Moment for Times</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#testing" data-ice="link">Testing</a></li>
 <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#contributing" data-ice="link">Contributing</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#how-to-prepare" data-ice="link">How to prepare</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#make-changes" data-ice="link">Make Changes</a></li>
@@ -66,6 +67,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#node-influx-changelog" data-ice="link">node-influx Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#tba-5-0-0-alpha-2" data-ice="link">TBA, 5.0.0-alpha.2</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-15-5-0-0-alpha-1" data-ice="link">2016-10-15, 5.0.0-alpha.1</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-10-06-version-4-2-3" data-ice="link">2016-10-06, Version 4.2.3</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#2016-09-15-version-4-2-2" data-ice="link">2016-09-15, Version 4.2.2</a></li>
@@ -83,30 +85,29 @@
   </div>
   <div data-ice="content"><h1 id="a-moment-for-times">A Moment for Times</h1>
 <p>InfluxDB is a time series database, so it would make sense that the concept of time is moderately important when dealing with it.</p>
-<p>By default, Influx will store all data you give to it as a nanosecond precision timestamp, whereas in JavaScript, most of the time we&apos;re dealing with millisecond precision timestamps, which we get from <code>Date.now()</code> or <code>myDate.getTime()</code>. This presents a bit of a problem for us JavaScripters, since nanosecond-precision timestamps are stored as 64 bit unsigned integers that JavaScript simply cannot represent accurately.</p>
+<p>By default, Influx will store all dates you give to it as a nanosecond-precision timestamp, whereas in JavaScript, most of the time we&apos;re dealing with millisecond precision timestamps, which we get from <code>Date.now()</code> or <code>myDate.getTime()</code>. This presents a bit of a problem for us JavaScripters, since nanosecond-precision timestamps are stored as 64-bit unsigned integers that JavaScript simply cannot represent accurately.</p>
 <pre><code><code class="source-code prettyprint">&#x279C;  node-influx git:(master) node
 &gt; 1475985480231035677
 1475985480231035600</code>
-</code></pre><p>In this <code>influx</code> module we try to make this as easy as possible for you to deal with, and out of the box everything should &quot;just work&quot;.</p>
+</code></pre><p>This module tries to make dates as easy as possible for you to deal with, and out of the box everything should &quot;just work&quot;.</p>
 <p>There are three places that dates can get passed around:</p>
 <ul>
 <li>Dates coming from Influx queries, like <code>select * from my_series</code></li>
 <li>Dates being interpolated <em>into</em> Influx queries</li>
 <li>Dates being used when writing points on the line protocol, via <code>.writePoints()</code> or <code>.writeMeasurement()</code></li>
 </ul>
-<p>To deal with this, we introduce a new type called <strong>NanoDate</strong>. These behave just like the normal <code>Date</code> type, but have two additional methods: <code>.getNanoTime()</code> and <code>.getNanoISOString()</code>. The behave just like the normal <code>.getTime()</code> and <code>getISOString</code> methods, but they both return nanosecond-precision strings instead of millisecond-precision numbers and timestamps.</p>
+<p>To deal with this, we introduce a new type called <strong>NanoDate</strong>. These dates behave just like the normal <code>Date</code> type, but have two additional methods: <code>.getNanoTime()</code> and <code>.getNanoISOString()</code>. They behave just like the normal <code>.getTime()</code> and <code>getISOString</code> methods, but they both return nanosecond-precision strings instead of millisecond-precision numbers and timestamps.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">expect(myNanoDate.getTime()).to.equal(1475985480231)
 expect(myNanoDate.getNanoTime()).to.equal(&apos;1475985480231035677&apos;)
 expect(myNanoDate.toISOString()).to.equal(&apos;2016-10-09T03:58:00.231Z&apos;)
 expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.231035677Z&apos;)</code>
 </code></pre>
-<p>By default, <strong>all times returned from Influx queries are parsed to NanoDates</strong>. For example, you can do something like the following:</p>
+<p><strong>All times returned from Influx queries are parsed to NanoDates</strong>. For example, you can do something like the following:</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">influx.query(&apos;select * from perf&apos;).then(results =&gt; {
   results.forEach(row =&gt; console.log(`Used ${row.cpu} at ${row.time.toNanoISOString()}`))
 })</code>
 </code></pre>
-<p>The exception is if you manually ask for a precision of <code>ms</code> or coarser in the <code>options</code> parameter of <a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html#instance-method-query"><code>Influx#query</code> method</a>. Then, we parse your times into normal Dates.</p>
-<p>When writing data to Influx, <strong>all write methods accept NanoDates in all situations</strong>. This means if you select data from Influx and want to update a data point, you can pass that time right back into the <code>write</code> method. (Remember, data within series are unique by their time!) If you have a nanosecond timestamp from some external source, you can convert it to a NanoDate using <a href="https://node-influx.github.io/function/index.html#static-function-toNanoDate"><code>toNanoDate</code></a>.</p>
+<p>When writing data to Influx, <strong>all write methods accept NanoDates in all situations</strong>. This means if you select data from Influx and want to update a data point, you can pass that time right back into the <code>write</code> method. (Remember, points within series are unique by their time!) If you have a nanosecond timestamp from some external source, you can convert it to a NanoDate using <a href="https://node-influx.github.io/function/index.html#static-function-toNanoDate"><code>toNanoDate</code></a>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">import { toNanoDate } from &apos;influx&apos;
 
 const myNanoDate = toNanoDate(&apos;1475985480231035600&apos;)
@@ -118,7 +119,15 @@ expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.23103560
 <pre><code class="lang-js"><code class="source-code prettyprint">influx.query(`select * from perf where time &gt; &quot;${myNanoDate.toNanoISOString()}&quot;`)</code>
 </code></pre>
 <hr>
-<p>Anything unclear? Have some remaining questions or find a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
+<p>Anything unclear? Have some remaining questions or found a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
+<h1 id="testing">Testing</h1>
+<p><code>influx</code> is tested primarily with a suite of unit tests in additional to functional tests which require an InfluxDB instance to run. The recommended way of running Influx is use their official Docker image:</p>
+<pre><code><code class="source-code prettyprint">docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 influxdb</code>
+</code></pre><p>Alternately, you can use a local installation of the package. If you would like to contribute and don&apos;t want to set up a full Influx testing environment, you can run solely unit tests and linting via <code>npm-run-all test:unit test:lint</code>, which do not require anything other than an <code>npm install</code>.</p>
+<p>When running tests you can configure where Influx lives by setting an environment variable which is a valid host to pass into the <a href="https://node-influx.github.io/typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a> object.</p>
+<pre><code><code class="source-code prettyprint">&#x279C;  node-influx git:(master) export INFLUX_HOST=&apos;{&quot;host&quot;:&quot;127.0.0.1&quot;,&quot;port&quot;:12345}&apos;
+&#x279C;  node-influx git:(master) npm test</code>
+</code></pre><p>You can run <code>npm run test:watch</code> to watch files and automatically re-run tests when they change.</p>
 <h1 id="contributing">Contributing</h1>
 <p>We&apos;d like to encourage you to contribute to the repository. You can do this by making an <a href="https://github.com/node-influx/node-influx/issues">issue ticket</a> or, even better, submitting a patch via a pull request.</p>
 <p>We try to make it as easy as possible for you but there are a few things to consider when contributing. The following guidelines for contribution should be followed if you want to submit a pull request:</p>

@@ -1,11 +1,11 @@
 {
   "coverage": "100%",
-  "expectCount": 87,
-  "actualCount": 87,
+  "expectCount": 92,
+  "actualCount": 92,
   "files": {
     "src/doc.js": {
-      "expectCount": 7,
-      "actualCount": 7,
+      "expectCount": 10,
+      "actualCount": 10,
       "undocumentLines": []
     },
     "src/backoff/exponential.js": {
@@ -19,8 +19,8 @@
       "undocumentLines": []
     },
     "src/index.js": {
-      "expectCount": 27,
-      "actualCount": 27,
+      "expectCount": 29,
+      "actualCount": 29,
       "undocumentLines": []
     },
     "src/pool.js": {

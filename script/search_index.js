@@ -457,13 +457,13 @@ window.esdocSearchIndex = [
   ],
   [
     "influx~constructor",
-    "class/src/index.js~InfluxDB.html#instance-constructor-constructor",
+    "class/src/grammar/ds.js~Raw.html#instance-constructor-constructor",
     "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
     "method"
   ],
   [
     "influx~constructor",
-    "class/src/grammar/ds.js~Raw.html#instance-constructor-constructor",
+    "class/src/index.js~InfluxDB.html#instance-constructor-constructor",
     "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
     "method"
   ],
@@ -534,33 +534,33 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "influx~describe126",
+    "influx~describe124",
     "test.html",
-    "<span>describe126</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>describe124</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
-    "influx~describe131",
+    "influx~describe129",
     "test.html",
-    "<span>describe131</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>describe129</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
-    "influx~describe139",
+    "influx~describe137",
     "test.html",
-    "<span>describe139</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>describe137</span> <span class=\"search-result-import-path\">influx</span>",
+    "test"
+  ],
+  [
+    "influx~describe138",
+    "test.html",
+    "<span>describe138</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
     "influx~describe140",
     "test.html",
     "<span>describe140</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe142",
-    "test.html",
-    "<span>describe142</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1014,15 +1014,15 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "influx~it124",
-    "test.html",
-    "<span>it124</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
     "influx~it125",
     "test.html",
     "<span>it125</span> <span class=\"search-result-import-path\">influx</span>",
+    "test"
+  ],
+  [
+    "influx~it126",
+    "test.html",
+    "<span>it126</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1038,12 +1038,6 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "influx~it129",
-    "test.html",
-    "<span>it129</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
     "influx~it12",
     "test.html",
     "<span>it12</span> <span class=\"search-result-import-path\">influx</span>",
@@ -1053,6 +1047,12 @@ window.esdocSearchIndex = [
     "influx~it130",
     "test.html",
     "<span>it130</span> <span class=\"search-result-import-path\">influx</span>",
+    "test"
+  ],
+  [
+    "influx~it131",
+    "test.html",
+    "<span>it131</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1086,15 +1086,9 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "influx~it137",
+    "influx~it139",
     "test.html",
-    "<span>it137</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it138",
-    "test.html",
-    "<span>it138</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>it139</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1107,6 +1101,12 @@ window.esdocSearchIndex = [
     "influx~it141",
     "test.html",
     "<span>it141</span> <span class=\"search-result-import-path\">influx</span>",
+    "test"
+  ],
+  [
+    "influx~it142",
+    "test.html",
+    "<span>it142</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1161,18 +1161,6 @@ window.esdocSearchIndex = [
     "influx~it150",
     "test.html",
     "<span>it150</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it151",
-    "test.html",
-    "<span>it151</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it152",
-    "test.html",
-    "<span>it152</span> <span class=\"search-result-import-path\">influx</span>",
     "test"
   ],
   [
@@ -1735,13 +1723,13 @@ window.esdocSearchIndex = [
   ],
   [
     "influx~reset",
-    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-reset",
+    "class/src/doc.js~BackoffStrategy.html#instance-method-reset",
     "<span>reset</span> <span class=\"search-result-import-path\">influx</span>",
     "method"
   ],
   [
     "influx~reset",
-    "class/src/doc.js~BackoffStrategy.html#instance-method-reset",
+    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-reset",
     "<span>reset</span> <span class=\"search-result-import-path\">influx</span>",
     "method"
   ],

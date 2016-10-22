@@ -62,6 +62,12 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/builder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { escape, formatDate } from &quot;./grammar&quot;;
+function regexHasFlags(re) {
+    if (typeof re.flags !== &quot;undefined&quot;) {
+        return re.flags.length &gt; 0;
+    }
+    return !(/\/$/).test(re.toString());
+}
 /**
  * Expression is used to build filtering expressions, like those used in WHERE
  * clauses. It can be used for fluent and safe building of queries using
@@ -155,7 +161,7 @@ export class Expression {
                     return this;
                 }
                 if (value instanceof RegExp) {
-                    if (value.flags) {
+                    if (regexHasFlags(value)) {
                         throw new Error(&quot;Attmempted to query using a regex with flags, &quot; +
                             &quot;but Influx doesn&apos;t support flags in queries.&quot;);
                     }

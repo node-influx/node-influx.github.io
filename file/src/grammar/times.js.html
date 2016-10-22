@@ -162,7 +162,7 @@ export const Precision = Object.freeze({
     Nanoseconds: &quot;n&quot;,
     Seconds: &quot;s&quot;,
 });
-export class MillisecondDateManipulator {
+class MillisecondDateManipulator {
     format(date) {
         return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
             + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
@@ -247,7 +247,7 @@ const nanoDateMethods = {
         return `${base}${this._nanoTime.slice(-9)}Z`;
     },
 };
-export class NanosecondsDateManipulator {
+class NanosecondsDateManipulator {
     format(date) {
         return &quot;\&quot;&quot; + leftPad(date.getUTCFullYear(), 2)
             + &quot;-&quot; + leftPad(date.getUTCMonth() + 1, 2)
@@ -306,8 +306,8 @@ export class NanosecondsDateManipulator {
         }
     }
 }
-export const milliManipulator = new MillisecondDateManipulator();
-export const nanoManipulator = new NanosecondsDateManipulator();
+const milliManipulator = new MillisecondDateManipulator();
+const nanoManipulator = new NanosecondsDateManipulator();
 /**
  * formatDate converts the Date instance to Influx&apos;s date query format.
  * @private

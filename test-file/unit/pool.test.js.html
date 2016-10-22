@@ -65,14 +65,14 @@
 import { Pool, ServiceNotAvailableError, RequestError } from &quot;../../src/pool&quot;;
 import { expect } from &quot;chai&quot;;
 import * as http from &quot;http&quot;;
-import * as async from &quot;async&quot;;
 import * as sinon from &quot;sinon&quot;;
+const hosts = 2;
 describe(&apos;pool&apos;, () =&gt; {
     let pool;
     let clock;
-    let servers;
+    let server;
+    let sid; // random string to avoid conflicts with other running tests
     beforeEach(done =&gt; {
-        clock = sinon.useFakeTimers();
         pool = new Pool({
             backoff: new ExponentialBackoff({
                 initial: 300,
@@ -80,132 +80,81 @@ describe(&apos;pool&apos;, () =&gt; {
                 max: 10 * 1000
             })
         });
-        servers = [];
-        async.times(2, (i, done) =&gt; {
-            const server = http.createServer((req, res) =&gt; server.onRequest(req, res));
+        sid = `${Date.now()}${Math.random()}`;
+        if (!process.env.WEBPACK) {
+            const handler = require(&apos;../fixture/pool-middleware&apos;);
+            server = http.createServer(handler());
             server.listen(0, () =&gt; {
-                servers.push(server);
-                pool.addHost(`http://127.0.0.1:${server.address().port}`);
-                done(null, null);
+                for (let i = 0; i &lt; hosts; i++) {
+                    pool.addHost(`http://127.0.0.1:${server.address().port}`);
+                }
+                done();
             });
-        }, done);
+        }
+        else {
+            for (let i = 0; i &lt; hosts; i++) {
+                pool.addHost(location.origin);
+            }
+            done();
+        }
     });
     afterEach(done =&gt; {
         if (clock) {
             clock.restore();
         }
-        async.each(servers, (server, done) =&gt; server.close(() =&gt; done()), done);
+        if (!process.env.WEBPACK) {
+            server.close(() =&gt; done());
+        }
+        else {
+            done();
+        }
     });
     describe(&apos;request generators&apos;, () =&gt; {
         it(&apos;makes a text request&apos;, () =&gt; {
-            servers[0].onRequest = (req, res) =&gt; {
-                expect(req.method).to.equal(&apos;GET&apos;);
-                expect(req.url).to.equal(&apos;/foo&apos;);
-                res.writeHead(200);
-                res.end(&apos;ok&apos;);
-            };
-            return pool.text({ method: &apos;GET&apos;, path: &apos;/foo&apos; })
-                .then(data =&gt; expect(data).to.equal(&apos;ok&apos;));
+            return pool.text({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
+                .then(data =&gt; expect(data).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
         });
         it(&apos;includes request query strings and bodies&apos;, () =&gt; {
-            servers[0].onRequest = (req, res) =&gt; {
-                let data = &apos;&apos;;
-                req.on(&apos;data&apos;, chunk =&gt; {
-                    data += chunk.toString();
-                });
-                req.on(&apos;end&apos;, () =&gt; {
-                    expect(data).to.equal(&apos;asdf&apos;);
-                    expect(req.method).to.equal(&apos;POST&apos;);
-                    expect(req.url).to.equal(&apos;/bar?a=42&apos;);
-                    res.writeHead(200);
-                    res.end(&apos;ok&apos;);
-                });
-            };
-            return pool.text({
+            return pool.json({
                 method: &apos;POST&apos;,
-                path: &apos;/bar&apos;,
+                path: &apos;/pool/echo&apos;,
                 query: { a: 42 },
                 body: &apos;asdf&apos;
-            }).then(data =&gt; expect(data).to.equal(&apos;ok&apos;));
+            }).then(data =&gt; {
+                expect(data).to.deep.equal({
+                    query: &apos;a=42&apos;,
+                    body: &apos;asdf&apos;,
+                    method: &apos;POST&apos;,
+                });
+            });
         });
         it(&apos;discards responses&apos;, () =&gt; {
-            servers[0].onRequest = (req, res) =&gt; {
-                res.writeHead(204);
-                res.end();
-            };
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/204&apos; });
         });
         it(&apos;parses JSON responses&apos;, () =&gt; {
-            servers[0].onRequest = (req, res) =&gt; {
-                res.writeHead(200);
-                res.end(&apos;{&quot;foo&quot;:42}&apos;);
-            };
-            return pool.json({ method: &apos;GET&apos;, path: &apos;/&apos; })
-                .then(data =&gt; expect(data).to.deep.equal({ foo: 42 }));
+            return pool.json({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
+                .then(data =&gt; expect(data).to.deep.equal({ ok: true }));
         });
         it(&apos;errors if JSON parsing fails&apos;, () =&gt; {
-            servers[0].onRequest = (req, res) =&gt; {
-                res.writeHead(200);
-                res.end(&apos;{&apos;);
-            };
-            return pool.json({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            return pool.json({ method: &apos;GET&apos;, path: &apos;/pool/badjson&apos; })
                 .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
                 .catch(err =&gt; expect(err).to.be.an.instanceof(SyntaxError));
         });
     });
-    it(&apos;round robins requests&apos;, done =&gt; {
-        servers[0].onRequest = (req, res) =&gt; {
-            res.writeHead(204);
-            res.end();
-            let served;
-            servers[1].onRequest = (req, res) =&gt; {
-                served = true;
-                res.writeHead(204);
-                res.end();
-            };
-            pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
-                .then(() =&gt; expect(served).to.be.true)
-                .then(() =&gt; done())
-                .catch(done);
-        };
-        pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
-    });
     it(&apos;times out requests&apos;, () =&gt; {
-        clock.restore();
-        servers.forEach(server =&gt; {
-            server.onRequest = (req, res) =&gt; {
-                setTimeout(() =&gt; {
-                    res.writeHead(204);
-                    res.end();
-                }, 100);
-            };
-        });
         pool.timeout = 1;
-        return pool.text({ method: &apos;GET&apos;, path: &apos;/&apos; })
+        return pool.text({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
             .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-            .catch(err =&gt; expect(err).be.an.instanceof(ServiceNotAvailableError));
+            .catch(err =&gt; expect(err).be.an.instanceof(ServiceNotAvailableError))
+            .then(() =&gt; pool.timeout = 10000);
     });
     it(&apos;retries on a request error&apos;, () =&gt; {
-        servers[0].onRequest = (req, res) =&gt; {
-            res.writeHead(502);
-            res.end();
-        };
-        servers[1].onRequest = (req, res) =&gt; {
-            res.writeHead(200);
-            res.end(&apos;ok now&apos;);
-        };
-        return pool.text({ method: &apos;GET&apos;, path: &apos;/&apos; })
-            .then(body =&gt; expect(body).to.equal(&apos;ok now&apos;));
+        return pool.text({ method: &apos;GET&apos;, path: `/pool/altFail-${sid}/json` })
+            .then(body =&gt; expect(body).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
     });
     it(&apos;fails if too many errors happen&apos;, () =&gt; {
-        servers.forEach(server =&gt; {
-            server.onRequest = (req, res) =&gt; {
-                res.writeHead(502);
-                res.end();
-            };
-        });
         expect(pool.hostIsAvailable()).to.be.true;
-        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+        return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; })
             .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
             .catch(err =&gt; {
             expect(err).to.be.an.instanceof(ServiceNotAvailableError);
@@ -213,11 +162,7 @@ describe(&apos;pool&apos;, () =&gt; {
         });
     });
     it(&apos;calls back immediately on un-retryable error&apos;, () =&gt; {
-        servers[0].onRequest = (req, res) =&gt; {
-            res.writeHead(400);
-            res.end();
-        };
-        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+        return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/400&apos; })
             .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
             .catch(err =&gt; {
             expect(err).to.be.an.instanceof(RequestError);
@@ -225,52 +170,17 @@ describe(&apos;pool&apos;, () =&gt; {
             expect(pool.hostIsAvailable()).to.be.true;
         });
     });
-    it(&apos;gets enabled/disabled hosts&apos;, () =&gt; {
-        const serverPorts = servers.map(s =&gt; s.address().port);
-        expect(pool.getHostsAvailable()
-            .map((h) =&gt; Number(h.url.port)))
-            .to.deep.equal(serverPorts);
-        expect(pool.getHostsDisabled().length).to.equal(0);
-        servers[0].onRequest = (req, res) =&gt; {
-            res.writeHead(502);
-            res.end();
-        };
-        servers[1].onRequest = (req, res) =&gt; {
-            res.writeHead(200);
-            res.end(&apos;ok now&apos;);
-        };
-        return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).then(() =&gt; {
-            expect(pool.getHostsAvailable().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[1]]);
-            expect(pool.getHostsDisabled().map((h) =&gt; Number(h.url.port))).to.deep.equal([serverPorts[0]]);
-        });
-    });
     it(&apos;pings servers&apos;, () =&gt; {
-        servers[0].onRequest = (req, res) =&gt; {
-            res.setHeader(&apos;X-Influxdb-Version&apos;, &apos;v1.0.0&apos;);
-            res.writeHead(200);
-            res.end();
-        };
-        servers[1].onRequest = (req, res) =&gt; {
-            res.writeHead(500);
-            res.end();
-        };
-        return pool.ping(50).then(results =&gt; {
-            expect(results[0].online).to.be.true;
-            expect(results[0].version).to.equal(&apos;v1.0.0&apos;);
-            expect(results[1].online).to.be.false;
+        return pool.ping(1000, `/pool/altFail-${sid}/ping`).then(results =&gt; {
+            if (results[0].online) {
+                [results[0], results[1]] = [results[1], results[0]];
+            }
+            expect(results[0].online).to.be.false;
+            expect(results[1].online).to.be.true;
+            expect(results[1].version).to.equal(&apos;v1.0.0&apos;);
         });
     });
     it(&apos;times out in pings&apos;, () =&gt; {
-        clock.restore();
-        clock = null;
-        servers.forEach(server =&gt; {
-            server.onRequest = (req, res) =&gt; {
-                setTimeout(() =&gt; {
-                    res.writeHead(200);
-                    res.end();
-                }, 2);
-            };
-        });
         return pool.ping(1).then(results =&gt; {
             expect(results[0].online).to.be.false;
             expect(results[1].online).to.be.false;
@@ -278,16 +188,11 @@ describe(&apos;pool&apos;, () =&gt; {
     });
     describe(&apos;backoff&apos;, () =&gt; {
         beforeEach(() =&gt; {
-            servers.forEach(server =&gt; {
-                server.onRequest = (req, res) =&gt; {
-                    res.writeHead(502);
-                    res.end();
-                };
-            });
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).catch(() =&gt; { });
+            clock = sinon.useFakeTimers();
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; }).catch(() =&gt; { });
         });
         it(&apos;should error if there are no available hosts&apos;, () =&gt; {
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
                 .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
                 .catch(err =&gt; {
                 expect(err).to.be.an.instanceof(ServiceNotAvailableError);
@@ -302,7 +207,7 @@ describe(&apos;pool&apos;, () =&gt; {
         it(&apos;should back off if failures continue&apos;, () =&gt; {
             clock.tick(300);
             expect(pool.hostIsAvailable()).to.be.true;
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; })
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; })
                 .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
                 .catch(err =&gt; {
                 expect(err).to.be.an.instanceof(ServiceNotAvailableError);
@@ -316,20 +221,8 @@ describe(&apos;pool&apos;, () =&gt; {
         it(&apos;should reset backoff after success&apos;, () =&gt; {
             clock.tick(300);
             expect(pool.hostIsAvailable()).to.be.true;
-            servers.forEach(server =&gt; {
-                server.onRequest = (req, res) =&gt; {
-                    res.writeHead(200);
-                    res.end();
-                };
-            });
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; }).then(() =&gt; {
-                servers.forEach(server =&gt; {
-                    server.onRequest = (req, res) =&gt; {
-                        res.writeHead(502);
-                        res.end();
-                    };
-                });
-                return pool.discard({ method: &apos;GET&apos;, path: &apos;/&apos; });
+            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/204&apos; }).then(() =&gt; {
+                return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; });
             })
                 .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
                 .catch(err =&gt; {

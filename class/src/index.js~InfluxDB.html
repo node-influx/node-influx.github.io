@@ -61,13 +61,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {InfluxDB} from &apos;<span><a href="file/src/index.js.html#lineNumber97">influx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {InfluxDB} from &apos;<span><a href="file/src/index.js.html#lineNumber98">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/index.js.html#lineNumber97">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/index.js.html#lineNumber98">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -101,7 +101,8 @@ if you want help getting started!</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">const influx = new Influx.InfluxDB({
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const Influx = require(&apos;influx&apos;);
+const influx = new Influx.InfluxDB({
  host: &apos;localhost&apos;,
  database: &apos;express_response_db&apos;,
  schema: [
@@ -917,7 +918,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber155">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber164">source</a></span></span>
     </span>
   </h3>
 
@@ -941,7 +942,8 @@ a set of connection options.</p>
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">options</td>
       <td data-ice="type"><span><a href="typedef/index.html#static-typedef-ClusterConfig">ClusterConfig</a></span> | <span><a href="typedef/index.html#static-typedef-SingleHostConfig">SingleHostConfig</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;http://root:root@127.0.0.1:8086&apos;</li></ul></td>
       <td data-ice="description"></td>
     </tr>
 </tbody>
@@ -962,56 +964,64 @@ a set of connection options.</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const Influx = require(&apos;influx&apos;)
 
 // Connect to a single host with a DSN:
-const client = new InfluxDB(&apos;http://user:password@host:8086/database&apos;)</code></pre>
+const influx = new Influx.InfluxDB(&apos;http://user:password@host:8086/database&apos;)</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const Influx = require(&apos;influx&apos;)
 
 // Connect to a single host with a full set of config details and
 // a custom schema
-const client = new InfluxDB({
+const client = new Influx.InfluxDB({
   database: &apos;my_db&apos;,
   host: &apos;localhost&apos;,
   port: 8086,
   username: &apos;connor&apos;,
   password: &apos;pa$$w0rd&apos;,
-  schema: [{
-    measurement: &apos;perf&apos;,
-    tags: [&apos;hostname&apos;],
-    fields: {
-      memory_usage: FieldType.INTEGER,
-      cpu_usage: FieldType.FLOAT,
-      is_online: FieldType.BOOLEAN,
+  schema: [
+    {
+      measurement: &apos;perf&apos;,
+      fields: {
+        memory_usage: Influx.FieldType.INTEGER,
+        cpu_usage: Influx.FieldType.FLOAT,
+        is_online: Influx.FieldType.BOOLEAN
+      }
+      tags: [
+        &apos;hostname&apos;
+      ]
     }
-  }]
+  ]
 })</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { InfluxDB } from &apos;influx&apos;; // or const InfluxDB = require(&apos;influx&apos;).InfluxDB
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const Influx = require(&apos;influx&apos;)
 
 // Use a pool of several host connections and balance queries across them:
-const client = new InfluxDB({
+const client = new Influx.InfluxDB({
   database: &apos;my_db&apos;,
   username: &apos;connor&apos;,
   password: &apos;pa$$w0rd&apos;,
   hosts: [
     { host: &apos;db1.example.com&apos; },
     { host: &apos;db2.example.com&apos; },
-  ]
-  schema: [{
-    measurement: &apos;perf&apos;,
-    tags: [&apos;hostname&apos;],
-    fields: {
-      memory_usage: FieldType.INTEGER,
-      cpu_usage: FieldType.FLOAT,
-      is_online: FieldType.BOOLEAN,
+  ],
+  schema: [
+    {
+      measurement: &apos;perf&apos;,
+      fields: {
+        memory_usage: Influx.FieldType.INTEGER,
+        cpu_usage: Influx.FieldType.FLOAT,
+        is_online: Influx.FieldType.BOOLEAN
+      }
+      tags: [
+        &apos;hostname&apos;
+      ]
     }
-  }]
+  ]
 })</code></pre>
     </div>
 </div>
@@ -1036,7 +1046,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber549">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber558">source</a></span></span>
     </span>
   </h3>
 
@@ -1154,7 +1164,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber464">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber473">source</a></span></span>
     </span>
   </h3>
 
@@ -1246,7 +1256,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber210">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber219">source</a></span></span>
     </span>
   </h3>
 
@@ -1320,7 +1330,7 @@ const client = new InfluxDB({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber520">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber529">source</a></span></span>
     </span>
   </h3>
 
@@ -1439,7 +1449,7 @@ guides/downsampling_and_retention/">Downsampling and Retention</a> on the Influx
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber365">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber374">source</a></span></span>
     </span>
   </h3>
 
@@ -1531,7 +1541,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber491">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber500">source</a></span></span>
     </span>
   </h3>
 
@@ -1613,7 +1623,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber222">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber231">source</a></span></span>
     </span>
   </h3>
 
@@ -1687,7 +1697,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber294">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber303">source</a></span></span>
     </span>
   </h3>
 
@@ -1769,7 +1779,7 @@ influx.createUser(&apos;not_admin&apos;, &apos;pa55w0rd&apos;)</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber568">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber577">source</a></span></span>
     </span>
   </h3>
 
@@ -1854,7 +1864,7 @@ bi-hourly cron.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber324">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber333">source</a></span></span>
     </span>
   </h3>
 
@@ -1945,7 +1955,7 @@ influx.dropSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber447">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber456">source</a></span></span>
     </span>
   </h3>
 
@@ -2019,7 +2029,7 @@ influx.dropSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber234">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber243">source</a></span></span>
     </span>
   </h3>
 
@@ -2079,7 +2089,7 @@ influx.dropSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber247">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber256">source</a></span></span>
     </span>
   </h3>
 
@@ -2157,7 +2167,7 @@ influx.dropSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber274">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber283">source</a></span></span>
     </span>
   </h3>
 
@@ -2258,7 +2268,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber349">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber358">source</a></span></span>
     </span>
   </h3>
 
@@ -2324,7 +2334,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber423">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber432">source</a></span></span>
     </span>
   </h3>
 
@@ -2398,7 +2408,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber395">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber404">source</a></span></span>
     </span>
   </h3>
 
@@ -2486,7 +2496,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber793">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber802">source</a></span></span>
     </span>
   </h3>
 
@@ -2569,7 +2579,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber743">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber752">source</a></span></span>
     </span>
   </h3>
 
@@ -2655,7 +2665,7 @@ be returned.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber769">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber778">source</a></span></span>
     </span>
   </h3>
 
@@ -2739,7 +2749,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber435">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber444">source</a></span></span>
     </span>
   </h3>
 
@@ -2813,7 +2823,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber410">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber419">source</a></span></span>
     </span>
   </h3>
 
@@ -2901,7 +2911,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber380">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber389">source</a></span></span>
     </span>
   </h3>
 
@@ -2981,7 +2991,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber477">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber486">source</a></span></span>
     </span>
   </h3>
 
@@ -3062,7 +3072,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber606">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber615">source</a></span></span>
     </span>
   </h3>
 
@@ -3161,7 +3171,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber725">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber734">source</a></span></span>
     </span>
   </h3>
 
@@ -3253,7 +3263,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber671">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber680">source</a></span></span>
     </span>
   </h3>
 

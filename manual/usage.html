@@ -43,6 +43,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#a-moment-for-times" data-ice="link">A Moment for Times</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#browser-setup" data-ice="link">Browser Setup</a></li>
 <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#testing" data-ice="link">Testing</a></li>
 <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#contributing" data-ice="link">Contributing</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#how-to-prepare" data-ice="link">How to prepare</a></li>
@@ -120,6 +121,33 @@ expect(myNanoDate.toNanoISOString()).to.equal(&apos;2016-10-09T03:58:00.23103560
 </code></pre>
 <hr>
 <p>Anything unclear? Have some remaining questions or found a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
+<h1 id="browser-setup">Browser Setup</h1>
+<p>For Node.js, <code>influx</code> can be installed and you can use it out of the box!</p>
+<pre><code><code class="source-code prettyprint">npm install --save influx@next</code>
+</code></pre><p>For browsers, this will also work provided you have a bundler which can polyfill Node modules, such as Browserify, Webpack, Jspm, or Rollup with <a href="https://github.com/rollup/rollup-plugin-node-resolve">rollup-plugin-node-resolve</a>.</p>
+<p>However, at the time of writing request timeouts will not work by default on any of these platforms until they update to the latest Node API changed. If this is an important feature for you, we recommend that you instruct your bundler to use our <a href="https://github.com/node-influx/stream-http">patched version</a> of <code>stream-http</code> as your <code>http</code> polyfill. You can install it via:</p>
+<pre><code><code class="source-code prettyprint">npm install --save node-influx/stream-http</code>
+</code></pre><p>You can tell Webpack to use this module by adding the following section on your <code>webpack.config.js</code>:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">module.exports = {
+  resolve: {
+    alias: {
+      http: path.resolve(__dirname, &apos;node_modules/stream-http/index.js&apos;)
+    }
+  }
+
+  // the rest of your webpack config
+}</code>
+</code></pre>
+<p>You can tell Browserify to use this module by adding the following into your build config:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">browserify(myFiles, {
+  builtins: Object.assign(
+    {}, require(&apos;browserify/lib/builtins&apos;),
+    { http: require(&apos;stream-http&apos;) }
+  )
+
+  // the rest of your browserify config
+})</code>
+</code></pre>
 <h1 id="testing">Testing</h1>
 <p><code>influx</code> is tested primarily with a suite of unit tests in additional to functional tests which require an InfluxDB instance to run. The recommended way of running Influx is use their official Docker image:</p>
 <pre><code><code class="source-code prettyprint">docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 influxdb</code>

@@ -62,7 +62,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/pool.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ExponentialBackoff } from &quot;./backoff/exponential&quot;;
-import Host from &quot;./host&quot;;
+import { Host } from &quot;./host&quot;;
 import * as http from &quot;http&quot;;
 import * as querystring from &quot;querystring&quot;;
 /**
@@ -98,6 +98,22 @@ export class RequestError extends Error {
         res.on(&quot;data&quot;, str =&gt; body = body + str.toString());
         res.on(&quot;end&quot;, () =&gt; callback(new RequestError(req, res, body)));
     }
+}
+/**
+ * Creates a function generation that returns a wrapper which only allows
+ * through the first call of any function that it generated.
+ */
+function doOnce() {
+    let handled = false;
+    return fn =&gt; {
+        return arg =&gt; {
+            if (handled) {
+                return;
+            }
+            handled = true;
+            fn(arg);
+        };
+    };
 }
 /**
  *
@@ -197,19 +213,21 @@ export class Pool {
      * Ping sends out a request to all available Influx servers, reporting on
      * their response time and version number.
      */
-    ping(timeout) {
+    ping(timeout, path = &quot;/ping&quot;) {
         let todo = [];
         [...this.hostsAvailable, ...this.hostsDisabled].forEach(host =&gt; {
             const start = Date.now();
             const url = host.url;
+            const once = doOnce();
             return todo.push(new Promise(resolve =&gt; {
                 const req = http.request({
                     hostname: url.hostname,
                     method: &quot;GET&quot;,
-                    path: &quot;/ping&quot;,
+                    path,
                     port: Number(url.port),
                     protocol: url.protocol,
-                }, res =&gt; {
+                    timeout,
+                }, once((res) =&gt; {
                     resolve({
                         url,
                         res,
@@ -217,8 +235,8 @@ export class Pool {
                         rtt: Date.now() - start,
                         version: res.headers[&quot;x-influxdb-version&quot;],
                     });
-                });
-                const fail = () =&gt; {
+                }));
+                const fail = once(() =&gt; {
                     resolve({
                         online: false,
                         res: null,
@@ -226,8 +244,14 @@ export class Pool {
                         url,
                         version: null,
                     });
-                };
-                req.setTimeout(timeout, fail);
+                });
+                // Support older Nodes and polyfills which don&apos;t allow .timeout() in
+                // the request options, wrapped in a conditional for even worse
+                // polyfills. See: https://github.com/node-influx/node-influx/issues/221
+                if (typeof req.setTimeout === &quot;function&quot;) {
+                    req.setTimeout(timeout, fail);
+                }
+                req.on(&quot;timeout&quot;, fail);
                 req.on(&quot;error&quot;, fail);
                 req.end();
             }));
@@ -242,19 +266,11 @@ export class Pool {
         if (!this.hostIsAvailable()) {
             return callback(new ServiceNotAvailableError(&quot;No host available&quot;), null);
         }
-        // In Node, responses can come in after `timeout` events are fired,
-        // but we don&apos;t want to fire callbacks twice. Create guarding functions
-        // to prevent this.
-        let isHandled = false;
-        const shouldHandle = () =&gt; {
-            const should = !isHandled;
-            isHandled = true;
-            return should;
-        };
         let path = options.path;
         if (options.query) {
             path += &quot;?&quot; + querystring.stringify(options.query);
         }
+        const once = doOnce();
         const host = this.getHost();
         const req = http.request({
             headers: { &quot;content-length&quot;: options.body ? options.body.length : 0 },
@@ -263,15 +279,9 @@ export class Pool {
             path,
             port: Number(host.url.port),
             protocol: host.url.protocol,
-        }, res =&gt; {
-            if (!shouldHandle()) {
-                return;
-            }
-            // Resolve an error if we get a &gt;500 status code. Note that we *exclude*
-            // 500 error codes. Sometimes malformed queries to influx cause panics,
-            // and trying to retry those queries on other hosts would just lead
-            // to a domino effect of crashing servers.
-            if (res.statusCode &gt; 500) {
+            timeout: this.timeout,
+        }, once((res) =&gt; {
+            if (res.statusCode &gt;= 500) {
                 return this.handleRequestError(new ServiceNotAvailableError(res.statusMessage), host, options, callback);
             }
             if (res.statusCode &gt;= 300) {
@@ -279,22 +289,20 @@ export class Pool {
             }
             host.success();
             return callback(undefined, res);
-        });
+        }));
         // Handle network or HTTP parsing errors:
-        req.on(&quot;error&quot;, err =&gt; {
-            if (shouldHandle()) {
-                this.handleRequestError(err, host, options, callback);
-            }
-        });
+        req.on(&quot;error&quot;, once(err =&gt; {
+            this.handleRequestError(err, host, options, callback);
+        }));
         // Handle timeouts:
-        // We wrap this in a conditional pending better browser support. See:
+        req.on(&quot;timeout&quot;, once(() =&gt; {
+            this.handleRequestError(new ServiceNotAvailableError(&quot;Request timed out&quot;), host, options, callback);
+        }));
+        // Support older Nodes and polyfills which don&apos;t allow .timeout() in the
+        // request options, wrapped in a conditional for even worse polyfills. See:
         // https://github.com/node-influx/node-influx/issues/221
         if (typeof req.setTimeout === &quot;function&quot;) {
-            req.setTimeout(this.timeout, () =&gt; {
-                if (shouldHandle()) {
-                    this.handleRequestError(new ServiceNotAvailableError(&quot;Request timed out&quot;), host, options, callback);
-                }
-            });
+            req.setTimeout(this.timeout);
         }
         // Write out the body:
         if (options.body) {

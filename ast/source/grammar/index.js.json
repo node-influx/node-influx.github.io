@@ -6,7 +6,7 @@
       "source": {
         "type": "Literal",
         "value": "./escape",
-        "raw": "\"./escape\"",
+        "raw": "'./escape'",
         "range": [
           14,
           24
@@ -42,7 +42,7 @@
       "source": {
         "type": "Literal",
         "value": "./ds",
-        "raw": "\"./ds\"",
+        "raw": "'./ds'",
         "range": [
           40,
           46
@@ -78,7 +78,7 @@
       "source": {
         "type": "Literal",
         "value": "./times",
-        "raw": "\"./times\"",
+        "raw": "'./times'",
         "range": [
           62,
           71

@@ -3,11 +3,6 @@
   "expectCount": 92,
   "actualCount": 92,
   "files": {
-    "src/doc.js": {
-      "expectCount": 10,
-      "actualCount": 10,
-      "undocumentLines": []
-    },
     "src/backoff/exponential.js": {
       "expectCount": 5,
       "actualCount": 5,
@@ -16,6 +11,11 @@
     "src/builder.js": {
       "expectCount": 25,
       "actualCount": 25,
+      "undocumentLines": []
+    },
+    "src/doc.js": {
+      "expectCount": 10,
+      "actualCount": 10,
       "undocumentLines": []
     },
     "src/index.js": {

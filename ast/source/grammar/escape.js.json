@@ -61,7 +61,7 @@
       "source": {
         "type": "Literal",
         "value": "./ds",
-        "raw": "\"./ds\"",
+        "raw": "'./ds'",
         "range": [
           20,
           26
@@ -279,7 +279,7 @@
                   "right": {
                     "type": "Literal",
                     "value": "",
-                    "raw": "\"\"",
+                    "raw": "''",
                     "range": [
                       1708,
                       1710
@@ -333,7 +333,7 @@
                   "right": {
                     "type": "Literal",
                     "value": "\\",
-                    "raw": "\"\\\\\"",
+                    "raw": "'\\\\'",
                     "range": [
                       1722,
                       1726
@@ -668,7 +668,7 @@
                                 {
                                   "type": "Literal",
                                   "value": "",
-                                  "raw": "\"\"",
+                                  "raw": "''",
                                   "range": [
                                     1824,
                                     1826
@@ -755,7 +755,7 @@
                             {
                               "type": "Literal",
                               "value": "\\$&",
-                              "raw": "\"\\\\$&\"",
+                              "raw": "'\\\\$&'",
                               "range": [
                                 1846,
                                 1852
@@ -907,7 +907,7 @@
                               "left": {
                                 "type": "Literal",
                                 "value": "[",
-                                "raw": "\"[\"",
+                                "raw": "'['",
                                 "range": [
                                   1884,
                                   1887
@@ -959,7 +959,7 @@
                             "right": {
                               "type": "Literal",
                               "value": "]",
-                              "raw": "\"]\"",
+                              "raw": "']'",
                               "range": [
                                 1901,
                                 1904
@@ -993,7 +993,7 @@
                           {
                             "type": "Literal",
                             "value": "g",
-                            "raw": "\"g\"",
+                            "raw": "'g'",
                             "range": [
                               1906,
                               1909
@@ -1559,7 +1559,7 @@
                         "init": {
                           "type": "Literal",
                           "value": "",
-                          "raw": "\"\"",
+                          "raw": "''",
                           "range": [
                             2226,
                             2228
@@ -3824,7 +3824,7 @@
                               {
                                 "type": "Literal",
                                 "value": ",",
-                                "raw": "\",\"",
+                                "raw": "','",
                                 "range": [
                                   3724,
                                   3727
@@ -3843,7 +3843,7 @@
                               {
                                 "type": "Literal",
                                 "value": " ",
-                                "raw": "\" \"",
+                                "raw": "' '",
                                 "range": [
                                   3729,
                                   3732
@@ -4014,10 +4014,10 @@
                               {
                                 "type": "Literal",
                                 "value": "\"",
-                                "raw": "\"\\\"\"",
+                                "raw": "'\"'",
                                 "range": [
                                   3847,
-                                  3851
+                                  3850
                                 ],
                                 "loc": {
                                   "start": {
@@ -4026,14 +4026,14 @@
                                   },
                                   "end": {
                                     "line": 94,
-                                    "column": 37
+                                    "column": 36
                                   }
                                 }
                               }
                             ],
                             "range": [
                               3846,
-                              3852
+                              3851
                             ],
                             "loc": {
                               "start": {
@@ -4042,33 +4042,33 @@
                               },
                               "end": {
                                 "line": 94,
-                                "column": 38
+                                "column": 37
                               }
                             }
                           },
                           {
                             "type": "Literal",
                             "value": "\"",
-                            "raw": "\"\\\"\"",
+                            "raw": "'\"'",
                             "range": [
-                              3854,
-                              3858
+                              3853,
+                              3856
                             ],
                             "loc": {
                               "start": {
                                 "line": 94,
-                                "column": 40
+                                "column": 39
                               },
                               "end": {
                                 "line": 94,
-                                "column": 44
+                                "column": 42
                               }
                             }
                           }
                         ],
                         "range": [
                           3834,
-                          3859
+                          3857
                         ],
                         "loc": {
                           "start": {
@@ -4077,14 +4077,14 @@
                           },
                           "end": {
                             "line": 94,
-                            "column": 45
+                            "column": 43
                           }
                         }
                       }
                     ],
                     "range": [
                       3826,
-                      3860
+                      3858
                     ],
                     "loc": {
                       "start": {
@@ -4093,7 +4093,7 @@
                       },
                       "end": {
                         "line": 94,
-                        "column": 46
+                        "column": 44
                       }
                     }
                   },
@@ -4103,7 +4103,7 @@
                   "computed": false,
                   "range": [
                     3818,
-                    3860
+                    3858
                   ],
                   "loc": {
                     "start": {
@@ -4112,7 +4112,7 @@
                     },
                     "end": {
                       "line": 94,
-                      "column": 46
+                      "column": 44
                     }
                   },
                   "leadingComments": [
@@ -4142,8 +4142,8 @@
                     "type": "Identifier",
                     "name": "stringLit",
                     "range": [
-                      3948,
-                      3957
+                      3946,
+                      3955
                     ],
                     "loc": {
                       "start": {
@@ -4162,8 +4162,8 @@
                       "type": "Identifier",
                       "name": "bindEsc",
                       "range": [
-                        3959,
-                        3966
+                        3957,
+                        3964
                       ],
                       "loc": {
                         "start": {
@@ -4183,8 +4183,8 @@
                           "type": "Identifier",
                           "name": "Escaper",
                           "range": [
-                            3971,
-                            3978
+                            3969,
+                            3976
                           ],
                           "loc": {
                             "start": {
@@ -4204,10 +4204,10 @@
                               {
                                 "type": "Literal",
                                 "value": "'",
-                                "raw": "\"'\"",
+                                "raw": "'\\''",
                                 "range": [
-                                  3980,
-                                  3983
+                                  3978,
+                                  3982
                                 ],
                                 "loc": {
                                   "start": {
@@ -4216,14 +4216,14 @@
                                   },
                                   "end": {
                                     "line": 98,
-                                    "column": 39
+                                    "column": 40
                                   }
                                 }
                               }
                             ],
                             "range": [
-                              3979,
-                              3984
+                              3977,
+                              3983
                             ],
                             "loc": {
                               "start": {
@@ -4232,32 +4232,32 @@
                               },
                               "end": {
                                 "line": 98,
-                                "column": 40
+                                "column": 41
                               }
                             }
                           },
                           {
                             "type": "Literal",
                             "value": "'",
-                            "raw": "\"'\"",
+                            "raw": "'\\''",
                             "range": [
-                              3986,
+                              3985,
                               3989
                             ],
                             "loc": {
                               "start": {
                                 "line": 98,
-                                "column": 42
+                                "column": 43
                               },
                               "end": {
                                 "line": 98,
-                                "column": 45
+                                "column": 47
                               }
                             }
                           }
                         ],
                         "range": [
-                          3967,
+                          3965,
                           3990
                         ],
                         "loc": {
@@ -4267,13 +4267,13 @@
                           },
                           "end": {
                             "line": 98,
-                            "column": 46
+                            "column": 48
                           }
                         }
                       }
                     ],
                     "range": [
-                      3959,
+                      3957,
                       3991
                     ],
                     "loc": {
@@ -4283,7 +4283,7 @@
                       },
                       "end": {
                         "line": 98,
-                        "column": 47
+                        "column": 49
                       }
                     }
                   },
@@ -4292,7 +4292,7 @@
                   "shorthand": false,
                   "computed": false,
                   "range": [
-                    3948,
+                    3946,
                     3991
                   ],
                   "loc": {
@@ -4302,7 +4302,7 @@
                     },
                     "end": {
                       "line": 98,
-                      "column": 47
+                      "column": 49
                     }
                   },
                   "leadingComments": [
@@ -4310,8 +4310,8 @@
                       "type": "Block",
                       "value": "*\n     * stringLitEscaper escapes single quotes in string literals.\n     ",
                       "range": [
-                        3866,
-                        3943
+                        3864,
+                        3941
                       ],
                       "loc": {
                         "start": {
@@ -4394,7 +4394,7 @@
                               {
                                 "type": "Literal",
                                 "value": ",",
-                                "raw": "\",\"",
+                                "raw": "','",
                                 "range": [
                                   4103,
                                   4106
@@ -4413,7 +4413,7 @@
                               {
                                 "type": "Literal",
                                 "value": "=",
-                                "raw": "\"=\"",
+                                "raw": "'='",
                                 "range": [
                                   4108,
                                   4111
@@ -4432,7 +4432,7 @@
                               {
                                 "type": "Literal",
                                 "value": " ",
-                                "raw": "\" \"",
+                                "raw": "' '",
                                 "range": [
                                   4113,
                                   4116
@@ -4752,8 +4752,8 @@
       "type": "Block",
       "value": "*\n     * stringLitEscaper escapes single quotes in string literals.\n     ",
       "range": [
-        3866,
-        3943
+        3864,
+        3941
       ],
       "loc": {
         "start": {

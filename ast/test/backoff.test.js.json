@@ -61,7 +61,7 @@
       "source": {
         "type": "Literal",
         "value": "../../src/backoff/exponential",
-        "raw": "\"../../src/backoff/exponential\"",
+        "raw": "'../../src/backoff/exponential'",
         "range": [
           35,
           66
@@ -152,7 +152,7 @@
       "source": {
         "type": "Literal",
         "value": "chai",
-        "raw": "\"chai\"",
+        "raw": "'chai'",
         "range": [
           91,
           97
@@ -209,7 +209,7 @@
           {
             "type": "Literal",
             "value": "backoff strategies",
-            "raw": "\"backoff strategies\"",
+            "raw": "'backoff strategies'",
             "range": [
               108,
               128
@@ -258,7 +258,7 @@
                       {
                         "type": "Literal",
                         "value": "exponential strategy",
-                        "raw": "\"exponential strategy\"",
+                        "raw": "'exponential strategy'",
                         "range": [
                           151,
                           173
@@ -307,7 +307,7 @@
                                   {
                                     "type": "Literal",
                                     "value": "appears to work",
-                                    "raw": "\"appears to work\"",
+                                    "raw": "'appears to work'",
                                     "range": [
                                       194,
                                       211

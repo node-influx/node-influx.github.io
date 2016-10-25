@@ -258,7 +258,7 @@
       "source": {
         "type": "Literal",
         "value": "chai",
-        "raw": "\"chai\"",
+        "raw": "'chai'",
         "range": [
           94,
           100

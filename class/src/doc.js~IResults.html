@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">ExponentialBackoff | node-influx API Document</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">IResults | node-influx API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -61,37 +61,55 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ExponentialBackoff} from &apos;<span><a href="file/src/backoff/exponential.js.html#lineNumber5">influx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {IResults} from &apos;<span><a href="file/src/doc.js.html#lineNumber144">influx</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
-  <span data-ice="kind">class</span>
+  <span data-ice="kind">interface</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/backoff/exponential.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/doc.js.html#lineNumber144">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">ExponentialBackoff</h1>
+  <h1 data-ice="name">IResults</h1>
 
   
 
   
   
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span> &#x2192; IResults</div></div>
   
   
   
-  <div class="flat-list" data-ice="implements"><h4>Implements:</h4><ul><li><span><a href="class/src/doc.js~IBackoffStrategy.html">IBackoffStrategy</a></span></li></ul></div>
-  
-  
-  
-
   
   
   
 
   
+  
+  <div class="description" data-ice="description"><p>IResults are returned from the .query method. It marshals the raw Influx
+results into a more palatable, JavaScript-y structure. All query results
+are marshalled into a single, flat arrays, and methods are provided to
+example grouped results as necessary. The <code>time</code> column, if included, is
+converted into a <span><a href="class/src/doc.js~INanoDate.html">INanoDate</a></span>.</p>
+</div>
 
   
+
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.query(&apos;select host, cpu, mem from perf&apos;).then(results =&gt; {
+  expect(results).to.deep.equal([
+    { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+    { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+    // ...
+  ])
+})</code></pre>
+    </div>
+</div>
 
   
 
@@ -100,39 +118,7 @@
 
 
 
-<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(options: <span>IExponentialOptions</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Creates a new exponential backoff strategy.</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
+
 
 <div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
   <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
@@ -149,13 +135,15 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-getDelay">getDelay</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/doc.js~IResults.html#instance-method-group">group</a></span></span><span data-ice="signature">(matcher: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;): <span><span>T</span><span>[]</span></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Group looks for and returns the first group in the results
+that matches the provided tags.</p>
+</div>
       </div>
     </td>
     <td>
@@ -174,38 +162,15 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-next">next</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/doc.js~IResults.html#instance-method-groups">groups</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{name: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, tags: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;, rows: <span><span>T</span><span>[]</span></span>}&gt;</{name:></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-reset">reset</a></span></span><span data-ice="signature">(): <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
+        <div data-ice="description"><p>Returns the data grouped into nested arrays, similarly to how it was
+returned from Influx originally.</p>
+</div>
       </div>
     </td>
     <td>
@@ -221,27 +186,33 @@
 
 
 
-<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-constructor-constructor">
+  <h3 data-ice="anchor" id="instance-method-group">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(options: <span>IExponentialOptions</span>)</span>
+    <span data-ice="name">group</span><span data-ice="signature">(matcher: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;): <span><span>T</span><span>[]</span></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/backoff/exponential.js.html#lineNumber11">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber170">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Creates a new exponential backoff strategy.</p>
+  <div data-ice="description"><p>Group looks for and returns the first group in the results
+that matches the provided tags.</p>
+<p>If you&apos;ve used lodash or underscore, we do something quite similar to
+their object matching: for every row in the results, if it contains tag
+values matching the requested object, we return it.</p>
 </div>
 
   
@@ -255,8 +226,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">options</td>
-      <td data-ice="type"><span>IExponentialOptions</span></td>
+      <td data-ice="name" data-depth="0">matcher</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;</td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -265,55 +236,11 @@
 </div>
 </div>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="see"><h4>See:</h4><ul><li><span><a href="https://en.wikipedia.org/wiki/Exponential_backoff">https://en.wikipedia.org/wiki/Exponential_backoff</a></span></li></ul></div>
-  
-</div>
-</div>
-
-<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-getDelay">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">getDelay</span><span data-ice="signature">(): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/backoff/exponential.js.html#lineNumber18">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
   <div class="return-params" data-ice="returnParams">
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><span>T</span><span>[]</span></span></td>
         
       </tr>
     </table>
@@ -327,7 +254,26 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">// Matching tags sets in queries:
+influx.query(&apos;select * from perf group by host&apos;).then(results =&gt; {
+  expect(results.group({ host: &apos;ares.peet.io&apos;})).to.deep.equal([
+    { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+    { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+    // ...
+  ])
+
+  expect(results.group({ host: &apos;box1.example.com&apos;})).to.deep.equal([
+    { host: &apos;box1.example.com&apos;, cpu: 0.54, mem: 8420 },
+    // ...
+  ])
+})</code></pre>
+    </div>
+</div>
 
   
 
@@ -335,24 +281,26 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-next">
+  <h3 data-ice="anchor" id="instance-method-groups">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">next</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">groups</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{name: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, tags: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;, rows: <span><span>T</span><span>[]</span></span>}&gt;</{name:></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/backoff/exponential.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/doc.js.html#lineNumber199">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Returns the data grouped into nested arrays, similarly to how it was
+returned from Influx originally.</p>
+</div>
 
   
 
@@ -363,7 +311,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{name: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, tags: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>&gt;, rows: <span><span>T</span><span>[]</span></span>}&gt;</{name:></td>
         
       </tr>
     </table>
@@ -377,57 +325,34 @@
 
   
 
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-reset">
-    <span class="access" data-ice="access">public</span>
+  <div data-ice="example">
+    <h4>Example:</h4>
     
-    
-    
-    
-    <span data-ice="name">reset</span><span data-ice="signature">(): <span>*</span></span>
-    <span class="right-info">
+  <div class="example-doc" data-ice="exampleDoc">
       
-      
-      <span data-ice="source"><span><a href="file/src/backoff/exponential.js.html#lineNumber33">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.query(&apos;select * from perf group by host&apos;).then(results =&gt; {
+  expect(results.groups()).to.deep.equal([
+    {
+      name: &apos;perf&apos;,
+      tags: { host: &apos;ares.peet.io&apos; },
+      rows: [
+        { host: &apos;ares.peet.io&apos;, cpu: 0.12, mem: 2435 },
+        { host: &apos;ares.peet.io&apos;, cpu: 0.10, mem: 2451 },
+        // ...
+      ]
+    }
+    {
+      name: &apos;perf&apos;,
+      tags: { host: &apos;box1.example.com&apos; },
+      rows: [
+        { host: &apos;box1.example.com&apos;, cpu: 0.54, mem: 8420 },
+        // ...
+      ]
+    }
+  ])
+})</code></pre>
+    </div>
 </div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
 
   
 

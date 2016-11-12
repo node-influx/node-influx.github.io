@@ -23913,8 +23913,8 @@
                                                           },
                                                           {
                                                             "type": "Literal",
-                                                            "value": "grant READ to \"con\\\"nor\" on \"my_\\\"_db\"",
-                                                            "raw": "'grant READ to \"con\\\\\"nor\" on \"my_\\\\\"_db\"'",
+                                                            "value": "grant READ on \"my_\\\"_db\" to \"con\\\"nor\"",
+                                                            "raw": "'grant READ on \"my_\\\\\"_db\" to \"con\\\\\"nor\"'",
                                                             "range": [
                                                               12112,
                                                               12154
@@ -24755,8 +24755,8 @@
                                                           },
                                                           {
                                                             "type": "Literal",
-                                                            "value": "grant READ to \"con\\\"nor\" on \"my_\\\"_db\"",
-                                                            "raw": "'grant READ to \"con\\\\\"nor\" on \"my_\\\\\"_db\"'",
+                                                            "value": "grant READ on \"my_\\\"_db\" to \"con\\\"nor\"",
+                                                            "raw": "'grant READ on \"my_\\\\\"_db\" to \"con\\\\\"nor\"'",
                                                             "range": [
                                                               12542,
                                                               12584

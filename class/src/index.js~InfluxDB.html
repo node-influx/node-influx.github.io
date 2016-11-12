@@ -1391,7 +1391,7 @@ guides/downsampling_and_retention/">Downsampling and Retention</a> on the Influx
 </td>
     </tr>
 <tr data-ice="property" data-depth="1">
-      <td data-ice="name" data-depth="1">options.default</td>
+      <td data-ice="name" data-depth="1">options.isDefault</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>Whether the retention policy should
@@ -3240,8 +3240,8 @@ it automatically fills in the <code>measurement</code> value for all points for 
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode">influx.writeMeasurement(&apos;perf&apos;, [
   {
-    fields: { host: &apos;box1.example.com&apos; },
-    tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+    tags: { host: &apos;box1.example.com&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage() },
   }
 ])</code></pre>
     </div>
@@ -3353,8 +3353,8 @@ full list of possible options.</p>
 influx.writePoints([
   {
     measurement: &apos;perf&apos;,
-    fields: { host: &apos;box1.example.com&apos; },
-    tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+    tags: { host: &apos;box1.example.com&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage() },
   }
 ])
 
@@ -3363,8 +3363,8 @@ influx.writePoints([
 influx.writePoints([
   {
     measurement: &apos;perf&apos;,
-    fields: { host: &apos;box1.example.com&apos; },
-    tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+    tags: { host: &apos;box1.example.com&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage() },
     timestamp: getLastRecordedTime(),
   }
 ], {

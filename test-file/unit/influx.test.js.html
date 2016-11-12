@@ -365,7 +365,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
         });
         describe(&apos;.grantPrivilege()&apos;, () =&gt; {
             it(&apos;queries correctly&apos;, () =&gt; {
-                expectQuery(&apos;json&apos;, &apos;grant READ to &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                expectQuery(&apos;json&apos;, &apos;grant READ on &quot;my_\\&quot;_db&quot; to &quot;con\\&quot;nor&quot;&apos;);
                 return influx.grantPrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
             });
             it(&apos;throws if DB unspecified&apos;, () =&gt; {
@@ -373,7 +373,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
             it(&apos;fills in default DB&apos;, () =&gt; {
                 setDefaultDB(&apos;my_\\&quot;_db&apos;);
-                expectQuery(&apos;json&apos;, &apos;grant READ to &quot;con\\&quot;nor&quot; on &quot;my_\\&quot;_db&quot;&apos;);
+                expectQuery(&apos;json&apos;, &apos;grant READ on &quot;my_\\&quot;_db&quot; to &quot;con\\&quot;nor&quot;&apos;);
                 return influx.grantPrivilege(&apos;con&quot;nor&apos;, &apos;READ&apos;, &apos;my_&quot;_db&apos;);
             });
         });

@@ -466,8 +466,8 @@ export class InfluxDB {
      */
     grantPrivilege(username, privilege, database = this.defaultDB()) {
         return this.pool.json(this.getQueryOpts({
-            q: `grant ${privilege} to ${grammar.escape.quoted(username)} on `
-                + grammar.escape.quoted(database),
+            q: `grant ${privilege} on ${grammar.escape.quoted(database)} `
+                + `to ${grammar.escape.quoted(username)}`,
         }, &apos;POST&apos;)).then(assertNoErrors);
     }
     /**
@@ -580,7 +580,7 @@ export class InfluxDB {
      *     [here](https://docs.influxdata.com/influxdb/v1.0/query_language/spec/#durations)
      * @param {Number} options.replication How many servers data in the series
      *     should be replicated to.
-     * @param {Boolean} [options.default] Whether the retention policy should
+     * @param {Boolean} [options.isDefault] Whether the retention policy should
      *     be the default policy on the database.
      * @returns {Promise&lt;void&gt;}
      * @example
@@ -720,8 +720,8 @@ export class InfluxDB {
      * influx.writePoints([
      *   {
      *     measurement: &apos;perf&apos;,
-     *     fields: { host: &apos;box1.example.com&apos; },
-     *     tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+     *     tags: { host: &apos;box1.example.com&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage() },
      *   }
      * ])
      *
@@ -730,8 +730,8 @@ export class InfluxDB {
      * influx.writePoints([
      *   {
      *     measurement: &apos;perf&apos;,
-     *     fields: { host: &apos;box1.example.com&apos; },
-     *     tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+     *     tags: { host: &apos;box1.example.com&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage() },
      *     timestamp: getLastRecordedTime(),
      *   }
      * ], {
@@ -789,8 +789,8 @@ export class InfluxDB {
      * @example
      * influx.writeMeasurement(&apos;perf&apos;, [
      *   {
-     *     fields: { host: &apos;box1.example.com&apos; },
-     *     tags: { cpu: getCpuUsage(), mem: getMemUsage() },
+     *     tags: { host: &apos;box1.example.com&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage() },
      *   }
      * ])
      */

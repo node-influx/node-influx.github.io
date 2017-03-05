@@ -56,16 +56,17 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">unit/pool.test.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ExponentialBackoff } from &apos;../../src/backoff/exponential&apos;;
-import { Pool, RequestError, ServiceNotAvailableError } from &apos;../../src/pool&apos;;
-import { expect } from &apos;chai&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { expect } from &apos;chai&apos;;
 import * as http from &apos;http&apos;;
 import * as sinon from &apos;sinon&apos;;
+import { ExponentialBackoff } from &apos;../../src/backoff/exponential&apos;;
+import { Pool, RequestError, ServiceNotAvailableError } from &apos;../../src/pool&apos;;
 const hosts = 2;
 describe(&apos;pool&apos;, () =&gt; {
     let pool;
@@ -116,6 +117,14 @@ describe(&apos;pool&apos;, () =&gt; {
         const p = createPool();
         p.addHost(&apos;https://httpbin.org/get&apos;);
         return p.json({ method: &apos;GET&apos;, path: &apos;/get&apos; });
+    });
+    it(&apos;passes through request options&apos;, () =&gt; {
+        const spy = sinon.spy(http, &apos;request&apos;);
+        const p = createPool();
+        p.addHost(&apos;https://httpbin.org/get&apos;, { rejectUnauthorized: false });
+        return p.json({ method: &apos;GET&apos;, path: &apos;/get&apos; }).then(() =&gt; {
+            expect(spy.args[0][0].rejectUnauthorized).to.be.false;
+        });
     });
     describe(&apos;request generators&apos;, () =&gt; {
         it(&apos;makes a text request&apos;, () =&gt; {

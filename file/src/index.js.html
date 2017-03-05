@@ -56,17 +56,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Pool } from &apos;./pool&apos;;
-import { assertNoErrors, parse, parseSingle } from &apos;./results&apos;;
-import { coerceBadly, Schema } from &apos;./schema&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as url from &apos;url&apos;;
 import * as b from &apos;./builder&apos;;
 import * as grammar from &apos;./grammar&apos;;
-import * as url from &apos;url&apos;;
+import { Pool } from &apos;./pool&apos;;
+import { assertNoErrors, parse, parseSingle } from &apos;./results&apos;;
+import { coerceBadly, Schema } from &apos;./schema&apos;;
 const defaultHost = Object.freeze({
     host: &apos;127.0.0.1&apos;,
     port: 8086,
@@ -258,7 +259,7 @@ export class InfluxDB {
         this.pool = new Pool(resolved.pool);
         this.options = defaults(resolved, defaultOptions);
         resolved.hosts.forEach(host =&gt; {
-            this.pool.addHost(`${host.protocol}://${host.host}:${host.port}`);
+            this.pool.addHost(`${host.protocol}://${host.host}:${host.port}`, host.options);
         });
         this.options.schema.forEach(schema =&gt; {
             const db = schema.database = schema.database || this.options.database;
@@ -427,7 +428,7 @@ export class InfluxDB {
      * @param {String} password
      * @param {Boolean} [admin=false] If true, the user will be given all
      *     privileges on all databases.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.createUser(&apos;connor&apos;, &apos;pa55w0rd&apos;, true) // make &apos;connor&apos; an admin
      *
@@ -445,7 +446,7 @@ export class InfluxDB {
      * Sets a password for an Influx user.
      * @param {String} username
      * @param {String} password
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.setPassword(&apos;connor&apos;, &apos;pa55w0rd&apos;)
      */
@@ -460,7 +461,7 @@ export class InfluxDB {
      * @param {String} username
      * @param {String} privilege Should be one of &apos;READ&apos; or &apos;WRITE&apos;
      * @param {String} [database] If not provided, uses the default database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.grantPrivilege(&apos;connor&apos;, &apos;READ&apos;, &apos;my_db&apos;) // grants read access on my_db to connor
      */
@@ -475,7 +476,7 @@ export class InfluxDB {
      * @param {String} username
      * @param {String} privilege Should be one of &apos;READ&apos; or &apos;WRITE&apos;
      * @param {String} [database] If not provided, uses the default database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.revokePrivilege(&apos;connor&apos;, &apos;READ&apos;, &apos;my_db&apos;) // removes read access on my_db from connor
      */
@@ -488,7 +489,7 @@ export class InfluxDB {
     /**
      * Grants admin privileges to a specified user.
      * @param {String} username
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.grantAdminPrivilege(&apos;connor&apos;)
      */
@@ -500,7 +501,7 @@ export class InfluxDB {
     /**
      * Removes a admin privilege from a specified user.
      * @param {String} username
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.revokeAdminPrivilege(&apos;connor&apos;)
      */
@@ -512,7 +513,7 @@ export class InfluxDB {
     /**
      * Removes a user from the database.
      * @param {String} username
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.dropUser(&apos;connor&apos;)
      */
@@ -526,7 +527,7 @@ export class InfluxDB {
      * @param {String} name The query name, for later reference
      * @param {String} query The body of the query to run
      * @param {String} [database] If not provided, uses the default database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.createContinuousQuery(&apos;downsample_cpu_1h&apos;, `
      *   SELECT MEAN(cpu) INTO &quot;7d&quot;.&quot;perf&quot;
@@ -542,7 +543,7 @@ export class InfluxDB {
     /**
      * Returns a list of continous queries in the database.
      * @param {String} [database] If not provided, uses the default database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.showContinousQueries()
      */
@@ -556,7 +557,7 @@ export class InfluxDB {
      * Creates a continuous query in a database
      * @param {String} name The query name
      * @param {String} [database] If not provided, uses the default database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.dropContinuousQuery(&apos;downsample_cpu_1h&apos;)
      */
@@ -582,7 +583,7 @@ export class InfluxDB {
      *     should be replicated to.
      * @param {Boolean} [options.isDefault] Whether the retention policy should
      *     be the default policy on the database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.createRetentionPolicy(&apos;7d&apos;, {
      *  duration: &apos;7d&apos;,
@@ -610,7 +611,7 @@ export class InfluxDB {
      *     should be replicated to.
      * @param {Boolean} [options.default] Whether the retention policy should
      *     be the default policy on the database.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.alterRetentionPolicy(&apos;7d&apos;, {
      *  duration: &apos;7d&apos;,
@@ -633,7 +634,7 @@ export class InfluxDB {
      * @param {String} name The retention policy name
      * @param {String} [database] Database name that the policy lives in,
      *     uses the default database if not provided.
-     * @returns {Promise&lt;void&gt;}
+     * @return {Promise&lt;void&gt;}
      * @example
      * influx.dropRetentionPolicy(&apos;7d&apos;)
      */
@@ -648,7 +649,7 @@ export class InfluxDB {
      *
      * @param {String} [database] The database to list policies on, uses the
      *     default database if not provided.
-     * @returns {Promise&lt;Array&lt;{
+     * @return {Promise&lt;Array&lt;{
      *     name: String,
      *     duration: String,
      *     shardGroupDuration: String,
@@ -708,10 +709,10 @@ export class InfluxDB {
      *  - if you provide a string or number as the timestamp, we&apos;ll pass it
      *    straight into Influx.
      *
-     * Please see the IPoint and IWriteOptions type for a
+     * Please see the IPoint and IWriteOptions types for a
      * full list of possible options.
      *
-     * @param {Point[]} points
+     * @param {IPoint[]} points
      * @param {IWriteOptions} [options]
      * @return {Promise&lt;void&gt;}
      * @example
@@ -783,7 +784,7 @@ export class InfluxDB {
      * it automatically fills in the `measurement` value for all points for you.
      *
      * @param {String} measurement
-     * @param {Point[]} points
+     * @param {IPoint[]} points
      * @param {IWriteOptions} [options]
      * @return {Promise&lt;void&gt;}
      * @example
@@ -799,14 +800,13 @@ export class InfluxDB {
         return this.writePoints(points, options);
     }
     /**
-     * .query() run a query (or list of queries), runs them, and returns the
-     * results in a friendly format. If you run multiple queries, multiple
-     * sets of results will be returned, otherwise a single result will
-     * be returned.
+     * .query() runs a query (or list of queries), and returns the results in a
+     * friendly format, {@link IResults}. If you run multiple queries, an array of results
+     * will be returned, otherwise a single result (array of objects) will be returned.
      *
      * @param {String|String[]} query
      * @param {IQueryOptions} [options]
-     * @return {Promise&lt;IResults|Results[]&gt;} query
+     * @return {Promise&lt;IResults|Results[]&gt;} result(s)
      * @example
      * influx.query(&apos;select * from perf&apos;).then(results =&gt; {
      *   console.log(results)
@@ -840,6 +840,9 @@ export class InfluxDB {
      */
     queryRaw(query, options = {}) {
         const { database = this.defaultDB(), retentionPolicy, } = options;
+        if (query instanceof Array) {
+            query = query.join(&apos;;&apos;);
+        }
         return this.pool.json(this.getQueryOpts({
             db: database,
             epoch: options.precision,

@@ -8,10 +8,10 @@
           "type": "ImportSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "ExponentialBackoff",
+            "name": "expect",
             "range": [
               9,
-              27
+              15
             ],
             "loc": {
               "start": {
@@ -20,16 +20,16 @@
               },
               "end": {
                 "line": 1,
-                "column": 27
+                "column": 15
               }
             }
           },
           "imported": {
             "type": "Identifier",
-            "name": "ExponentialBackoff",
+            "name": "expect",
             "range": [
               9,
-              27
+              15
             ],
             "loc": {
               "start": {
@@ -38,13 +38,13 @@
               },
               "end": {
                 "line": 1,
-                "column": 27
+                "column": 15
               }
             }
           },
           "range": [
             9,
-            27
+            15
           ],
           "loc": {
             "start": {
@@ -53,97 +53,6 @@
             },
             "end": {
               "line": 1,
-              "column": 27
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "../../src/backoff/exponential",
-        "raw": "'../../src/backoff/exponential'",
-        "range": [
-          35,
-          66
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 35
-          },
-          "end": {
-            "line": 1,
-            "column": 66
-          }
-        }
-      },
-      "range": [
-        0,
-        67
-      ],
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 67
-        }
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "expect",
-            "range": [
-              77,
-              83
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 15
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "expect",
-            "range": [
-              77,
-              83
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 15
-              }
-            }
-          },
-          "range": [
-            77,
-            83
-          ],
-          "loc": {
-            "start": {
-              "line": 2,
-              "column": 9
-            },
-            "end": {
-              "line": 2,
               "column": 15
             }
           }
@@ -154,22 +63,113 @@
         "value": "chai",
         "raw": "'chai'",
         "range": [
-          91,
-          97
+          23,
+          29
         ],
         "loc": {
           "start": {
-            "line": 2,
+            "line": 1,
             "column": 23
           },
           "end": {
-            "line": 2,
+            "line": 1,
             "column": 29
           }
         }
       },
       "range": [
-        68,
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ExponentialBackoff",
+            "range": [
+              40,
+              58
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 27
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "ExponentialBackoff",
+            "range": [
+              40,
+              58
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 27
+              }
+            }
+          },
+          "range": [
+            40,
+            58
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 27
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../../src/backoff/exponential",
+        "raw": "'../../src/backoff/exponential'",
+        "range": [
+          66,
+          97
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 35
+          },
+          "end": {
+            "line": 2,
+            "column": 66
+          }
+        }
+      },
+      "range": [
+        31,
         98
       ],
       "loc": {
@@ -179,7 +179,7 @@
         },
         "end": {
           "line": 2,
-          "column": 30
+          "column": 67
         }
       }
     },

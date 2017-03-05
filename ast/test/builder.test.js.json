@@ -8,10 +8,10 @@
           "type": "ImportSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "Expression",
+            "name": "expect",
             "range": [
               9,
-              19
+              15
             ],
             "loc": {
               "start": {
@@ -20,16 +20,16 @@
               },
               "end": {
                 "line": 1,
-                "column": 19
+                "column": 15
               }
             }
           },
           "imported": {
             "type": "Identifier",
-            "name": "Expression",
+            "name": "expect",
             "range": [
               9,
-              19
+              15
             ],
             "loc": {
               "start": {
@@ -38,13 +38,13 @@
               },
               "end": {
                 "line": 1,
-                "column": 19
+                "column": 15
               }
             }
           },
           "range": [
             9,
-            19
+            15
           ],
           "loc": {
             "start": {
@@ -53,203 +53,6 @@
             },
             "end": {
               "line": 1,
-              "column": 19
-            }
-          }
-        },
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "Measurement",
-            "range": [
-              21,
-              32
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 21
-              },
-              "end": {
-                "line": 1,
-                "column": 32
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "Measurement",
-            "range": [
-              21,
-              32
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 21
-              },
-              "end": {
-                "line": 1,
-                "column": 32
-              }
-            }
-          },
-          "range": [
-            21,
-            32
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 21
-            },
-            "end": {
-              "line": 1,
-              "column": 32
-            }
-          }
-        },
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "toNanoDate",
-            "range": [
-              34,
-              44
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 34
-              },
-              "end": {
-                "line": 1,
-                "column": 44
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "toNanoDate",
-            "range": [
-              34,
-              44
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 34
-              },
-              "end": {
-                "line": 1,
-                "column": 44
-              }
-            }
-          },
-          "range": [
-            34,
-            44
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 34
-            },
-            "end": {
-              "line": 1,
-              "column": 44
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "../../src/index",
-        "raw": "'../../src/index'",
-        "range": [
-          52,
-          69
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 52
-          },
-          "end": {
-            "line": 1,
-            "column": 69
-          }
-        }
-      },
-      "range": [
-        0,
-        70
-      ],
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 70
-        }
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "expect",
-            "range": [
-              80,
-              86
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 15
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "expect",
-            "range": [
-              80,
-              86
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 15
-              }
-            }
-          },
-          "range": [
-            80,
-            86
-          ],
-          "loc": {
-            "start": {
-              "line": 2,
-              "column": 9
-            },
-            "end": {
-              "line": 2,
               "column": 15
             }
           }
@@ -260,22 +63,219 @@
         "value": "chai",
         "raw": "'chai'",
         "range": [
-          94,
-          100
+          23,
+          29
         ],
         "loc": {
           "start": {
-            "line": 2,
+            "line": 1,
             "column": 23
           },
           "end": {
-            "line": 2,
+            "line": 1,
             "column": 29
           }
         }
       },
       "range": [
-        71,
+        0,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Expression",
+            "range": [
+              40,
+              50
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 19
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Expression",
+            "range": [
+              40,
+              50
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            40,
+            50
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 19
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Measurement",
+            "range": [
+              52,
+              63
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 21
+              },
+              "end": {
+                "line": 2,
+                "column": 32
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Measurement",
+            "range": [
+              52,
+              63
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 21
+              },
+              "end": {
+                "line": 2,
+                "column": 32
+              }
+            }
+          },
+          "range": [
+            52,
+            63
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 21
+            },
+            "end": {
+              "line": 2,
+              "column": 32
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "toNanoDate",
+            "range": [
+              65,
+              75
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 34
+              },
+              "end": {
+                "line": 2,
+                "column": 44
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "toNanoDate",
+            "range": [
+              65,
+              75
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 34
+              },
+              "end": {
+                "line": 2,
+                "column": 44
+              }
+            }
+          },
+          "range": [
+            65,
+            75
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 34
+            },
+            "end": {
+              "line": 2,
+              "column": 44
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../../src/index",
+        "raw": "'../../src/index'",
+        "range": [
+          83,
+          100
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 52
+          },
+          "end": {
+            "line": 2,
+            "column": 69
+          }
+        }
+      },
+      "range": [
+        31,
         101
       ],
       "loc": {
@@ -285,7 +285,7 @@
         },
         "end": {
           "line": 2,
-          "column": 30
+          "column": 70
         }
       }
     },

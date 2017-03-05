@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -99,7 +100,7 @@ class Escaper {
         this.wrap = wrap;
         this.escaper = escaper;
         const patterns = chars.join(&apos;&apos;).replace(reEscape, &apos;\\$&amp;&apos;);
-        this.re = new RegExp(&apos;[&apos; + patterns + &apos;]&apos;, &apos;g&apos;);
+        this.re = new RegExp(&apos;[&apos; + patterns + &apos;\\\\]&apos;, &apos;g&apos;);
     }
     /**
      * Escape replaces occurrences of special characters within the target

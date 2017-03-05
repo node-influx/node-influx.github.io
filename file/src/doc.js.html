@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -85,9 +86,11 @@
  *     will let you omit database names in most operations, and is convenient
  *     if your app is primarily dealing with a single database.
  * @property {String} [host=&apos;127.0.0.1&apos;] Influx host to connect to.
- * @property {Number} [port=8060] Influx port to connect to.
+ * @property {Number} [port=8086] Influx port to connect to.
  * @property {String} [protocol=&apos;http&apos;] Protocol to connect over, either
  *     &apos;http&apos; or &apos;https&apos;.
+ * @property {https.RequestOptions} [options={}] Option overrides to use in
+ *     passing to http.request or https.request.
  * @property {IPoolOptions} [pool] Options for the connection pool.
  * @property {ISchemaOptions[]} [schema] An optional list of data schema to use.
  *
@@ -125,9 +128,11 @@
  *     if your app is primarily dealing with a single database.
  * @property {Array} hosts A list of Influx hosts to connect to.
  * @property {String} [hosts.host=&apos;127.0.0.1&apos;] Influx host to connect to.
- * @property {Number} [hosts.port=8060] Influx port to connect to.
+ * @property {Number} [hosts.port=8086] Influx port to connect to.
  * @property {String} [hosts.protocol=&apos;http&apos;] Protocol to connect over, either
  *     &apos;http&apos; or &apos;https&apos;.
+ * @property {https.RequestOptions} [hosts.options={}] Option overrides to
+ *     use in passing to http.request or https.request.
  * @property {IPoolOptions} [pool] Options for the connection pool.
  * @property {ISchemaOptions[]} [schema] An optional list of data schema to use.
  *
@@ -188,11 +193,12 @@
  * }
  */
 /**
- * IResults are returned from the .query method. It marshals the raw Influx
+ * IResults are returned from the {@link InfluxDB#query} method. It marshals the raw Influx
  * results into a more palatable, JavaScript-y structure. All query results
- * are marshalled into a single, flat arrays, and methods are provided to
- * example grouped results as necessary. The `time` column, if included, is
- * converted into a {@link INanoDate}.
+ * are marshalled into a single, flat array, and methods are provided to
+ * examine grouped results as necessary. The `time` column, if included, is
+ * converted into a {@link INanoDate}. If `.query()` was called on an array of strings,
+ * it will return an array of IResults, one result per query string.
  *
  * @interface
  * @example
@@ -206,7 +212,7 @@
  */
 export class IResults extends Array {
     /**
-     * Group looks for and returns the first group in the results
+     * Looks for and returns the first group in the results
      * that matches the provided tags.
      *
      * If you&apos;ve used lodash or underscore, we do something quite similar to
@@ -270,8 +276,8 @@ export class IResults extends Array {
  *     values to insert.
  * @property {Object.&lt;String, *&gt;} [fields] Fields is the list of
  *     field values to insert.
- * @property {Date|string|number} [fields] Timestamp tags this measurement with
- *     a date. This can be a Date object, in which case we&apos;ll adjust it to the
+ * @property {Date|string|number} [timestamp] Specifies a timestamp for this
+ *     point. This can be a Date object, in which case we&apos;ll adjust it to the
  *     desired precision, or a numeric string or number, in which case
  *     it gets passed directly to Influx.
  */

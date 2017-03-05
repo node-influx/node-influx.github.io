@@ -56,20 +56,21 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">unit/influx.test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+import { expect } from &apos;chai&apos;;
 import { FieldType, InfluxDB, toNanoDate } from &apos;../../src&apos;;
 import { dbFixture } from &apos;./helpers&apos;;
-import { expect } from &apos;chai&apos;;
 const sinon = require(&apos;sinon&apos;);
 describe(&apos;influxdb&apos;, () =&gt; {
     describe(&apos;constructor&apos;, () =&gt; {
         it(&apos;uses default options&apos;, () =&gt; {
-            expect((new InfluxDB()).options).to.deep.equal({
+            expect(new InfluxDB().options).to.deep.equal({
                 username: &apos;root&apos;,
                 password: &apos;root&apos;,
                 database: null,
@@ -83,7 +84,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;parses dsns&apos;, () =&gt; {
-            expect((new InfluxDB(&apos;https://connor:password@192.168.0.1:1337/foo&apos;)).options).to.deep.equal({
+            expect(new InfluxDB(&apos;https://connor:password@192.168.0.1:1337/foo&apos;).options).to.deep.equal({
                 username: &apos;connor&apos;,
                 password: &apos;password&apos;,
                 database: &apos;foo&apos;,
@@ -97,7 +98,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;parses single configs&apos;, () =&gt; {
-            expect((new InfluxDB({ database: &apos;foo&apos;, host: &apos;192.168.0.1&apos; })).options).to.deep.equal({
+            expect(new InfluxDB({ database: &apos;foo&apos;, host: &apos;192.168.0.1&apos; }).options).to.deep.equal({
                 username: &apos;root&apos;,
                 password: &apos;root&apos;,
                 database: &apos;foo&apos;,
@@ -111,7 +112,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;parses cluster configs&apos;, () =&gt; {
-            expect((new InfluxDB({ database: &apos;foo&apos;, hosts: [{ host: &apos;192.168.0.1&apos; }] })).options).to.deep.equal({
+            expect(new InfluxDB({ database: &apos;foo&apos;, hosts: [{ host: &apos;192.168.0.1&apos; }] }).options).to.deep.equal({
                 username: &apos;root&apos;,
                 password: &apos;root&apos;,
                 database: &apos;foo&apos;,
@@ -124,7 +125,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
             });
         });
         it(&apos;parses parses schema&apos;, () =&gt; {
-            let client = (new InfluxDB({
+            let client = new InfluxDB({
                 schema: [{
                         database: &apos;my_db&apos;,
                         measurement: &apos;my_measurement&apos;,
@@ -132,9 +133,9 @@ describe(&apos;influxdb&apos;, () =&gt; {
                         tags: [&apos;my_tag&apos;],
                     }],
                 hosts: [{ host: &apos;192.168.0.1&apos; }],
-            }));
+            });
             expect(client.schema.my_db.my_measurement).to.not.be.undefined;
-            client = (new InfluxDB({
+            client = new InfluxDB({
                 schema: [{
                         measurement: &apos;my_measurement&apos;,
                         fields: {},
@@ -142,7 +143,7 @@ describe(&apos;influxdb&apos;, () =&gt; {
                     }],
                 database: &apos;my_db&apos;,
                 hosts: [{ host: &apos;192.168.0.1&apos; }],
-            }));
+            });
             expect(client.schema.my_db.my_measurement).to.not.be.undefined;
             expect(() =&gt; {
                 new InfluxDB({

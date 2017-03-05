@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -86,6 +87,7 @@ export class ServiceNotAvailableError extends Error {
     constructor(message) {
         super();
         this.message = message;
+        Object.setPrototypeOf(this, ServiceNotAvailableError.prototype);
     }
 }
 /**
@@ -98,6 +100,7 @@ export class RequestError extends Error {
         this.req = req;
         this.res = res;
         this.message = `A ${res.statusCode} ${res.statusMessage} error occurred: ${body}`;
+        Object.setPrototypeOf(this, RequestError.prototype);
     }
     static Create(req, res, callback) {
         let body = &apos;&apos;;
@@ -180,8 +183,8 @@ export class Pool {
     /**
      * Inserts a new host to the pool.
      */
-    addHost(url) {
-        const host = new Host(url, this.options.backoff.reset());
+    addHost(url, options = {}) {
+        const host = new Host(url, this.options.backoff.reset(), options);
         this.hostsAvailable.add(host);
         return host;
     }
@@ -243,14 +246,14 @@ export class Pool {
             const url = host.url;
             const once = doOnce();
             return todo.push(new Promise(resolve =&gt; {
-                const req = request({
+                const req = request(Object.assign({
                     hostname: url.hostname,
                     method: &apos;GET&apos;,
                     path,
                     port: Number(url.port),
                     protocol: url.protocol,
                     timeout,
-                }, once((res) =&gt; {
+                }, host.options), once((res) =&gt; {
                     resolve({
                         url,
                         res,
@@ -295,7 +298,7 @@ export class Pool {
         }
         const once = doOnce();
         const host = this.getHost();
-        const req = request({
+        const req = request(Object.assign({
             headers: { &apos;content-length&apos;: options.body ? options.body.length : 0 },
             hostname: host.url.hostname,
             method: options.method,
@@ -303,7 +306,7 @@ export class Pool {
             port: Number(host.url.port),
             protocol: host.url.protocol,
             timeout: this.timeout,
-        }, once((res) =&gt; {
+        }, host.options), once((res) =&gt; {
             if (res.statusCode &gt;= 500) {
                 return this.handleRequestError(new ServiceNotAvailableError(res.statusMessage), host, options, callback);
             }

@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -185,10 +186,16 @@ const nsPer = {
     s: Math.pow(10, 9),
 };
 function nanoIsoToTime(iso) {
-    const [secondsStr, decimalStr] = iso.split(&apos;.&apos;);
-    const seconds = Math.floor(new Date(secondsStr + &apos;Z&apos;).getTime() / 1000);
-    const decimal = rightPad(decimalStr.slice(0, -1), 9);
-    return `${seconds}${decimal}`;
+    let [secondsStr, decimalStr] = iso.split(&apos;.&apos;);
+    if (decimalStr === undefined) {
+        decimalStr = &apos;000000000&apos;;
+    }
+    else {
+        decimalStr = rightPad(decimalStr.slice(0, -1), 9);
+        secondsStr += &apos;Z&apos;;
+    }
+    const seconds = Math.floor(new Date(secondsStr).getTime() / 1000);
+    return `${seconds}${decimalStr}`;
 }
 const nanoDateMethods = {
     getNanoTimeFromISO() {

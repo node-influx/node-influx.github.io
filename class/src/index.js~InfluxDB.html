@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -670,8 +671,8 @@ entire database if a measurement isn&apos;t provided.</p>
       <div>
         
         
-        <div data-ice="description"><p>.query() run a query (or list of queries), runs them, and returns the
-results in a friendly format.</p>
+        <div data-ice="description"><p>.query() runs a query (or list of queries), and returns the results in a
+friendly format, <span><a href="class/src/doc.js~IResults.html">IResults</a></span>.</p>
 </div>
       </div>
     </td>
@@ -855,7 +856,7 @@ those results verbatim.</p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-writeMeasurement">writeMeasurement</a></span></span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, points: <span><span>Point</span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-writeMeasurement">writeMeasurement</a></span></span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, points: <span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -882,7 +883,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-writePoints">writePoints</a></span></span><span data-ice="signature">(points: <span><span>Point</span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+           <span data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-writePoints">writePoints</a></span></span><span data-ice="signature">(points: <span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -2496,7 +2497,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber802">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber804">source</a></span></span>
     </span>
   </h3>
 
@@ -2579,17 +2580,16 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber752">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber751">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>.query() run a query (or list of queries), runs them, and returns the
-results in a friendly format. If you run multiple queries, multiple
-sets of results will be returned, otherwise a single result will
-be returned.</p>
+  <div data-ice="description"><p>.query() runs a query (or list of queries), and returns the results in a
+friendly format, <span><a href="class/src/doc.js~IResults.html">IResults</a></span>. If you run multiple queries, an array of results
+will be returned, otherwise a single result (array of objects) will be returned.</p>
 </div>
 
   
@@ -2624,7 +2624,7 @@ be returned.</p>
     <table>
       <tr>
         <td class="return-type" data-ice="returnType"><span>Promise&lt;IResults</span> | <span>Results[]&gt;</span></td>
-        <td class="return-desc" data-ice="returnDescription"><p>query</p>
+        <td class="return-desc" data-ice="returnDescription"><p>result(s)</p>
 </td>
       </tr>
     </table>
@@ -2665,7 +2665,7 @@ be returned.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber778">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber777">source</a></span></span>
     </span>
   </h3>
 
@@ -3167,7 +3167,7 @@ those results verbatim.</p>
     
     
     
-    <span data-ice="name">writeMeasurement</span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, points: <span><span>Point</span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+    <span data-ice="name">writeMeasurement</span><span data-ice="signature">(measurement: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, points: <span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
     <span class="right-info">
       
       
@@ -3200,7 +3200,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">points</td>
-      <td data-ice="type"><span><span>Point</span><span>[]</span></span></td>
+      <td data-ice="type"><span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -3259,7 +3259,7 @@ it automatically fills in the <code>measurement</code> value for all points for 
     
     
     
-    <span data-ice="name">writePoints</span><span data-ice="signature">(points: <span><span>Point</span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
+    <span data-ice="name">writePoints</span><span data-ice="signature">(points: <span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span>, options: <span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>void</span>&gt;</span>
     <span class="right-info">
       
       
@@ -3294,7 +3294,7 @@ nanosecond timestamp and manipulate it to get the right precision</li>
 <li>if you provide a string or number as the timestamp, we&apos;ll pass it
 straight into Influx.</li>
 </ul>
-<p>Please see the IPoint and IWriteOptions type for a
+<p>Please see the IPoint and IWriteOptions types for a
 full list of possible options.</p>
 </div>
 
@@ -3310,7 +3310,7 @@ full list of possible options.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">points</td>
-      <td data-ice="type"><span><span>Point</span><span>[]</span></span></td>
+      <td data-ice="type"><span><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span><span>[]</span></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>

@@ -56,6 +56,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -125,7 +126,7 @@ export class Schema {
         const keys = Object.keys(fields);
         if (consumed !== keys.length) {
             const extraneous = keys.filter(f =&gt; this.fieldNames.indexOf(f) === -1);
-            throw new Error(`Extraneous fields detected for writing InfluxDB point in` +
+            throw new Error(`Extraneous fields detected for writing InfluxDB point in ` +
                 `${this.ref()}: \`${extraneous.join(&apos;`, `&apos;)}\`.`);
         }
         return output;
@@ -138,7 +139,7 @@ export class Schema {
         const names = Object.keys(tags);
         const extraneous = names.filter(tag =&gt; !this.tagHash[tag]);
         if (extraneous.length &gt; 0) {
-            throw new Error(`Extraneous tags detected for writing InfluxDB point in` +
+            throw new Error(`Extraneous tags detected for writing InfluxDB point in ` +
                 `${this.ref()}: \`${extraneous.join(&apos;`, `&apos;)}\`.`);
         }
         return names;

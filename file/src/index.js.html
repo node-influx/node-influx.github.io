@@ -301,7 +301,7 @@ export class InfluxDB {
      * Returns array of database names. Requires cluster admin privileges.
      * @returns {Promise&lt;String[]&gt;} a list of database names
      * @example
-     * influx.getMeasurements().then(names =&gt;
+     * influx.getDatabaseNames().then(names =&gt;
      *   console.log(&apos;My database names are: &apos; + names.join(&apos;, &apos;)));
      */
     getDatabaseNames() {

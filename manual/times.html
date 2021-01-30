@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | node-influx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="InfluxDB Client"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="node-influx"><meta property="twitter:description" content="InfluxDB Client"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/node-influx/node-influx.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">Express Response Times Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/times.html"><a href="manual/times.html" data-ice="link">A Moment for Times</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/browser-setup.html"><a href="manual/browser-setup.html" data-ice="link">Browser Setup</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/testing.html"><a href="manual/testing.html" data-ice="link">Testing</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html" data-ice="link">Contributing</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#how-to-prepare" data-ice="link">How to prepare</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#make-changes" data-ice="link">Make Changes</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#submit-changes" data-ice="link">Submit Changes</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#additional-resources" data-ice="link">Additional Resources</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="a-moment-for-times">A Moment for Times</h1><p>InfluxDB is a time series database, so it would make sense that the concept of time is moderately important when dealing with it.</p>
+<p>By default, Influx will store all dates you give to it as a nanosecond-precision timestamp, whereas in JavaScript, most of the time we&apos;re dealing with millisecond precision timestamps, which we get from <code>Date.now()</code> or <code>myDate.getTime()</code>. This presents a bit of a problem for us JavaScripters, since nanosecond-precision timestamps are stored as 64-bit unsigned integers that JavaScript simply cannot represent accurately.</p>
+<pre><code><code class="source-code prettyprint">&#x279C;  node-influx git:(master) node
+&gt; 1475985480231035677
+1475985480231035600</code>
+</code></pre><p>This module tries to make dates as easy as possible for you to deal with, and out of the box everything should &quot;just work&quot;.</p>
+<p>There are three places that dates can get passed around:</p>
+<ul>
+<li>Dates coming from Influx queries, like <code>select * from my_series</code></li>
+<li>Dates being interpolated <em>into</em> Influx queries</li>
+<li>Dates being used when writing points on the line protocol, via <code>.writePoints()</code> or <code>.writeMeasurement()</code></li>
+</ul>
+<p>To deal with this, we introduce a new type called <strong>NanoDate</strong>. These dates behave just like the normal <code>Date</code> type, but have two additional methods: <code>.getNanoTime()</code> and <code>.getNanoISOString()</code>. They behave just like the normal <code>.getTime()</code> and <code>getISOString</code> methods, but they both return nanosecond-precision strings instead of millisecond-precision numbers and timestamps.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">expect(myNanoDate.getTime()).to.equal(1475985480231);
+expect(myNanoDate.getNanoTime()).to.equal(&quot;1475985480231035677&quot;);
+expect(myNanoDate.toISOString()).to.equal(&quot;2016-10-09T03:58:00.231Z&quot;);
+expect(myNanoDate.toNanoISOString()).to.equal(&quot;2016-10-09T03:58:00.231035677Z&quot;);</code>
+</code></pre>
+<p><strong>All times returned from Influx queries are parsed to INanoDates</strong>. For example, you can do something like the following:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">influx.query(&quot;select * from perf&quot;).then((results) =&gt; {
+  results.forEach((row) =&gt;
+    console.log(`Used ${row.cpu} at ${row.time.toNanoISOString()}`)
+  );
+});</code>
+</code></pre>
+<p>When writing data to Influx, <strong>all write methods accept INanoDates in all situations</strong>. This means if you select data from Influx and want to update a data point, you can pass that time right back into the <code>write</code> method. (Remember, points within series are unique by their time!) If you have a nanosecond timestamp from some external source, you can convert it to a INanoDate using <a href="https://node-influx.github.io/function/index.html#static-function-toNanoDate"><code>toNanoDate</code></a>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { toNanoDate } from &quot;influx&quot;;
+
+const myNanoDate = toNanoDate(&quot;1475985480231035600&quot;);
+expect(myNanoDate.getTime()).to.equal(1475985480231);
+expect(myNanoDate.getNanoTime()).to.equal(&quot;1475985480231035600&quot;);
+expect(myNanoDate.toNanoISOString()).to.equal(&quot;2016-10-09T03:58:00.231035600Z&quot;);</code>
+</code></pre>
+<p>Finally, <strong>if you want to embed a INanoDate into an Influx query, you should should use <code>toNanoISOString</code></strong> to so do:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">influx.query(
+  `select * from perf where time &gt; &quot;${myNanoDate.toNanoISOString()}&quot;`
+);</code>
+</code></pre>
+<hr>
+<p>Anything unclear? Have some remaining questions or found a bug? Feel free to <a href="https://github.com/node-influx/node-influx/issues/new">open an issue</a>, we respond quickly!</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

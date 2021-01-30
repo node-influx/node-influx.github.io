@@ -3,14 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">unit/pool.test.js | node-influx API Document</title>
+  <title data-ice="title">unit/pool.test.js | node-influx</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
-  
-  
   <script src="script/manual.js"></script>
-</head>
+<meta name="description" content="InfluxDB Client"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="node-influx"><meta property="twitter:description" content="InfluxDB Client"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -19,7 +17,6 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-  
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -27,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-</header>
+<a style="position:relative; top:3px;" href="https://github.com/node-influx/node-influx.git"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -39,215 +36,298 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~IBackoffStrategy.html">IBackoffStrategy</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~INanoDate.html">INanoDate</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~IResults.html">IResults</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IClusterConfig">IClusterConfig</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPingStats">IPingStats</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPoolOptions">IPoolOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IQueryOptions">IQueryOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ISchemaOptions">ISchemaOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ISingleHostConfig">ISingleHostConfig</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/schema.js~Schema.html">Schema</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertNoErrors">assertNoErrors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parse">parse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSingle">parseSingle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceBadly">coerceBadly</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#backoff">backoff</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/constant.js~ConstantBackoff.html">ConstantBackoff</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#grammar">grammar</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-castTimestamp">castTimestamp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dateToTime">dateToTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatDate">formatDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isoOrTimeToDate">isoOrTimeToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">unit/pool.test.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { expect } from &apos;chai&apos;;
-import * as http from &apos;http&apos;;
-import * as sinon from &apos;sinon&apos;;
-import { ExponentialBackoff } from &apos;../../src/backoff/exponential&apos;;
-import { Pool, RequestError, ServiceNotAvailableError } from &apos;../../src/pool&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint-env node, browser, mocha */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { expect } from &quot;chai&quot;;
+import * as http from &quot;http&quot;;
+import * as sinon from &quot;sinon&quot;;
+import * as https from &quot;https&quot;;
+import { ExponentialBackoff } from &quot;../../src/backoff/exponential&quot;;
+import { ConstantBackoff } from &quot;../../src/backoff/constant&quot;;
+import { Pool, RequestError, ServiceNotAvailableError } from &quot;../../src/pool&quot;;
 const hosts = 2;
-describe(&apos;pool&apos;, () =&gt; {
+describe(&quot;pool&quot;, () =&gt; {
     let pool;
     let clock;
     let server;
-    let sid; // random string to avoid conflicts with other running tests
-    const createPool = () =&gt; {
+    let sid; // Random string to avoid conflicts with other running tests
+    const createPool = (backoff) =&gt; {
         return new Pool({
-            backoff: new ExponentialBackoff({
-                initial: 300,
-                random: 0,
-                max: 10 * 1000,
-            }),
+            backoff: backoff ||
+                new ExponentialBackoff({
+                    initial: 300,
+                    random: 0,
+                    max: 10 * 1000,
+                }),
         });
     };
-    beforeEach(done =&gt; {
+    beforeEach((done) =&gt; {
         pool = createPool();
-        sid = `${Date.now()}${Math.random()}`; // tslint:disable-line
-        if (!process.env.WEBPACK) {
-            const handler = require(&apos;../fixture/pool-middleware&apos;);
-            server = http.createServer(handler());
-            server.listen(0, () =&gt; {
-                for (let i = 0; i &lt; hosts; i += 1) {
-                    pool.addHost(`http://127.0.0.1:${server.address().port}`);
-                }
-                done();
-            });
-        }
-        else {
+        sid = `${Date.now()}${Math.random()}`;
+        if (process.env.WEBPACK) {
             for (let i = 0; i &lt; hosts; i += 1) {
                 pool.addHost(location.origin);
             }
             done();
         }
+        else {
+            const handler = require(&quot;../fixture/pool-middleware&quot;); // eslint-disable-line @typescript-eslint/no-require-imports
+            server = http.createServer(handler());
+            server.listen(3005, () =&gt; {
+                for (let i = 0; i &lt; hosts; i += 1) {
+                    pool.addHost(`http://127.0.0.1:${3005}`);
+                }
+                done();
+            });
+        }
     });
-    afterEach(done =&gt; {
+    afterEach((done) =&gt; {
         if (clock) {
             clock.restore();
         }
-        if (!process.env.WEBPACK) {
-            server.close(() =&gt; done());
-        }
-        else {
+        if (process.env.WEBPACK) {
             done();
         }
+        else {
+            server.close(() =&gt; done());
+        }
     });
-    it(&apos;attempts to make an https request&apos;, () =&gt; {
+    it(&quot;attempts to make an https request&quot;, () =&gt; {
         const p = createPool();
-        p.addHost(&apos;https://httpbin.org/get&apos;);
-        return p.json({ method: &apos;GET&apos;, path: &apos;/get&apos; });
+        p.addHost(&quot;https://httpbin.org&quot;);
+        return p.json({ method: &quot;GET&quot;, path: &quot;/get&quot; });
     });
-    it(&apos;passes through request options&apos;, () =&gt; {
-        const spy = sinon.spy(http, &apos;request&apos;);
+    it(&quot;passes through request options&quot;, () =&gt; {
+        const spy = sinon.spy(https, &quot;request&quot;);
         const p = createPool();
-        p.addHost(&apos;https://httpbin.org/get&apos;, { rejectUnauthorized: false });
-        return p.json({ method: &apos;GET&apos;, path: &apos;/get&apos; }).then(() =&gt; {
+        p.addHost(&quot;https://httpbin.org&quot;, { rejectUnauthorized: false });
+        return p.json({ method: &quot;GET&quot;, path: &quot;/get&quot; }).then(() =&gt; {
             expect(spy.args[0][0].rejectUnauthorized).to.be.false;
         });
     });
-    describe(&apos;request generators&apos;, () =&gt; {
-        it(&apos;makes a text request&apos;, () =&gt; {
-            return pool.text({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
-                .then(data =&gt; expect(data).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
+    it(&quot;valid request data content length&quot;, () =&gt; {
+        const p = createPool();
+        const body = &quot;\u00FF&quot;;
+        p.addHost(&quot;https://httpbin.org&quot;);
+        p.json({ method: &quot;POST&quot;, path: &quot;/post&quot;, body: body }).then((data) =&gt; expect(data.data).to.equal(body));
+    });
+    it(&quot;handles unicode chunks correctly&quot;, () =&gt; {
+        const p = createPool();
+        const body = &quot;&#x62F;&#x631;&#x648;&#x62F;&quot;.repeat(40960);
+        p.addHost(&quot;https://httpbin.org&quot;);
+        p.json({ method: &quot;POST&quot;, path: &quot;/post&quot;, body: body }).then((data) =&gt; expect(data.data).to.equal(body));
+    });
+    describe(&quot;request generators&quot;, () =&gt; {
+        it(&quot;makes a text request&quot;, () =&gt; {
+            return pool
+                .text({ method: &quot;GET&quot;, path: &quot;/pool/json&quot; })
+                .then((data) =&gt; expect(data).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
         });
-        it(&apos;includes request query strings and bodies&apos;, () =&gt; {
-            return pool.json({
-                method: &apos;POST&apos;,
-                path: &apos;/pool/echo&apos;,
+        it(&quot;includes request query strings and bodies&quot;, () =&gt; {
+            return pool
+                .json({
+                method: &quot;POST&quot;,
+                path: &quot;/pool/echo&quot;,
                 query: { a: 42 },
-                body: &apos;asdf&apos;,
-            }).then(data =&gt; {
+                body: &quot;asdf&quot;,
+            })
+                .then((data) =&gt; {
                 expect(data).to.deep.equal({
-                    query: &apos;a=42&apos;,
-                    body: &apos;asdf&apos;,
-                    method: &apos;POST&apos;,
+                    query: &quot;a=42&quot;,
+                    body: &quot;asdf&quot;,
+                    method: &quot;POST&quot;,
                 });
             });
         });
-        it(&apos;discards responses&apos;, () =&gt; {
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/204&apos; });
+        it(&quot;discards responses&quot;, () =&gt; {
+            return pool.discard({ method: &quot;GET&quot;, path: &quot;/pool/204&quot; });
         });
-        it(&apos;parses JSON responses&apos;, () =&gt; {
-            return pool.json({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
-                .then(data =&gt; expect(data).to.deep.equal({ ok: true }));
+        it(&quot;parses JSON responses&quot;, () =&gt; {
+            return pool
+                .json({ method: &quot;GET&quot;, path: &quot;/pool/json&quot; })
+                .then((data) =&gt; expect(data).to.deep.equal({ ok: true }));
         });
-        it(&apos;errors if JSON parsing fails&apos;, () =&gt; {
-            return pool.json({ method: &apos;GET&apos;, path: &apos;/pool/badjson&apos; })
-                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-                .catch(err =&gt; expect(err).to.be.an.instanceof(SyntaxError));
+        it(&quot;errors if JSON parsing fails&quot;, () =&gt; {
+            return pool
+                .json({ method: &quot;GET&quot;, path: &quot;/pool/badjson&quot; })
+                .then(() =&gt; {
+                throw new Error(&quot;Expected to have thrown&quot;);
+            })
+                .catch((err) =&gt; expect(err).to.be.an.instanceof(SyntaxError));
         });
     });
-    it(&apos;times out requests&apos;, () =&gt; {
-        pool.timeout = 1;
-        return pool.text({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
-            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-            .catch(err =&gt; expect(err).be.an.instanceof(ServiceNotAvailableError))
-            .then(() =&gt; pool.timeout = 10000);
+    it(&quot;times out requests&quot;, () =&gt; {
+        pool._timeout = 1;
+        return pool
+            .text({ method: &quot;GET&quot;, path: &quot;/pool/wait-json&quot; })
+            .then(() =&gt; {
+            throw new Error(&quot;Expected to have thrown&quot;);
+        })
+            .catch((err) =&gt; expect(err).be.an.instanceof(ServiceNotAvailableError))
+            .then(() =&gt; {
+            pool._timeout = 10000;
+        });
     });
-    it(&apos;retries on a request error&apos;, () =&gt; {
-        return pool.text({ method: &apos;GET&apos;, path: `/pool/altFail-${sid}/json` })
-            .then(body =&gt; expect(body).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
+    it(&quot;retries on a request error&quot;, () =&gt; {
+        return pool
+            .text({ method: &quot;GET&quot;, path: `/pool/altFail-${sid}/json` })
+            .then((body) =&gt; expect(body).to.equal(&apos;{&quot;ok&quot;:true}&apos;));
     });
-    it(&apos;fails if too many errors happen&apos;, () =&gt; {
+    it(&quot;fails if too many errors happen&quot;, () =&gt; {
         expect(pool.hostIsAvailable()).to.be.true;
-        return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; })
-            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-            .catch(err =&gt; {
+        return pool
+            .discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; })
+            .then(() =&gt; {
+            throw new Error(&quot;Expected to have thrown&quot;);
+        })
+            .catch((err) =&gt; {
             expect(err).to.be.an.instanceof(ServiceNotAvailableError);
             expect(pool.hostIsAvailable()).to.be.false;
         });
     });
-    it(&apos;calls back immediately on un-retryable error&apos;, () =&gt; {
-        return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/400&apos; })
-            .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-            .catch(err =&gt; {
+    it(&quot;calls back immediately on un-retryable error&quot;, () =&gt; {
+        return pool
+            .discard({ method: &quot;GET&quot;, path: &quot;/pool/400&quot; })
+            .then(() =&gt; {
+            throw new Error(&quot;Expected to have thrown&quot;);
+        })
+            .catch((err) =&gt; {
             expect(err).to.be.an.instanceof(RequestError);
             expect(err.res.statusCode).to.equal(400);
             expect(pool.hostIsAvailable()).to.be.true;
         });
     });
-    it(&apos;pings servers&apos;, () =&gt; {
-        return pool.ping(1000, `/pool/altFail-${sid}/ping`).then(results =&gt; {
+    it(&quot;pings servers&quot;, () =&gt; {
+        return pool.ping(1000, `/pool/altFail-${sid}/ping`).then((results) =&gt; {
             if (results[0].online) {
                 [results[0], results[1]] = [results[1], results[0]];
             }
             expect(results[0].online).to.be.false;
             expect(results[1].online).to.be.true;
-            expect(results[1].version).to.equal(&apos;v1.0.0&apos;);
+            expect(results[1].version).to.equal(&quot;v1.0.0&quot;);
         });
     });
-    it(&apos;times out in pings&apos;, () =&gt; {
-        return pool.ping(1).then(results =&gt; {
+    it(&quot;times out in pings&quot;, () =&gt; {
+        return pool.ping(1).then((results) =&gt; {
             expect(results[0].online).to.be.false;
             expect(results[1].online).to.be.false;
         });
     });
-    describe(&apos;backoff&apos;, () =&gt; {
-        beforeEach(() =&gt; {
-            clock = sinon.useFakeTimers();
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; })
-                .catch(() =&gt; { });
-        });
-        it(&apos;should error if there are no available hosts&apos;, () =&gt; {
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/json&apos; })
-                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-                .catch(err =&gt; {
-                expect(err).to.be.an.instanceof(ServiceNotAvailableError);
-                expect(err.message).to.equal(&apos;No host available&apos;);
+    describe(&quot;backoff&quot;, () =&gt; {
+        describe(&quot;exponential&quot;, () =&gt; {
+            beforeEach(() =&gt; {
+                clock = sinon.useFakeTimers();
+                return pool.discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; }).catch(() =&gt; {
+                    /* ignore */
+                });
             });
-        });
-        it(&apos;should reenable hosts after the backoff expires&apos;, () =&gt; {
-            expect(pool.hostIsAvailable()).to.be.false;
-            clock.tick(300);
-            expect(pool.hostIsAvailable()).to.be.true;
-        });
-        it(&apos;should back off if failures continue&apos;, () =&gt; {
-            clock.tick(300);
-            expect(pool.hostIsAvailable()).to.be.true;
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; })
-                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-                .catch(err =&gt; {
-                expect(err).to.be.an.instanceof(ServiceNotAvailableError);
-                expect(pool.hostIsAvailable()).to.be.false;
-                clock.tick(300);
+            it(&quot;should error if there are no available hosts&quot;, () =&gt; {
+                return pool
+                    .discard({ method: &quot;GET&quot;, path: &quot;/pool/json&quot; })
+                    .then(() =&gt; {
+                    throw new Error(&quot;Expected to have thrown&quot;);
+                })
+                    .catch((err) =&gt; {
+                    expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                    expect(err.message).to.equal(&quot;No host available&quot;);
+                });
+            });
+            it(&quot;should reenable hosts after the backoff expires&quot;, () =&gt; {
                 expect(pool.hostIsAvailable()).to.be.false;
                 clock.tick(300);
                 expect(pool.hostIsAvailable()).to.be.true;
             });
-        });
-        it(&apos;should reset backoff after success&apos;, () =&gt; {
-            clock.tick(300);
-            expect(pool.hostIsAvailable()).to.be.true;
-            return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/204&apos; }).then(() =&gt; {
-                return pool.discard({ method: &apos;GET&apos;, path: &apos;/pool/502&apos; });
-            })
-                .then(() =&gt; { throw new Error(&apos;Expected to have thrown&apos;); })
-                .catch(err =&gt; {
-                expect(err).not.to.be.undefined;
-                expect(pool.hostIsAvailable()).to.be.false;
+            it(&quot;should back off if failures continue&quot;, () =&gt; {
                 clock.tick(300);
                 expect(pool.hostIsAvailable()).to.be.true;
+                return pool
+                    .discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; })
+                    .then(() =&gt; {
+                    throw new Error(&quot;Expected to have thrown&quot;);
+                })
+                    .catch((err) =&gt; {
+                    expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                    expect(pool.hostIsAvailable()).to.be.false;
+                    clock.tick(300);
+                    expect(pool.hostIsAvailable()).to.be.false;
+                    clock.tick(300);
+                    expect(pool.hostIsAvailable()).to.be.true;
+                });
+            });
+            it(&quot;should reset backoff after success&quot;, () =&gt; {
+                clock.tick(300);
+                expect(pool.hostIsAvailable()).to.be.true;
+                return pool
+                    .discard({ method: &quot;GET&quot;, path: &quot;/pool/204&quot; })
+                    .then(() =&gt; {
+                    return pool.discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; });
+                })
+                    .then(() =&gt; {
+                    throw new Error(&quot;Expected to have thrown&quot;);
+                })
+                    .catch((err) =&gt; {
+                    expect(err).not.to.be.undefined;
+                    expect(pool.hostIsAvailable()).to.be.false;
+                    clock.tick(300);
+                    expect(pool.hostIsAvailable()).to.be.true;
+                });
+            });
+        });
+        describe(&quot;constant&quot;, () =&gt; {
+            const createConstantBackoffPool = (options) =&gt; {
+                const p = createPool(new ConstantBackoff(options));
+                for (let i = 0; i &lt; hosts; i += 1) {
+                    p.addHost(process.env.WEBPACK ? location.origin : `http://127.0.0.1:${3005}`);
+                }
+                return p;
+            };
+            it(&quot;should disable hosts if backoff delay is greater than zero&quot;, () =&gt; {
+                const p = createConstantBackoffPool({ delay: 300, jitter: 0 });
+                return p
+                    .discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; })
+                    .then(() =&gt; {
+                    throw new Error(&quot;Expected to have thrown&quot;);
+                })
+                    .catch((err) =&gt; {
+                    expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                    expect(err.message).to.equal(&quot;Bad Gateway&quot;);
+                    expect(p.getHostsDisabled().length).to.be.greaterThan(0);
+                });
+            });
+            it(&quot;should not disable hosts if backoff delay is zero&quot;, () =&gt; {
+                const p = createConstantBackoffPool({ delay: 0, jitter: 0 });
+                return p
+                    .discard({ method: &quot;GET&quot;, path: &quot;/pool/502&quot; })
+                    .then(() =&gt; {
+                    throw new Error(&quot;Expected to have thrown&quot;);
+                })
+                    .catch((err) =&gt; {
+                    expect(err).to.be.an.instanceof(ServiceNotAvailableError);
+                    expect(err.message).to.equal(&quot;Bad Gateway&quot;);
+                    expect(p.getHostsDisabled().length).to.be.equal(0);
+                });
             });
         });
     });
@@ -257,7 +337,7 @@ describe(&apos;pool&apos;, () =&gt; {
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>

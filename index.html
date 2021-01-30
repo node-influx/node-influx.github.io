@@ -3,14 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl">
-  <title data-ice="title">node-influx API Document</title>
+  <title data-ice="title">Home | node-influx</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
-  
-  
   <script src="script/manual.js"></script>
-</head>
+<meta name="description" content="InfluxDB Client"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="node-influx"><meta property="twitter:description" content="InfluxDB Client"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -19,7 +17,6 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
-  
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -27,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-</header>
+<a style="position:relative; top:3px;" href="https://github.com/node-influx/node-influx.git"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -39,23 +36,21 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~RequestError.html">RequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pool.js~ServiceNotAvailableError.html">ServiceNotAvailableError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/results.js~ResultError.html">ResultError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~IBackoffStrategy.html">IBackoffStrategy</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~INanoDate.html">INanoDate</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/doc.js~IResults.html">IResults</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IClusterConfig">IClusterConfig</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPingStats">IPingStats</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPoint">IPoint</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IPoolOptions">IPoolOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IQueryOptions">IQueryOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ISchemaOptions">ISchemaOptions</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ISingleHostConfig">ISingleHostConfig</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IWriteOptions">IWriteOptions</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">backoff</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">grammar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/schema.js~Schema.html">Schema</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertNoErrors">assertNoErrors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parse">parse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSingle">parseSingle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceBadly">coerceBadly</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#backoff">backoff</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/constant.js~ConstantBackoff.html">ConstantBackoff</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/backoff/exponential.js~ExponentialBackoff.html">ExponentialBackoff</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#grammar">grammar</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/grammar/ds.js~Raw.html">Raw</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-castTimestamp">castTimestamp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dateToTime">dateToTime</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-formatDate">formatDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isoOrTimeToDate">isoOrTimeToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toNanoDate">toNanoDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-escape">escape</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Precision">Precision</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FieldType">FieldType</a></span></span></li>
 </ul>
 </div>
@@ -63,49 +58,60 @@
 
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p></p><p>
   <img src="https://raw.github.com/node-influx/node-influx/master/logo.png?v3">
-
-  <br>
-
-  <a href="https://www.npmjs.org/package/influx"><img src="http://img.shields.io/npm/v/influx.svg"></a>
-  <a href="https://travis-ci.org/node-influx/node-influx"><img src="http://img.shields.io/travis/node-influx/node-influx/master.svg"></a>
-  <a href="https://coveralls.io/github/node-influx/node-influx?branch=master"><img src="https://coveralls.io/repos/github/node-influx/node-influx/badge.svg?branch=master"></a>
-  <a href="https://david-dm.org/node-influx/node-influx"><img src="https://david-dm.org/node-influx/node-influx/status.svg"></a>
-  <a href="https://gitter.im/node-influx/node-influx?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/node-influx/node-influx.svg"></a>
-
-  <br>
-
-
-  <a href="https://saucelabs.com/u/influx"><img src="https://saucelabs.com/browser-matrix/influx.svg"></a>
 </p>
 
 <p></p>
-<h2 id="installation">Installation</h2>
-<p>For Node, simply:</p>
-<pre><code><code class="source-code prettyprint">$ npm install --save influx@next</code>
+<p><hr>
+
+</p>
+<p></p><p>
+  &lt;b&gt;<!--An InfluxDB Client for Node.js and Browsers-->&lt;/b&gt;
+</p>
+
+<p></p>
+<p></p><p>
+ <a href="https://travis-ci.org/node-influx/node-influx">
+    <img src="https://img.shields.io/travis/node-influx/node-influx/master.svg?style=flat-square">
+  </a>
+  <a href>
+    <img src="https://img.shields.io/coveralls/github/node-influx/node-influx/master.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/influx">
+    <img src="https://img.shields.io/npm/v/influx.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/influx">
+    <img src="https://img.shields.io/npm/dm/influx.svg?style=flat-square">
+
+  </a>
+</p>
+
+<p></p>
+<p><hr>
+
+</p>
+<h2 id="installation">Installation</h2><p>For Node, simply:</p>
+<pre><code><code class="source-code prettyprint">$ npm install --save influx</code>
 </code></pre><p>For browsers, see the <a href="https://node-influx.github.io/manual/usage.html#browser-setup">browser setup</a> instructions.</p>
-<h2 id="features">Features</h2>
-<ul>
+<h2 id="features">Features</h2><ul>
 <li>Simple API for nearly all Influx operations</li>
 <li>Fully supported in Node and the browser</li>
 <li>Performant, processing millions of rows/sec on modest hardware</li>
 <li>Zero dependencies</li>
 </ul>
-<h2 id="compatibility">Compatibility</h2>
-<p>Version 5.x.x is compatible with InfluxDB 1.x on Node 4 on onwards, and modern browsers</p>
+<h2 id="compatibility">Compatibility</h2><p>Version 5.x.x is compatible with InfluxDB 1.x on Node 4 on onwards, and modern browsers</p>
 <p>Version 4.x.x is compatible with InfluxDB 0.9.x - 0.13.x on Node 0.12 and onwards</p>
 <p>Version 3.x.x is compatible with InfluxDB 0.8.x - 3.x will no longer have updates by core contributers, please consider upgrading.</p>
-<h2 id="usage">Usage</h2>
-<ul>
+<h2 id="usage">Usage</h2><ul>
 <li><a href="https://node-influx.github.io/class/src/index.js~InfluxDB.html">API Documentation</a></li>
 <li><a href="https://node-influx.github.io/manual/tutorial.html">Tutorials &amp; Examples</a></li>
 <li><a href="https://node-influx.github.io/manual/changelog.html">Changelog</a></li>
-<li><a href="https://node-influx.github.io/manual/changelog.html">Contributing</a></li>
+<li><a href="CONTRIBUTING.md">Contributing</a></li>
 </ul>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>

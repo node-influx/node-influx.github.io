@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | node-influx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="InfluxDB Client"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="node-influx"><meta property="twitter:description" content="InfluxDB Client"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/node-influx/node-influx.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">Express Response Times Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/times.html"><a href="manual/times.html" data-ice="link">A Moment for Times</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/browser-setup.html"><a href="manual/browser-setup.html" data-ice="link">Browser Setup</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/testing.html"><a href="manual/testing.html" data-ice="link">Testing</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html" data-ice="link">Contributing</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#how-to-prepare" data-ice="link">How to prepare</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#make-changes" data-ice="link">Make Changes</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#submit-changes" data-ice="link">Submit Changes</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CONTRIBUTING.html"><a href="manual/CONTRIBUTING.html#additional-resources" data-ice="link">Additional Resources</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="browser-setup">Browser Setup</h1><p>For Node.js, <code>influx</code> can be installed and you can use it out of the box!</p>
+<pre><code><code class="source-code prettyprint">npm install --save influx@next</code>
+</code></pre><p>For browsers, this will also work provided you have a bundler which can polyfill Node modules, such as Browserify, Webpack, Jspm, or Rollup with <a href="https://github.com/rollup/rollup-plugin-node-resolve">rollup-plugin-node-resolve</a>.</p>
+<p>However, at the time of writing, request timeouts will not work by default on any of these platforms until they update to the latest Node API changes. If this is an important feature for you, we recommend that you instruct your bundler to use our <a href="https://github.com/node-influx/stream-http">patched version</a> of <code>stream-http</code> as your <code>http</code> polyfill. You can install it via:</p>
+<pre><code><code class="source-code prettyprint">npm install --save node-influx/stream-http</code>
+</code></pre><p>You can tell Webpack to use this module by adding the following section in your <code>webpack.config.js</code>:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const http = path.resolve(__dirname, &quot;node_modules/stream-http/index.js&quot;);
+
+module.exports = {
+  resolve: {
+    alias: { http, https: http },
+  },
+
+  // the rest of your webpack config
+};</code>
+</code></pre>
+<p>You can tell Browserify to use this module by adding the following into your build config:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const http = require(&quot;stream-http&quot;);
+
+browserify(myFiles, {
+  builtins: Object.assign({}, require(&quot;browserify/lib/builtins&quot;), {
+    http,
+    https: http,
+  }),
+
+  // the rest of your browserify config
+});</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,1994 +1,2066 @@
 window.esdocSearchIndex = [
   [
-    "influx~array",
-    "external/index.html",
-    "<span>Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
+    "influx/src/backoff/constant.js~constantbackoff",
+    "class/src/backoff/constant.js~ConstantBackoff.html",
+    "<span>ConstantBackoff</span> <span class=\"search-result-import-path\">influx/src/backoff/constant.js</span>",
+    "class"
   ],
   [
-    "influx~arraybuffer",
-    "external/index.html",
-    "<span>ArrayBuffer</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~audiocontext",
-    "external/index.html",
-    "<span>AudioContext</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~boolean",
-    "external/index.html",
-    "<span>Boolean</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~canvasrenderingcontext2d",
-    "external/index.html",
-    "<span>CanvasRenderingContext2D</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~dataview",
-    "external/index.html",
-    "<span>DataView</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~date",
-    "external/index.html",
-    "<span>Date</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~documentfragment",
-    "external/index.html",
-    "<span>DocumentFragment</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~element",
-    "external/index.html",
-    "<span>Element</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~error",
-    "external/index.html",
-    "<span>Error</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~evalerror",
-    "external/index.html",
-    "<span>EvalError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~event",
-    "external/index.html",
-    "<span>Event</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~exponentialbackoff",
+    "influx/src/backoff/exponential.js~exponentialbackoff",
     "class/src/backoff/exponential.js~ExponentialBackoff.html",
-    "<span>ExponentialBackoff</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>ExponentialBackoff</span> <span class=\"search-result-import-path\">influx/src/backoff/exponential.js</span>",
     "class"
   ],
   [
-    "influx~expression",
+    "influx/src/builder.js~expression",
     "class/src/builder.js~Expression.html",
-    "<span>Expression</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>Expression</span> <span class=\"search-result-import-path\">influx/src/builder.js</span>",
     "class"
   ],
   [
-    "influx~fieldtype",
-    "typedef/index.html#static-typedef-FieldType",
-    "<span>FieldType</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~fieldtype",
-    "typedef/index.html#static-typedef-FieldType",
-    "<span>FieldType</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~float32array",
-    "external/index.html",
-    "<span>Float32Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~float64array",
-    "external/index.html",
-    "<span>Float64Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~function",
-    "external/index.html",
-    "<span>Function</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~generator",
-    "external/index.html",
-    "<span>Generator</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~generatorfunction",
-    "external/index.html",
-    "<span>GeneratorFunction</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~ibackoffstrategy",
-    "class/src/doc.js~IBackoffStrategy.html",
-    "<span>IBackoffStrategy</span> <span class=\"search-result-import-path\">influx</span>",
-    "class"
-  ],
-  [
-    "influx~iclusterconfig",
-    "typedef/index.html#static-typedef-IClusterConfig",
-    "<span>IClusterConfig</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~inanodate",
-    "class/src/doc.js~INanoDate.html",
-    "<span>INanoDate</span> <span class=\"search-result-import-path\">influx</span>",
-    "class"
-  ],
-  [
-    "influx~ipingstats",
-    "typedef/index.html#static-typedef-IPingStats",
-    "<span>IPingStats</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~ipoint",
-    "typedef/index.html#static-typedef-IPoint",
-    "<span>IPoint</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~ipooloptions",
-    "typedef/index.html#static-typedef-IPoolOptions",
-    "<span>IPoolOptions</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~iqueryoptions",
-    "typedef/index.html#static-typedef-IQueryOptions",
-    "<span>IQueryOptions</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~iresults",
-    "class/src/doc.js~IResults.html",
-    "<span>IResults</span> <span class=\"search-result-import-path\">influx</span>",
-    "class"
-  ],
-  [
-    "influx~ischemaoptions",
-    "typedef/index.html#static-typedef-ISchemaOptions",
-    "<span>ISchemaOptions</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~isinglehostconfig",
-    "typedef/index.html#static-typedef-ISingleHostConfig",
-    "<span>ISingleHostConfig</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~iwriteoptions",
-    "typedef/index.html#static-typedef-IWriteOptions",
-    "<span>IWriteOptions</span> <span class=\"search-result-import-path\">influx</span>",
-    "typedef"
-  ],
-  [
-    "influx~infinity",
-    "external/index.html",
-    "<span>Infinity</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~influxdb",
+    "influx/src/index.js~influxdb",
     "class/src/index.js~InfluxDB.html",
-    "<span>InfluxDB</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>InfluxDB</span> <span class=\"search-result-import-path\">influx/src/index.js</span>",
     "class"
   ],
   [
-    "influx~int16array",
-    "external/index.html",
-    "<span>Int16Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~int32array",
-    "external/index.html",
-    "<span>Int32Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~int8array",
-    "external/index.html",
-    "<span>Int8Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~internalerror",
-    "external/index.html",
-    "<span>InternalError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~json",
-    "external/index.html",
-    "<span>JSON</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~map",
-    "external/index.html",
-    "<span>Map</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~measurement",
+    "influx/src/builder.js~measurement",
     "class/src/builder.js~Measurement.html",
-    "<span>Measurement</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>Measurement</span> <span class=\"search-result-import-path\">influx/src/builder.js</span>",
     "class"
   ],
   [
-    "influx~nan",
-    "external/index.html",
-    "<span>NaN</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~node",
-    "external/index.html",
-    "<span>Node</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~nodelist",
-    "external/index.html",
-    "<span>NodeList</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~number",
-    "external/index.html",
-    "<span>Number</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~object",
-    "external/index.html",
-    "<span>Object</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~pool",
+    "influx/src/pool.js~pool",
     "class/src/pool.js~Pool.html",
-    "<span>Pool</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>Pool</span> <span class=\"search-result-import-path\">influx/src/pool.js</span>",
     "class"
   ],
   [
-    "influx~precision",
+    "influx/src/grammar/times.js~precision",
     "variable/index.html#static-variable-Precision",
-    "<span>Precision</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>Precision</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
     "variable"
   ],
   [
-    "influx~promise",
-    "external/index.html",
-    "<span>Promise</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~proxy",
-    "external/index.html",
-    "<span>Proxy</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~rangeerror",
-    "external/index.html",
-    "<span>RangeError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~raw",
+    "influx/src/grammar/ds.js~raw",
     "class/src/grammar/ds.js~Raw.html",
-    "<span>Raw</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>Raw</span> <span class=\"search-result-import-path\">influx/src/grammar/ds.js</span>",
     "class"
   ],
   [
-    "influx~referenceerror",
-    "external/index.html",
-    "<span>ReferenceError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~reflect",
-    "external/index.html",
-    "<span>Reflect</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~regexp",
-    "external/index.html",
-    "<span>RegExp</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~requesterror",
+    "influx/src/pool.js~requesterror",
     "class/src/pool.js~RequestError.html",
-    "<span>RequestError</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>RequestError</span> <span class=\"search-result-import-path\">influx/src/pool.js</span>",
     "class"
   ],
   [
-    "influx~resulterror",
+    "influx/src/results.js~resulterror",
     "class/src/results.js~ResultError.html",
-    "<span>ResultError</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>ResultError</span> <span class=\"search-result-import-path\">influx/src/results.js</span>",
     "class"
   ],
   [
-    "influx~servicenotavailableerror",
+    "influx/src/schema.js~schema",
+    "class/src/schema.js~Schema.html",
+    "<span>Schema</span> <span class=\"search-result-import-path\">influx/src/schema.js</span>",
+    "class"
+  ],
+  [
+    "influx/src/pool.js~servicenotavailableerror",
     "class/src/pool.js~ServiceNotAvailableError.html",
-    "<span>ServiceNotAvailableError</span> <span class=\"search-result-import-path\">influx</span>",
+    "<span>ServiceNotAvailableError</span> <span class=\"search-result-import-path\">influx/src/pool.js</span>",
     "class"
   ],
   [
-    "influx~set",
-    "external/index.html",
-    "<span>Set</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~string",
-    "external/index.html",
-    "<span>String</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~symbol",
-    "external/index.html",
-    "<span>Symbol</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~syntaxerror",
-    "external/index.html",
-    "<span>SyntaxError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~typeerror",
-    "external/index.html",
-    "<span>TypeError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~urierror",
-    "external/index.html",
-    "<span>URIError</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~uint16array",
-    "external/index.html",
-    "<span>Uint16Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~uint32array",
-    "external/index.html",
-    "<span>Uint32Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~uint8array",
-    "external/index.html",
-    "<span>Uint8Array</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~uint8clampedarray",
-    "external/index.html",
-    "<span>Uint8ClampedArray</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~weakmap",
-    "external/index.html",
-    "<span>WeakMap</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~weakset",
-    "external/index.html",
-    "<span>WeakSet</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~xmlhttprequest",
-    "external/index.html",
-    "<span>XMLHttpRequest</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~addhost",
-    "class/src/pool.js~Pool.html#instance-method-addHost",
-    "<span>addHost</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~alterretentionpolicy",
-    "class/src/index.js~InfluxDB.html#instance-method-alterRetentionPolicy",
-    "<span>alterRetentionPolicy</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~and",
-    "class/src/builder.js~Expression.html#instance-get-and",
-    "<span>and</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~boolean",
-    "external/index.html",
-    "<span>boolean</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~constructor",
-    "class/src/pool.js~Pool.html#instance-constructor-constructor",
-    "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~constructor",
-    "class/src/grammar/ds.js~Raw.html#instance-constructor-constructor",
-    "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~constructor",
-    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-constructor-constructor",
-    "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~constructor",
-    "class/src/index.js~InfluxDB.html#instance-constructor-constructor",
-    "<span>constructor</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~createcontinuousquery",
-    "class/src/index.js~InfluxDB.html#instance-method-createContinuousQuery",
-    "<span>createContinuousQuery</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~createdatabase",
-    "class/src/index.js~InfluxDB.html#instance-method-createDatabase",
-    "<span>createDatabase</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~createretentionpolicy",
-    "class/src/index.js~InfluxDB.html#instance-method-createRetentionPolicy",
-    "<span>createRetentionPolicy</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~createuser",
-    "class/src/index.js~InfluxDB.html#instance-method-createUser",
-    "<span>createUser</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~db",
-    "class/src/builder.js~Measurement.html#instance-method-db",
-    "<span>db</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~describe0",
-    "test.html",
-    "<span>describe0</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe104",
-    "test.html",
-    "<span>describe104</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe107",
-    "test.html",
-    "<span>describe107</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe10",
-    "test.html",
-    "<span>describe10</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe112",
-    "test.html",
-    "<span>describe112</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe115",
-    "test.html",
-    "<span>describe115</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe127",
-    "test.html",
-    "<span>describe127</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe132",
-    "test.html",
-    "<span>describe132</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe141",
-    "test.html",
-    "<span>describe141</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe142",
-    "test.html",
-    "<span>describe142</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe144",
-    "test.html",
-    "<span>describe144</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe16",
-    "test.html",
-    "<span>describe16</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe17",
-    "test.html",
-    "<span>describe17</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe1",
-    "test.html",
-    "<span>describe1</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe22",
-    "test.html",
-    "<span>describe22</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe25",
-    "test.html",
-    "<span>describe25</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe33",
-    "test.html",
-    "<span>describe33</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe38",
-    "test.html",
-    "<span>describe38</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe39",
-    "test.html",
-    "<span>describe39</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe3",
-    "test.html",
-    "<span>describe3</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe45",
-    "test.html",
-    "<span>describe45</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe4",
-    "test.html",
-    "<span>describe4</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe53",
-    "test.html",
-    "<span>describe53</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe60",
-    "test.html",
-    "<span>describe60</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe64",
-    "test.html",
-    "<span>describe64</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe68",
-    "test.html",
-    "<span>describe68</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe75",
-    "test.html",
-    "<span>describe75</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe79",
-    "test.html",
-    "<span>describe79</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe83",
-    "test.html",
-    "<span>describe83</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe87",
-    "test.html",
-    "<span>describe87</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~describe98",
-    "test.html",
-    "<span>describe98</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~disablehost",
-    "class/src/pool.js~Pool.html#instance-method-disableHost",
-    "<span>disableHost</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~discard",
-    "class/src/pool.js~Pool.html#instance-method-discard",
-    "<span>discard</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~div",
-    "class/src/builder.js~Expression.html#instance-get-div",
-    "<span>div</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~doesntmatch",
-    "class/src/builder.js~Expression.html#instance-get-doesntMatch",
-    "<span>doesntMatch</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~dropcontinuousquery",
-    "class/src/index.js~InfluxDB.html#instance-method-dropContinuousQuery",
-    "<span>dropContinuousQuery</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~dropdatabase",
-    "class/src/index.js~InfluxDB.html#instance-method-dropDatabase",
-    "<span>dropDatabase</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~dropmeasurement",
-    "class/src/index.js~InfluxDB.html#instance-method-dropMeasurement",
-    "<span>dropMeasurement</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~dropretentionpolicy",
-    "class/src/index.js~InfluxDB.html#instance-method-dropRetentionPolicy",
-    "<span>dropRetentionPolicy</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~dropseries",
-    "class/src/index.js~InfluxDB.html#instance-method-dropSeries",
-    "<span>dropSeries</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~dropuser",
-    "class/src/index.js~InfluxDB.html#instance-method-dropUser",
-    "<span>dropUser</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~enablehost",
-    "class/src/pool.js~Pool.html#instance-method-enableHost",
-    "<span>enableHost</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~equals",
-    "class/src/builder.js~Expression.html#instance-get-equals",
-    "<span>equals</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~escape",
-    "variable/index.html#static-variable-escape",
-    "<span>escape</span> <span class=\"search-result-import-path\">influx</span>",
-    "variable"
-  ],
-  [
-    "influx~exp",
-    "class/src/builder.js~Expression.html#instance-method-exp",
-    "<span>exp</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~field",
-    "class/src/builder.js~Expression.html#instance-method-field",
-    "<span>field</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~function",
-    "external/index.html",
-    "<span>function</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~getdatabasenames",
-    "class/src/index.js~InfluxDB.html#instance-method-getDatabaseNames",
-    "<span>getDatabaseNames</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getdelay",
-    "class/src/doc.js~IBackoffStrategy.html#instance-method-getDelay",
-    "<span>getDelay</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getdelay",
-    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-getDelay",
-    "<span>getDelay</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~gethost",
-    "class/src/pool.js~Pool.html#instance-method-getHost",
-    "<span>getHost</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~gethostsavailable",
-    "class/src/pool.js~Pool.html#instance-method-getHostsAvailable",
-    "<span>getHostsAvailable</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~gethostsdisabled",
-    "class/src/pool.js~Pool.html#instance-method-getHostsDisabled",
-    "<span>getHostsDisabled</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getmeasurements",
-    "class/src/index.js~InfluxDB.html#instance-method-getMeasurements",
-    "<span>getMeasurements</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getnanotime",
-    "class/src/doc.js~INanoDate.html#instance-method-getNanoTime",
-    "<span>getNanoTime</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getseries",
-    "class/src/index.js~InfluxDB.html#instance-method-getSeries",
-    "<span>getSeries</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getusers",
-    "class/src/index.js~InfluxDB.html#instance-method-getUsers",
-    "<span>getUsers</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~getvalue",
-    "class/src/grammar/ds.js~Raw.html#instance-method-getValue",
-    "<span>getValue</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~grantadminprivilege",
-    "class/src/index.js~InfluxDB.html#instance-method-grantAdminPrivilege",
-    "<span>grantAdminPrivilege</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~grantprivilege",
-    "class/src/index.js~InfluxDB.html#instance-method-grantPrivilege",
-    "<span>grantPrivilege</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~group",
-    "class/src/doc.js~IResults.html#instance-method-group",
-    "<span>group</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~groups",
-    "class/src/doc.js~IResults.html#instance-method-groups",
-    "<span>groups</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~gt",
-    "class/src/builder.js~Expression.html#instance-get-gt",
-    "<span>gt</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~gte",
-    "class/src/builder.js~Expression.html#instance-get-gte",
-    "<span>gte</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~hostisavailable",
-    "class/src/pool.js~Pool.html#instance-method-hostIsAvailable",
-    "<span>hostIsAvailable</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~it100",
-    "test.html",
-    "<span>it100</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it101",
-    "test.html",
-    "<span>it101</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it102",
-    "test.html",
-    "<span>it102</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it103",
-    "test.html",
-    "<span>it103</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it105",
-    "test.html",
-    "<span>it105</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it106",
-    "test.html",
-    "<span>it106</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it108",
-    "test.html",
-    "<span>it108</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it109",
-    "test.html",
-    "<span>it109</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it110",
-    "test.html",
-    "<span>it110</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it111",
-    "test.html",
-    "<span>it111</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it113",
-    "test.html",
-    "<span>it113</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it114",
-    "test.html",
-    "<span>it114</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it116",
-    "test.html",
-    "<span>it116</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it117",
-    "test.html",
-    "<span>it117</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it118",
-    "test.html",
-    "<span>it118</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it119",
-    "test.html",
-    "<span>it119</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it11",
-    "test.html",
-    "<span>it11</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it120",
-    "test.html",
-    "<span>it120</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it121",
-    "test.html",
-    "<span>it121</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it122",
-    "test.html",
-    "<span>it122</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it123",
-    "test.html",
-    "<span>it123</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it124",
-    "test.html",
-    "<span>it124</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it125",
-    "test.html",
-    "<span>it125</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it126",
-    "test.html",
-    "<span>it126</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it128",
-    "test.html",
-    "<span>it128</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it129",
-    "test.html",
-    "<span>it129</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it12",
-    "test.html",
-    "<span>it12</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it130",
-    "test.html",
-    "<span>it130</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it131",
-    "test.html",
-    "<span>it131</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it133",
-    "test.html",
-    "<span>it133</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it134",
-    "test.html",
-    "<span>it134</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it135",
-    "test.html",
-    "<span>it135</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it136",
-    "test.html",
-    "<span>it136</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it137",
-    "test.html",
-    "<span>it137</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it138",
-    "test.html",
-    "<span>it138</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it139",
-    "test.html",
-    "<span>it139</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it13",
-    "test.html",
-    "<span>it13</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it140",
-    "test.html",
-    "<span>it140</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it143",
-    "test.html",
-    "<span>it143</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it145",
-    "test.html",
-    "<span>it145</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it146",
-    "test.html",
-    "<span>it146</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it147",
-    "test.html",
-    "<span>it147</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it148",
-    "test.html",
-    "<span>it148</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it149",
-    "test.html",
-    "<span>it149</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it14",
-    "test.html",
-    "<span>it14</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it150",
-    "test.html",
-    "<span>it150</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it151",
-    "test.html",
-    "<span>it151</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it152",
-    "test.html",
-    "<span>it152</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it153",
-    "test.html",
-    "<span>it153</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it154",
-    "test.html",
-    "<span>it154</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it15",
-    "test.html",
-    "<span>it15</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it18",
-    "test.html",
-    "<span>it18</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it19",
-    "test.html",
-    "<span>it19</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it20",
-    "test.html",
-    "<span>it20</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it21",
-    "test.html",
-    "<span>it21</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it23",
-    "test.html",
-    "<span>it23</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it24",
-    "test.html",
-    "<span>it24</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it26",
-    "test.html",
-    "<span>it26</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it27",
-    "test.html",
-    "<span>it27</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it28",
-    "test.html",
-    "<span>it28</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it29",
-    "test.html",
-    "<span>it29</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it2",
-    "test.html",
-    "<span>it2</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it30",
-    "test.html",
-    "<span>it30</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it31",
-    "test.html",
-    "<span>it31</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it32",
-    "test.html",
-    "<span>it32</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it34",
-    "test.html",
-    "<span>it34</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it35",
-    "test.html",
-    "<span>it35</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it36",
-    "test.html",
-    "<span>it36</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it37",
-    "test.html",
-    "<span>it37</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it40",
-    "test.html",
-    "<span>it40</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it41",
-    "test.html",
-    "<span>it41</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it42",
-    "test.html",
-    "<span>it42</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it43",
-    "test.html",
-    "<span>it43</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it44",
-    "test.html",
-    "<span>it44</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it46",
-    "test.html",
-    "<span>it46</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it47",
-    "test.html",
-    "<span>it47</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it48",
-    "test.html",
-    "<span>it48</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it49",
-    "test.html",
-    "<span>it49</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it50",
-    "test.html",
-    "<span>it50</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it51",
-    "test.html",
-    "<span>it51</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it52",
-    "test.html",
-    "<span>it52</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it54",
-    "test.html",
-    "<span>it54</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it55",
-    "test.html",
-    "<span>it55</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it56",
-    "test.html",
-    "<span>it56</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it57",
-    "test.html",
-    "<span>it57</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it58",
-    "test.html",
-    "<span>it58</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it59",
-    "test.html",
-    "<span>it59</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it5",
-    "test.html",
-    "<span>it5</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it61",
-    "test.html",
-    "<span>it61</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it62",
-    "test.html",
-    "<span>it62</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it63",
-    "test.html",
-    "<span>it63</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it65",
-    "test.html",
-    "<span>it65</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it66",
-    "test.html",
-    "<span>it66</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it67",
-    "test.html",
-    "<span>it67</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it69",
-    "test.html",
-    "<span>it69</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it6",
-    "test.html",
-    "<span>it6</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it70",
-    "test.html",
-    "<span>it70</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it71",
-    "test.html",
-    "<span>it71</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it72",
-    "test.html",
-    "<span>it72</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it73",
-    "test.html",
-    "<span>it73</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it74",
-    "test.html",
-    "<span>it74</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it76",
-    "test.html",
-    "<span>it76</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it77",
-    "test.html",
-    "<span>it77</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it78",
-    "test.html",
-    "<span>it78</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it7",
-    "test.html",
-    "<span>it7</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it80",
-    "test.html",
-    "<span>it80</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it81",
-    "test.html",
-    "<span>it81</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it82",
-    "test.html",
-    "<span>it82</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it84",
-    "test.html",
-    "<span>it84</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it85",
-    "test.html",
-    "<span>it85</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it86",
-    "test.html",
-    "<span>it86</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it88",
-    "test.html",
-    "<span>it88</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it89",
-    "test.html",
-    "<span>it89</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it8",
-    "test.html",
-    "<span>it8</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it90",
-    "test.html",
-    "<span>it90</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it91",
-    "test.html",
-    "<span>it91</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it92",
-    "test.html",
-    "<span>it92</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it93",
-    "test.html",
-    "<span>it93</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it94",
-    "test.html",
-    "<span>it94</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it95",
-    "test.html",
-    "<span>it95</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it96",
-    "test.html",
-    "<span>it96</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it97",
-    "test.html",
-    "<span>it97</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it99",
-    "test.html",
-    "<span>it99</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~it9",
-    "test.html",
-    "<span>it9</span> <span class=\"search-result-import-path\">influx</span>",
-    "test"
-  ],
-  [
-    "influx~json",
-    "class/src/pool.js~Pool.html#instance-method-json",
-    "<span>json</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~lt",
-    "class/src/builder.js~Expression.html#instance-get-lt",
-    "<span>lt</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~lte",
-    "class/src/builder.js~Expression.html#instance-get-lte",
-    "<span>lte</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~matches",
-    "class/src/builder.js~Expression.html#instance-get-matches",
-    "<span>matches</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~minus",
-    "class/src/builder.js~Expression.html#instance-get-minus",
-    "<span>minus</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~name",
-    "class/src/builder.js~Measurement.html#instance-method-name",
-    "<span>name</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~next",
-    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-next",
-    "<span>next</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~next",
-    "class/src/doc.js~IBackoffStrategy.html#instance-method-next",
-    "<span>next</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~notequal",
-    "class/src/builder.js~Expression.html#instance-get-notEqual",
-    "<span>notEqual</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~null",
-    "external/index.html",
-    "<span>null</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~number",
-    "external/index.html",
-    "<span>number</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~object",
-    "external/index.html",
-    "<span>object</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~or",
-    "class/src/builder.js~Expression.html#instance-get-or",
-    "<span>or</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~ping",
-    "class/src/index.js~InfluxDB.html#instance-method-ping",
-    "<span>ping</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~ping",
-    "class/src/pool.js~Pool.html#instance-method-ping",
-    "<span>ping</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~plus",
-    "class/src/builder.js~Expression.html#instance-get-plus",
-    "<span>plus</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~policy",
-    "class/src/builder.js~Measurement.html#instance-method-policy",
-    "<span>policy</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~query",
-    "class/src/index.js~InfluxDB.html#instance-method-query",
-    "<span>query</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~queryraw",
-    "class/src/index.js~InfluxDB.html#instance-method-queryRaw",
-    "<span>queryRaw</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~reset",
-    "class/src/doc.js~IBackoffStrategy.html#instance-method-reset",
-    "<span>reset</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~reset",
-    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-reset",
-    "<span>reset</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~revokeadminprivilege",
-    "class/src/index.js~InfluxDB.html#instance-method-revokeAdminPrivilege",
-    "<span>revokeAdminPrivilege</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~revokeprivilege",
-    "class/src/index.js~InfluxDB.html#instance-method-revokePrivilege",
-    "<span>revokePrivilege</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~setpassword",
-    "class/src/index.js~InfluxDB.html#instance-method-setPassword",
-    "<span>setPassword</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~showcontinousqueries",
-    "class/src/index.js~InfluxDB.html#instance-method-showContinousQueries",
-    "<span>showContinousQueries</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~showretentionpolicies",
-    "class/src/index.js~InfluxDB.html#instance-method-showRetentionPolicies",
-    "<span>showRetentionPolicies</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~src/backoff/backoff.js",
-    "file/src/backoff/backoff.js.html",
-    "<span>src/backoff/backoff.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/backoff/exponential.js",
-    "file/src/backoff/exponential.js.html",
-    "<span>src/backoff/exponential.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/builder.js",
-    "file/src/builder.js.html",
-    "<span>src/builder.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/doc.js",
-    "file/src/doc.js.html",
-    "<span>src/doc.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/grammar/ds.js",
-    "file/src/grammar/ds.js.html",
-    "<span>src/grammar/ds.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/grammar/escape.js",
-    "file/src/grammar/escape.js.html",
-    "<span>src/grammar/escape.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/grammar/index.js",
-    "file/src/grammar/index.js.html",
-    "<span>src/grammar/index.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/grammar/times.js",
-    "file/src/grammar/times.js.html",
-    "<span>src/grammar/times.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/host.js",
-    "file/src/host.js.html",
-    "<span>src/host.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/index.js",
-    "file/src/index.js.html",
-    "<span>src/index.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/pool.js",
-    "file/src/pool.js.html",
-    "<span>src/pool.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/results.js",
-    "file/src/results.js.html",
-    "<span>src/results.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~src/schema.js",
-    "file/src/schema.js.html",
-    "<span>src/schema.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "file"
-  ],
-  [
-    "influx~stream",
-    "class/src/pool.js~Pool.html#instance-method-stream",
-    "<span>stream</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~string",
-    "external/index.html",
-    "<span>string</span> <span class=\"search-result-import-path\">influx</span>",
-    "external"
-  ],
-  [
-    "influx~tag",
-    "class/src/builder.js~Expression.html#instance-method-tag",
-    "<span>tag</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~text",
-    "class/src/pool.js~Pool.html#instance-method-text",
-    "<span>text</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
-  ],
-  [
-    "influx~times",
-    "class/src/builder.js~Expression.html#instance-get-times",
-    "<span>times</span> <span class=\"search-result-import-path\">influx</span>",
-    "member"
-  ],
-  [
-    "influx~tonanodate",
-    "function/index.html#static-function-toNanoDate",
-    "<span>toNanoDate</span> <span class=\"search-result-import-path\">influx</span>",
+    "influx/src/results.js~assertnoerrors",
+    "function/index.html#static-function-assertNoErrors",
+    "<span>assertNoErrors</span> <span class=\"search-result-import-path\">influx/src/results.js</span>",
     "function"
   ],
   [
-    "influx~tonanoisostring",
-    "class/src/doc.js~INanoDate.html#instance-method-toNanoISOString",
-    "<span>toNanoISOString</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
+    "influx/src/grammar/times.js~casttimestamp",
+    "function/index.html#static-function-castTimestamp",
+    "<span>castTimestamp</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
+    "function"
   ],
   [
-    "influx~tostring",
-    "class/src/builder.js~Expression.html#instance-method-toString",
-    "<span>toString</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
+    "influx/src/schema.js~coercebadly",
+    "function/index.html#static-function-coerceBadly",
+    "<span>coerceBadly</span> <span class=\"search-result-import-path\">influx/src/schema.js</span>",
+    "function"
   ],
   [
-    "influx~tostring",
-    "class/src/builder.js~Measurement.html#instance-method-toString",
-    "<span>toString</span> <span class=\"search-result-import-path\">influx</span>",
-    "method"
+    "influx/src/grammar/times.js~datetotime",
+    "function/index.html#static-function-dateToTime",
+    "<span>dateToTime</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
+    "function"
   ],
   [
-    "influx~undefined",
-    "external/index.html",
-    "<span>undefined</span> <span class=\"search-result-import-path\">influx</span>",
+    "influx/src/grammar/escape.js~escape",
+    "variable/index.html#static-variable-escape",
+    "<span>escape</span> <span class=\"search-result-import-path\">influx/src/grammar/escape.js</span>",
+    "variable"
+  ],
+  [
+    "influx/src/grammar/times.js~formatdate",
+    "function/index.html#static-function-formatDate",
+    "<span>formatDate</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
+    "function"
+  ],
+  [
+    "influx/src/grammar/times.js~isoortimetodate",
+    "function/index.html#static-function-isoOrTimeToDate",
+    "<span>isoOrTimeToDate</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
+    "function"
+  ],
+  [
+    "influx/src/results.js~parse",
+    "function/index.html#static-function-parse",
+    "<span>parse</span> <span class=\"search-result-import-path\">influx/src/results.js</span>",
+    "function"
+  ],
+  [
+    "influx/src/results.js~parsesingle",
+    "function/index.html#static-function-parseSingle",
+    "<span>parseSingle</span> <span class=\"search-result-import-path\">influx/src/results.js</span>",
+    "function"
+  ],
+  [
+    "influx/src/grammar/times.js~tonanodate",
+    "function/index.html#static-function-toNanoDate",
+    "<span>toNanoDate</span> <span class=\"search-result-import-path\">influx/src/grammar/times.js</span>",
+    "function"
+  ],
+  [
+    "",
+    "test-file/unit/backoff.test.js.html#lineNumber5",
+    "backoff strategies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/backoff.test.js.html#lineNumber6",
+    "backoff strategies constant strategy",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/backoff.test.js.html#lineNumber7",
+    "backoff strategies constant strategy appears to work",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/backoff.test.js.html#lineNumber33",
+    "backoff strategies exponential strategy",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/backoff.test.js.html#lineNumber34",
+    "backoff strategies exponential strategy appears to work",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber4",
+    "grammar",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber6",
+    "grammar ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber8",
+    "grammar  ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber32",
+    "grammar converts a nanoseconds timestamp to a nano date",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber38",
+    "grammar converts a nanoseconds timestamp with trailing zeroes to a nano date",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber14",
+    "grammar does not escape raw values",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber17",
+    "grammar escapes backslashes (issues #486, #516)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber22",
+    "grammar escapes complex values (issue #242)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber44",
+    "grammar formatting",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber48",
+    "grammar formatting formats millisecond dates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber45",
+    "grammar formatting formats nanosecond dates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber52",
+    "grammar parsing",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber53",
+    "grammar parsing parses ISO dates correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber86",
+    "grammar parsing parses numeric `h` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber81",
+    "grammar parsing parses numeric `m` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber71",
+    "grammar parsing parses numeric `ms` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber59",
+    "grammar parsing parses numeric `ns` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber76",
+    "grammar parsing parses numeric `s` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber65",
+    "grammar parsing parses numeric `u` timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber92",
+    "grammar timestamp casting",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber111",
+    "grammar timestamp casting accepts strings, numbers liternally",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber93",
+    "grammar timestamp casting casts dates into timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber102",
+    "grammar timestamp casting casts nanodates into timestamps",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/grammar.test.js.html#lineNumber115",
+    "grammar timestamp casting throws on non-numeric strings",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber5",
+    "influxdb",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber6",
+    "influxdb constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber62",
+    "influxdb constructor parses cluster configs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber25",
+    "influxdb constructor parses dsns",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber82",
+    "influxdb constructor parses parses schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber44",
+    "influxdb constructor parses single configs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber7",
+    "influxdb constructor uses default options",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber122",
+    "influxdb methods",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber732",
+    "influxdb methods .alterRetentionPolicy",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber742",
+    "influxdb methods .alterRetentionPolicy creates default policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber734",
+    "influxdb methods .alterRetentionPolicy creates non-default policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber378",
+    "influxdb methods .createContinuousQuery()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber390",
+    "influxdb methods .createContinuousQuery() fills in default DB",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber379",
+    "influxdb methods .createContinuousQuery() queries correctly no resample",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber383",
+    "influxdb methods .createContinuousQuery() queries correctly with resample",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber387",
+    "influxdb methods .createContinuousQuery() throws if DB unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber183",
+    "influxdb methods .createDatabase()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber713",
+    "influxdb methods .createRetentionPolicy",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber723",
+    "influxdb methods .createRetentionPolicy creates default policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber715",
+    "influxdb methods .createRetentionPolicy creates non-default policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber324",
+    "influxdb methods .createUser()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber329",
+    "influxdb methods .createUser() works with admin specified == false",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber325",
+    "influxdb methods .createUser() works with admin specified == true",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber333",
+    "influxdb methods .createUser() works with admin unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber396",
+    "influxdb methods .dropContinuousQuery()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber404",
+    "influxdb methods .dropContinuousQuery() fills in default DB",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber397",
+    "influxdb methods .dropContinuousQuery() queries correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber401",
+    "influxdb methods .dropContinuousQuery() throws if DB unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber189",
+    "influxdb methods .dropDatabase()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber273",
+    "influxdb methods .dropMeasurement()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber280",
+    "influxdb methods .dropSeries()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber304",
+    "influxdb methods .dropSeries() drops with both",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber286",
+    "influxdb methods .dropSeries() drops with only from clause by builder",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber282",
+    "influxdb methods .dropSeries() drops with only from clause by string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber297",
+    "influxdb methods .dropSeries() drops with only where clause by builder",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber290",
+    "influxdb methods .dropSeries() drops with only where clause by string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber195",
+    "influxdb methods .dropShard()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber374",
+    "influxdb methods .dropUser()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber199",
+    "influxdb methods .getDatabaseNames()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber205",
+    "influxdb methods .getMeasurements()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber215",
+    "influxdb methods .getSeries() from all",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber250",
+    "influxdb methods .getSeries() from single",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber315",
+    "influxdb methods .getUsers()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber366",
+    "influxdb methods .grantAdminPrivilege()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber338",
+    "influxdb methods .grantPrivilege()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber346",
+    "influxdb methods .grantPrivilege() fills in default DB",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber339",
+    "influxdb methods .grantPrivilege() queries correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber343",
+    "influxdb methods .grantPrivilege() throws if DB unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber620",
+    "influxdb methods .query",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber634",
+    "influxdb methods .query parses query output",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber670",
+    "influxdb methods .query passes in options",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber683",
+    "influxdb methods .query rewrites nanosecond precisions",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber622",
+    "influxdb methods .query runs raw queries",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber657",
+    "influxdb methods .query selects from multiple",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber696",
+    "influxdb methods .query uses placeholders",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber370",
+    "influxdb methods .revokeAdminPrivilege()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber352",
+    "influxdb methods .revokePrivilege()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber360",
+    "influxdb methods .revokePrivilege() fills in default DB",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber353",
+    "influxdb methods .revokePrivilege() queries correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber357",
+    "influxdb methods .revokePrivilege() throws if DB unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber410",
+    "influxdb methods .showContinousQueries()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber418",
+    "influxdb methods .showContinousQueries() fills in default DB",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber411",
+    "influxdb methods .showContinousQueries() queries correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber415",
+    "influxdb methods .showContinousQueries() throws if DB unspecified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber424",
+    "influxdb methods .writePoints()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber589",
+    "influxdb methods .writePoints() accepts nanoseconds (as ms)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber604",
+    "influxdb methods .writePoints() accepts timestamp overriding",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber479",
+    "influxdb methods .writePoints() can accept a schema at runtime",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber548",
+    "influxdb methods .writePoints() handles lack of fields",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber535",
+    "influxdb methods .writePoints() handles lack of tags",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber561",
+    "influxdb methods .writePoints() handles multiple tags",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber508",
+    "influxdb methods .writePoints() throws on schema violations",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber460",
+    "influxdb methods .writePoints() uses a schema to coerce",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber444",
+    "influxdb methods .writePoints() writes using default options without a schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber425",
+    "influxdb methods .writePoints() writes with all options specified without a schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber574",
+    "influxdb methods .writePoints() writes with the .writeMeasurement method",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber751",
+    "influxdb methods drops retention policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber756",
+    "influxdb methods shows retention policies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber781",
+    "influxdb methods shows shards",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber12",
+    "pool",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber58",
+    "pool attempts to make an https request",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber179",
+    "pool backoff",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber239",
+    "pool backoff constant",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber247",
+    "pool backoff constant should disable hosts if backoff delay is greater than zero",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber260",
+    "pool backoff constant should not disable hosts if backoff delay is zero",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber180",
+    "pool backoff exponential",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber203",
+    "pool backoff exponential should back off if failures continue",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber187",
+    "pool backoff exponential should error if there are no available hosts",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber198",
+    "pool backoff exponential should reenable hosts after the backoff expires",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber220",
+    "pool backoff exponential should reset backoff after success",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber151",
+    "pool calls back immediately on un-retryable error",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber139",
+    "pool fails if too many errors happen",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber77",
+    "pool handles unicode chunks correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber63",
+    "pool passes through request options",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber163",
+    "pool pings servers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber83",
+    "pool request generators",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber105",
+    "pool request generators discards responses",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber113",
+    "pool request generators errors if JSON parsing fails",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber89",
+    "pool request generators includes request query strings and bodies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber84",
+    "pool request generators makes a text request",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber108",
+    "pool request generators parses JSON responses",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber134",
+    "pool retries on a request error",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber173",
+    "pool times out in pings",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber122",
+    "pool times out requests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/pool.test.js.html#lineNumber71",
+    "pool valid request data content length",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber4",
+    "query builder",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber26",
+    "query builder expression builder",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber77",
+    "query builder expression builder ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber27",
+    "query builder expression builder creates basic queries",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber30",
+    "query builder expression builder inserts data types correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber54",
+    "query builder expression builder throws when using a flagged regex",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber57",
+    "query builder expression builder throws when using un-stringifyable object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber5",
+    "query builder measurement builder",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber19",
+    "query builder measurement builder builds with name and db",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber9",
+    "query builder measurement builder builds with name and rp",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber12",
+    "query builder measurement builder builds with name, rp, and db",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber6",
+    "query builder measurement builder builds with only name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/builder.test.js.html#lineNumber22",
+    "query builder measurement builder throws when a name is omitted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber4",
+    "results",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber5",
+    "results parses a empty result",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber48",
+    "results parses a results with second-precision",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber22",
+    "results parses a simple table of results",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber71",
+    "results parses alternate epochs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber168",
+    "results parses empty series",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber174",
+    "results parses empty values",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber113",
+    "results parses grouped results",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/result.test.js.html#lineNumber184",
+    "results throws error on an errorful series",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber5",
+    "schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber33",
+    "schema basic schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber47",
+    "schema basic schema accepts partial data",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber76",
+    "schema basic schema allows valid tags",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber34",
+    "schema basic schema coerces data correctly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber52",
+    "schema basic schema coerces numeric string data",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber57",
+    "schema basic schema strips null and undefined values",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber83",
+    "schema basic schema throws if invalid fields are provided",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber80",
+    "schema basic schema throws if invalid tags are provided",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber64",
+    "schema basic schema throws if wrong data type provided (bool)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber68",
+    "schema basic schema throws if wrong data type provided (float)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber72",
+    "schema basic schema throws if wrong data type provided (int)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber20",
+    "schema coerceBadly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/schema.test.js.html#lineNumber21",
+    "schema coerceBadly apparently works",
+    "test"
+  ],
+  [
+    "src/.external-ecmascript.js~array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "src/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "influx~unit/backoff.test.js",
-    "test-file/unit/backoff.test.js.html",
-    "<span>unit/backoff.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~arraybuffer",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "src/.external-ecmascript.js~ArrayBuffer",
+    "external"
   ],
   [
-    "influx~unit/builder.test.js",
-    "test-file/unit/builder.test.js.html",
-    "<span>unit/builder.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~boolean",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "src/.external-ecmascript.js~Boolean",
+    "external"
   ],
   [
-    "influx~unit/grammar.test.js",
-    "test-file/unit/grammar.test.js.html",
-    "<span>unit/grammar.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~dataview",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "src/.external-ecmascript.js~DataView",
+    "external"
   ],
   [
-    "influx~unit/influx.test.js",
-    "test-file/unit/influx.test.js.html",
-    "<span>unit/influx.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~date",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "src/.external-ecmascript.js~Date",
+    "external"
   ],
   [
-    "influx~unit/pool.test.js",
-    "test-file/unit/pool.test.js.html",
-    "<span>unit/pool.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~error",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "src/.external-ecmascript.js~Error",
+    "external"
   ],
   [
-    "influx~unit/result.test.js",
-    "test-file/unit/result.test.js.html",
-    "<span>unit/result.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~evalerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "src/.external-ecmascript.js~EvalError",
+    "external"
   ],
   [
-    "influx~unit/schema.test.js",
-    "test-file/unit/schema.test.js.html",
-    "<span>unit/schema.test.js</span> <span class=\"search-result-import-path\">influx</span>",
-    "testFile"
+    "src/.external-ecmascript.js~float32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "src/.external-ecmascript.js~Float32Array",
+    "external"
   ],
   [
-    "influx~value",
+    "src/.external-ecmascript.js~float64array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "src/.external-ecmascript.js~Float64Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~function",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "src/.external-ecmascript.js~Function",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~generator",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "src/.external-ecmascript.js~Generator",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~generatorfunction",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "src/.external-ecmascript.js~GeneratorFunction",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~infinity",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "src/.external-ecmascript.js~Infinity",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~int16array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "src/.external-ecmascript.js~Int16Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~int32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "src/.external-ecmascript.js~Int32Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~int8array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "src/.external-ecmascript.js~Int8Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~internalerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "src/.external-ecmascript.js~InternalError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~json",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "src/.external-ecmascript.js~JSON",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~map",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "src/.external-ecmascript.js~Map",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~nan",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "src/.external-ecmascript.js~NaN",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~number",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "src/.external-ecmascript.js~Number",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~object",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "src/.external-ecmascript.js~Object",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~promise",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "src/.external-ecmascript.js~Promise",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~proxy",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "src/.external-ecmascript.js~Proxy",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~rangeerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "src/.external-ecmascript.js~RangeError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~referenceerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "src/.external-ecmascript.js~ReferenceError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~reflect",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "src/.external-ecmascript.js~Reflect",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~regexp",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "src/.external-ecmascript.js~RegExp",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~set",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "src/.external-ecmascript.js~Set",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~string",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "src/.external-ecmascript.js~String",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~symbol",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "src/.external-ecmascript.js~Symbol",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~syntaxerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "src/.external-ecmascript.js~SyntaxError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~typeerror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "src/.external-ecmascript.js~TypeError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~urierror",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "src/.external-ecmascript.js~URIError",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~uint16array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "src/.external-ecmascript.js~Uint16Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~uint32array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "src/.external-ecmascript.js~Uint32Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~uint8array",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "src/.external-ecmascript.js~Uint8Array",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~uint8clampedarray",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "src/.external-ecmascript.js~Uint8ClampedArray",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~weakmap",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "src/.external-ecmascript.js~WeakMap",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~weakset",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "src/.external-ecmascript.js~WeakSet",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~boolean",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "src/.external-ecmascript.js~boolean",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~function",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "src/.external-ecmascript.js~function",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~null",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "src/.external-ecmascript.js~null",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~number",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "src/.external-ecmascript.js~number",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~object",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "src/.external-ecmascript.js~object",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~string",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "src/.external-ecmascript.js~string",
+    "external"
+  ],
+  [
+    "src/.external-ecmascript.js~undefined",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "src/.external-ecmascript.js~undefined",
+    "external"
+  ],
+  [
+    "src/backoff/backoff.js",
+    "file/src/backoff/backoff.js.html",
+    "src/backoff/backoff.js",
+    "file"
+  ],
+  [
+    "src/backoff/constant.js",
+    "file/src/backoff/constant.js.html",
+    "src/backoff/constant.js",
+    "file"
+  ],
+  [
+    "src/backoff/constant.js~constantbackoff#constructor",
+    "class/src/backoff/constant.js~ConstantBackoff.html#instance-constructor-constructor",
+    "src/backoff/constant.js~ConstantBackoff#constructor",
+    "method"
+  ],
+  [
+    "src/backoff/constant.js~constantbackoff#getdelay",
+    "class/src/backoff/constant.js~ConstantBackoff.html#instance-method-getDelay",
+    "src/backoff/constant.js~ConstantBackoff#getDelay",
+    "method"
+  ],
+  [
+    "src/backoff/constant.js~constantbackoff#next",
+    "class/src/backoff/constant.js~ConstantBackoff.html#instance-method-next",
+    "src/backoff/constant.js~ConstantBackoff#next",
+    "method"
+  ],
+  [
+    "src/backoff/constant.js~constantbackoff#reset",
+    "class/src/backoff/constant.js~ConstantBackoff.html#instance-method-reset",
+    "src/backoff/constant.js~ConstantBackoff#reset",
+    "method"
+  ],
+  [
+    "src/backoff/exponential.js",
+    "file/src/backoff/exponential.js.html",
+    "src/backoff/exponential.js",
+    "file"
+  ],
+  [
+    "src/backoff/exponential.js~exponentialbackoff#constructor",
+    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-constructor-constructor",
+    "src/backoff/exponential.js~ExponentialBackoff#constructor",
+    "method"
+  ],
+  [
+    "src/backoff/exponential.js~exponentialbackoff#getdelay",
+    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-getDelay",
+    "src/backoff/exponential.js~ExponentialBackoff#getDelay",
+    "method"
+  ],
+  [
+    "src/backoff/exponential.js~exponentialbackoff#next",
+    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-next",
+    "src/backoff/exponential.js~ExponentialBackoff#next",
+    "method"
+  ],
+  [
+    "src/backoff/exponential.js~exponentialbackoff#reset",
+    "class/src/backoff/exponential.js~ExponentialBackoff.html#instance-method-reset",
+    "src/backoff/exponential.js~ExponentialBackoff#reset",
+    "method"
+  ],
+  [
+    "src/builder.js",
+    "file/src/builder.js.html",
+    "src/builder.js",
+    "file"
+  ],
+  [
+    "src/builder.js~expression#and",
+    "class/src/builder.js~Expression.html#instance-get-and",
+    "src/builder.js~Expression#and",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#div",
+    "class/src/builder.js~Expression.html#instance-get-div",
+    "src/builder.js~Expression#div",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#doesntmatch",
+    "class/src/builder.js~Expression.html#instance-get-doesntMatch",
+    "src/builder.js~Expression#doesntMatch",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#equals",
+    "class/src/builder.js~Expression.html#instance-get-equals",
+    "src/builder.js~Expression#equals",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#exp",
+    "class/src/builder.js~Expression.html#instance-method-exp",
+    "src/builder.js~Expression#exp",
+    "method"
+  ],
+  [
+    "src/builder.js~expression#field",
+    "class/src/builder.js~Expression.html#instance-method-field",
+    "src/builder.js~Expression#field",
+    "method"
+  ],
+  [
+    "src/builder.js~expression#gt",
+    "class/src/builder.js~Expression.html#instance-get-gt",
+    "src/builder.js~Expression#gt",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#gte",
+    "class/src/builder.js~Expression.html#instance-get-gte",
+    "src/builder.js~Expression#gte",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#lt",
+    "class/src/builder.js~Expression.html#instance-get-lt",
+    "src/builder.js~Expression#lt",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#lte",
+    "class/src/builder.js~Expression.html#instance-get-lte",
+    "src/builder.js~Expression#lte",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#matches",
+    "class/src/builder.js~Expression.html#instance-get-matches",
+    "src/builder.js~Expression#matches",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#minus",
+    "class/src/builder.js~Expression.html#instance-get-minus",
+    "src/builder.js~Expression#minus",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#notequal",
+    "class/src/builder.js~Expression.html#instance-get-notEqual",
+    "src/builder.js~Expression#notEqual",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#or",
+    "class/src/builder.js~Expression.html#instance-get-or",
+    "src/builder.js~Expression#or",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#plus",
+    "class/src/builder.js~Expression.html#instance-get-plus",
+    "src/builder.js~Expression#plus",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#tag",
+    "class/src/builder.js~Expression.html#instance-method-tag",
+    "src/builder.js~Expression#tag",
+    "method"
+  ],
+  [
+    "src/builder.js~expression#times",
+    "class/src/builder.js~Expression.html#instance-get-times",
+    "src/builder.js~Expression#times",
+    "member"
+  ],
+  [
+    "src/builder.js~expression#tostring",
+    "class/src/builder.js~Expression.html#instance-method-toString",
+    "src/builder.js~Expression#toString",
+    "method"
+  ],
+  [
+    "src/builder.js~expression#value",
     "class/src/builder.js~Expression.html#instance-method-value",
-    "<span>value</span> <span class=\"search-result-import-path\">influx</span>",
+    "src/builder.js~Expression#value",
     "method"
   ],
   [
-    "influx~writemeasurement",
+    "src/builder.js~measurement#db",
+    "class/src/builder.js~Measurement.html#instance-method-db",
+    "src/builder.js~Measurement#db",
+    "method"
+  ],
+  [
+    "src/builder.js~measurement#name",
+    "class/src/builder.js~Measurement.html#instance-method-name",
+    "src/builder.js~Measurement#name",
+    "method"
+  ],
+  [
+    "src/builder.js~measurement#policy",
+    "class/src/builder.js~Measurement.html#instance-method-policy",
+    "src/builder.js~Measurement#policy",
+    "method"
+  ],
+  [
+    "src/builder.js~measurement#tostring",
+    "class/src/builder.js~Measurement.html#instance-method-toString",
+    "src/builder.js~Measurement#toString",
+    "method"
+  ],
+  [
+    "src/grammar/ds.js",
+    "file/src/grammar/ds.js.html",
+    "src/grammar/ds.js",
+    "file"
+  ],
+  [
+    "src/grammar/ds.js~fieldtype",
+    "typedef/index.html#static-typedef-FieldType",
+    "src/grammar/ds.js~FieldType",
+    "typedef"
+  ],
+  [
+    "src/grammar/ds.js~raw#constructor",
+    "class/src/grammar/ds.js~Raw.html#instance-constructor-constructor",
+    "src/grammar/ds.js~Raw#constructor",
+    "method"
+  ],
+  [
+    "src/grammar/ds.js~raw#getvalue",
+    "class/src/grammar/ds.js~Raw.html#instance-method-getValue",
+    "src/grammar/ds.js~Raw#getValue",
+    "method"
+  ],
+  [
+    "src/grammar/escape.js",
+    "file/src/grammar/escape.js.html",
+    "src/grammar/escape.js",
+    "file"
+  ],
+  [
+    "src/grammar/index.js",
+    "file/src/grammar/index.js.html",
+    "src/grammar/index.js",
+    "file"
+  ],
+  [
+    "src/grammar/times.js",
+    "file/src/grammar/times.js.html",
+    "src/grammar/times.js",
+    "file"
+  ],
+  [
+    "src/host.js",
+    "file/src/host.js.html",
+    "src/host.js",
+    "file"
+  ],
+  [
+    "src/index.js",
+    "file/src/index.js.html",
+    "src/index.js",
+    "file"
+  ],
+  [
+    "src/index.js~influxdb#_createschema",
+    "class/src/index.js~InfluxDB.html#instance-method-_createSchema",
+    "src/index.js~InfluxDB#_createSchema",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#_defaultdb",
+    "class/src/index.js~InfluxDB.html#instance-method-_defaultDB",
+    "src/index.js~InfluxDB#_defaultDB",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#_getqueryopts",
+    "class/src/index.js~InfluxDB.html#instance-method-_getQueryOpts",
+    "src/index.js~InfluxDB#_getQueryOpts",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#_schema",
+    "class/src/index.js~InfluxDB.html#instance-member-_schema",
+    "src/index.js~InfluxDB#_schema",
+    "member"
+  ],
+  [
+    "src/index.js~influxdb#addschema",
+    "class/src/index.js~InfluxDB.html#instance-method-addSchema",
+    "src/index.js~InfluxDB#addSchema",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#alterretentionpolicy",
+    "class/src/index.js~InfluxDB.html#instance-method-alterRetentionPolicy",
+    "src/index.js~InfluxDB#alterRetentionPolicy",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#constructor",
+    "class/src/index.js~InfluxDB.html#instance-constructor-constructor",
+    "src/index.js~InfluxDB#constructor",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#createcontinuousquery",
+    "class/src/index.js~InfluxDB.html#instance-method-createContinuousQuery",
+    "src/index.js~InfluxDB#createContinuousQuery",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#createdatabase",
+    "class/src/index.js~InfluxDB.html#instance-method-createDatabase",
+    "src/index.js~InfluxDB#createDatabase",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#createretentionpolicy",
+    "class/src/index.js~InfluxDB.html#instance-method-createRetentionPolicy",
+    "src/index.js~InfluxDB#createRetentionPolicy",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#createuser",
+    "class/src/index.js~InfluxDB.html#instance-method-createUser",
+    "src/index.js~InfluxDB#createUser",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropcontinuousquery",
+    "class/src/index.js~InfluxDB.html#instance-method-dropContinuousQuery",
+    "src/index.js~InfluxDB#dropContinuousQuery",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropdatabase",
+    "class/src/index.js~InfluxDB.html#instance-method-dropDatabase",
+    "src/index.js~InfluxDB#dropDatabase",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropmeasurement",
+    "class/src/index.js~InfluxDB.html#instance-method-dropMeasurement",
+    "src/index.js~InfluxDB#dropMeasurement",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropretentionpolicy",
+    "class/src/index.js~InfluxDB.html#instance-method-dropRetentionPolicy",
+    "src/index.js~InfluxDB#dropRetentionPolicy",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropseries",
+    "class/src/index.js~InfluxDB.html#instance-method-dropSeries",
+    "src/index.js~InfluxDB#dropSeries",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropshard",
+    "class/src/index.js~InfluxDB.html#instance-method-dropShard",
+    "src/index.js~InfluxDB#dropShard",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#dropuser",
+    "class/src/index.js~InfluxDB.html#instance-method-dropUser",
+    "src/index.js~InfluxDB#dropUser",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#getdatabasenames",
+    "class/src/index.js~InfluxDB.html#instance-method-getDatabaseNames",
+    "src/index.js~InfluxDB#getDatabaseNames",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#getmeasurements",
+    "class/src/index.js~InfluxDB.html#instance-method-getMeasurements",
+    "src/index.js~InfluxDB#getMeasurements",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#getseries",
+    "class/src/index.js~InfluxDB.html#instance-method-getSeries",
+    "src/index.js~InfluxDB#getSeries",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#getusers",
+    "class/src/index.js~InfluxDB.html#instance-method-getUsers",
+    "src/index.js~InfluxDB#getUsers",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#grantadminprivilege",
+    "class/src/index.js~InfluxDB.html#instance-method-grantAdminPrivilege",
+    "src/index.js~InfluxDB#grantAdminPrivilege",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#grantprivilege",
+    "class/src/index.js~InfluxDB.html#instance-method-grantPrivilege",
+    "src/index.js~InfluxDB#grantPrivilege",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#ping",
+    "class/src/index.js~InfluxDB.html#instance-method-ping",
+    "src/index.js~InfluxDB#ping",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#query",
+    "class/src/index.js~InfluxDB.html#instance-method-query",
+    "src/index.js~InfluxDB#query",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#queryraw",
+    "class/src/index.js~InfluxDB.html#instance-method-queryRaw",
+    "src/index.js~InfluxDB#queryRaw",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#revokeadminprivilege",
+    "class/src/index.js~InfluxDB.html#instance-method-revokeAdminPrivilege",
+    "src/index.js~InfluxDB#revokeAdminPrivilege",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#revokeprivilege",
+    "class/src/index.js~InfluxDB.html#instance-method-revokePrivilege",
+    "src/index.js~InfluxDB#revokePrivilege",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#setpassword",
+    "class/src/index.js~InfluxDB.html#instance-method-setPassword",
+    "src/index.js~InfluxDB#setPassword",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#showcontinousqueries",
+    "class/src/index.js~InfluxDB.html#instance-method-showContinousQueries",
+    "src/index.js~InfluxDB#showContinousQueries",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#showretentionpolicies",
+    "class/src/index.js~InfluxDB.html#instance-method-showRetentionPolicies",
+    "src/index.js~InfluxDB#showRetentionPolicies",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#showshards",
+    "class/src/index.js~InfluxDB.html#instance-method-showShards",
+    "src/index.js~InfluxDB#showShards",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#writemeasurement",
     "class/src/index.js~InfluxDB.html#instance-method-writeMeasurement",
-    "<span>writeMeasurement</span> <span class=\"search-result-import-path\">influx</span>",
+    "src/index.js~InfluxDB#writeMeasurement",
     "method"
   ],
   [
-    "influx~writepoints",
+    "src/index.js~influxdb#writepoints",
     "class/src/index.js~InfluxDB.html#instance-method-writePoints",
-    "<span>writePoints</span> <span class=\"search-result-import-path\">influx</span>",
+    "src/index.js~InfluxDB#writePoints",
     "method"
+  ],
+  [
+    "src/pool.js",
+    "file/src/pool.js.html",
+    "src/pool.js",
+    "file"
+  ],
+  [
+    "src/pool.js~pool#_disablehost",
+    "class/src/pool.js~Pool.html#instance-method-_disableHost",
+    "src/pool.js~Pool#_disableHost",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#_enablehost",
+    "class/src/pool.js~Pool.html#instance-method-_enableHost",
+    "src/pool.js~Pool#_enableHost",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#_gethost",
+    "class/src/pool.js~Pool.html#instance-method-_getHost",
+    "src/pool.js~Pool#_getHost",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#addhost",
+    "class/src/pool.js~Pool.html#instance-method-addHost",
+    "src/pool.js~Pool#addHost",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#constructor",
+    "class/src/pool.js~Pool.html#instance-constructor-constructor",
+    "src/pool.js~Pool#constructor",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#discard",
+    "class/src/pool.js~Pool.html#instance-method-discard",
+    "src/pool.js~Pool#discard",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#gethostsavailable",
+    "class/src/pool.js~Pool.html#instance-method-getHostsAvailable",
+    "src/pool.js~Pool#getHostsAvailable",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#gethostsdisabled",
+    "class/src/pool.js~Pool.html#instance-method-getHostsDisabled",
+    "src/pool.js~Pool#getHostsDisabled",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#hostisavailable",
+    "class/src/pool.js~Pool.html#instance-method-hostIsAvailable",
+    "src/pool.js~Pool#hostIsAvailable",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#json",
+    "class/src/pool.js~Pool.html#instance-method-json",
+    "src/pool.js~Pool#json",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#ping",
+    "class/src/pool.js~Pool.html#instance-method-ping",
+    "src/pool.js~Pool#ping",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#stream",
+    "class/src/pool.js~Pool.html#instance-method-stream",
+    "src/pool.js~Pool#stream",
+    "method"
+  ],
+  [
+    "src/pool.js~pool#text",
+    "class/src/pool.js~Pool.html#instance-method-text",
+    "src/pool.js~Pool#text",
+    "method"
+  ],
+  [
+    "src/results.js",
+    "file/src/results.js.html",
+    "src/results.js",
+    "file"
+  ],
+  [
+    "src/schema.js",
+    "file/src/schema.js.html",
+    "src/schema.js",
+    "file"
+  ],
+  [
+    "src/schema.js~schema#_ref",
+    "class/src/schema.js~Schema.html#instance-method-_ref",
+    "src/schema.js~Schema#_ref",
+    "method"
+  ],
+  [
+    "src/schema.js~schema#checktags",
+    "class/src/schema.js~Schema.html#instance-method-checkTags",
+    "src/schema.js~Schema#checkTags",
+    "method"
+  ],
+  [
+    "src/schema.js~schema#coercefields",
+    "class/src/schema.js~Schema.html#instance-method-coerceFields",
+    "src/schema.js~Schema#coerceFields",
+    "method"
+  ],
+  [
+    "unit/backoff.test.js",
+    "test-file/unit/backoff.test.js.html",
+    "unit/backoff.test.js",
+    "testFile"
+  ],
+  [
+    "unit/builder.test.js",
+    "test-file/unit/builder.test.js.html",
+    "unit/builder.test.js",
+    "testFile"
+  ],
+  [
+    "unit/grammar.test.js",
+    "test-file/unit/grammar.test.js.html",
+    "unit/grammar.test.js",
+    "testFile"
+  ],
+  [
+    "unit/influx.test.js",
+    "test-file/unit/influx.test.js.html",
+    "unit/influx.test.js",
+    "testFile"
+  ],
+  [
+    "unit/pool.test.js",
+    "test-file/unit/pool.test.js.html",
+    "unit/pool.test.js",
+    "testFile"
+  ],
+  [
+    "unit/result.test.js",
+    "test-file/unit/result.test.js.html",
+    "unit/result.test.js",
+    "testFile"
+  ],
+  [
+    "unit/schema.test.js",
+    "test-file/unit/schema.test.js.html",
+    "unit/schema.test.js",
+    "testFile"
   ]
 ]

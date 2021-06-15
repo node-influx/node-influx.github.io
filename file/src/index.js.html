@@ -871,12 +871,7 @@ export class InfluxDB {
         const { database = this._defaultDB(), precision = &quot;n&quot;, retentionPolicy, } = options;
         let payload = &quot;&quot;;
         points.forEach((point) =&gt; {
-            const { fields = {}, tags = {}, measurement, timestamp } = point;
-            const schema = this._schema[database] &amp;&amp; this._schema[database][measurement];
-            const fieldsPairs = schema
-                ? schema.coerceFields(fields)
-                : coerceBadly(fields);
-            const tagsNames = schema ? schema.checkTags(tags) : Object.keys(tags);
+            const { measurement, tags, fieldsPairs, tagsNames, castedTimestamp } = this.parsePoint(point, { database, precision });
             payload += (payload.length &gt; 0 ? &quot;\n&quot; : &quot;&quot;) + measurement;
             for (let tagsName of tagsNames) {
                 payload +=
@@ -892,8 +887,8 @@ export class InfluxDB {
                         &quot;=&quot; +
                         fieldsPairs[i][1];
             }
-            if (timestamp !== undefined) {
-                payload += &quot; &quot; + grammar.castTimestamp(timestamp, precision);
+            if (castedTimestamp !== undefined) {
+                payload += &quot; &quot; + castedTimestamp;
             }
         });
         return this._pool.discard({
@@ -908,6 +903,70 @@ export class InfluxDB {
                 u: this._options.username,
             },
         });
+    }
+    /**
+     * ParsePoint will perform the coercions/schema checks and return the data
+     * required for writing a point. This will throw an error if a schema check
+     * or coercion fails. This can be useful for flagging or &quot;throwing out&quot; bad
+     * points in a batch write to prevent the entire batch from getting aborted
+     *
+     * ---
+     *
+     * A note when using this function, {@link InfluxDB#writePoints} will still perform
+     * the same checks, so any pre-processed data will be checked for validity twice which
+     * has potential performance implications on large data sets
+     *
+     * @param point
+     * @param [options]
+     * @return
+     * @example
+     * // parse a point as if it is getting written to the default
+     * // databse with the default time precision
+     * influx.parsePoint({
+     *     measurement: &apos;perf&apos;,
+     *     tags: { host: &apos;box1.example.com&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage() },
+     * })
+     *
+     * // you can manually specify the database and time precision
+     * influx.parsePoint({
+     *     measurement: &apos;perf&apos;,
+     *     tags: { host: &apos;box1.example.com&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage() },
+     * }, {
+     *   precision: &apos;s&apos;,
+     *   database: &apos;my_db&apos;
+     * })
+     *
+     * // if an error occurs, you can catch the error with try...catch
+     * try {
+     *   influx.parsePoint({
+     *     measurement: &apos;perf&apos;,
+     *     tags: { host: &apos;box1.example.com&apos;, myExtraneousTag: &apos;value&apos; },
+     *     fields: { cpu: getCpuUsage(), mem: getMemUsage(), myExtraneousField: &apos;value&apos; },
+     *   })
+     * } catch(err) {
+     *   handleError(err);
+     * }
+     */
+    parsePoint(point, options = {}) {
+        const { database = this._defaultDB(), precision = &quot;n&quot; } = options;
+        const { fields = {}, tags = {}, measurement, timestamp } = point;
+        const schema = this._schema[database] &amp;&amp; this._schema[database][measurement];
+        const fieldsPairs = schema
+            ? schema.coerceFields(fields)
+            : coerceBadly(fields);
+        const tagsNames = schema ? schema.checkTags(tags) : Object.keys(tags);
+        const castedTimestamp = timestamp &amp;&amp; grammar.castTimestamp(timestamp, precision);
+        return {
+            fields,
+            tags,
+            measurement,
+            timestamp,
+            fieldsPairs,
+            tagsNames,
+            castedTimestamp,
+        };
     }
     /**
      * WriteMeasurement functions similarly to {@link InfluxDB#writePoints}, but
@@ -978,7 +1037,7 @@ export class InfluxDB {
             epoch: options.precision,
             q: query,
             rp: retentionPolicy,
-            params: placeholders,
+            params: JSON.stringify(placeholders),
         }));
     }
     /**
@@ -997,7 +1056,11 @@ export class InfluxDB {
      * })
      */
     ping(timeout) {
-        return this._pool.ping(timeout);
+        let auth = undefined;
+        if (typeof this._options.username === &quot;string&quot;) {
+            auth = `${this._options.username}:${this._options.password || &quot;&quot;}`;
+        }
+        return this._pool.ping(timeout, &quot;/ping&quot;, auth);
     }
     /**
      * Returns the default database that queries operates on. It throws if called

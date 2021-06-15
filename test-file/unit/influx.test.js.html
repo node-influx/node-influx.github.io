@@ -564,33 +564,6 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     },
                 ]);
             });
-            it(&quot;throws on schema violations&quot;, () =&gt; {
-                setDefaultDB(&quot;my_db&quot;);
-                expect(() =&gt; {
-                    influx.writePoints([
-                        {
-                            measurement: &quot;my_schemed_measure&quot;,
-                            tags: { not_a_tag: &quot;1&quot; },
-                        },
-                    ]);
-                }).to.throw(/extraneous tags/i);
-                expect(() =&gt; {
-                    influx.writePoints([
-                        {
-                            measurement: &quot;my_schemed_measure&quot;,
-                            fields: { not_a_field: &quot;1&quot; },
-                        },
-                    ]);
-                }).to.throw(/extraneous fields/i);
-                expect(() =&gt; {
-                    influx.writePoints([
-                        {
-                            measurement: &quot;my_schemed_measure&quot;,
-                            fields: { bool: &quot;lol, not a bool&quot; },
-                        },
-                    ]);
-                }).to.throw(/expected bool/i);
-            });
             it(&quot;handles lack of tags&quot;, () =&gt; {
                 expectWrite(&quot;mymeas myfield=90&quot;, {
                     precision: &quot;n&quot;,
@@ -676,6 +649,111 @@ describe(&quot;influxdb&quot;, () =&gt; {
                 ], { precision: &quot;ms&quot; });
             });
         });
+        describe(&quot;.parsePoint()&quot;, () =&gt; {
+            it(&quot;parses a minimal valid point with default options&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                let point = {
+                    measurement: &quot;mymeas&quot;,
+                    fields: { myfield: 90 },
+                };
+                let parsedPoint = influx.parsePoint(point);
+                expect(parsedPoint.measurement).to.equal(point.measurement);
+                expect(parsedPoint.fields).to.equal(point.fields);
+                expect(parsedPoint.tags).to.deep.equals({});
+                expect(parsedPoint.fieldsPairs).to.deep.equals([[&quot;myfield&quot;, &quot;90&quot;]]);
+                expect(parsedPoint.tagsNames).to.deep.equals([]);
+                expect(parsedPoint.castedTimestamp).to.be.undefined;
+            });
+            it(&quot;parses a point with fields, tags, and timestamp&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                let date = new Date();
+                let point = {
+                    measurement: &quot;mymeas&quot;,
+                    fields: { myfield: 90 },
+                    tags: { my_tag: &quot;2&quot; },
+                    timestamp: date,
+                };
+                let parsedPoint = influx.parsePoint(point);
+                expect(parsedPoint.measurement).to.equal(point.measurement);
+                expect(parsedPoint.fields).to.equal(point.fields);
+                expect(parsedPoint.tags).to.equals(point.tags);
+                expect(parsedPoint.fieldsPairs).to.deep.equals([[&quot;myfield&quot;, &quot;90&quot;]]);
+                expect(parsedPoint.tagsNames).to.deep.equals([&quot;my_tag&quot;]);
+                expect(parsedPoint.castedTimestamp).not.to.be.undefined;
+            });
+            it(&quot;accepts custom precision option&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                let date = new Date();
+                let point = {
+                    measurement: &quot;mymeas&quot;,
+                    fields: { myfield: 90 },
+                    timestamp: date,
+                };
+                let parsedPoint = influx.parsePoint(point, { precision: &quot;ms&quot; });
+                expect(parsedPoint.castedTimestamp).to.equal(date.getTime().toString());
+            });
+            it(&quot;accepts custom database option&quot;, () =&gt; {
+                let date = new Date();
+                let point = {
+                    measurement: &quot;mymeas&quot;,
+                    fields: { myfield: 90 },
+                    timestamp: date,
+                };
+                let parsedPoint = influx.parsePoint(point, { database: &quot;my_db&quot; });
+                expect(parsedPoint).to.exist;
+            });
+            it(&quot;uses a schema to coerce&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                let date = new Date();
+                let point = {
+                    measurement: &quot;my_schemed_measure&quot;,
+                    fields: { bool: true, float: 43, int: 42 },
+                    tags: { my_tag: &quot;2&quot; },
+                    timestamp: date,
+                };
+                let parsedPoint = influx.parsePoint(point);
+                expect(parsedPoint.measurement).to.equal(point.measurement);
+                expect(parsedPoint.fields).to.equal(point.fields);
+                expect(parsedPoint.tags).to.equals(point.tags);
+                expect(parsedPoint.fieldsPairs).to.deep.equals([
+                    [&quot;bool&quot;, &quot;T&quot;],
+                    [&quot;float&quot;, &quot;43&quot;],
+                    [&quot;int&quot;, &quot;42i&quot;],
+                ]);
+                expect(parsedPoint.tagsNames).to.deep.equals([&quot;my_tag&quot;]);
+                expect(parsedPoint.castedTimestamp).not.to.be.undefined;
+            });
+            it(&quot;should throw an error if extraneous tags are given&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                expect(() =&gt; {
+                    let point = {
+                        measurement: &quot;my_schemed_measure&quot;,
+                        tags: { not_a_tag: &quot;1&quot; },
+                    };
+                    influx.parsePoint(point);
+                }).to.throw(/extraneous tags/i);
+            });
+            it(&quot;should throw an error if extraneous fields are given&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                expect(() =&gt; {
+                    let point = {
+                        measurement: &quot;my_schemed_measure&quot;,
+                        fields: { not_a_field: &quot;1&quot; },
+                    };
+                    influx.parsePoint(point);
+                }).to.throw(/extraneous fields/i);
+            });
+            it(&quot;should throw an error if invalid value for field type given&quot;, () =&gt; {
+                setDefaultDB(&quot;my_db&quot;);
+                expect(() =&gt; {
+                    let point = {
+                        measurement: &quot;my_schemed_measure&quot;,
+                        fields: { bool: &quot;lol, not a bool&quot; },
+                    };
+                    influx.parsePoint(point);
+                }).to.throw(/expected bool/i);
+            });
+        });
         describe(&quot;.query&quot;, () =&gt; {
             beforeEach(() =&gt; setDefaultDB(&quot;my_db&quot;));
             it(&quot;runs raw queries&quot;, () =&gt; {
@@ -684,7 +762,7 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     epoch: undefined,
                     rp: undefined,
                     db: &quot;my_db&quot;,
-                    params: {},
+                    params: &quot;{}&quot;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
                 return influx.queryRaw(&quot;select * from series_0&quot;).then((res) =&gt; {
                     expect(res).to.deep.equal(dbFixture(&quot;selectFromOne&quot;));
@@ -696,7 +774,7 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     epoch: undefined,
                     rp: undefined,
                     db: &quot;my_db&quot;,
-                    params: {},
+                    params: &quot;{}&quot;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
                 return influx.query(&quot;select * from series_0&quot;).then((res) =&gt; {
                     expect(res.slice()).to.deep.equal([
@@ -719,7 +797,7 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     epoch: undefined,
                     rp: undefined,
                     db: &quot;my_db&quot;,
-                    params: {},
+                    params: &quot;{}&quot;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
                 return influx.query([
                     &quot;select * from series_0&quot;,
@@ -732,7 +810,7 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     epoch: &quot;ms&quot;,
                     rp: &quot;asdf&quot;,
                     db: &quot;my_db&quot;,
-                    params: {},
+                    params: &quot;{}&quot;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
                 return influx.query([&quot;select * from series_0&quot;], {
                     precision: &quot;ms&quot;,
@@ -745,7 +823,7 @@ describe(&quot;influxdb&quot;, () =&gt; {
                     epoch: undefined,
                     rp: &quot;asdf&quot;,
                     db: &quot;my_db&quot;,
-                    params: {},
+                    params: &quot;{}&quot;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
                 return influx.query([&quot;select * from series_0&quot;], {
                     precision: &quot;n&quot;,
@@ -754,17 +832,20 @@ describe(&quot;influxdb&quot;, () =&gt; {
             });
             it(&quot;uses placeholders&quot;, () =&gt; {
                 expectQuery(&quot;json&quot;, {
-                    q: &quot;select * from series_0 WHERE time &gt; now() - $&lt;since&gt;&quot;,
+                    q: &quot;select * from series_0 WHERE time &gt; now() - $&lt;since&gt; AND value &gt;= $&lt;minimumValue&gt;&quot;,
                     epoch: undefined,
                     rp: &quot;asdf&quot;,
                     db: &quot;my_db&quot;,
-                    params: { since: &quot;10s&quot; },
+                    params: &apos;{&quot;since&quot;:&quot;10s&quot;,&quot;minimumValue&quot;:12}&apos;,
                 }, &quot;GET&quot;, dbFixture(&quot;selectFromOne&quot;));
-                return influx.query([&quot;select * from series_0 WHERE time &gt; now() - $&lt;since&gt;&quot;], {
+                return influx.query([
+                    &quot;select * from series_0 WHERE time &gt; now() - $&lt;since&gt; AND value &gt;= $&lt;minimumValue&gt;&quot;,
+                ], {
                     precision: &quot;n&quot;,
                     retentionPolicy: &quot;asdf&quot;,
                     placeholders: {
                         since: &quot;10s&quot;,
+                        minimumValue: 12,
                     },
                 });
             });

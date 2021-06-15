@@ -812,6 +812,36 @@ entire database if a measurement isn&apos;t provided.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-parsePoint">parsePoint</a></span></span><span class="code" data-ice="signature">(point: <span>*</span>, options: <span>*</span>): {&quot;fields&quot;: <span>*</span>, &quot;tags&quot;: <span>*</span>, &quot;measurement&quot;: <span>*</span>, &quot;timestamp&quot;: <span>*</span>, &quot;fieldsPairs&quot;: <span>*</span>, &quot;tagsNames&quot;: <span>*</span>, &quot;castedTimestamp&quot;: <span>*</span>}</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>ParsePoint will perform the coercions/schema checks and return the data
+required for writing a point.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/index.js~InfluxDB.html#instance-method-ping">ping</a></span></span><span class="code" data-ice="signature">(timeout: <span>*</span>): <span>*</span></span>
         </p>
       </div>
@@ -3083,6 +3113,125 @@ influx.getSeries({
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-parsePoint">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">parsePoint</span><span class="code" data-ice="signature">(point: <span>*</span>, options: <span>*</span>): {&quot;fields&quot;: <span>*</span>, &quot;tags&quot;: <span>*</span>, &quot;measurement&quot;: <span>*</span>, &quot;timestamp&quot;: <span>*</span>, &quot;fieldsPairs&quot;: <span>*</span>, &quot;tagsNames&quot;: <span>*</span>, &quot;castedTimestamp&quot;: <span>*</span>}</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber893">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>ParsePoint will perform the coercions/schema checks and return the data
+required for writing a point. This will throw an error if a schema check
+or coercion fails. This can be useful for flagging or &quot;throwing out&quot; bad
+points in a batch write to prevent the entire batch from getting aborted</p>
+<hr>
+<p>A note when using this function, <span><a href="class/src/index.js~InfluxDB.html#instance-method-writePoints">InfluxDB#writePoints</a></span> will still perform
+the same checks, so any pre-processed data will be checked for validity twice which
+has potential performance implications on large data sets</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">point</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">options</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType">{&quot;fields&quot;: <span>*</span>, &quot;tags&quot;: <span>*</span>, &quot;measurement&quot;: <span>*</span>, &quot;timestamp&quot;: <span>*</span>, &quot;fieldsPairs&quot;: <span>*</span>, &quot;tagsNames&quot;: <span>*</span>, &quot;castedTimestamp&quot;: <span>*</span>}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">// parse a point as if it is getting written to the default
+// databse with the default time precision
+influx.parsePoint({
+    measurement: &apos;perf&apos;,
+    tags: { host: &apos;box1.example.com&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage() },
+})
+
+// you can manually specify the database and time precision
+influx.parsePoint({
+    measurement: &apos;perf&apos;,
+    tags: { host: &apos;box1.example.com&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage() },
+}, {
+  precision: &apos;s&apos;,
+  database: &apos;my_db&apos;
+})
+
+// if an error occurs, you can catch the error with try...catch
+try {
+  influx.parsePoint({
+    measurement: &apos;perf&apos;,
+    tags: { host: &apos;box1.example.com&apos;, myExtraneousTag: &apos;value&apos; },
+    fields: { cpu: getCpuUsage(), mem: getMemUsage(), myExtraneousField: &apos;value&apos; },
+  })
+} catch(err) {
+  handleError(err);
+}</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-ping">
     <span class="access" data-ice="access">public</span>
     
@@ -3094,7 +3243,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber940">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber999">source</a></span></span>
     </span>
   </h3>
 
@@ -3182,7 +3331,7 @@ influx.getSeries({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber886">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber945">source</a></span></span>
     </span>
   </h3>
 
@@ -3272,7 +3421,7 @@ will be returned, otherwise a single result (array of objects) will be returned.
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber912">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber971">source</a></span></span>
     </span>
   </h3>
 
@@ -3890,7 +4039,7 @@ those results verbatim.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber869">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber928">source</a></span></span>
     </span>
   </h3>
 
@@ -4122,7 +4271,7 @@ influx.writePoints([
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber973">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber1036">source</a></span></span>
     </span>
   </h3>
 
@@ -4182,7 +4331,7 @@ influx.writePoints([
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber948">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber1011">source</a></span></span>
     </span>
   </h3>
 
@@ -4239,7 +4388,7 @@ when a default database isn&apos;t set.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber959">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/index.js.html#lineNumber1022">source</a></span></span>
     </span>
   </h3>
 

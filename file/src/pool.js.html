@@ -232,7 +232,7 @@ export class Pool {
      * Ping sends out a request to all available Influx servers, reporting on
      * their response time and version number.
      */
-    ping(timeout, path = &quot;/ping&quot;) {
+    ping(timeout, path = &quot;/ping&quot;, auth = undefined) {
         const todo = [];
         setToArray(this._hostsAvailable)
             .concat(setToArray(this._hostsDisabled))
@@ -241,7 +241,12 @@ export class Pool {
             const url = host.url;
             const once = doOnce();
             return todo.push(new Promise((resolve) =&gt; {
-                const req = request(Object.assign({ hostname: url.hostname, method: &quot;GET&quot;, path, port: Number(url.port), protocol: url.protocol, timeout }, host.options), once((res) =&gt; {
+                const headers = {};
+                if (typeof auth !== &quot;undefined&quot;) {
+                    const encodedAuth = Buffer.from(auth).toString(&quot;base64&quot;);
+                    headers[&quot;Authorization&quot;] = `Basic ${encodedAuth}`;
+                }
+                const req = request(Object.assign({ hostname: url.hostname, method: &quot;GET&quot;, path, port: Number(url.port), protocol: url.protocol, timeout, headers: headers }, host.options), once((res) =&gt; {
                     resolve({
                         url,
                         res: res.resume(),

@@ -355,19 +355,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber732",
+    "test-file/unit/influx.test.js.html#lineNumber813",
     "influxdb methods .alterRetentionPolicy",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber742",
+    "test-file/unit/influx.test.js.html#lineNumber823",
     "influxdb methods .alterRetentionPolicy creates default policies",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber734",
+    "test-file/unit/influx.test.js.html#lineNumber815",
     "influxdb methods .alterRetentionPolicy creates non-default policies",
     "test"
   ],
@@ -409,19 +409,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber713",
+    "test-file/unit/influx.test.js.html#lineNumber794",
     "influxdb methods .createRetentionPolicy",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber723",
+    "test-file/unit/influx.test.js.html#lineNumber804",
     "influxdb methods .createRetentionPolicy creates default policies",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber715",
+    "test-file/unit/influx.test.js.html#lineNumber796",
     "influxdb methods .createRetentionPolicy creates non-default policies",
     "test"
   ],
@@ -595,43 +595,97 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber620",
+    "test-file/unit/influx.test.js.html#lineNumber593",
+    "influxdb methods .parsePoint()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber636",
+    "influxdb methods .parsePoint() accepts custom database option",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber625",
+    "influxdb methods .parsePoint() accepts custom precision option",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber594",
+    "influxdb methods .parsePoint() parses a minimal valid point with default options",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber608",
+    "influxdb methods .parsePoint() parses a point with fields, tags, and timestamp",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber677",
+    "influxdb methods .parsePoint() should throw an error if extraneous fields are given",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber667",
+    "influxdb methods .parsePoint() should throw an error if extraneous tags are given",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber687",
+    "influxdb methods .parsePoint() should throw an error if invalid value for field type given",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber646",
+    "influxdb methods .parsePoint() uses a schema to coerce",
+    "test"
+  ],
+  [
+    "",
+    "test-file/unit/influx.test.js.html#lineNumber698",
     "influxdb methods .query",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber634",
+    "test-file/unit/influx.test.js.html#lineNumber712",
     "influxdb methods .query parses query output",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber670",
+    "test-file/unit/influx.test.js.html#lineNumber748",
     "influxdb methods .query passes in options",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber683",
+    "test-file/unit/influx.test.js.html#lineNumber761",
     "influxdb methods .query rewrites nanosecond precisions",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber622",
+    "test-file/unit/influx.test.js.html#lineNumber700",
     "influxdb methods .query runs raw queries",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber657",
+    "test-file/unit/influx.test.js.html#lineNumber735",
     "influxdb methods .query selects from multiple",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber696",
+    "test-file/unit/influx.test.js.html#lineNumber774",
     "influxdb methods .query uses placeholders",
     "test"
   ],
@@ -697,13 +751,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber589",
+    "test-file/unit/influx.test.js.html#lineNumber562",
     "influxdb methods .writePoints() accepts nanoseconds (as ms)",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber604",
+    "test-file/unit/influx.test.js.html#lineNumber577",
     "influxdb methods .writePoints() accepts timestamp overriding",
     "test"
   ],
@@ -715,26 +769,20 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber548",
+    "test-file/unit/influx.test.js.html#lineNumber521",
     "influxdb methods .writePoints() handles lack of fields",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber535",
+    "test-file/unit/influx.test.js.html#lineNumber508",
     "influxdb methods .writePoints() handles lack of tags",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber561",
+    "test-file/unit/influx.test.js.html#lineNumber534",
     "influxdb methods .writePoints() handles multiple tags",
-    "test"
-  ],
-  [
-    "",
-    "test-file/unit/influx.test.js.html#lineNumber508",
-    "influxdb methods .writePoints() throws on schema violations",
     "test"
   ],
   [
@@ -757,25 +805,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber574",
+    "test-file/unit/influx.test.js.html#lineNumber547",
     "influxdb methods .writePoints() writes with the .writeMeasurement method",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber751",
+    "test-file/unit/influx.test.js.html#lineNumber832",
     "influxdb methods drops retention policies",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber756",
+    "test-file/unit/influx.test.js.html#lineNumber837",
     "influxdb methods shows retention policies",
     "test"
   ],
   [
     "",
-    "test-file/unit/influx.test.js.html#lineNumber781",
+    "test-file/unit/influx.test.js.html#lineNumber862",
     "influxdb methods shows shards",
     "test"
   ],
@@ -1839,6 +1887,12 @@ window.esdocSearchIndex = [
     "src/index.js~influxdb#grantprivilege",
     "class/src/index.js~InfluxDB.html#instance-method-grantPrivilege",
     "src/index.js~InfluxDB#grantPrivilege",
+    "method"
+  ],
+  [
+    "src/index.js~influxdb#parsepoint",
+    "class/src/index.js~InfluxDB.html#instance-method-parsePoint",
+    "src/index.js~InfluxDB#parsePoint",
     "method"
   ],
   [
